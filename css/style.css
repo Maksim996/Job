@@ -3,33 +3,95 @@ body {
     padding: 0;
 }
 
+
+
+
 .practice {
     text-align: center;
 }
-.card{
-	border:none;
+
+.practice__title {
+    font-size: 2rem;
+    font-family: SegoeUI-Light, Segoe UI;
+    font-weight: 300;
 }
+
+.practice__subtitle {
+    font-size: 1.15rem;
+    font-family: SegoeUI-Light, Segoe UI;
+    font-weight: 300;
+
+}
+
+a.practice__item:hover {
+    -webkit-box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card {
+    border: none;
+}
+
+.practice__topic {
+    font-size: 0.9rem;
+    font-family: SegoeUI, Segoe UI;
+}
+
+.practice__text {
+    font-size: 0.75rem;
+    font-family: SegoeUI-Light, Segoe UI;
+    font-weight: 300;
+}
+
+
+
 a,
 a:hover {
     color: rgb(0, 0, 0);
     text-decoration: none;
 }
-a.practice__item:hover{
-	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.7);
--moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.7);
-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.7);
-}
+
+
+
+
+
 
 .preview__descr {
-    display: none;
+    visibility: hidden;
+    font-size: 0.6rem;
+    font-family: SegoeUI-Light, Segoe UI;
+    font-weight: 300;
+     transition:visibility 0.5s linear,opacity 0.5s linear;
+     opacity: 0;
+ 
+}
+
+.preview__item {
+    font-size: 0.75rem;
+    font-family: SegoeUI, Segoe UI;
 }
 
 .preview__item:hover {
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
+    transform:  scale(1.05,1.05);
 }
 
-.preview__item:hover~.preview__descr {
-    display: block;
+.preview__item:hover~.preview__descr,
+.preview__descr:hover {
+    visibility: visible;
+opacity: 1;
+
+}
+
+.preview__button {
+    font-size: 0.8rem;
+    font-family: SegoeUI, Segoe UI;
+}
+
+.practice__image {
+    max-width: 85%;
+    height: auto;
 }
