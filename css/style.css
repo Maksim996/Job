@@ -62,9 +62,10 @@ a:hover {
     font-size: 0.6rem;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 300;
-     transition:visibility 0.5s linear,opacity 0.5s linear;
-     opacity: 0;
- 
+    transform: translateY(-25%);
+    opacity: 0;
+    transition: 1.5s;
+
 }
 
 .preview__item {
@@ -76,14 +77,14 @@ a:hover {
     -webkit-box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
     box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
-    transform:  scale(1.05,1.05);
+    transform: scale(1.05, 1.05);
 }
 
 .preview__item:hover~.preview__descr,
 .preview__descr:hover {
     visibility: visible;
-opacity: 1;
-
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .preview__button {
@@ -95,3 +96,29 @@ opacity: 1;
     max-width: 85%;
     height: auto;
 }
+
+
+
+
+.caption {
+    color: #1d78ad;
+    font-size: 10rem;
+    font-family: SegoeUI-Bold, Segoe UI;
+    font-weight: 700;
+    line-height: 6.5rem;
+}
+
+.caption__last {
+    text-align: left;
+    /*transform: translateX(-100%);*/
+    transition: 5s;
+}
+
+.caption__news {
+    text-align: right;
+    /*transform: translateX(100%);*/
+    transition: 5s;
+}
+/*.divv:hover~.caption__last,.divv:hover~.caption__news{
+        transform: translateX(0);
+}*/
