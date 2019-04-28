@@ -2,3 +2,138 @@ body{
 	margin: 0;
 	padding: 0;
 }
+header{
+	position: relative;
+	color: white;
+}
+
+
+h1{
+	font-weight: bold;
+	font-size: 1.5rem;
+	width: 60%;
+}
+
+ul{
+	list-style-type: none;
+}
+
+:hover{
+	transition: all 1s;
+}
+
+footer{
+	display: flex;
+	position: relative;
+	width: 100%;
+	align-items: flex-start;
+	background: #222222;
+	padding-top: 1rem;
+	font-size: 0.7rem;
+}
+.footer_left{
+	width: 40%;
+}
+
+.footer_left li{
+	display: flex;	
+	flex-direction: row;
+	margin-bottom: 1rem;
+}
+.footer_left img{
+	height: 1rem;
+	width: 1rem;
+}
+.footer_left .circle{
+	display: flex;
+	height: 2rem;
+	width: 2rem;
+	background: #31393B;
+	border-radius:50%; 
+	justify-content: center;
+	align-items: center;
+	margin-right: 1rem;
+	min-width: 2rem;
+}
+
+
+
+.footer_left__location{
+	color: white;
+
+}
+
+.footer_left__telNumber{
+	color: white;
+}
+
+.footer_left__email{
+	color: #1D78AD;
+}
+.footer_right{
+	width: 40%;
+	margin-left: 20%;
+	color: white;
+}
+.footer_right__aboutUs{
+	display: flex;
+	text-align: center;
+	border-radius:20px;
+	background-color: #1D78AD;
+	height: 2rem;
+	width: 55%;
+	font-size: 1rem;
+	font-weight: bold;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.footer_right__aboutUs .circle{
+	background: white;
+	border-radius: 50%;
+	height: 2rem;
+	width:2rem;
+	margin-right: 2rem;
+}
+
+.footer_right__aboutUs img{
+	height: 1rem;
+}
+.footer_right__socialNetworks{
+	margin-top: 2rem;
+}
+.footer_right__socialNetworks ul{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding-left: 0;
+}
+.footer_right__socialNetworks .circle{
+	display: flex;
+	margin-right: 0.5rem;
+	background: white;
+	border-radius:50%; 
+	height: 2rem;
+	width: 2rem;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.footer_right__socialNetworks img{
+	height: 1rem;
+	width: 1rem;
+}
+
+
+.footer_right__socialNetworks .facebook .circle:hover{
+	background: #4267b2;
+}
+
+.footer_right__socialNetworks .instagram .circle:hover{
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.footer_right__socialNetworks .telegram .circle:hover{
+	background: #30a8dc;
+}
+
