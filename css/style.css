@@ -4,13 +4,15 @@ body {
 }
 
 .container {
-    max-width: 1400px;
+    /*max-width: 1400px;*/
 }
 
 .card {
     border: none;
 }
-
+.card-body{
+	padding: 0 0 0 0.7rem;
+}
 
 
 .practice {
@@ -68,6 +70,10 @@ a.practice__item:hover {
 .preview__title {
     /*font-size="37"*/
 
+
+}
+.preview__card{
+	position: relative;
 }
 
 .preview__descr {
@@ -78,7 +84,7 @@ a.practice__item:hover {
     font-weight: 300;
     transform: translateY(-25%);
     opacity: 0;
-    transition: 1.5s;
+    transition: 1s;
 
 
 }
@@ -86,26 +92,23 @@ a.practice__item:hover {
 .preview__item {
     /*font-size="18"*/
 
-
     font-size: 0.75rem;
     font-family: SegoeUI, Segoe UI;
+
 }
 
-.preview__card:hover~.preview__item,
-/*.preview__descr:hover~.preview__item*/
- {
-    -webkit-box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
-    box-shadow: 2px 2px 2px -1.8px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05, 1.05);
+.preview__item-hover {
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1, 1.1);
 }
 
 .preview__item:hover~.preview__descr,
-.preview__descr:hover
- {
+.preview__descr:hover {
     visibility: visible;
     opacity: 1;
-    transform: translateY(10%);
+    transform: translateY(5%);
 }
 
 .preview__button {
@@ -113,6 +116,11 @@ a.practice__item:hover {
     font-family: SegoeUI, Segoe UI;
     /*fill="#1d78ad" font-size="20" font-family="SegoeUI, Segoe UI"*/
 
+}
+.preview__image{
+/*	position: absolute;
+	bottom: 0;*/
+	vertical-align: top;
 }
 
 
@@ -133,7 +141,7 @@ a.practice__item:hover {
     text-align: left;
     transform: translateX(-100%);
     transition: 5s;
-    padding-left: 6rem;
+    padding-left: 5rem;
 
 }
 
@@ -141,7 +149,7 @@ a.practice__item:hover {
     text-align: right;
     transform: translateX(100%);
     transition: 5s;
-    padding-right: 6rem;
+    padding-right: 5rem;
 }
 
 .caption__display {
@@ -204,7 +212,7 @@ a.practice__item:hover {
 .news__link-item {
     /*font-size="12"*/
     color: #3fa3eb;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-family: SegoeUI, Segoe UI;
     margin-right: 6rem;
     position: absolute;
@@ -215,7 +223,7 @@ a.practice__item:hover {
 
 .news__date-item {
     /*font-size="12"*/
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-family: ArialMT, Arial;
     position: absolute;
     bottom: -1rem;
@@ -225,12 +233,42 @@ a.practice__item:hover {
 
 .news__text-item {
     /*font-size="18"*/
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 300;
 }
 
 .news__button {
     /*fill="#1d78ad" font-size="20" font-family="SegoeUI, Segoe UI"*/
+    font-size: 0.85rem;
+    font-family: SegoeUI, Segoe UI;
     text-align: center;
 }
+
+
+
+.slider__button {}
+
+.slider {
+    background: #e8e8e8;
+}
+
+.slider__items {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.slick-prev:before {
+    color: grey;
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    background: #ffffff;
+}
+
+.slick-next:before {
+    color: grey;
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    background: #ffffff;
+}
+
+
+
