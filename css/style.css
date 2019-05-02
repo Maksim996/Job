@@ -96,7 +96,11 @@ a.preview__item {
 
     font-size: 0.8rem;
     font-family: SegoeUI, Segoe UI;
+    height: 17rem;
 
+}
+.preview__text{
+    height: 3.5rem;
 }
 
 .preview__item-hover {
