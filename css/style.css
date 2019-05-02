@@ -10,8 +10,9 @@ body {
 .card {
     border: none;
 }
-.card-body{
-	padding: 0 0 0 0.7rem;
+
+.card-body {
+    padding: 0 0 0 0.7rem;
 }
 
 
@@ -41,10 +42,10 @@ a.preview__item {
     text-decoration: none;
 }
 
-a.practice__item:hover {
-    -webkit-box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.05);
-    box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.05);
+.practice__card:hover {
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .practice__topic {
@@ -55,7 +56,7 @@ a.practice__item:hover {
 
 .practice__text {
     /*font-size="16"*/
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 300;
 }
@@ -72,8 +73,9 @@ a.practice__item:hover {
 
 
 }
-.preview__card{
-	position: relative;
+
+.preview__card {
+    position: relative;
 }
 
 .preview__descr {
@@ -82,7 +84,7 @@ a.practice__item:hover {
     font-size: 0.6rem;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 300;
-    transform: translateY(-25%);
+    transform: translateY(-5%);
     opacity: 0;
     transition: 1s;
 
@@ -92,7 +94,7 @@ a.practice__item:hover {
 .preview__item {
     /*font-size="18"*/
 
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-family: SegoeUI, Segoe UI;
 
 }
@@ -117,10 +119,11 @@ a.practice__item:hover {
     /*fill="#1d78ad" font-size="20" font-family="SegoeUI, Segoe UI"*/
 
 }
-.preview__image{
-/*	position: absolute;
-	bottom: 0;*/
-	vertical-align: top;
+
+.preview__image {
+    /*  position: absolute;
+    bottom: 0;*/
+    vertical-align: top;
 }
 
 
@@ -178,7 +181,7 @@ a.practice__item:hover {
 .news__link {
     /*font-size="18"*/
     color: #3fa3eb;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: SegoeUI, Segoe UI;
     margin-right: 8rem;
     position: absolute;
@@ -188,7 +191,7 @@ a.practice__item:hover {
 
 .news__date {
     /*font-size="18" font-family="ArialMT, Arial"*/
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: ArialMT, Arial;
     position: absolute;
     bottom: -1rem;
@@ -198,7 +201,7 @@ a.practice__item:hover {
 
 .news__text {
     /*font-size="18" font-family="SegoeUI-Light, Segoe UI" font-weight="300"*/
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 300;
 }
@@ -212,7 +215,7 @@ a.practice__item:hover {
 .news__link-item {
     /*font-size="12"*/
     color: #3fa3eb;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-family: SegoeUI, Segoe UI;
     margin-right: 6rem;
     position: absolute;
@@ -223,7 +226,7 @@ a.practice__item:hover {
 
 .news__date-item {
     /*font-size="12"*/
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-family: ArialMT, Arial;
     position: absolute;
     bottom: -1rem;
@@ -233,7 +236,7 @@ a.practice__item:hover {
 
 .news__text-item {
     /*font-size="18"*/
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 300;
 }
@@ -262,13 +265,18 @@ a.practice__item:hover {
     color: grey;
     border-radius: 0 100% 100% 0 / 0 50% 50% 0;
     background: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .slick-next:before {
     color: grey;
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     background: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
-
-
-
