@@ -1,38 +1,7 @@
-body{
-	margin: 0;
-	padding: 0;
-}
-header{
-	position: relative;
-	color: white;
-}
-
-
-h1{
-	font-weight: bold;
-	font-size: 1.5rem;
-	width: 60%;
-}
-
-ul{
-	list-style-type: none;
-}
-
-:hover{
-	transition: all 1s;
-}
-
 footer{
-	display: flex;
-	position: relative;
-	width: 100%;
-	align-items: flex-start;
 	background: #222222;
 	padding-top: 1rem;
 	font-size: 0.7rem;
-}
-.footer_left{
-	width: 40%;
 }
 
 .footer_left li{
@@ -71,9 +40,9 @@ footer{
 	color: #1D78AD;
 }
 .footer_right{
-	width: 40%;
-	margin-left: 20%;
+padding-left: 0;
 	color: white;
+
 }
 .footer_right__aboutUs{
 	display: flex;
@@ -81,19 +50,21 @@ footer{
 	border-radius:20px;
 	background-color: #1D78AD;
 	height: 2rem;
-	width: 55%;
+	min-width: 55%;
+	max-width: 95%;
 	font-size: 1rem;
 	font-weight: bold;
 	align-items: center;
 	justify-content: flex-start;
 }
 
+
 .footer_right__aboutUs .circle{
 	background: white;
 	border-radius: 50%;
 	height: 2rem;
 	width:2rem;
-	margin-right: 2rem;
+	/*margin-right: 2rem;*/
 }
 
 .footer_right__aboutUs img{
@@ -101,6 +72,7 @@ footer{
 }
 .footer_right__socialNetworks{
 	margin-top: 2rem;
+	font-size: 1rem;
 }
 .footer_right__socialNetworks ul{
 	display: flex;
@@ -136,4 +108,3 @@ footer{
 .footer_right__socialNetworks .telegram .circle:hover{
 	background: #30a8dc;
 }
-
