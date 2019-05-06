@@ -1,0 +1,44 @@
+@media all and (max-width: 992px) {
+    .navbar-nav{
+        background-color: rgba(0, 0, 0,0.6);
+        left: 0;
+        transform: translateX(-3%)
+    }
+}
+@media all and (max-width: 767px) and (min-width: 480px){
+    .blueLine{
+        margin-top: 3rem;
+        
+    }
+     h1{
+        font-size: 1rem;
+    }
+    .header__text{
+       display: none;
+    }
+    .down-arrow{
+        transform: translateY(-50%)
+    }
+
+    .footer_right__aboutUs{
+        width: 50%;
+        transform: translateX(50%);
+        text-align: center;
+        margin-left: 0;
+        
+    }
+
+    .mr-3, .mx-3{
+        margin-right: 3rem !important;
+    }
+
+    .footer_right__socialNetworks{
+        text-align: center;
+    }
+
+    .footer_right__socialNetworks .iconNetwork{
+        justify-content: space-around;
+        display: flex;
+    }
+
+}
