@@ -344,8 +344,44 @@
         arrows: true,
         dots: true,
         // centerMode: true,
-        prevArrow: '<img class="slick-prev slick-arrow img-fluid" src="img/main/slider/arrow-left.svg">',
-        nextArrow: '<img class="slick-next slick-arrow img-fluid" src="img/main/slider/arrow-right.svg">'
+        prevArrow: '<img class="slick-prev slick-arrow img-fluid image__slick-prev" src="img/main/slider/arrow-left.svg">',
+        nextArrow: '<img class="slick-next slick-arrow img-fluid image__slick-next" src="img/main/slider/arrow-right.svg">',
+        responsive: [{
+                breakpoint: 1200,
+                 settings: {
+                slidesToShow: 5,
+                slidesToScroll: 1
+            }},
+            {
+                breakpoint: 992,
+                  settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1
+            }},
+            {
+                breakpoint: 790,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+             {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+
+
+        ]
     });
 
     $('.preview__item').hover(function() {
