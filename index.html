@@ -395,9 +395,13 @@
     });
 
     $('.preview__descr').hover(function() {
-        $(this).parents('.preview__card').children('.preview__item').addClass('preview__item-hover')
+        $(this).parents('.preview__card').children('.preview__item').addClass('preview__item-hover');
+        $(this).parents('.preview').children('.preview__last-row').children('.col-12').children('.preview__button-more').addClass('preview__button-hover');
+        $(this).parents('.preview').children('.preview__last-row').children('.col-12').children('.preview__button-more').removeClass('preview__button-not-hover');
     }, function() {
-        $(this).parents('.preview__card').children('.preview__item').removeClass('preview__item-hover')
+        $(this).parents('.preview__card').children('.preview__item').removeClass('preview__item-hover');
+        $(this).parents('.preview').children('.preview__last-row').children('.col-12').children('.preview__button-more').removeClass('preview__button-hover');
+        $(this).parents('.preview').children('.preview__last-row').children('.col-12').children('.preview__button-more').addClass('preview__button-not-hover');
 
 
     });
