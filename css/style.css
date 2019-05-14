@@ -21,21 +21,35 @@ ul{
 .img-fluid{
 	width: 100%;
 	height: auto;
+	min-width: 100%;
+	min-height: 100%;
 }
 
 :hover{
 	transition: all 1s;
 }
 
+.container{
+	max-width: 1600px;
+}
+
 .banner {
 	margin: 0 -15px;
+}
 
+.nav-item{
+	padding-right: 1.5rem;
+}
+
+.navbar-nav{
+	margin-left: auto;
+	padding-right:5rem;
 }
 
 .banner img{
 	width: 100%;
-
 }
+
 .navbar-light .navbar-toggler{
 	color: white;
 	border-color: white;
@@ -65,10 +79,12 @@ ul{
 	color: white;
 }
 
-
-
 .dropdown-toggle img{
-	max-width: 1rem ;
+	max-width: 25px ;
+}
+
+.nav-link {
+	margin-left: 3rem;
 }
 
 .dropdown-menu{
@@ -87,24 +103,16 @@ ul{
 	background-color: rgba(0, 0, 0 , 0.6);
 }
 
-.string{
-	position: fixed;
-	/* display: flex; */
-	/* justify-content: space-between; */
-	align-items: center;
-	padding: 5px 10px 10px ;
-	margin: 0 0;
-	top:0;
-	z-index: 20;
-	/* left: 50%;
-	transform: translateX(-50%); */
-}	
 
-.string__left .logo img{
-	width: 100%;
+.language-media__select{
+	margin-left: 1rem;
 }
-.string__right {
-	font-size: 10px;	
+
+.language-media{
+	display: none;
+}
+
+.string__right {	
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -122,7 +130,6 @@ ul{
 
 .string__right li a {
 	color: white;
-	/* margin-right: 30px; */
 	text-decoration: none;
 	padding: 0.25rem 1rem;
 }
@@ -137,8 +144,6 @@ ul{
 	width: 40%;
 	margin-top: 0.5rem;
 }
-
-
 
 .job-practik:hover .job-practik-hide{
 	display: flex;
@@ -168,13 +173,11 @@ ul{
 
 }
 
-
 .documents-hide{
 	display: none;
 	font-size: 0.6rem;
 	margin-top: 0.5rem;
 }
-
 
 .documents:hover .documents-hide{
 	display: flex;
@@ -185,7 +188,6 @@ ul{
 	padding-left: 0;
 	
 }
-
 
 .header-title_block{
 	position: absolute;
@@ -231,4 +233,117 @@ ul{
 .down-arrow img{
 	height: 0.8rem;
 	width: 0.8rem;
+}
+
+footer{
+	background: #222222;
+	padding-top: 1rem;
+	font-size: 0.7rem;
+}
+
+.footer_left li{
+	display: flex;	
+	flex-direction: row;
+	margin-bottom: 1rem;
+	align-items: center;
+
+}
+.footer_left img{
+	height: 1rem;
+	width: 1rem;
+}
+
+.footer_left p{
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.footer_left .circle{
+	display: flex;
+	height: 2rem;
+	width: 2rem;
+	background: #31393B;
+	border-radius:50%; 
+	justify-content: center;
+	align-items: center;
+	margin-right: 1rem;
+	min-width: 2rem;
+}
+
+.footer_left__location{
+	color: white;
+}
+
+.footer_left__telNumber{
+	color: white;
+}
+
+.footer_left__email{
+	color: #1D78AD;
+}
+.footer_right{
+	padding-left: 0;
+	color: white;
+}
+.footer_right__aboutUs{
+	display: flex;
+	text-align: center;
+	border-radius:20px;
+	background-color: #1D78AD;
+	height: 2rem;
+	min-width: 55%;
+	max-width: 95%;
+	font-size: 1rem;
+	font-weight: bold;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.footer_right__aboutUs .circle{
+	background: white;
+	border-radius: 50%;
+	height: 2rem;
+	width:2rem;
+}
+
+.footer_right__aboutUs img{
+	height: 1rem;
+}
+.footer_right__socialNetworks{
+	margin-top: 2rem;
+	font-size: 1rem;
+}
+.footer_right__socialNetworks ul{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding-left: 0;
+}
+.footer_right__socialNetworks .circle{
+	display: flex;
+	margin-right: 0.5rem;
+	background: white;
+	border-radius:50%; 
+	height: 2rem;
+	width: 2rem;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.footer_right__socialNetworks img{
+	height: 1rem;
+	width: 1rem;
+}
+
+
+.footer_right__socialNetworks .facebook .circle:hover{
+	background: #4267b2;
+}
+
+.footer_right__socialNetworks .instagram .circle:hover{
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.footer_right__socialNetworks .telegram .circle:hover{
+	background: #30a8dc;
 }
