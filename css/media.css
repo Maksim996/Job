@@ -1,8 +1,15 @@
-@media all and (max-width: 992px) {
+@media all and (max-width: 991px) {
     .navbar-nav{
         background-color: rgba(0, 0, 0,0.6);
-        left: 0;
-        transform: translateX(-3%)
+    }
+    .language-full{
+        display: none;
+    }
+    .language-media{
+        display: block;
+    }
+    .dropdown-item img{
+        max-width: 25px;
     }
 }
 @media all and (max-width: 767px) and (min-width: 480px){
