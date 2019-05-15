@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateFooterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('footer', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 200);
-            $table->string('email', 200);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password', 200);
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('img_path', 200);
+            $table->string('link', 200);
+            $table->text('content');
         });
     }
 
@@ -31,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('footer');
     }
 }
