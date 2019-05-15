@@ -14,3 +14,41 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('admin')->group(function () {
+
+	Route::get('/template', function () {
+	    return view('/admin/template');
+	});
+	Route::get('/header-menu', function () {
+	    return view('/admin/header-menu');
+	})->name('header-menu');
+	Route::get('/header', function () {
+	    return view('/admin/header');
+	})->name('header');
+	Route::get('practic-header', function () {
+	    return view('/admin/practic-header');
+	})->name('practic-header');
+	Route::get('practic-cards', function () {
+	    return view('/admin/practic-cards');
+	})->name('practic-cards');
+    Route::get('announcements', function () {
+	    return view('/admin/announcements');
+	})->name('announcements');
+	Route::get('announcement/{id}', function ($id) {
+	    return view('/admin/announcement', array('id'=>$id));
+	});
+	Route::get('news', function () {
+	    return view('/admin/news');
+	})->name('news');
+	Route::get('brands', function () {
+	    return view('/admin/brands');
+	})->name('brands');
+	Route::get('footer', function () {
+	    return view('/admin/footer');
+	})->name('footer');
+	Route::get('new/{id}', function ($id) {
+	    return view('/admin/new', array('id'=>$id));
+	});
+});
