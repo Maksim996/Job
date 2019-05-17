@@ -22,9 +22,10 @@
     <div class="wrapper">
         <div class="wrapper-content">
             @section('menu')
-                <div class="fixed-top background-fixed menu__navigation">
+            <!-- background-fixed -->
+                <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
-                        <a class="navbar-brand"><img class="img-fluid" src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
+                        <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <img class="navbar-toggler-icon" src="{{URL::asset('images/menu-options.svg')}}" alt="menu">
                         </button>
@@ -34,7 +35,7 @@
                                     <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Новини</a>
+                                    <a class="nav-link" href="/news">Новини</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Працевлаштування та практика</a>
