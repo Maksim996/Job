@@ -4,7 +4,7 @@
 @parent
 @endsection
 @section('content')   
-        <header class=" position-relative">
+        <header class="position-relative">
             <figure class="banner"><img src="{{ URL::asset('images/people-coffee-tea-meeting.png') }}"></figure>
             <figure class="filter"></figure>
             <div class="header-title_block">
@@ -155,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div  id='tutu'   >
+        <div  id='tutu'>
             <div class="container">
                 <div class="caption mt-5">
                     <div class="row ">
