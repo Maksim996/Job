@@ -134,32 +134,7 @@ var isInViewport = function(elem) {
     );
 };
 
-// var fouthElement = document.getElementsByClassName("caption__display")[0]
-// var fouthElementTWO = document.getElementsByClassName("caption__last")[0]
-// var fouthElementTHREE = document.getElementsByClassName("caption__news")[0]
-// function tye (){
-//     if (isInViewport(fouthElement)) {
-        
-//             console.log('tutut')
-//             $('.caption__last').hover(function(){
-//                 $('.caption__last').addClass('hover');
-//                 $('.caption__news').addClass('hover');
-//             });
-    
-//     }
-// }
 
-// function yil(){
-//     if(isInViewport(fouthElement)){
-//         $.scrollify.next(),5000
-//     } 
-// }
-
-
-// window.addEventListener('scroll', function() {
-
-//    tye(),setTimeout(yil,8000);
-// })
 
 const tutu= document.getElementById('tutu');
 const caption__displays=document.getElementsByClassName('caption__displays')
@@ -175,9 +150,7 @@ function getCoords(elem ) {
 }
 
 
-// function deleteDiv(){
-//     setTimeout( caption__display.style.display='none',10000) ;
-// }
+
 
 
 $(window).scroll(function(){
@@ -187,7 +160,7 @@ $(window).scroll(function(){
     function deleteDiv(){               
         $('#tutu').animate({height:0 },1500);
     }
-    if ( $(this).scrollTop() >= getCoords(tutu||$('body')[0]).top-200  ) {
+    if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)-200  ) {
         $('.caption__last').addClass('hover');
         $('.caption__news').addClass('hover');  
         setTimeout( caption__display,5000);
@@ -221,3 +194,29 @@ $(window).scroll(function(){
 });
 
 //конец плавний скролл с помощью якоря
+
+//background scroll menu color ;
+
+const string_fixed = document.getElementsByClassName('background-scroll')[0];
+const string = document.getElementsByClassName('background-fixed')[0];
+const menu_header = document.getElementById('menu_header')[0];
+
+
+   
+window.onscroll = function() {
+    menuScroll()
+}
+function menuScroll(){
+    if (window.location.pathname=='/'){
+        if(window.pageYOffset != 0) {
+            $('#menu_header').addClass('background-fixed ');
+            
+        } else {
+            $('#menu_header').removeClass('background-fixed ');
+        }
+    }
+}
+menuScroll()
+
+
+// end background scroll menu color ;
