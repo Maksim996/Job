@@ -11,7 +11,7 @@ class NewController extends Controller
     	$new = DB::table('inner_news')->select('*')->where([
     		['inner_news_id', '=', $id],
     		['type', '=', 'new'],
-    	])->get();
+    	])->first();
 
     	return view('site/post',array('id'=>$id, 'new' => $new));
     }

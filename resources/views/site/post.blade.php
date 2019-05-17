@@ -6,6 +6,7 @@
 @section('content')
 
     <div class="container">
+        {{$new->title}}
         <div class="news my-5">
             <div class="news__item">
                 <div class="row">
