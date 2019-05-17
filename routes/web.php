@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -21,15 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
 
-	Route::get('/template', function () {
-	    return view('/admin/template');
-	});
+	
 	Route::get('/header-menu', function () {
 	    return view('/admin/header-menu');
 	})->name('header-menu');
-	Route::get('/header', function () {
-	    return view('/admin/header');
-	})->name('header');
+
+	Route::get('/header', 'Admin\HeaderController@index')->name('header');
+
 	Route::get('practic-header', function () {
 	    return view('/admin/practic-header');
 	})->name('practic-header');
@@ -55,3 +53,14 @@ Route::prefix('admin')->group(function () {
 	    return view('/admin/new', array('id'=>$id));
 	});
 });
+//site routes
+Route::get('template', function(){
+	return view('site/template');
+});
+Route::get('/', 'Site\HomeController@index');
+
+Route::get('new/{id}', 'Site\NewController@index');
+
+Route::get('news', 'Site\NewsController@index')->name('news');
+Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
+Route::get('documents', 'Site\DocumentsController@index')->name('documents');

@@ -14,12 +14,14 @@
         </div>
         
         <form action="#" class="k-form k-form--label-right">
-                
-           
+            
+            @foreach ($data['header'] as $cafedre)
+                {{$cafedre->title}}
+            @endforeach
+            
             <div class="k-portlet__body">
-
 				<div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
+                    <label class="col-form-label col-lg-2 col-sm-12"></label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input type="text" class="form-control" placeholder="">
                         <span class="form-text text-muted">Основний заголовок на головній сторінці</span> 
@@ -49,6 +51,7 @@
                     </div>
                 </div>
             </div>
+
         </form>
       
    </div>
