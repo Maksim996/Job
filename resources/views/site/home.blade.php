@@ -3,8 +3,8 @@
 @section('menu')
 @parent
 @endsection
-@section('content')   
-        <header class="container position-relative">
+@section('content')
+        <header class="position-relative">
             <figure class="banner"><img src="{{ URL::asset('images/people-coffee-tea-meeting.png') }}"></figure>
             <figure class="filter"></figure>
             <div class="header-title_block">
@@ -155,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div  id='tutu' class="caption__displays"  >
+        <div  id='tutu'>
             <div class="container">
                 <div class="caption mt-5">
                     <div class="row ">
@@ -175,20 +175,20 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title">Участь у конференції «Uni-biz bridge-2</h5>
+                                    <h5 class="card-title news__title">{{$data['previews'][0]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset('images/main/news/NoPath-8.svg') }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews'][0]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
-                                        <p class="card-text news__text mb-4 py-0">
-                                            16.02.2019 р. доцент кафедри управління ННІ ФЕМ ім. Олега Балацького Мішеніна Г.А. взяла участь у конференції «Uni-biz bridge-2» -«Зв&apos;язок університетів та бізнесу», м. Київ. Uni-biz bridge уже другий рік поспіль...
+                                        <p class="card-text news__text mb-4 py-0">  
+                                            {{$data['previews'][0]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => 1)) }}" class="card-link news__link">Детальніше...</a>
-                                        <p class="news__date">Дата публікації: Березень 9, 2019</p>
+                                        <a href="{{ route('new', array('id' => $data['previews'][0]->preview_id)) }}" class="card-link news__link">Детальніше...</a>
+                                        <p class="news__date">Дата публікації: {{$data['previews'][0]->date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -200,20 +200,20 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">Паралельне навчання студента спеціальності «Менеджмент» в Канаді</h5>
+                                    <h5 class="card-title news__title-item">{{$data['previews'][1]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="img/main/news/NoPath-9.svg" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews'][1]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            Наприкінці лютого Дарина Лисак, другокурсниця спеціальності «Менеджмент», розпочала своє паралельне навчання в Університеті екології та управління у Варшаві за програмою академічної мобільності Erasmus+ KA1...
+                                            {{$data['previews'][1]->short_description}}
                                         </p>
-                                        <a href="#" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: Березень 9, 2019</p>
+                                        <a href="{{ route('new', array('id' => $data['previews'][1]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <p class="news__date-item">Дата публікації: {{$data['previews'][1]->date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -223,20 +223,20 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">Участь у конференції «Uni-biz bridge-2</h5>
+                                    <h5 class="card-title news__title-item">{{$data['previews'][2]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="img/main/news/NoPath-10.svg" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews'][2]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            16.02.2019 р. доцент кафедри управління ННІ ФЕМ ім. Олега Балацького Мішеніна Г.А. взяла участь у конференції «Uni-biz bridge-2» -«Зв&apos;язок університетів та бізнесу», м. Київ. Uni-biz bridge уже другий рік поспіль...
+                                            {{$data['previews'][2]->short_description}}
                                         </p>
-                                        <a href="#" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: Березень 9, 2019</p>
+                                        <a href="{{ route('new', array('id' => $data['previews'][2]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <p class="news__date-item">Дата публікації: {{$data['previews'][2]->date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -248,20 +248,20 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">Паралельне навчання студента спеціальності «Менеджмент» в 5ан7ді</h5>
+                                    <h5 class="card-title news__title-item">{{$data['previews'][3]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="img/main/news/NoPath-11.svg" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews'][3]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            Наприкінці лютого Дарина Лисак, другокурсниця спеціальності «Менеджмент», розпочала своє паралельне навчання в Університеті екології та управління у Варшаві за програмою академічної мобільності Erasmus+ KA1...
+                                            {{$data['previews'][3]->short_description}}
                                         </p>
-                                        <a href="#" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: Березень 9, 2019</p>
+                                        <a href="{{ route('new', array('id' => $data['previews'][3]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <p class="news__date-item">Дата публікації: {{$data['previews'][3]->date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -271,20 +271,20 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">Участь у конференції «Uni-biz bridge-2</h5>
+                                    <h5 class="card-title news__title-item">{{$data['previews'][4]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="img/main/news/NoPath-12.svg" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews'][4]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            16.02.2019 р. доцент кафедри управління ННІ ФЕМ ім. Олега Балацького Мішеніна Г.А. взяла участь у конференції «Uni-biz bridge-2» -«Зв&apos;язок університетів та бізнесу», м. Київ. Uni-biz bridge уже другий рік поспіль...
+                                            {{$data['previews'][4]->short_description}}
                                         </p>
-                                        <a href="#" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: Березень 9, 2019</p>
+                                        <a href="{{ route('new', array('id' => $data['previews'][4]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <p class="news__date-item">Дата публікації: {{$data['previews'][4]->date}}</p>
                                     </div>
                                 </div>
                             </div>

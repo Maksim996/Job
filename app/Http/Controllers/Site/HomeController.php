@@ -15,12 +15,26 @@ class HomeController extends Controller
     public function index()
     {
         $practice = DB::select("SELECT * FROM `practice_intership_card`");
-        $announcements_news = DB::select("SELECT * FROM `practice_intership_card`");
+        $announcements_news = DB::select("SELECT * FROM `inner_news`");
+        $announcements_news = DB::select("SELECT * FROM `inner_news`");
+
+        $news = DB::table('inner_news')->select('*')->where([
+            ['type', '=', 'new'],
+        ])->get()->toArray();
+        $announcements = DB::table('inner_news')->select('*')->where([
+            ['type', '=', 'announcement'],
+        ])->get()->toArray();
+        $previews = DB::table('preview')->select('*')->orderBy('preview_id', 'desc')->limit(5)
+        ->get()->toArray();
+
         $slider = DB::select("SELECT * FROM `partners`");
         $data = [
             'practice_intership_card' => $practice,
             'announcements_news' => $announcements_news,
             'slider' => $slider,
+            'news' => $news,
+            'announcements' => $announcements,
+            'previews' => $previews,
         ];
         // dump($practice);
         return view('site/home', compact('data'));

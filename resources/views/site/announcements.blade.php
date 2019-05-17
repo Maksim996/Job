@@ -6,6 +6,7 @@
 @section('content')
 
 <div class="container">
+    {{$announcements[0]->date}}
     <div class="news mt-5">
     	<h1 class="text-center">
     		Найближчим часом
