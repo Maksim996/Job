@@ -59,7 +59,7 @@ Route::get('template', function(){
 });
 Route::get('/', 'Site\HomeController@index');
 
-Route::get('new/{id}', 'Site\NewController@index');
+Route::get('new/{id}', 'Site\NewController@index')->name('new');
 
 Route::get('news', 'Site\NewsController@index')->name('news');
 Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');

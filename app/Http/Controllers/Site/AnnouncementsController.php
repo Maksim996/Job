@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 class AnnouncementsController extends Controller
 {
     public function index(){
-
-    	return view('site/announcements');
+    	$announcements = DB::table('inner_news')->select('*')->where([
+    		['type', '=', 'announcement'],
+    	])->get();
+    	return view('site/announcements', array('announcements' => $announcements));
     }
 }

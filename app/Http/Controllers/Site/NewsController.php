@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 class NewsController extends Controller
 {
     public function index(){
-
-    	return view('site/news');
+    	$news = DB::table('inner_news')->select('*')->where([
+    		['type', '=', 'new'],
+    	])->get();
+    	return view('site/news', array('news' => $news));
     }
 }

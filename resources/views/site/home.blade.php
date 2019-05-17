@@ -187,7 +187,7 @@
                                         <p class="card-text news__text mb-4 py-0">
                                             16.02.2019 р. доцент кафедри управління ННІ ФЕМ ім. Олега Балацького Мішеніна Г.А. взяла участь у конференції «Uni-biz bridge-2» -«Зв&apos;язок університетів та бізнесу», м. Київ. Uni-biz bridge уже другий рік поспіль...
                                         </p>
-                                        <a href="#" class="card-link news__link">Детальніше...</a>
+                                        <a href="{{ route('new', array('id' => 1)) }}" class="card-link news__link">Детальніше...</a>
                                         <p class="news__date">Дата публікації: Березень 9, 2019</p>
                                     </div>
                                 </div>
