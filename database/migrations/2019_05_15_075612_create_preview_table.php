@@ -15,8 +15,8 @@ class CreatePreviewTable extends Migration
     {
         Schema::create('preview', function (Blueprint $table) {
             $table->increments('preview_id');
-            $table->string('title', 200);
-            $table->dateTime('date');
+            $table->unsignedInteger('inner_news_id');
+            $table->foreign('inner_news_id')->references('inner_news_id')->on('inner_news')->onUpdate('cascade')->onDelete('cascade');
             $table->string('img_path', 200);
             $table->string('short_location', 200);
             $table->string('short_description', 200);

@@ -28,7 +28,7 @@
                                 <div class="slider__main mt-3">
                                     <div class="slider slider-for">
                                          @foreach($data['slider'] as $slide)
-                                             <img src="{{ URL::asset($slide->img_path) }}" width="150" height="100" >
+                                             <img src="{{ URL::asset($slide->img_path) }}">
                                          @endforeach
                                      </div>
                                 </div>

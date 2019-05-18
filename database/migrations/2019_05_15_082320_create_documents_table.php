@@ -17,7 +17,6 @@ class CreateDocumentsTable extends Migration
             $table->increments('doc_id');
             $table->unsignedInteger('subcategory_id');
             $table->foreign('subcategory_id')->references('subcategory_id')->on('subcategory')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('category', 200);
             $table->string('title', 200);
             $table->dateTime('doc_date');
             $table->string('file_link', 200);

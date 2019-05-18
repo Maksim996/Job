@@ -6,7 +6,6 @@
 @section('content')
 
 <div class="container">
-    {{$announcements[0]->date}}
     <div class="news mt-5">
     	<h1 class="text-center">
     		Найближчим часом
@@ -15,24 +14,24 @@
 
         <div class="row flex-wrap justify-content-center">
             
-            	@for($i=0;$i<8;$i++)
+            	@for($i = 0; $i < count($data['announcements']); $i++)
                 <div class="anonc_cards preview__card">
                     <div class="card preview__item p-2">
-                        <img src="{{ URL::asset('images/main/preview/first.svg') }}" alt="" class="rounded card-img-top preview__image">
+                        <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
                         <div class="card-body mt-2 px-0 preview__body">
-                            <h5 class="card-text preview__text">Участь у конференції Young Scientist Conference 2.0</h5>
+                            <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
                             <div class="card-text">
-                                Конгрес-центр СумДУ
+                                {{$data['previews'][$i]->short_location}}
                             </div>
                             <div class="card-text">
-                                23.04.2019, 12:00
+                                {{$data['announcements'][$i]->date}}
                             </div>
                         </div>
                     </div>
                     <div class="card preview__descr ">
                         <div class="card-body text-center px-2 py-0">
-                            <p class="card-text text-left">В період з 23 по 24 листопада 2018 року старший викладач кафедри управління Денис Смоленніков взяв участь у VI Національному форумі «Бізнес і університети: розвиваємо підприємництво майбутнього».В ході форуму відбулась низка панельних дискусій з питань глобалізації ринку, соціального та жіночого підприємництва...</p>
-                            <a href="#" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
+                            <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
+                            <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                         </div>
                     </div>
                 </div>

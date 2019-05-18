@@ -64,88 +64,28 @@
                 </div>
                 <div class="row justify-content-between d-flex align-items-stretch">
                     <div class="card-group">
+                        @for($i = 0; $i < 4; $i++)
                         <div class="col-md-6 col-lg preview__card">
                             <div class="card preview__item p-2">
-                                <img src="{{ URL::asset('images/main/preview/first.svg') }}" alt="" class="rounded card-img-top preview__image">
+                                <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
                                 <div class="card-body mt-2 px-0 preview__body">
-                                    <h5 class="card-text preview__text">Участь у конференції Young Scientist Conference 2.0</h5>
+                                    <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
                                     <div class="card-text">
-                                        Конгрес-центр СумДУ
+                                        {{$data['previews'][$i]->short_location}}
                                     </div>
                                     <div class="card-text">
-                                        23.04.2019, 12:00
+                                        {{$data['announcements'][$i]->date}}
                                     </div>
                                 </div>
                             </div>
                             <div class="card preview__descr ">
                                 <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">В період з 23 по 24 листопада 2018 року старший викладач кафедри управління Денис Смоленніков взяв участь у VI Національному форумі «Бізнес і університети: розвиваємо підприємництво майбутнього».В ході форуму відбулась низка панельних дискусій з питань глобалізації ринку, соціального та жіночого підприємництва...</p>
-                                    <a href="#" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
+                                    <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
+                                    <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg preview__card">
-                            <div class="card preview__item p-2">
-                                <img src="{{ URL::asset('images/main/preview/second.svg') }}" alt="" class="rounded card-img-top">
-                                <div class="card-body mt-2 px-0 preview__body">
-                                    <h5 class="card-text preview__text">Четвертий випуск слухачів курсів за програмою «Менеджер житлового будинку</h5>
-                                    <div class="card-text">
-                                        Конгрес-центр СумДУ
-                                    </div>
-                                    <div class="card-text">
-                                        24.04.2019, 1325
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card preview__descr ">
-                                <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">В період з 23 по 24 листопада 2018 року старший викладач кафедри управління Денис Смоленніков взяв участь у VI Національному форумі «Бізнес і університети: розвиваємо підприємництво майбутнього».В ході форуму відбулась низка панельних дискусій з питань глобалізації ринку, соціального та жіночого підприємництва...</p>
-                                    <!-- <a href="posts/{$post->id}}"></a> -->
-                                    <a href="#" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg preview__card">
-                            <div class="card preview__item p-2">
-                                <img src="{{ URL::asset('images/main/preview/third.svg') }}" alt="" class="rounded card-img-top">
-                                <div class="card-body mt-2 px-0 preview__body">
-                                    <h5 class="card-text preview__text">Екскурсія в рамках практичної підготовки студентів</h5>
-                                    <div class="card-text">
-                                        СумДУ, ауд. Г-1211
-                                    </div>
-                                    <div class="card-text">
-                                        27.04.2019, 15:00
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card preview__descr ">
-                                <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">В період з 23 по 24 листопада 2018 року старший викладач кафедри управління Денис Смоленніков взяв участь у VI Національному форумі «Бізнес і університети: розвиваємо підприємництво майбутнього».В ході форуму відбулась низка панельних дискусій з питань глобалізації ринку, соціального та жіночого підприємництва...</p>
-                                    <a href="#" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg preview__card">
-                            <div class="card preview__item p-2">
-                                <img src="{{ URL::asset('images/main/preview/fourth.svg') }}" alt="" class="rounded card-img-top">
-                                <div class="card-body mt-2 px-0 preview__body">
-                                    <h5 class="card-text preview__text">Викладач кафедри взяв участь у VI Національному форумі «Бізнес і університети»</h5>
-                                    <div class="card-text">
-                                        Актова зала СумДУ
-                                    </div>
-                                    <div class="card-text">
-                                        28.04.2019, 12:00
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card preview__descr ">
-                                <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">В період з 23 по 24 листопада 2018 року старший викладач кафедри управління Денис Смоленніков взяв участь у VI Національному форумі «Бізнес і університети: розвиваємо підприємництво майбутнього».В ході форуму відбулась низка панельних дискусій з питань глобалізації ринку, соціального та жіночого підприємництва...</p>
-                                    <a href="#" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                 </div>
                 <div class="row mt-5 preview__last-row">
@@ -175,7 +115,7 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title">{{$data['previews'][0]->title}}</h5>
+                                    <h5 class="card-title news__title">{{$data['news'][0]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -187,8 +127,8 @@
                                         <p class="card-text news__text mb-4 py-0">  
                                             {{$data['previews'][0]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['previews'][0]->preview_id)) }}" class="card-link news__link">Детальніше...</a>
-                                        <p class="news__date">Дата публікації: {{$data['previews'][0]->date}}</p>
+                                        <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id)) }}" class="card-link news__link">Детальніше...</a>
+                                        <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,100 +136,31 @@
                     </div>
                 </div>
                 <div class="row align-items-end">
+                    @for($i = 1; $i < 5; $i++)
                     <div class="col-md-12 col-lg-6 mt-4">
                         <div class="card">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">{{$data['previews'][1]->title}}</h5>
+                                    <h5 class="card-title news__title-item">{{$data['news'][$i]->title}}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][1]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            {{$data['previews'][1]->short_description}}
+                                            {{$data['previews'][$i]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['previews'][1]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: {{$data['previews'][1]->date}}</p>
+                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <p class="news__date-item">Дата публікації: {{$data['news'][$i]->date}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-6 mt-4">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="card-title news__title-item">{{$data['previews'][2]->title}}</h5>
-                                </div>
-                            </div>
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][2]->img_path) }}" class="card-img mt-1" alt="">
-                                </div>
-                                <div class="col-md-8 mt-1">
-                                    <div class="card-body">
-                                        <p class="card-text news__text-item mb-4">
-                                            {{$data['previews'][2]->short_description}}
-                                        </p>
-                                        <a href="{{ route('new', array('id' => $data['previews'][2]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: {{$data['previews'][2]->date}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-end">
-                    <div class="col-md-12 col-lg-6 mt-4">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="card-title news__title-item">{{$data['previews'][3]->title}}</h5>
-                                </div>
-                            </div>
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][3]->img_path) }}" class="card-img mt-1" alt="">
-                                </div>
-                                <div class="col-md-8 mt-1">
-                                    <div class="card-body">
-                                        <p class="card-text news__text-item mb-4">
-                                            {{$data['previews'][3]->short_description}}
-                                        </p>
-                                        <a href="{{ route('new', array('id' => $data['previews'][3]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: {{$data['previews'][3]->date}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 mt-4">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="card-title news__title-item">{{$data['previews'][4]->title}}</h5>
-                                </div>
-                            </div>
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][4]->img_path) }}" class="card-img mt-1" alt="">
-                                </div>
-                                <div class="col-md-8 mt-1">
-                                    <div class="card-body">
-                                        <p class="card-text news__text-item mb-4">
-                                            {{$data['previews'][4]->short_description}}
-                                        </p>
-                                        <a href="{{ route('new', array('id' => $data['previews'][4]->preview_id)) }}" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: {{$data['previews'][4]->date}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endfor
                 </div>
                 <div class="row mt-5">
                     <div class="col-12 text-center">

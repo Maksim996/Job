@@ -19,20 +19,20 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-12">
-                            <h5 class="card-title news__title-page">Участь у конференції «Uni-biz bridge-2</h5>
+                            <h5 class="card-title news__title-page">{{$news[$i]->title}}</h5>
                         </div>
                     </div>
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{ URL::asset('images/main/news/NoPath-8.svg')}}" class="card-img mt-1" alt="">
+                            <img src="{{ URL::asset($previews[$i]->img_path)}}" class="card-img mt-1" alt="">
                         </div>
                         <div class="col-md-8 mt-1">
                             <div class="card-body">
                                 <p class="card-text news__text-page mb-4 py-0">
-                                    16.02.2019 р. доцент кафедри управління ННІ ФЕМ ім. Олега Балацького Мішеніна Г.А. взяла участь у конференції «Uni-biz bridge-2» -«Зв&apos;язок університетів та бізнесу», м. Київ. Uni-biz bridge уже другий рік поспіль...
+                                    {{$news[$i]->full_description}}
                                 </p>
-                                <a href="#" class="card-link news__link-page">Детальніше...</a>
-                                <p class="news__date-page">Дата публікації: Березень 9, 2019</p>
+                                <a href="{{ route('new', array('id' => $news[$i]->inner_news_id)) }}" class="card-link news__link-page">Детальніше...</a>
+                                <p class="news__date-page">Дата публікації: {{$news[$i]->date}}</p>
                             </div>
                         </div>
                     </div>

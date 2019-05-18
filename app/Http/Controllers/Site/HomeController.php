@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 use DB;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,29 +15,52 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $date = Carbon::now()->toDateTimeString();
         $practice = DB::select("SELECT * FROM `practice_intership_card`");
-        $announcements_news = DB::select("SELECT * FROM `inner_news`");
-        $announcements_news = DB::select("SELECT * FROM `inner_news`");
 
         $news = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'new'],
-        ])->get()->toArray();
+            ['date', '<', $date],
+        ])
+        ->orderBy('date', 'desc')
+        ->limit(5)
+        ->get()
+        ->toArray();
+
+        $ids = [];
+        $i = 0;
+        foreach($news as $one) {
+            $ids[$i++] = $one->inner_news_id;
+        }
+
         $announcements = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'announcement'],
-        ])->get()->toArray();
-        $previews = DB::table('preview')->select('*')->orderBy('preview_id', 'desc')->limit(5)
-        ->get()->toArray();
+            ['date', '>', $date],
+        ])
+        ->orderBy('date', 'desc')
+        ->limit(4)
+        ->get()
+        ->toArray();
+
+        $previews = DB::table('preview')->select('*')
+        ->whereIn('inner_news_id', $ids)
+        ->get()
+        ->toArray();
 
         $slider = DB::select("SELECT * FROM `partners`");
+
         $data = [
             'practice_intership_card' => $practice,
-            'announcements_news' => $announcements_news,
-            'slider' => $slider,
-            'news' => $news,
             'announcements' => $announcements,
             'previews' => $previews,
+            'news' => $news,
+            'slider' => $slider,
         ];
-        // dump($practice);
+        // echo "<pre>";
+        // print_r($data['previews']);
+        // echo "</pre>";
+        // die;
+
         return view('site/home', compact('data'));
     }
 

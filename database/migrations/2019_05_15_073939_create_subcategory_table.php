@@ -18,7 +18,7 @@ class CreateSubcategoryTable extends Migration
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('category_id')->on('category')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title', 200);
-            $table->integer('type');
+            $table->string('type', 200);
             $table->string('link', 200);
         });
     }
