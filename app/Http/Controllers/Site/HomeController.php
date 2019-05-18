@@ -32,7 +32,7 @@ class HomeController extends Controller
         foreach($news as $one) {
             $ids[$i++] = $one->inner_news_id;
         }
-
+        dump($ids);
         $announcements = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'announcement'],
             ['date', '>', $date],
