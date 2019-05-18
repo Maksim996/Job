@@ -7,7 +7,6 @@
                 laragon -> C:\Laragon
     Правой кнопкой вызвать git bush 
             Ввести команду git clone https://github.com/Maksim996/Job.git
-            (консоль не закрывать)
     Перейти в папку с проект "job" найти файл .env.example создать копию его с названием .env 
             (проверить настройки подключения базы данных)
                 DB_CONNECTION=mysql
