@@ -19,10 +19,8 @@ class NewsController extends Controller
         foreach($news as $one) {
             $ids[$i++] = $one->inner_news_id;
         }
-
         $previews = DB::table('preview')->select('*')->whereIn('inner_news_id', $ids)
         ->get()->toArray();
-
     	return view('site/news', array('news' => $news, 'previews' => $previews));
     }
 }

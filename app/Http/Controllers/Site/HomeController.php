@@ -32,30 +32,42 @@ class HomeController extends Controller
         foreach($news as $one) {
             $ids[$i++] = $one->inner_news_id;
         }
-        dump($ids);
+        $previews_news = DB::table('preview')->select('*')
+        ->whereIn('inner_news_id', $ids)
+        ->get()
+        ->toArray();
+
         $announcements = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'announcement'],
-            ['date', '>', $date],
+            // ['date', '>', $date],
         ])
         ->orderBy('date', 'desc')
         ->limit(4)
         ->get()
         ->toArray();
 
-        $previews = DB::table('preview')->select('*')
+        $ids = [];
+        $i = 0;
+        foreach($announcements as $one) {
+            $ids[$i++] = $one->inner_news_id;
+        }
+        $previews_annoucements = DB::table('preview')->select('*')
         ->whereIn('inner_news_id', $ids)
         ->get()
         ->toArray();
+        
 
         $slider = DB::select("SELECT * FROM `partners`");
 
         $data = [
             'practice_intership_card' => $practice,
             'announcements' => $announcements,
-            'previews' => $previews,
+            'previews_news' => $previews_news,
+            'previews_annoucements' => $previews_annoucements,
             'news' => $news,
             'slider' => $slider,
         ];
+
         // echo "<pre>";
         // print_r($data['previews']);
         // echo "</pre>";

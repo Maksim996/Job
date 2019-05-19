@@ -332,6 +332,7 @@ ul{
     background: rgba(65,152,243,.3);
     cursor: pointer;
     padding: 8px;
+    z-index: 10;
 }
 #up_scroll:hover{
     background: rgba(65,152,243,.8);
