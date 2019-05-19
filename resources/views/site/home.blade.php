@@ -64,14 +64,14 @@
                 </div>
                 <div class="row justify-content-between d-flex align-items-stretch">
                     <div class="card-group">
-                        @for($i = 0; $i < 4; $i++)
+                        @for($i = 0; $i < count($data['announcements']) && $i< 4; $i++)
                         <div class="col-md-6 col-lg preview__card">
                             <div class="card preview__item p-2">
-                                <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
+                                <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
                                 <div class="card-body mt-2 px-0 preview__body">
                                     <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
                                     <div class="card-text">
-                                        {{$data['previews'][$i]->short_location}}
+                                        {{$data['previews_annoucements'][$i]->short_location}}
                                     </div>
                                     <div class="card-text">
                                         {{$data['announcements'][$i]->date}}
@@ -80,7 +80,7 @@
                             </div>
                             <div class="card preview__descr ">
                                 <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
+                                    <p class="card-text text-left">{{$data['previews_annoucements'][$i]->short_description}}</p>
                                     <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                                 </div>
                             </div>
@@ -88,9 +88,10 @@
                         @endfor
                     </div>
                 </div>
+              
                 <div class="row mt-5 preview__last-row">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-outline-primary preview__button-more preview__button-not-hover ">Більше анонсів</a>
+                        <a href="/announcements" class="btn btn-outline-primary preview__button-more preview__button-not-hover ">Більше анонсів</a>
                     </div>
                 </div>
             </div>
@@ -120,12 +121,12 @@
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][0]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews_news'][0]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text mb-4 py-0">  
-                                            {{$data['previews'][0]->short_description}}
+                                            {{$data['previews_news'][0]->short_description}}
                                         </p>
                                         <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id)) }}" class="card-link news__link">Детальніше...</a>
                                         <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
@@ -136,7 +137,8 @@
                     </div>
                 </div>
                 <div class="row align-items-end">
-                    @for($i = 1; $i < 5; $i++)
+                    @for($i = 1; $i < (count($data['news'])) && $i<5; $i++)
+                    
                     <div class="col-md-12 col-lg-6 mt-4">
                         <div class="card">
                             <div class="row">
@@ -146,12 +148,12 @@
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews_news'][$i]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            {{$data['previews'][$i]->short_description}}
+                                            {{$data['previews_news'][$i]->short_description}}
                                         </p>
                                         <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id)) }}" class="card-link news__link-item">Детальніше...</a>
                                         <p class="news__date-item">Дата публікації: {{$data['news'][$i]->date}}</p>
@@ -164,7 +166,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-outline-primary news__button ">Більше новин</a>
+                        <a href="/news" class="btn btn-outline-primary news__button ">Більше новин</a>
                     </div>
                 </div>
             </div>

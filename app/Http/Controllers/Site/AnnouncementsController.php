@@ -29,7 +29,6 @@ class AnnouncementsController extends Controller
         ->whereIn('inner_news_id', $ids)
         ->get()
         ->toArray();
-        dump($previews);
 
         $data = [
             'announcements' => $announcements,
