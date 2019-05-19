@@ -21,6 +21,7 @@ class DocumentsController extends Controller
 
         $subCategories = DB::table('subcategory')->whereIn('subcategory_id',$ids)->get()->toArray();
 
+
         $data=[
             'documents' => $documents,
             'subcategories' => $subCategories,
