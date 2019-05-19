@@ -13,7 +13,7 @@ class NewsController extends Controller
     	$news = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'new'],
             ['date', '<', $date],
-        ])->orderBy('date', 'desc')->limit(5)->get()->toArray();
+        ])->orderBy('date', 'desc')->paginate(2);
         $ids = [];
         $i = 0;
         foreach($news as $one) {
@@ -21,6 +21,10 @@ class NewsController extends Controller
         }
         $previews = DB::table('preview')->select('*')->whereIn('inner_news_id', $ids)
         ->get()->toArray();
-    	return view('site/news', array('news' => $news, 'previews' => $previews));
+        $data = [
+            'news' => $news,
+            'previews' => $previews,
+        ];
+        return view('site/news', compact('data'));
     }
 }

@@ -12,7 +12,7 @@
                         <div class="nav flex-column nav-pills py-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             @php($i = 0)
                             @foreach($data['subcategories'] as $category)
-                                @if($i == 0)
+                                @if($i == 0 /*$loop->index*/)
                                     <a class="nav-link btn-dark active" id="v-pills-{{$category->title}}-tab" data-toggle="pill" href="#v-pills-{{$category->title}}" role="tab" aria-controls="v-pills-{{$category->title}}" aria-selected="true">{{$category->title}}</a>
                                    @else
                                     <a class="nav-link btn-dark" id="v-pills-{{$category->title}}-tab" data-toggle="pill" href="#v-pills-{{$category->title}}" role="tab" aria-controls="v-pills-{{$category->title}}" aria-selected="true">{{$category->title}}</a>

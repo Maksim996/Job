@@ -38,9 +38,11 @@
                 
                  <div class="news__border mb-4"></div>
                  @endfor
+
             
         </div>
-        <div class="row">
+        {{$data['announcements']->links()}}
+        {{--<div class="row">
             <div class="col-12 my-5">
                 <nav aria-label="Page navigation example ">
                     <ul class="pagination justify-content-center">
@@ -56,7 +58,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div>--}}
 	</div>
 </div>
 @endsection

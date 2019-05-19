@@ -14,9 +14,7 @@ class AnnouncementsController extends Controller
             ['type', '=', 'announcement'],
             ['date', '>', $date],
         ])
-        ->orderBy('date', 'desc')
-        ->get()
-        ->toArray();
+        ->orderBy('date', 'desc')->paginate(2);
 
 
         $ids = [];
