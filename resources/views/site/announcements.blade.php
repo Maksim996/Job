@@ -31,7 +31,7 @@
                     <div class="card preview__descr ">
                         <div class="card-body text-center px-2 py-0">
                             <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
-                            <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
+                            <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                         </div>
                     </div>
                 </div>

@@ -64,7 +64,7 @@
                 </div>
                 <div class="row justify-content-between d-flex align-items-stretch">
                     <div class="card-group">
-                        @for($i = 0; $i < count($data['announcements']) && $i< 4; $i++)
+                        @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
                         <div class="col-md-6 col-lg preview__card">
                             <div class="card preview__item p-2">
                                 <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
@@ -81,17 +81,17 @@
                             <div class="card preview__descr ">
                                 <div class="card-body text-center px-2 py-0">
                                     <p class="card-text text-left">{{$data['previews_annoucements'][$i]->short_description}}</p>
-                                    <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
+                                    <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                                 </div>
                             </div>
                         </div>
                         @endfor
                     </div>
                 </div>
-              
+
                 <div class="row mt-5 preview__last-row">
                     <div class="col-12 text-center">
-                        <a href="/announcements" class="btn btn-outline-primary preview__button-more preview__button-not-hover ">Більше анонсів</a>
+                        <a href="/announcements" class="btn btn-outline-primary preview__button-more preview__button-not-hover">Більше анонсів</a>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@
                                         <p class="card-text news__text mb-4 py-0">  
                                             {{$data['previews_news'][0]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id)) }}" class="card-link news__link">Детальніше...</a>
+                                        <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
                                         <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
                                     </div>
                                 </div>
@@ -137,8 +137,7 @@
                     </div>
                 </div>
                 <div class="row align-items-end">
-                    @for($i = 1; $i < (count($data['news'])) && $i<5; $i++)
-                    
+                    @for($i = 1; $i < (count($data['news'])) && $i < 5; $i++)
                     <div class="col-md-12 col-lg-6 mt-4">
                         <div class="card">
                             <div class="row">
@@ -155,7 +154,7 @@
                                         <p class="card-text news__text-item mb-4">
                                             {{$data['previews_news'][$i]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
                                         <p class="news__date-item">Дата публікації: {{$data['news'][$i]->date}}</p>
                                     </div>
                                 </div>
@@ -183,8 +182,6 @@
                 </section>
             </div>
         </div>
-
-	
 
 @endsection
 
