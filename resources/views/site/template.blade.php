@@ -22,7 +22,6 @@
     <div class="wrapper">
         <div class="wrapper-content">
             @section('menu')
-            <!-- background-fixed -->
                 <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
                         <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
@@ -40,8 +39,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Працевлаштування та практика</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Документи
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -53,8 +52,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Відомі випускники</a>
                                 </li>
-                                <li class="nav-item dropdown language-full">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <li class="nav-item dropdown language-full ">
+                                    <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="{{ URL::asset('images/ukraine.svg')}}">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -63,7 +62,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown language-media">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Мови <img class="language-media__select" src="{{ URL::asset('images/ukraine.svg')}}">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

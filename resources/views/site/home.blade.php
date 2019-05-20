@@ -10,7 +10,7 @@
             <div class="header-title_block">
                 <a href="admin/news" class="blueLine">
                     <h1>
-                        ВІДДІЛ ПРАКТИКИ ТА ІНТЕГРАЦІЙНИХ ЗВ'ЯЗКІВ ІЗ ЗАМОВНИКАМИ КАДРІВ
+                        ВІДДІЛ ПРАКТИКИ ТА ІНТЕГРАЦІЙНИХ<br> ЗВ'ЯЗКІВ ІЗ ЗАМОВНИКАМИ КАДРІВ
                     </h1>
                 </a>
                 <div class="header__text col-xl-10 mx-auto">
@@ -172,17 +172,17 @@
             </div>
         </div>
         
-        <div class="container">
-            <div class="slider mt-5">
-                <section class="row autoplay slider__items ">
-                    @foreach($data['slider'] as $slider)
-                    <div class="col">
-                        <a href="#"> <img src="{{ URL::asset($slider->img_path)}}" alt="placeholder+image" class="slider__image img-fluid"></a>
-                    </div>
-                    @endforeach
-                </section>
-            </div>
+       
+        <div class="slider mt-5">
+            <section class="row autoplay slider__items ">
+                @foreach($data['slider'] as $slider)
+                <div class="col">
+                    <a class="brand-slider_link" href="{{$slider->link}}"> <img src="{{ URL::asset($slider->img_path)}}" alt="placeholder+image" class="slider__image img-fluid"></a>
+                </div>
+                @endforeach
+            </section>
         </div>
+     
 
 	
 
