@@ -10,7 +10,7 @@
             <div class="header-title_block">
                 <a href="admin/news" class="blueLine">
                     <h1>
-                        ВІДДІЛ ПРАКТИКИ ТА ІНТЕГРАЦІЙНИХ ЗВ'ЯЗКІВ ІЗ ЗАМОВНИКАМИ КАДРІВ
+                        ВІДДІЛ ПРАКТИКИ ТА ІНТЕГРАЦІЙНИХ<br> ЗВ'ЯЗКІВ ІЗ ЗАМОВНИКАМИ КАДРІВ
                     </h1>
                 </a>
                 <div class="header__text col-xl-10 mx-auto">
@@ -42,7 +42,7 @@
                     @foreach($data['practice_intership_card'] as $card)
                         <div class="col-md-12 col-lg-4 card  mb-4 ">
                             <a href="#" class="practice__item practice__card p-3 pb-4 ">
-                                <img src="{{ URL::asset($card->img_path) }}" alt="" class="rounded-circle practice__image mx-auto ">
+                                <img src="{{ URL::asset($card->img_path) }}" alt="{{$card->card_title}}" class="rounded-circle practice__image mx-auto ">
                                 <div class="card-body mt-4">
                                     <h5 class="card-title practice__topic">{{$card->card_title}}</h5>
                                     <p class="card-text practice__text">{{$card->card_description}}</p>
@@ -64,35 +64,36 @@
                 </div>
                 <div class="row justify-content-between d-flex align-items-stretch">
                     <div class="card-group">
-                        @if(count($data['news'])!=0)
-                            @for($i = 0; $i < 4; $i++)
-                            <div class="col-md-6 col-lg preview__card">
-                                <div class="card preview__item p-2">
-                                    <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
-                                    <div class="card-body mt-2 px-0 preview__body">
-                                        <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
-                                        <div class="card-text">
-                                            {{$data['previews'][$i]->short_location}}
-                                        </div>
-                                        <div class="card-text">
-                                            {{$data['announcements'][$i]->date}}
-                                        </div>
+
+                        @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
+                        <div class="col-md-6 col-lg preview__card">
+                            <div class="card preview__item p-2">
+                                <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
+                                <div class="card-body mt-2 px-0 preview__body">
+                                    <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
+                                    <div class="card-text">
+                                        {{$data['previews_annoucements'][$i]->short_location}}
+                                    </div>
+                                    <div class="card-text">
+                                        {{$data['announcements'][$i]->date}}
                                     </div>
                                 </div>
-                                <div class="card preview__descr ">
-                                    <div class="card-body text-center px-2 py-0">
-                                        <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
-                                        <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
-                                    </div>
+                            </div>
+                            <div class="card preview__descr ">
+                                <div class="card-body text-center px-2 py-0">
+                                    <p class="card-text text-left">{{$data['previews_annoucements'][$i]->short_description}}</p>
+                                    <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
+
                                 </div>
                             </div>
                             @endfor
                         @endif
                     </div>
                 </div>
+
                 <div class="row mt-5 preview__last-row">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-outline-primary preview__button-more preview__button-not-hover ">Більше анонсів</a>
+                        <a href="/announcements" class="btn btn-outline-primary preview__button-more preview__button-not-hover">Більше анонсів</a>
                     </div>
                 </div>
             </div>
@@ -124,14 +125,14 @@
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][0]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews_news'][0]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text mb-4 py-0">  
-                                            {{$data['previews'][0]->short_description}}
+                                            {{$data['previews_news'][0]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id)) }}" class="card-link news__link">Детальніше...</a>
+                                        <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
                                         <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
                                     </div>
                                 </div>
@@ -141,7 +142,8 @@
                 </div>
                 <div class="row align-items-end">
 
-                    @for($i = 1; $i < 5; $i++)
+                    @for($i = 1; $i < (count($data['news'])) && $i < 5; $i++)
+
                     <div class="col-md-12 col-lg-6 mt-4">
                         <div class="card">
                             <div class="row">
@@ -151,14 +153,14 @@
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['previews_news'][$i]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            {{$data['previews'][$i]->short_description}}
+                                            {{$data['previews_news'][$i]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id)) }}" class="card-link news__link-item">Детальніше...</a>
+                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
                                         <p class="news__date-item">Дата публікації: {{$data['news'][$i]->date}}</p>
                                     </div>
                                 </div>
@@ -171,25 +173,23 @@
 
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <a href="#" class="btn btn-outline-primary news__button ">Більше новин</a>
+                        <a href="/news" class="btn btn-outline-primary news__button ">Більше новин</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="container">
-            <div class="slider mt-5">
-                <section class="row autoplay slider__items ">
-                    @foreach($data['slider'] as $slider)
-                    <div class="col">
-                        <a href="#"> <img src="{{ URL::asset($slider->img_path)}}" alt="placeholder+image" class="slider__image img-fluid"></a>
-                    </div>
-                    @endforeach
-                </section>
-            </div>
+       
+        <div class="slider mt-5">
+            <section class="row autoplay slider__items ">
+                @foreach($data['slider'] as $slider)
+                <div class="col">
+                    <a class="brand-slider_link" href="{{$slider->link}}"> <img src="{{ URL::asset($slider->img_path)}}" alt="placeholder+image" class="slider__image img-fluid"></a>
+                </div>
+                @endforeach
+            </section>
         </div>
-
-	
+     
 
 @endsection
 

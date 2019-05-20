@@ -208,15 +208,30 @@ window.onscroll = function() {
 }
 function menuScroll(){
     if (window.location.pathname=='/'){
+        $('#menu_header').addClass('menu_header_home');
         if(window.pageYOffset != 0) {
             $('#menu_header').addClass('background-fixed ');
             
         } else {
             $('#menu_header').removeClass('background-fixed ');
         }
+    } else{
+        $('#menu_header').removeClass('menu_header_home');
+
     }
 }
 menuScroll()
 
 
 // end background scroll menu color ;
+
+//show  blocks hover (document,language)
+
+// $('.show-block-header').hover(function() {
+//     console.log($(this)[0])
+//     $(this).dropdown('show');
+//     }, function() {
+//         $(this).dropdown('hide');
+// });
+
+// end show  blocks hover (document,language)
