@@ -64,28 +64,30 @@
                 </div>
                 <div class="row justify-content-between d-flex align-items-stretch">
                     <div class="card-group">
-                        @for($i = 0; $i < 4; $i++)
-                        <div class="col-md-6 col-lg preview__card">
-                            <div class="card preview__item p-2">
-                                <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
-                                <div class="card-body mt-2 px-0 preview__body">
-                                    <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
-                                    <div class="card-text">
-                                        {{$data['previews'][$i]->short_location}}
+                        @if(count($data['news'])!=0)
+                            @for($i = 0; $i < 4; $i++)
+                            <div class="col-md-6 col-lg preview__card">
+                                <div class="card preview__item p-2">
+                                    <img src="{{ URL::asset($data['previews'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
+                                    <div class="card-body mt-2 px-0 preview__body">
+                                        <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
+                                        <div class="card-text">
+                                            {{$data['previews'][$i]->short_location}}
+                                        </div>
+                                        <div class="card-text">
+                                            {{$data['announcements'][$i]->date}}
+                                        </div>
                                     </div>
-                                    <div class="card-text">
-                                        {{$data['announcements'][$i]->date}}
+                                </div>
+                                <div class="card preview__descr ">
+                                    <div class="card-body text-center px-2 py-0">
+                                        <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
+                                        <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card preview__descr ">
-                                <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">{{$data['previews'][$i]->short_description}}</p>
-                                    <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endfor
+                            @endfor
+                        @endif
                     </div>
                 </div>
                 <div class="row mt-5 preview__last-row">
@@ -110,6 +112,8 @@
         
         <div class="container">
             <div class="news mt-5">
+            @if(count($data['news'])!=0)
+            
                 <div class="row">
                     <div class="col-md-12 col-lg-9">
                         <div class="card">
@@ -136,6 +140,7 @@
                     </div>
                 </div>
                 <div class="row align-items-end">
+
                     @for($i = 1; $i < 5; $i++)
                     <div class="col-md-12 col-lg-6 mt-4">
                         <div class="card">
@@ -162,6 +167,8 @@
                     </div>
                     @endfor
                 </div>
+            @endif
+
                 <div class="row mt-5">
                     <div class="col-12 text-center">
                         <a href="#" class="btn btn-outline-primary news__button ">Більше новин</a>
