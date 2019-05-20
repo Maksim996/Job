@@ -31,7 +31,7 @@
                                 <p class="card-text news__text-page mb-4 py-0">
                                     {{$data['news'][$i]->full_description}}
                                 </p>
-                                <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id)) }}" class="card-link news__link-page">Детальніше...</a>
+                                <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-page">Детальніше...</a>
                                 <p class="news__date-page">Дата публікації: {{$data['news'][$i]->date}}</p>
                             </div>
                         </div>
