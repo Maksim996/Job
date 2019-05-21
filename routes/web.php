@@ -17,11 +17,13 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::prefix('admin')->group(function () {
-
-	
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
+	Route::get('/', function() {
+		if (Auth::check()) {
+			return redirect('/admin/header');
+		}
+		return redirect('auth/login');
+	});
 	Route::get('/header-menu', function () {
 	    return view('/admin/header-menu');
 	})->name('header-menu');
@@ -38,7 +40,7 @@ Route::prefix('admin')->group(function () {
 	    return view('/admin/announcements');
 	})->name('announcements');
 	Route::get('announcement/{id}', function ($id) {
-	    return view('/admin/announcement', array('id'=>$id));
+	    return view('/admin/announcement', array('id' => $id));
 	});
 	Route::get('news', function () {
 	    return view('/admin/news');
@@ -50,9 +52,10 @@ Route::prefix('admin')->group(function () {
 	    return view('/admin/footer');
 	})->name('footer');
 	Route::get('new/{id}', function ($id) {
-	    return view('/admin/new', array('id'=>$id));
+	    return view('/admin/new', array('id' => $id));
 	});
 });
+
 //site routes
 Route::get('template', function(){
 	return view('site/template');

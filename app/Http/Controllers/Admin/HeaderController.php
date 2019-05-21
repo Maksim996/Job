@@ -14,16 +14,13 @@ class HeaderController extends Controller
      */
     public function index()
     {
-
-            // работает
+        // работает
         $header = DB::select("SELECT * FROM `header`");
         $data = [
             'header' => $header,
         ];
         return view('/admin/header', compact('data'));
-            // конец работает
-
-       
+        // конец работает
     }
 
     /**

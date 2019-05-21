@@ -131,6 +131,17 @@
                                         Футер
                                     </span></a>
                                 </li>
+                                <li class="k-menu__item " aria-haspopup="true" >
+                                    <a target="_blank" href="{{ route('logout') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i>
+                                        <span class="k-menu__link-text"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </span>
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>

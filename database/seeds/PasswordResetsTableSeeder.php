@@ -11,13 +11,9 @@ class PasswordResetsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('password_resets')->insert([
-    		'email' => 'admin1@email.com',
-    		'token' => 'admin1_token',
-        ]);
-        DB::table('password_resets')->insert([
-    		'email' => 'admin2@email.com',
-    		'token' => 'admin2_token',
-        ]);
+      //   DB::table('password_resets')->insert([
+    		// 'email' => '',
+    		// 'token' => '',
+      //   ]);
     }
 }
