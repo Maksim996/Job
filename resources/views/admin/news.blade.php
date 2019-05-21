@@ -8,8 +8,11 @@
        <div class="k-portlet__head">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-                    Головна працевлаштування та практика
+                    Новини
                 </h3>
+                <button class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
+                        <span> <i class="la la-plus"></i> <span>Додати новину</span> </span>
+                </button>
             </div>
         </div>
         <div class="k-portlet">

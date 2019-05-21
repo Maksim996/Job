@@ -8,7 +8,7 @@
        <div class="k-portlet__head">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-                    {{$id}}
+                   Анонс номер {{$id}}
                 </h3>
             </div>
         </div>
@@ -53,12 +53,17 @@
                         <span class="form-text text-muted">Приклад: м.Суми, Сумська обл. вул. Соборна 23, буд. 10 к.213</span> 
                     </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input type="file" class="form-control" placeholder="">
                         <span class="form-text text-muted">Основний заголовок на головній сторінці</span> 
                     </div>
+                </div> -->
+               <div class="form-group row">
+               <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
+                   <input type="file" id="files" name="files[]" multiple />
+                    <output id="list"></output>
                 </div>
             </div>
             <div class="k-portlet__foot">

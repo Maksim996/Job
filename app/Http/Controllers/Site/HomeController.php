@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         $news = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'new'],
-            ['date', '<', $date],
+            // ['date', '<', $date],
         ])
         ->orderBy('date', 'desc')
         ->limit(5)

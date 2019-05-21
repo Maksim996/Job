@@ -1,0 +1,53 @@
+.black-line{
+    width: 100%;
+    border-top: 1px solid #ebedf2;
+}
+.info-seach{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.but-plus{
+    position: absolute;
+    right: 0;
+    
+}
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+#list span{
+    position: relative;
+    opacity: 1;
+}
+#list span:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+#list span:hover::before, #list span:hover::after {
+    background-color: red;
+}
+
+#files{
+    margin-top: 10px;
+}
+
+#list span::before, #list span::after {
+    position: absolute;
+    content: ' ';
+    height: 0.9rem;
+    width: 3px;
+    /* transform:  ; */
+}
+#list span:before {
+    left:44%;
+    top:50%;
+    transform: rotate(45deg)  translateY(-50%);
+}
+#list span:after {
+    left:50%;
+    top:50%;
+    transform: rotate(-45deg)  translateY(-50%);
+}

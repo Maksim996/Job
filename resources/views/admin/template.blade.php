@@ -41,6 +41,7 @@
         <link href="{{ URL::asset('css/admin/skins/aside/navy.css') }}" rel="stylesheet" type="text/css" />
         <!--end::Layout Skins -->
         <link rel="shortcut icon" href="../assets/media/logos/favicon.ico" />
+        <link href="{{ URL::asset('css/admin/style.css') }}" rel="stylesheet" type="text/css" />
     </head>
     <!-- end::Head -->
     <!-- begin::Body -->
@@ -81,10 +82,10 @@
                         <div id="k_aside_menu" class="k-aside-menu " data-kmenu-vertical="1" data-kmenu-scroll="1" data-kmenu-dropdown-timeout="500" >
                             <ul class="k-menu__nav ">
                                 <li class="k-menu__item k-menu__item--active" aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('header-menu')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Меню</span></a>
+                                    <a target="_blank" href="{{ route('ad_header-menu')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Меню</span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('header')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+                                    <a target="_blank" href="{{ route('ad_header')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
                                 </li>
                                 <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here -->
                                 <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
@@ -96,13 +97,13 @@
                                                 <span class="k-menu__link"><span class="k-menu__link-text">Працевлаштування та практика</span></span>
                                             </li>
                                             <li class="k-menu__item" aria-haspopup="true" >
-                                                <a href="{{ route('practic-header')}}" class="k-menu__link ">
+                                                <a href="{{ route('ad_practic-header')}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Головна</span>
                                                 </a>
                                             </li>
                                             <li class="k-menu__item " aria-haspopup="true" >
-                                                <a href="{{ route('practic-cards')}}" class="k-menu__link ">
+                                                <a href="{{ route('ad_practic-cards')}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Картки</span>
                                                 </a>
@@ -112,22 +113,22 @@
                                     </div>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('announcements')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a target="_blank" href="{{ route('ad_announcements')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Анонси
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('news')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a target="_blank" href="{{ route('ad_news')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Новини
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('brands')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a target="_blank" href="{{ route('ad_partners')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Наши партнери
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a target="_blank" href="{{ route('ad_footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Футер
                                     </span></a>
                                 </li>
@@ -256,6 +257,7 @@
       //  <script src="{{ URL::asset('js/admin/custom/datatables.bundle.js') }}" type="text/javascript"></script>
 
         <script src="{{ URL::asset('js/admin/custom/advanced-search.js') }}" type="text/javascript"></script>
+        
         <!-- <script src="../assets/app/scripts/custom/dashboard.js" type="text/javascript"></script> -->
         <!--end::Page Scripts -->
         <!--begin::Global App Bundle(used by all pages) -->
