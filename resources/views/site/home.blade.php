@@ -62,31 +62,36 @@
                         <h3>Найближчим часом</h3>
                     </div>
                 </div>
-                <div class="row justify-content-between d-flex align-items-stretch">
-                    <div class="card-group">
-                        @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
-                        <div class="col-md-6 col-lg preview__card">
-                            <div class="card preview__item p-2">
-                                <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
+                <div class="anonc_block ">
+                    @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
+                        <div class=" col-8 preview__card rounded">
+                            <div class="preview__item w-100">
+                                <div class="card_img">
+                                    <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
+                                    
+                                </div>
                                 <div class="card-body mt-2 px-0 preview__body">
                                     <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
-                                    <div class="card-text">
-                                        {{$data['previews_annoucements'][$i]->short_location}}
-                                    </div>
-                                    <div class="card-text">
-                                        {{$data['announcements'][$i]->date}}
+                                    <div>
+                                        <div class="card-text">
+                                            {{$data['previews_annoucements'][$i]->short_location}}
+                                        </div>
+                                        <div class="card-text">
+                                            {{$data['announcements'][$i]->date}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card preview__descr ">
+                            <div class="d-lg-none p-0 m-0 dropdown-divider"></div>
+                            <div class="preview__descr ">
                                 <div class="card-body text-center px-2 py-0">
                                     <p class="card-text text-left">{{$data['previews_annoucements'][$i]->short_description}}</p>
                                     <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
                                 </div>
                             </div>
+                            
                         </div>
-                        @endfor
-                    </div>
+                    @endfor
                 </div>
 
                 <div class="row mt-5 preview__last-row">
