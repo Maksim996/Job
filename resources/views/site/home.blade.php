@@ -62,6 +62,7 @@
                         <h3>Найближчим часом</h3>
                     </div>
                 </div>
+
                 <div class="anonc_block ">
                     @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
                         <div class=" col-8 preview__card rounded">
@@ -70,6 +71,7 @@
                                     <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
                                     
                                 </div>
+
                                 <div class="card-body mt-2 px-0 preview__body">
                                     <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
                                     <div>
@@ -87,9 +89,9 @@
                                 <div class="card-body text-center px-2 py-0">
                                     <p class="card-text text-left">{{$data['previews_annoucements'][$i]->short_description}}</p>
                                     <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
+
                                 </div>
                             </div>
-                            
                         </div>
                     @endfor
                 </div>
@@ -116,6 +118,8 @@
         
         <div class="container">
             <div class="news mt-5">
+            @if(count($data['news'])!=0)
+            
                 <div class="row">
                     <div class="col-md-12 col-lg-9">
                         <div class="card">
@@ -142,7 +146,9 @@
                     </div>
                 </div>
                 <div class="row align-items-end">
+
                     @for($i = 1; $i < (count($data['news'])) && $i < 5; $i++)
+
                     <div class="col-md-12 col-lg-6 mt-4">
                         <div class="card">
                             <div class="row">
@@ -168,6 +174,8 @@
                     </div>
                     @endfor
                 </div>
+            @endif
+
                 <div class="row mt-5">
                     <div class="col-12 text-center">
                         <a href="/news" class="btn btn-outline-primary news__button ">Більше новин</a>
