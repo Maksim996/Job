@@ -110,17 +110,17 @@ $('.slider-nav').slick({
 // конец cлайдер на внутреней страници новостей и анонсов
 
 // скрипт для hover preview блок анонсы описание
-$('.preview__item').hover(function() {
-$(this).addClass('preview__item-hover');
-}, function() {
-$(this).removeClass('preview__item-hover');
-});
+// $('.preview__item').hover(function() {
+// $(this).addClass('preview__item-hover');
+// }, function() {
+// $(this).removeClass('preview__item-hover');
+// });
 
-$('.preview__descr').hover(function() {
-$(this).parents('.preview__card').children('.preview__item').addClass('preview__item-hover');
-}, function() {
-$(this).parents('.preview__card').children('.preview__item').removeClass('preview__item-hover');
-});
+// $('.preview__descr').hover(function() {
+// $(this).parents('.preview__card').children('.preview__item').addClass('preview__item-hover');
+// }, function() {
+// $(this).parents('.preview__card').children('.preview__item').removeClass('preview__item-hover');
+// });
 
 // конец скрипт для hover preview блок анонсы описание
 
@@ -157,15 +157,20 @@ $(window).scroll(function(){
     function caption__display(){
         $('.caption__display').addClass('hover');  
     }
-    function deleteDiv(){               
+
+    function hiddenDiv(){                   
         $('#tutu').animate({height:0 },1500);
     }
-    if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)-200  ) {
+
+    function deleteDiv(){               
+        tutu.style.display='none';
+    }
+    if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)+100  ) {
         $('.caption__last').addClass('hover');
         $('.caption__news').addClass('hover');  
-        setTimeout( caption__display,5000);
-        setTimeout( deleteDiv,5000);
-    }
+        setTimeout( caption__display,2500);
+        setTimeout( hiddenDiv,2500);
+        setTimeout( deleteDiv,4000);    }
 });
 
 // плавний скролл с помощью якоря

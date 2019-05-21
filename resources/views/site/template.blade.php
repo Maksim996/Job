@@ -44,9 +44,9 @@
                                         Документи
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Нормативні</a>
-                                        <a class="dropdown-item" href="#">Рада роботодавців</a>
-                                        <a class="dropdown-item" href="#">Інші</a>
+                                        <a class="dropdown-item" href="/documents?position=1">Нормативні</a>
+                                        <a class="dropdown-item" href="/documents?position=2">Рада роботодавців</a>
+                                        <a class="dropdown-item" href="/documents?position=3">Інші</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
