@@ -8,21 +8,26 @@ use DB;
 class AnnouncementController extends Controller
 {
     public function index($id, $title){
-    	$announcement = DB::table('inner_news')->select('*')->where([
-    		['inner_news_id', '=', $id],
-    	])->first();
-
-    	$slider = DB::table('slider_news')
+        $announcement = DB::table('inner_news')
         ->select('*')
-        ->where('inner_news_id', $announcement->inner_news_id)
+        ->where([
+            ['type', '=', 'announcement'],
+            ['inner_news_id', '=', $id],
+        ])
+        ->first();
+
+        $slider_announcements = DB::table('inner_news')
+        ->leftJoin('slider_news', 'inner_news.inner_news_id', '=', 'slider_news.inner_news_id')
+        ->where([
+            ['type', '=', 'announcement'],
+            ['inner_news.inner_news_id', '=', $id],
+        ])
         ->get()
         ->toArray();
 
     	$data = [
             'new' => $announcement,
-            'slider' => $slider,
-            'id' => $id,
-            'title' => $title,
+            'slider' => $slider_announcements,
         ];
 
     	return view('site/post', compact('data'));

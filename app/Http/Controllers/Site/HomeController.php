@@ -36,45 +36,62 @@ class HomeController extends Controller
         $date = Carbon::now()->toDateTimeString();
         $practice = DB::select("SELECT * FROM `practice_intership_card`");
 
-        $news = DB::table('inner_news')->select('*')->where([
+        // $news = DB::table('inner_news')->select('*')->where([
+        //     ['type', '=', 'new'],
+        //     ['date', '<', $date],
+        // ])
+        // ->orderBy('date', 'desc')
+        // ->limit(5)
+        // ->get()
+        // ->toArray();
+        $news = DB::table('inner_news')
+        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        ->where([
             ['type', '=', 'new'],
             ['date', '<', $date],
         ])
         ->orderBy('date', 'desc')
-        ->limit(5)
-        ->get()
-        ->toArray();
+        ->paginate(5);
 
-        $ids = [];
-        $i = 0;
-        foreach($news as $one) {
-            $ids[$i++] = $one->inner_news_id;
-        }
+        // $ids = [];
+        // $i = 0;
+        // foreach($news as $one) {
+        //     $ids[$i++] = $one->inner_news_id;
+        // }
 
-        $previews_news = DB::table('preview')->select('*')
-        ->whereIn('inner_news_id', $ids)
-        ->get()
-        ->toArray();
+        // $previews_news = DB::table('preview')->select('*')
+        // ->whereIn('inner_news_id', $ids)
+        // ->get()
+        // ->toArray();
 
-        $announcements = DB::table('inner_news')->select('*')->where([
+        // $announcements = DB::table('inner_news')->select('*')->where([
+        //     ['type', '=', 'announcement'],
+        //     // ['date', '>', $date],
+        // ])
+        // ->orderBy('date', 'desc')
+        // ->limit(4)
+        // ->get()
+        // ->toArray();
+
+        // $ids = [];
+        // $i = 0;
+        // foreach($announcements as $one) {
+        //     $ids[$i++] = $one->inner_news_id;
+        // }
+
+        // $previews_annoucements = DB::table('preview')->select('*')
+        // ->whereIn('inner_news_id', $ids)
+        // ->get()
+        // ->toArray();
+
+        $announcements = DB::table('inner_news')
+        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        ->where([
             ['type', '=', 'announcement'],
-            // ['date', '>', $date],
+            ['date', '>', $date],
         ])
         ->orderBy('date', 'desc')
-        ->limit(4)
-        ->get()
-        ->toArray();
-
-        $ids = [];
-        $i = 0;
-        foreach($announcements as $one) {
-            $ids[$i++] = $one->inner_news_id;
-        }
-
-        $previews_annoucements = DB::table('preview')->select('*')
-        ->whereIn('inner_news_id', $ids)
-        ->get()
-        ->toArray();
+        ->paginate(4);
 
         for($i = 0; $i < count($news); $i++) {
             $news[$i]->trans_title = $this->transliterate($news[$i]->title);
@@ -88,17 +105,12 @@ class HomeController extends Controller
 
         $data = [
             'practice_intership_card' => $practice,
-            'announcements' => $announcements,
-            'previews_news' => $previews_news,
-            'previews_annoucements' => $previews_annoucements,
             'news' => $news,
+            'announcements' => $announcements,
+            //'previews_news' => $previews_news,
+            //'previews_annoucements' => $previews_annoucements,
             'slider' => $slider,
         ];
-
-        // echo "<pre>";
-        // print_r($data['previews']);
-        // echo "</pre>";
-        // die;
 
         return view('site/home', compact('data'));
     }

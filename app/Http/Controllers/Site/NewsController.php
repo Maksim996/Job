@@ -28,19 +28,14 @@ class NewsController extends Controller
 
     public function index(){
     	$date = Carbon::now()->toDateTimeString();
-    	$news = DB::table('inner_news')->select('*')->where([
+        $news = DB::table('inner_news')
+        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        ->where([
             ['type', '=', 'new'],
             ['date', '<', $date],
-        ])->orderBy('date', 'desc')->paginate(2);
-
-        $ids = [];
-        $i = 0;
-        foreach($news as $one) {
-            $ids[$i++] = $one->inner_news_id;
-        }
-
-        $previews = DB::table('preview')->select('*')->whereIn('inner_news_id', $ids)
-        ->get()->toArray();
+        ])
+        ->orderBy('date', 'desc')
+        ->paginate(2);
 
         for($i = 0; $i < count($news); $i++) {
             $news[$i]->trans_title = $this->transliterate($news[$i]->title);
@@ -48,7 +43,6 @@ class NewsController extends Controller
 
         $data = [
             'news' => $news,
-            'previews' => $previews,
         ];
 
         return view('site/news', compact('data'));

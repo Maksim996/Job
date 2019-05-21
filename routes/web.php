@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
 	Route::get('/', function() {
-		if (Auth::check()) {
+		if (Auth::guest()) {
+			return redirect('/auth/login');
+		} else {
 			return redirect('/admin/header');
 		}
-		return redirect('auth/login');
 	});
 	Route::get('/header-menu', function () {
 	    return view('/admin/header-menu');

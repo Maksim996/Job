@@ -14,8 +14,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-8 my-4">
-            	@for($i=0;$i<count($data['news']);$i++)
-
+            	@for($i = 0; $i < count($data['news']); $i++)
                 <div class="card">
                     <div class="row">
                         <div class="col-12">
@@ -24,7 +23,7 @@
                     </div>
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{ URL::asset($data['previews'][$i]->img_path)}}" class="card-img mt-1" alt="">
+                            <img src="{{ URL::asset($data['news'][$i]->img_path)}}" class="card-img mt-1" alt="">
                         </div>
                         <div class="col-md-8 mt-1">
                             <div class="card-body">
