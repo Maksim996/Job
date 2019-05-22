@@ -40,8 +40,10 @@ main.containet {
 .background-scroll{
     background-color: rgba(0,0,0,.8);
 }
-
-.practice,.preview,.news,.caption{
+.preview, .news{
+    padding-top: 3rem;
+}
+.practice,.caption{
     padding-top: 4rem;
 }
 .card {
@@ -714,15 +716,20 @@ a.practiceitem {
 footer{
     background: #222222;
     font-size: 0.85rem;
-    padding: 3rem 0 ;
+    padding: 1.5rem 0 ;
 }
-
+.footer_left {
+    padding-left: 0;
+    margin-bottom: 0;
+}
 .footer_left li{
     display: flex;  
     flex-direction: row;
     margin-bottom: 1rem;
     align-items: center;
-
+}
+.footer_left li:last-child{
+    margin-bottom: 0rem;
 }
 .footer_left img{
     height: 1rem;
@@ -760,6 +767,11 @@ footer{
 .footer_right{
     padding-left: 0;
     color: white;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
 }
 .footer_right__aboutUs{
     display: flex;
@@ -767,26 +779,51 @@ footer{
     border-radius:20px;
     background-color: #1D78AD;
     height: 2rem;
-    min-width: 55%;
-    max-width: 95%;
+    /*min-width: 55%;
+    max-width: 95%;*/
     font-size: 1rem;
     font-weight: bold;
     align-items: center;
     justify-content: flex-start;
-}
+    padding: 0;
 
+}
+.footer_right__aboutUs{
+    width: 250px;
+    transition: all .3s;
+}
+.footer_right__aboutUs:hover{
+    width: 100%;
+}
+.footer_right__aboutUs div{
+    width: 80%;
+}
+.footer_right__aboutUs a{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
+.footer_right__aboutUs a:hover{
+    text-decoration: none;
+}
 .footer_right__aboutUs .circle{
     background: white;
     border-radius: 50%;
-    height: 2rem;
-    width:2rem;
+    height: 40px;
+    width:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -5px 0px -5px 0;
+    
 }
 
 .footer_right__aboutUs img{
     height: 1rem;
 }
 .footer_right__socialNetworks{
-    margin-top: 2rem;
     font-size: 1rem;
 }
 .footer_right__socialNetworks ul{
@@ -919,24 +956,8 @@ close rgba(68,143,210,.36)*/
 
 
 
-.news__link-page {
-    color: #3fa3eb;
-    font-size: .9rem;
-    font-family: SegoeUI, Segoe UI;
-    margin-right: 8rem;
-    position: absolute;
-    bottom: 0;
-    left: 1rem;
-}
 
-.news__date-page {
-    font-size: .9rem;
-    font-family: ArialMT, Arial;
-    position: absolute;
-    bottom: -1rem;
-    right: 0;
 
-}
 
 .news__text-page {
     font-size: .9rem;
@@ -1040,3 +1061,196 @@ margin: auto 0;
 
  }
 /*конец стили для документов*/
+
+/*Задний фон для страниц с прозрачным текстом */
+
+
+    .a_n__line {
+        position: relative;
+        height: 4rem;
+        background: #d5d5d5;
+        width: 100%;
+        margin: 110px 0 16px;
+    }
+
+    .a_n__text-first {
+        position: absolute;
+        top: -1rem;
+        font-size: 5rem;
+        font-weight: 700;
+        color: rgba(255,255,255, 1);
+        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+    }
+
+    .a_n__text-second{
+        font-family:SegoeUI-Bold, Segoe UI;
+        position: fixed;
+        left:-5%;
+        font-size: 13rem;
+        color:#0f0f0f;
+        opacity:0.03;
+        z-index: -3;
+    }
+
+    .a_n__text-third{
+        font-family:SegoeUI-Bold, Segoe UI;
+        position: fixed;
+        top:25%;
+        left:-15%;
+        font-size: 30rem;
+        color:#0f0f0f;
+        opacity:0.03;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+        z-index: -3;
+    }
+    .a_n__text-fourth{
+        font-family:SegoeUI-Bold, Segoe UI;
+        position: fixed;
+        top:45%;
+        right: -10%;
+        font-size: 10rem;
+        transform: rotate(90deg);
+        color:#0f0f0f;
+        opacity:0.03;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+        z-index: -3;
+    }
+
+/* конц Задний фон для страниц с прозрачным текстом */
+
+/*для отдельной странице с новостями*/
+
+    .pagin .pagination{
+        margin:3rem auto; 
+        justify-content: center;
+    }
+
+    .news{
+        margin:0 auto;
+    }
+    .news__item{
+        margin-bottom: 3rem;
+    }
+
+
+    .anon{
+        justify-content:space-around;
+    }
+
+    .anonc_cards-main {
+        flex: 0 0 30%;
+        min-width: 300px;
+        margin-bottom: 25px;
+        /*margin: 25px 1rem;;*/
+    }
+    .preview__descr-main {
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        display: block;
+        background: white;
+        font-size: 0.85rem;
+        font-family: SegoeUI-Regular, Segoe UI;
+        font-weight: 425;
+        z-index: 2;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+        padding: 1rem;
+    }
+
+    .preview__item-main {
+        font-size: 0.9rem;
+        font-family: SegoeUI, Segoe UI;
+          box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+                position: relative;
+    }
+
+    .abra{
+       position: absolute;
+        content: '';
+        height: 100%;
+        /*height: 100px;*/
+        width: 4px;
+        left: -0.75rem;
+        top: 0;
+        background: rgba(112,112,112,0.5);
+    }
+    .preview__descr-main .card-text.text-left,.preview__text{
+       position: relative;
+    }
+    .preview__body{
+        position: relative;
+        left:0.75rem;
+        height: 6rem;
+    }
+    .preview__card-text-main{
+        position: absolute;
+        bottom: 0;
+        margin:0 0.5rem;
+    }
+
+    .news__card{
+        background: rgba(255,255,255,1);
+        border-radius: 25px 25px 25px 25px;
+        border: 2px solid rgba(236,236,236,1);
+        box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+    .news__card-item{
+        position: relative;
+        padding:3rem 4rem;
+    }
+    .news__card-item .card-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /*padding-left: 1rem;*/
+    }
+    .news__about{
+        margin-top: 10px;
+        /*position: absolute;
+        bottom: 0rem;
+        */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .news__border {
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        margin-top: 2rem;
+    }
+
+    .news__title-page {
+        font-size: 1.8rem;
+        font-family: SegoeUI, Segoe UI;
+    }
+
+
+    .news__link-page {
+        color: #3fa3eb;
+        font-size: 1rem;
+        font-family: SegoeUI, Segoe UI;
+        display: block;
+        /*margin-left: 0.5rem;*/
+    }
+    .news__date-page {
+        text-align: right;
+        font-size: 1rem;
+        font-family: ArialMT, Arial;
+    }
+    .news__text-page {
+        font-size: 1.2rem;
+        font-family: SegoeUI-Light, Segoe UI;
+        font-weight: 400;
+        display: block;
+    }
+    .news__data {
+        text-align: right;
+    }
+    .news__border {
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        margin-top: 2rem;
+    }
+
+/*конец для отдельной странице с новостями*/
+
+

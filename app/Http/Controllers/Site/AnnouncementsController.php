@@ -31,11 +31,13 @@ class AnnouncementsController extends Controller
         $announcements = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
-            ['type', '=', 'announcements'],
-            ['date', '>', $date],
+            ['type', '=', 'announcement'],
+            // ['date', '>', $date],
         ])
         ->orderBy('date', 'desc')
-        ->paginate(2);
+        ->get()->toArray();
+
+        // ->paginate(2);
 
         for($i = 0; $i < count($announcements); $i++) {
             $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);

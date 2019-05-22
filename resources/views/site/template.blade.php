@@ -99,7 +99,7 @@
                                 </li>
                                 <li class="footer_left__telNumber">
                                     <div class="circle"><img src="{{ URL::asset('images/phone-receiver.svg')}}"></div>
-                                    <p>+38(0542) 687-851</p>
+                                    <p>+38(0542)687-851</p>
                                 </li>
                                 <li class="footer_left__email">
                                     <div class="circle"><img src="{{ URL::asset('images/envelope.svg')}}"></div>
@@ -107,9 +107,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 col-md-5 pl-2 col-xl-3">
+                        <div class="col-12 col-md-5 pl-2 col-xl-3 ">
                             <ul class="footer_right ">
-                                <li class="footer_right__aboutUs"><a href="#" class="circle mr-3"><img src="{{ URL::asset('images/info-sign.svg')}}"></a>Про наш відділ</li>
+                                <li class="footer_right__aboutUs">
+                                    <a href="#" >
+                                        <span class="circle">
+                                            <img src="{{ URL::asset('images/info-sign.svg')}}">
+                                        </span>
+                                        <div>Про наш відділ</div>
+                                    </a>
+                                </li>
                                 <li class="footer_right__socialNetworks">
                                     <p>Слідкуйте за нами у соціальних мережах:</p>
                                     <ul class="iconNetwork">
