@@ -51,7 +51,7 @@ main.containet {
 }
 
 .card-body {
-    padding: 0 0 0 0.7rem;
+    padding: 0;
 }
 
 header{
@@ -447,6 +447,9 @@ a.practiceitem {
     margin: 0 15px 20px;
     z-index: 5;
     padding: 0;
+    -webkit-box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.1);
 }
 .preview__body{
     display: flex;
@@ -484,16 +487,19 @@ a.practiceitem {
 }
 .preview__item {
     height: 100%;
-    font-size: 0.9rem;
+    font-size: 13px;
     font-family: SegoeUI, Segoe UI;
     position: relative;
     z-index: 4;
     background: #fff;
     padding: 0 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .preview__text {
-    font-size: 0.9rem;
+    font-size: 18px;
     font-family: SegoeUI, Segoe UI;
     line-height: normal;
 }
@@ -541,7 +547,7 @@ a.practiceitem {
     /*max-height: 350px;*/
     margin-left: -15px;
     margin-right: -15px;
-    height: 240px;
+    /*height: 240px;*/
 }
 
 
@@ -605,64 +611,53 @@ a.practiceitem {
 }
 
 .news__title {
-    font-size: 1.5rem;
+    font-size: 26px;
     font-family: SegoeUI, Segoe UI;
 }
 
 .news__link {
     color: #3fa3eb;
-    font-size: 0.9rem;
+    font-size: 17px;
     font-family: SegoeUI, Segoe UI;
-    margin-right: 8rem;
-    position: absolute;
-    bottom: 0;
-    left: 1rem;
+
 }
 
 .news__date {
-    font-size: 0.9rem;
+    font-size: 15px;
     font-family: ArialMT, Arial;
-    position: absolute;
-    bottom: -1rem;
-    right: 0;
-
+    display: block;
+    margin-bottom: 0;
 }
 
 .news__text {
-    font-size: 0.9rem;
+    font-size: 18px;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 400;
+    margin-bottom: 0;
 }
 
 .news__title-item {
-    font-size: 1rem;
+    font-size: 22px;
     font-family: SegoeUI, Segoe UI;
 }
 
 .news__link-item {
     color: #3fa3eb;
-    font-size: 0.8rem;
+    font-size: 15px;
     font-family: SegoeUI, Segoe UI;
-    margin-right: 6rem;
-    position: absolute;
-    bottom: 0;
-    left: 1rem;
-
 }
 
 .news__date-item {
-    font-size: 0.8rem;
+    font-size: 13px;
     font-family: ArialMT, Arial;
-    position: absolute;
-    bottom: -1rem;
-    right: 0;
-
+    margin-bottom: 0;
 }
 
 .news__text-item {
-    font-size: 0.8rem;
+    font-size: 15px;
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 400;
+    margin-bottom: 0;
 }
 
 .news__button {
@@ -707,11 +702,16 @@ a.practiceitem {
 .slick-slide img{
     margin: 0 auto;
 }
+.slider{
+    overflow: hidden;
+}
 .slider__image {
     max-width: 11em;
     height: auto;
 }
-
+.news_noanimation{
+    display: none;
+}
 
 footer{
     background: #222222;
@@ -1128,6 +1128,21 @@ margin: auto 0;
     .news{
         margin:0 auto;
     }
+    .news .card{
+        padding: 10px 10px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .news .card-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .news .card-body div{
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+    }
     .news__item{
         margin-bottom: 3rem;
     }
@@ -1141,7 +1156,6 @@ margin: auto 0;
         flex: 0 0 30%;
         min-width: 300px;
         margin-bottom: 25px;
-        /*margin: 25px 1rem;;*/
     }
     .preview__descr-main {
         position: static;
@@ -1160,8 +1174,8 @@ margin: auto 0;
     .preview__item-main {
         font-size: 0.9rem;
         font-family: SegoeUI, Segoe UI;
-          box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-                position: relative;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+        position: relative;
     }
 
     .abra{
@@ -1179,8 +1193,11 @@ margin: auto 0;
     }
     .preview__body{
         position: relative;
-        left:0.75rem;
         height: 6rem;
+    }
+    .preview__body div{
+        color:rgba(0,0,0,0.5);
+        font-weight: 500;
     }
     .preview__card-text-main{
         position: absolute;
@@ -1213,6 +1230,7 @@ margin: auto 0;
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        font-size: 13px;
     }
     .news__border {
         border-bottom: 1px solid rgba(0, 0, 0, .1);
@@ -1220,16 +1238,18 @@ margin: auto 0;
     }
 
     .news__title-page {
-        font-size: 1.8rem;
+        font-size: 22px;
         font-family: SegoeUI, Segoe UI;
     }
 
 
     .news__link-page {
         color: #3fa3eb;
-        font-size: 1rem;
+        font-size: 15px;
         font-family: SegoeUI, Segoe UI;
         display: block;
+        line-height: 1.2;
+
         /*margin-left: 0.5rem;*/
     }
     .news__date-page {
@@ -1238,7 +1258,7 @@ margin: auto 0;
         font-family: ArialMT, Arial;
     }
     .news__text-page {
-        font-size: 1.2rem;
+        font-size: 15px;
         font-family: SegoeUI-Light, Segoe UI;
         font-weight: 400;
         display: block;

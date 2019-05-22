@@ -33,12 +33,12 @@
                         </p>
                     </div>
                 </div>
-                <div class="row mt-5">
+                <div class="row mt-md-5 mt-sm-1">
                     <div class="col-10 offset-1">
                         <p class="practice__subtitle">Якщо ПРАКТИКА – це обов’язкова складова навчального процесу, то СТАЖУВАННЯ передбачає отримання практичного досвіду у вільний від навчання час. В обох випадках Ви отримаєте професійні навички та можливість проявити власні якості – ініціативність, креативність, наполегливість.</p>
                     </div>
                 </div>
-                <div class="row mt-5">
+                <div class="row mt-md-5 mt-sm-2">
                     @foreach($data['practice_intership_card'] as $card)
                         <div class="col-md-12 col-lg-4 card  mb-4 ">
                             <a href="#" class="practice__item practice__card p-3 pb-4 ">
@@ -62,17 +62,18 @@
                         <h3>Найближчим часом</h3>
                     </div>
                 </div>
+                
 
                 <div class="anonc_block ">
                     @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
-                        <div class=" col-9 preview__card rounded">
+                        <div class=" col-md-7 preview__card ">
                             <div class="preview__item w-100">
                                 <div class="card_img">
                                     <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
                                     
                                 </div>
 
-                                <div class="card-body mt-2 px-0 preview__body">
+                                <div class="card-body preview__body">
                                     <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
                                     <div>
                                         <div class="card-text">
@@ -93,6 +94,10 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+
                     @endfor
                 </div>
 
@@ -115,9 +120,13 @@
                 </div>
             </div>
         </div>
-        
+        <div class="row news_noanimation mt-5">
+            <div class="col preview__title">
+                <h3>Новини</h3>
+            </div>
+        </div>
         <div class="container">
-            <div class="news mt-5">
+            <div class="news mt-md-5 mt-sm-0">
             @if(count($data['news'])!=0)
             
                 <div class="row">
@@ -132,13 +141,16 @@
                                 <div class="col-md-4">
                                     <img src="{{ URL::asset($data['news'][0]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
-                                <div class="col-md-8 mt-1">
+                                <div class="col-md-8 pl-md-3">
                                     <div class="card-body">
-                                        <p class="card-text news__text mb-4 py-0">  
+                                        <p class="card-text news__text  ">  
                                             {{$data['news'][0]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
-                                        <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
+                                        <div>
+                                            <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
+                                            <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -160,13 +172,17 @@
                                 <div class="col-md-4">
                                     <img src="{{ URL::asset($data['news'][$i]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
-                                <div class="col-md-8 mt-1">
+                                <div class="col-md-8   pl-md-3">
                                     <div class="card-body">
-                                        <p class="card-text news__text-item mb-4">
+                                        <p class="card-text news__text-item">
                                             {{$data['news'][$i]->short_description}}
                                         </p>
-                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
-                                        <p class="news__date-item">Дата публікації: {{$data['news'][$i]->date}}</p>
+                                        <div>
+                                            <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
+                                            <p class="news__date-item">
+                                                Дата публікації: {{$data['news'][$i]->date}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +201,7 @@
         </div>
         
        
-        <div class="slider mt-5">
+        <div class="slider my-5">
             <section class="row autoplay slider__items ">
                 @foreach($data['slider'] as $slider)
                 <div class="col brand-slider_item">
