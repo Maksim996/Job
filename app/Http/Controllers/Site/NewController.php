@@ -8,21 +8,27 @@ use DB;
 class NewController extends Controller
 {
     public function index($id, $title){
-    	$new = DB::table('inner_news')->select('*')->where([
-    		['inner_news_id', '=', $id],
-    	])->first();
-
-    	$slider = DB::table('slider_news')
+    	$new = DB::table('inner_news')
         ->select('*')
-        ->where('inner_news_id', $new->inner_news_id)
+        ->where([
+            ['type', '=', 'new'],
+    		['inner_news_id', '=', $id],
+    	])
+        ->first();
+
+        $slider_news = DB::table('inner_news')
+        ->leftJoin('slider_news', 'inner_news.inner_news_id', '=', 'slider_news.inner_news_id')
+        ->where([
+            ['type', '=', 'new'],
+            ['inner_news.inner_news_id', '=', $id],
+        ])
         ->get()
         ->toArray();
+        //dump($slider_news);die;
 
     	$data = [
             'new' => $new,
-            'slider' => $slider,
-            'id' => $id,
-            'title' => $title,
+            'slider' => $slider_news,
         ];
 
     	return view('site/post', compact('data'));

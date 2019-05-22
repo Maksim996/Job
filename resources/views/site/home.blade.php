@@ -68,7 +68,7 @@
                         <div class=" col-9 preview__card rounded">
                             <div class="preview__item w-100">
                                 <div class="card_img">
-                                    <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
+                                    <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
                                     
                                 </div>
 
@@ -76,7 +76,7 @@
                                     <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
                                     <div>
                                         <div class="card-text">
-                                            {{$data['previews_annoucements'][$i]->short_location}}
+                                            {{$data['announcements'][$i]->short_location}}
                                         </div>
                                         <div class="card-text">
                                             {{$data['announcements'][$i]->date}}
@@ -87,7 +87,7 @@
                             <div class="d-lg-none p-0 m-0 dropdown-divider"></div>
                             <div class="preview__descr ">
                                 <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">{{$data['previews_annoucements'][$i]->short_description}}</p>
+                                    <p class="card-text text-left">{{$data['announcements'][$i]->short_description}}</p>
                                     <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
 
                                 </div>
@@ -130,12 +130,12 @@
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews_news'][0]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['news'][0]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text mb-4 py-0">  
-                                            {{$data['previews_news'][0]->short_description}}
+                                            {{$data['news'][0]->short_description}}
                                         </p>
                                         <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
                                         <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
@@ -158,12 +158,12 @@
                             </div>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ URL::asset($data['previews_news'][$i]->img_path) }}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($data['news'][$i]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 mt-1">
                                     <div class="card-body">
                                         <p class="card-text news__text-item mb-4">
-                                            {{$data['previews_news'][$i]->short_description}}
+                                            {{$data['news'][$i]->short_description}}
                                         </p>
                                         <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
                                         <p class="news__date-item">Дата публікації: {{$data['news'][$i]->date}}</p>
