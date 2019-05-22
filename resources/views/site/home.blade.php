@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <div class="row news_noanimation mt-5">
+        <div class="news_noanimation mt-5">
             <div class="col preview__title">
                 <h3>Новини</h3>
             </div>
