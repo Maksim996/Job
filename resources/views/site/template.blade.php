@@ -30,18 +30,24 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+                                <li class="nav-item {{ Route::currentRouteName() =='' ? 'active' : ''}}">
+                                    <!-- {{ Route::currentRouteName() == '' ? 'active' : ''}} -->
+                                    <a class="nav-link" href="/">Головна {!! Route::currentRouteName() == '' ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                     
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/news">Новини</a>
+                                <li class="nav-item {{ Route::currentRouteName() =='news' ? 'active' : ''}}">
+                                    <a class="nav-link" href="/news">
+                                        Новини 
+                                        {!! Route::currentRouteName() == 'news' ? '<span class="sr-only">(current)</span>' : ''!!}
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Працевлаштування та практика</a>
                                 </li>
-                                <li class="nav-item dropdown ">
+                                <li class="nav-item dropdown {{ Route::currentRouteName() =='documents' ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Документи
+
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/documents?position=1">Нормативні</a>

@@ -50,8 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="news__border py-2"></div>
-                 </div>
+                    </div>
                 </div>
             </div>
                  @endfor

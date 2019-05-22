@@ -48,7 +48,7 @@ class HomeController extends Controller
         ->toArray();
 
 
-
+         
 
         $announcements = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
