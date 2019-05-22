@@ -45,17 +45,22 @@ class HomeController extends Controller
         ->get()
         ->toArray();
 
-        $ids = [];
-        $i = 0;
-        foreach($news as $one) {
-            $ids[$i++] = $one->inner_news_id;
-        }
+        // $ids = [];
+        // $i = 0;
+        // foreach($news as $one) {
+        //     $ids[$i] = $one->inner_news_id;
+        //     $i++;
+        // }
+        // var_dump( $ids);
 
-        $previews_news = DB::table('preview')->select('*')
-        ->whereIn('inner_news_id', $ids)
+        $previews_news = DB::table('preview')->join('inner_news', 'preview.inner_news_id', '=', 'inner_news.inner_news_id')->where([
+            ['inner_news.type', '=', 'new'],
+            ['inner_news.date', '<', $date],
+        ])->orderBy('inner_news.date', 'desc')
         ->get()
         ->toArray();
-
+         dump( $previews_news);
+         die;
         $announcements = DB::table('inner_news')->select('*')->where([
             ['type', '=', 'announcement'],
             // ['date', '>', $date],

@@ -536,9 +536,10 @@ a.practiceitem {
 .card_img{
     margin-bottom: 10px;
     min-height: 220px;
-    max-height: 350px;
+    /*max-height: 350px;*/
     margin-left: -15px;
     margin-right: -15px;
+    height: 240px;
 }
 
 
@@ -672,7 +673,13 @@ a.practiceitem {
     width: 95%;
     margin: 0 auto;
 }
+.brand-slider_item{
+    max-height: 60px;
+}
 
+.brand-slider_link img{
+    width: 100%;
+}
 .brand-slider_link:hover img{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,.3);
 }

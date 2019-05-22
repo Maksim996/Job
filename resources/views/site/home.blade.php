@@ -65,7 +65,7 @@
 
                 <div class="anonc_block ">
                     @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
-                        <div class=" col-8 preview__card rounded">
+                        <div class=" col-9 preview__card rounded">
                             <div class="preview__item w-100">
                                 <div class="card_img">
                                     <img src="{{ URL::asset($data['previews_annoucements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
@@ -188,7 +188,7 @@
         <div class="slider mt-5">
             <section class="row autoplay slider__items ">
                 @foreach($data['slider'] as $slider)
-                <div class="col">
+                <div class="col brand-slider_item">
                     <a class="brand-slider_link" href="{{$slider->link}}"> <img src="{{ URL::asset($slider->img_path)}}" alt="placeholder+image" class="slider__image img-fluid"></a>
                 </div>
                 @endforeach
