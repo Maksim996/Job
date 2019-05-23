@@ -35,7 +35,10 @@
     main.getElementsByClassName("btn")[0].onclick = () => {
         parent.removeChild(main)
     }
-
+    
+      console.log(main.className.length);
+    
+    
     parent.appendChild(main)
   }
 
@@ -46,6 +49,8 @@
 
 
   $("#social_minus").on('click',function(){
-
+    
     $(this).parents('.partners').remove();
-  })
+})
+
+
