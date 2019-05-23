@@ -132,6 +132,17 @@
                                         Футер
                                     </span></a>
                                 </li>
+                                <li class="k-menu__item " aria-haspopup="true" >
+                                    <a target="_blank" href="{{ route('logout') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i>
+                                        <span class="k-menu__link-text"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </span>
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -190,7 +201,10 @@
             <!-- end:: Page -->
         </div>
         <!-- end:: Root -->
-      
+        <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
        
         <!-- begin:: Scrolltop -->
         <div id="k_scrolltop" class="k-scrolltop"> <i class="la la-arrow-up"></i> </div>
@@ -199,6 +213,9 @@
         
         <!-- begin::Global Config(global config for global JS sciprts) -->
         <script src="{{ URL::asset('js/admin/main.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/partners.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/photo.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/footer.js') }}" type="text/javascript"></script>
 
         <!-- end::Global Config -->
         <!--begin:: Global Mandatory Vendors -->
