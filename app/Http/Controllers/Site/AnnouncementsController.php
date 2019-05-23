@@ -28,22 +28,16 @@ class AnnouncementsController extends Controller
 
     public function index(){
     	$date = Carbon::now()->toDateTimeString();
-        $announcements = DB::table('inner_news')->select('*')->where([
+        $announcements = DB::table('inner_news')
+        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        ->where([
             ['type', '=', 'announcement'],
-            ['date', '>', $date],
+            // ['date', '>', $date],
         ])
-        ->orderBy('date', 'desc')->paginate(2);
+        ->orderBy('date', 'desc')
+        ->get()->toArray();
 
-        $ids = [];
-        $i = 0;
-        foreach($announcements as $one) {
-            $ids[$i++] = $one->inner_news_id;
-        }
-
-        $previews = DB::table('preview')->select('*')
-        ->whereIn('inner_news_id', $ids)
-        ->get()
-        ->toArray();
+        // ->paginate(2);
 
         for($i = 0; $i < count($announcements); $i++) {
             $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
@@ -51,7 +45,6 @@ class AnnouncementsController extends Controller
 
         $data = [
             'announcements' => $announcements,
-            'previews' => $previews,
         ];
 
     	return view('site/announcements', compact('data'));

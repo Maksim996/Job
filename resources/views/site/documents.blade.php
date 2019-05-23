@@ -4,11 +4,24 @@
 @endsection
 
 @section('content')
-       <div class="container my-5">
+        <div class="a_n__line">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="a_n__text-first">Документи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="a_n__text-second">Документи</div>
+        <div class="a_n__text-third">Документи</div>
+        <div class="a_n__text-fourth">Документи</div>
+       <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-10 docum">
+                <img class="img_document" src="{{ URL::asset('images/main/img1.jpg')}}" alt="">
                 <div class="row justify-content-center">
-                    <div class="col-md-12 col-lg-6 justify-content-center docum__btn">
+                    <div class="col-md-12 col-lg-6 px-0 justify-content-center docum__btn">
                         <div class="nav flex-column nav-pills py-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                             @foreach($data['subcategories'] as $category)
@@ -16,7 +29,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-6 docum__doc py-3">
+                    <div class="col-md-12 col-lg-6 docum__doc px-0 py-3">
                         <div class="tab-content" id="v-pills-tabContent">
 
                             @foreach($data['subcategories'] as $category)

@@ -30,18 +30,24 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+                                <li class="nav-item {{ Route::currentRouteName() =='' ? 'active' : ''}}">
+                                    <!-- {{ Route::currentRouteName() == '' ? 'active' : ''}} -->
+                                    <a class="nav-link" href="/">Головна {!! Route::currentRouteName() == '' ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                     
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/news">Новини</a>
+                                <li class="nav-item {{ Route::currentRouteName() =='news' ? 'active' : ''}}">
+                                    <a class="nav-link" href="/news">
+                                        Новини 
+                                        {!! Route::currentRouteName() == 'news' ? '<span class="sr-only">(current)</span>' : ''!!}
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Працевлаштування та практика</a>
                                 </li>
-                                <li class="nav-item dropdown ">
+                                <li class="nav-item dropdown {{ Route::currentRouteName() =='documents' ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Документи
+
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/documents?position=1">Нормативні</a>
@@ -99,7 +105,7 @@
                                 </li>
                                 <li class="footer_left__telNumber">
                                     <div class="circle"><img src="{{ URL::asset('images/phone-receiver.svg')}}"></div>
-                                    <p>+38(0542) 687-851</p>
+                                    <p>+38(0542)687-851</p>
                                 </li>
                                 <li class="footer_left__email">
                                     <div class="circle"><img src="{{ URL::asset('images/envelope.svg')}}"></div>
@@ -107,9 +113,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 col-md-5 pl-2 col-xl-3">
+                        <div class="col-12 col-md-5 pl-2 col-xl-3 ">
                             <ul class="footer_right ">
-                                <li class="footer_right__aboutUs"><a href="#" class="circle mr-3"><img src="{{ URL::asset('images/info-sign.svg')}}"></a>Про наш відділ</li>
+                                <li class="footer_right__aboutUs">
+                                    <a href="#" >
+                                        <span class="circle">
+                                            <img src="{{ URL::asset('images/info-sign.svg')}}">
+                                        </span>
+                                        <div>Про наш відділ</div>
+                                    </a>
+                                </li>
                                 <li class="footer_right__socialNetworks">
                                     <p>Слідкуйте за нами у соціальних мережах:</p>
                                     <ul class="iconNetwork">
