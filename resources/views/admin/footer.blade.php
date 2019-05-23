@@ -16,7 +16,7 @@
         <form action="#" class="k-form k-form--label-right">
             
             <div class="k-portlet__body">
-				<div class="form-group row">
+				<!-- <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Адреса розшташування відділу</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input type="text" class="form-control" placeholder="">
@@ -37,7 +37,76 @@
                         <span class="form-text text-muted">Наприклад: info@job.sumdu.edu.ua</span> 
                     </div>
                 </div>
-                <div class='black-line form-group row'></div>
+                <div class='black-line form-group row'></div> -->
+
+
+
+                <p class='info-seach'>Left column</p>
+                <div class="k-portlet__body" id='info_block'>
+                <div class='info' id='duplicater'>
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="form-text text-muted">Наприклад: локація</span> 
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="form-text text-muted">По кліку переходить на посиланням ...</span> 
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Текст</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <form enctype="multipart/form-data" method="post">
+                                <input type="file"class="form-control">
+                            </form> 
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <button class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 " id="info_minus">
+                            <span> <i class="la la-minus"></i> <span>Видалити</span> </span>
+                        </button>
+                    </div>
+                </div>      
+            </div>
+            <div class="row add-partners k-portlet__body">
+                <div class="col-lg-12">
+                    <button class="btn btn-brand k-btn k-btn--icon but-plus" id="info_plus">
+                        <span> <i class="la la-plus"></i> <span>Додати</span> </span>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div class='black-line form-group row'></div>
+            <p class='info-seach'>Про нас</p>
+
+            <div class="form-group row">
+                <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                <div class="col-lg-6 col-md-9 col-sm-12">
+                    <input type="text" class="form-control" placeholder="">
+                    <span class="form-text text-muted">По кліку переходить на посиланням ...</span> 
+                </div>
+            </div>
+
+            <div class='black-line form-group row'></div>
+
                 <p class='info-seach'>Соціальні мережі</p>
 
 
