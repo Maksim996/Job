@@ -60,8 +60,16 @@
                         <span class="form-text text-muted">Основний заголовок на головній сторінці</span> 
                     </div>
                 </div> -->
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
+                    <div class="col-lg-6 col-md-9 col-sm-12">
+                        <form enctype="multipart/form-data" method="post">
+                            <input type="file"class="form-control">
+                        </form> 
+                    </div>
+                </div>
                <div class="form-group row">
-               <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
+               <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдеру</label>
                    <input type="file" id="files" name="files[]" multiple />
                     <output id="list"></output>
                 </div>

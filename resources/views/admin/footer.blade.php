@@ -58,6 +58,15 @@
                             <span class="form-text text-muted">По кліку зображення переходить на посиланням ...</span> 
                         </div>
                     </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Кольор при наведенні на логотип соціальної мережі</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="form-text text-muted">Наприклад: rgb(0,0,0) або black або #000</span> 
+                        </div>
+                    </div>
                     
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
