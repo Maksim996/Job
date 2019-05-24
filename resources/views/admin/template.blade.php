@@ -84,7 +84,7 @@
                                     <a target="_blank" href="{{ route('header-menu')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Меню</span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a target="_blank" href="{{ route('header')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+                                    <a target="_blank" href="{{ URL::route('header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
                                 </li>
                                 <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here -->
                                 <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">

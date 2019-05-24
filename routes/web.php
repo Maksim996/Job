@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
 	Route::get('/', function() {
-
 		if (Auth::guest()) {
 			return redirect('/auth/login');
 		} else {
@@ -30,7 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	    return view('/admin/header-menu');
 	})->name('header-menu');
 
-	Route::get('/header', 'Admin\HeaderController@index')->name('header');
+	Route::resource('header', 'Admin\HeaderController');
 
 	Route::get('practic-header', function () {
 	    return view('/admin/practic-header');

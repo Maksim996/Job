@@ -15,6 +15,9 @@ class FooterTableSeeder extends Seeder
     		'img_path' => 'footer.png',
     		'link' => 'footer1_link.com',
     		'content' => 'footer1_content',
+            'type' => 'footer_type',
+            'name' => 'footer_name',
+            'color_bg' => 'footer_color',
         ]);
     }
 }

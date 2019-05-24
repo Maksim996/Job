@@ -14,10 +14,13 @@ class CreateFooterTable extends Migration
     public function up()
     {
         Schema::create('footer', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('footer_id');
             $table->string('img_path', 200);
-            $table->string('link', 200);
+            $table->string('link', 200)->nullable();
             $table->text('content');
+            $table->string('type', 200);
+            $table->string('name', 200);
+            $table->string('color_bg', 200)->nullable();
         });
     }
 

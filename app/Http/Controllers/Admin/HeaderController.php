@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use DB;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Header;
+use App\Http\Requests\HeaderRequest;
 
 class HeaderController extends Controller
 {
@@ -15,13 +18,13 @@ class HeaderController extends Controller
     
     public function index()
     {
-        // работает
-        $header = DB::select("SELECT * FROM `header`");
+        $headers = Header::all();
         $data = [
-            'header' => $header,
+            'header' => $headers,
         ];
-        return view('/admin/header', compact('data'));
-        // конец работает
+        //dump($headers);die;
+
+        return view('admin.header', compact('data'));
     }
 
     /**
@@ -31,7 +34,7 @@ class HeaderController extends Controller
      */
     public function create()
     {
-        //
+        //return view('/admin/header', compact('data'));
     }
 
     /**
@@ -40,9 +43,16 @@ class HeaderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HeaderRequest $request)
     {
-        //
+        $header = Header::create($request->validated());
+        $header->save();
+
+        $data = [
+            'header' => $header,
+        ];
+
+        return view('/admin/header', compact('data'));
     }
 
     /**
@@ -53,7 +63,12 @@ class HeaderController extends Controller
      */
     public function show($id)
     {
-                
+        // $header = Header::find($id);
+        // $data = [
+        //     'header' => $header
+        // ];
+        //dump($header);die;
+        //return view('/admin/header', compact('data'));
     }
 
     /**
@@ -64,7 +79,12 @@ class HeaderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $header = Header::findOrfail($id);
+        $data = [
+            'header' => $header
+        ];
+        //dump($header);die;
+        return view('/admin/header', compact('data'));
     }
 
     /**
@@ -76,7 +96,24 @@ class HeaderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $header = Header::find($id);
+        //dump($header);die;
+
+        $request()->validate([
+            'img_path' => 'required|max:200',
+            'title' => 'required|max:200',
+            'link' => 'required|max:200',
+            'content' => 'required|max:200',
+            'keywords' => 'required|max:200',
+            'description' => 'description|max:200',
+        ]);
+
+        $header->update($request->all());
+        $data = [
+            'header' => $header
+        ];
+        
+        //return view('/admin/header', compact('data'));
     }
 
     /**
@@ -87,6 +124,8 @@ class HeaderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $header = Header::find($id);
+        // $header->delete();
+        // return view('/admin/header', compact('data'));
     }
 }
