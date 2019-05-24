@@ -27,34 +27,37 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	});
 	Route::get('/header-menu', function () {
 	    return view('/admin/header-menu');
-	})->name('header-menu');
+	})->name('ad_header-menu');
 
-	Route::resource('header', 'Admin\HeaderController');
+	Route::resource('header', 'Admin\HeaderController')->name('ad_header');
 
 	Route::get('practic-header', function () {
 	    return view('/admin/practic-header');
-	})->name('practic-header');
+	})->name('ad_practic-header');
 	Route::get('practic-cards', function () {
 	    return view('/admin/practic-cards');
-	})->name('practic-cards');
+	})->name('ad_practic-cards');
     Route::get('announcements', function () {
 	    return view('/admin/announcements');
-	})->name('announcements');
+	})->name('ad_announcements');
 	Route::get('announcement/{id}', function ($id) {
 	    return view('/admin/announcement', array('id' => $id));
 	});
 	Route::get('news', function () {
 	    return view('/admin/news');
-	})->name('news');
+	})->name('ad_news');
 	Route::get('brands', function () {
 	    return view('/admin/brands');
-	})->name('brands');
+	})->name('ad_brands');
 	Route::get('footer', function () {
 	    return view('/admin/footer');
-	})->name('footer');
+	})->name('ad_footer');
 	Route::get('new/{id}', function ($id) {
 	    return view('/admin/new', array('id' => $id));
 	});
+	Route::get('partners', function () {
+	    return view('/admin/partners');
+	})->name('ad_partners');
 });
 
 //site routes
