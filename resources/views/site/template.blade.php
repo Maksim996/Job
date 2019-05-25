@@ -129,6 +129,11 @@
                                         <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
                                         <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
                                         <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
+                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
+                                        <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
+                                        <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
+                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
+
                                     </ul>
                                 </li>
                             </ul>

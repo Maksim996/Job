@@ -8,7 +8,7 @@
  <div class="a_n__line">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-10 a_n__text-center">
                     <div class="a_n__text-first">Анонси</div>
                 </div>
             </div>
@@ -28,16 +28,16 @@
                         	@for($i = 0; $i < count($data['announcements']); $i++)
                           
                                 <div class="anonc_cards-main">
-                                    <div class="preview__card">
-                                        <div class="card preview__item-main ">
+                                    <div class="preview__card-page">
+                                        <div class="card preview__item-page ">
                                             <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="rounded card-img-top preview__image">
 
                                             <div class="card-body my-2 px-3 preview__body">
-                                                <h5 class="card-text preview__text">
+                                                <h5 class="card-text preview__text-page">
                                                     <div class="abra"></div>
                                                     {{$data['announcements'][$i]->title}}
                                                 </h5>
-                                                <div class="preview__card-text-main">
+                                                <div class="preview__card-text-page">
                                                     <div class="card-text">
                                                         {{$data['announcements'][$i]->short_location}}
                                                     </div>
@@ -48,9 +48,9 @@
                                             </div>
                                         </div>
 
-                                       <div class="card preview__descr-main mt-1">
+                                       <div class="card preview__descr-page">
                                             <div class="card-body text-center ">
-                                                <div class="card-text text-left">
+                                                <div class="card-text text-left preview__descr-text-page">
                                                     <div class="abra"></div>{{$data['announcements'][$i]->short_description}}
                                                 </div>
 
