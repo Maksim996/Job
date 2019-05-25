@@ -27,7 +27,7 @@
     }
     .news .card{
         padding: 10px 10px;
-        border: 1px solid rgba(0,0,0,0.1);
+
     }
     .preview__title{
         text-align: center;
@@ -90,6 +90,35 @@
     .news{
         padding-top: 0rem;
     }
+
+/**/
+    .practice__subtitle{
+        font-size: 16px;
+    }
+    .scroll_yak{
+        display: none;
+    }
+
+.practice__card {
+    height: 100%;
+    -webkit-box-shadow: 3px 2px 9px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 3px 2px 9px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px -1px 21px 3px rgba(0, 0, 0, .15), 10px 55px 127px -40px rgba(0, 0, 0, .15);
+    background:#fff;
+    z-index: 10;
+}
+.practice__image {
+    width: 50%;
+    height: auto;
+}
+
+
+   /* #up_scroll,a.down-arrow{
+        display: none;
+    }*/
+    /**/
+
+
 }
 @media  (max-width: 991px) {
     .navbar-nav{
@@ -124,6 +153,20 @@
     .anonc_cards-main {
         flex: 0 0 85%;
     }
+
+/**/
+.a_n__text-first{
+    position: static;
+    font-size:60px;
+    margin-bottom:  1rem;
+}
+.a_n__text-center{
+    text-align: center;
+}
+
+
+/**/
+
    
 }
 @media  (max-width: 800px){
@@ -151,6 +194,13 @@
     .preview{
         padding-top: 1rem;
     }
+    /**/
+.a_n__text-first{
+
+    font-size:50px;
+
+}
+    /**/
 }
 @media  (max-width: 767px) and (min-width: 480px){
     
@@ -187,6 +237,15 @@
     .practice__image{
         max-width: 50%;
     }
+    /**/
+    .banner img{
+        min-height: 220px;
+    }
+    /*.filter{
+        height: 200px;
+    }
+*/
+    /**/
 
 }
 
@@ -208,13 +267,14 @@
     .down-arrow{
         bottom: 15px;
     }
+    /**/
+
+/**/
 }
 
 
 @media  (max-width: 400px) {
-    h5.preview__text {
-        height: 3.25rem;
-    }
+
     
     img.image__slick-next {
         margin-right: 0.75rem;

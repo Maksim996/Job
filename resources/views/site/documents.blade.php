@@ -7,7 +7,7 @@
         <div class="a_n__line">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-8 a_n__text-center">
                         <div class="a_n__text-first">Документи</div>
                     </div>
                 </div>

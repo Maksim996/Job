@@ -82,10 +82,13 @@
                         <div id="k_aside_menu" class="k-aside-menu " data-kmenu-vertical="1" data-kmenu-scroll="1" data-kmenu-dropdown-timeout="500" >
                             <ul class="k-menu__nav ">
                                 <li class="k-menu__item k-menu__item--active" aria-haspopup="true" >
-                                    <a  href="{{ route('ad_header-menu')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Меню</span></a>
+
+                                    <a href="{{ route('ad_header-menu')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Меню</span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_header')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+
+                                    <a href="{{ URL::route('header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+
                                 </li>
                                 <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here -->
                                 <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
@@ -119,6 +122,7 @@
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
                                     <a  href="{{ route('ad_announcements')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+
                                         Анонси
                                     </span></a>
                                 </li>
@@ -133,12 +137,17 @@
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+
+                                    <a href="{{ route('ad_footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+
                                         Футер
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
+
                                     <a  href="{{ route('logout') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i>
+
+                                   
                                         <span class="k-menu__link-text"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout

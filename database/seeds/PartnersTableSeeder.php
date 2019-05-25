@@ -12,12 +12,40 @@ class PartnersTableSeeder extends Seeder
     public function run()
     {
         DB::table('partners')->insert([
-    		'img_path' => 'partners/porta_one.png',
+    		'img_path' => '/images/main/brands/amc-bridge.png',
     		'link' => 'http://portaone.com/',
+            'name_brand' => 'portaone',
         ]);
         DB::table('partners')->insert([
-    		'img_path' => 'partners/cisco.png',
-    		'link' => 'http://cisco.com/',
+            'img_path' => '/images/main/brands/cisco.png',
+            'link' => 'http://cisco.com/',
+            'name_brand' => 'cisco',
         ]);
+        DB::table('partners')->insert([
+            'img_path' => '/images/main/brands/netcracker.png',
+            'link' => 'http://cisco.com/',
+            'name_brand' => 'cisco',
+        ]);
+        DB::table('partners')->insert([
+            'img_path' => '/images/main/brands/armg.png',
+            'link' => 'http://cisco.com/',
+            'name_brand' => 'cisco',
+        ]);
+        DB::table('partners')->insert([
+            'img_path' => '/images/main/brands/mindk.png',
+            'link' => 'http://cisco.com/',
+            'name_brand' => 'cisco',
+        ]);
+        DB::table('partners')->insert([
+            'img_path' => '/images/main/brands/new-generation.png',
+            'link' => 'http://cisco.com/',
+            'name_brand' => 'cisco',
+        ]);
+        DB::table('partners')->insert([
+            'img_path' => '/images/main/brands/portaone.png',
+            'link' => 'http://portaone.com/',
+            'name_brand' => 'portaone',
+        ]);
+        
     }
 }
