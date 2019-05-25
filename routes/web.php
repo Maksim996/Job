@@ -44,6 +44,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	Route::get('announcement/{id}', function ($id) {
 	    return view('/admin/announcement', array('id' => $id));
 	});
+	Route::get('documents', function () {
+	    return view('/admin/documents');
+	})->name('ad_documents');
 	Route::get('news', function () {
 	    return view('/admin/news');
 	})->name('ad_news');
@@ -56,6 +59,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	Route::get('new/{id}', function ($id) {
 	    return view('/admin/new', array('id' => $id));
 	});
+	Route::get('document/create', function () {
+	    return view('/admin/document_template');
+	});
 	Route::get('partners', function () {
 	    return view('/admin/partners');
 	})->name('ad_partners');
@@ -65,10 +71,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 Route::get('template', function(){
 	return view('site/template');
 });
-Route::get('/', 'Site\HomeController@index');
+Route::get('/', 'Site\HomeController@index')->name('home');
 
 Route::get('new/{id}-{title}', 'Site\NewController@index')->name('new');
 Route::get('announcement/{id}-{title}', 'Site\AnnouncementController@index')->name('announcement');
+Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
 
 Route::get('news', 'Site\NewsController@index')->name('news');
 Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');

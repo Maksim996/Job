@@ -86,7 +86,7 @@
             </div>
             <div class="row add-partners k-portlet__body">
                 <div class="col-lg-12">
-                    <button class="btn btn-brand k-btn k-btn--icon but-plus" id="info_plus">
+                    <button type="button" class="btn btn-brand k-btn k-btn--icon but-plus" id="info_plus">
                         <span> <i class="la la-plus"></i> <span>Додати</span> </span>
                     </button>
                 </div>
@@ -154,7 +154,7 @@
             </div>
             <div class="row add-partners k-portlet__body">
                 <div class="col-lg-12">
-                    <button class="btn btn-brand k-btn k-btn--icon but-plus" id="social_plus">
+                    <button type="button" class="btn btn-brand k-btn k-btn--icon but-plus" id="social_plus">
                         <span> <i class="la la-plus"></i> <span>Додати соціальну мережу</span> </span>
                     </button>
                 </div>
