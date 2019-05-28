@@ -19,7 +19,19 @@
                 height: 240px;
             }
         </style>
-        <form action="#" class="k-form">
+
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form">
+            {{ @csrf_field() }}
             <div class="k-portlet__body">
                 <div class="row mt-5">
                     <div id="block1" class="col-lg-4 col-md-12  mt-2">
@@ -31,29 +43,29 @@
                                 <p class="card-text practice__text">Практика - це можливість набратись досвіду й знайти своє призначення</p>
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="card_title[]" type="text" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
-                                <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                                <textarea name="card_description[]" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" class="form-control" placeholder="">
+                                <input name="img_path[]" type="file" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="card_link[]" class="form-control" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -68,25 +80,25 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="card_title[]" type="text" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
-                                <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                                <textarea name="card_description[]" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" class="form-control" placeholder="">
+                                <input type="file" name="img_path[]" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="card_link[]" class="form-control" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -101,25 +113,25 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="card_title[]" type="text" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
-                                <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                                <textarea name="card_description[]" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" class="form-control" placeholder="">
+                                <input type="file" name="img_path[]" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="card_link[]" class="form-control" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -129,13 +141,12 @@
                 <div class="k-form__actions">
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="reset" class="btn btn-brand">Зберегти</button>
+                            <button type="submit" class="btn btn-brand">Зберегти</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-      
    </div>
    <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"

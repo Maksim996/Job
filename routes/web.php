@@ -29,23 +29,29 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	    return view('/admin/header-menu');
 	})->name('ad_header-menu');
 
-	Route::resource('header', 'Admin\HeaderController')->name('ad_header');
+	Route::resource('header', 'Admin\HeaderController', ['as' => 'ad_header']);
 
-	Route::get('practic-header', function () {
-	    return view('/admin/practic-header');
-	})->name('ad_practic-header');
-	Route::get('practic-cards', function () {
-	    return view('/admin/practic-cards');
-	})->name('ad_practic-cards');
+	Route::resource('practic-header', 'Admin\PracticHeaderController', ['as' => 'ad_practic-header']);
+
+	Route::resource('practic-cards', 'Admin\PracticCardController', ['as' => 'ad_practic-cards']);
+
+	Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
+
+	// Route::get('practic-header', function () {
+	//     return view('/admin/practic-header');
+	// })->name('ad_practic-header');
+	// Route::get('practic-cards', function () {
+	//     return view('/admin/practic-cards');
+	// })->name('ad_practic-cards');
     Route::get('announcements', function () {
 	    return view('/admin/announcements');
 	})->name('ad_announcements');
 	Route::get('announcement/{id}', function ($id) {
 	    return view('/admin/announcement', array('id' => $id));
 	});
-	Route::get('documents', function () {
-	    return view('/admin/documents');
-	})->name('ad_documents');
+	// Route::get('documents', function () {
+	//     return view('/admin/documents');
+	// })->name('ad_documents');
 	Route::get('news', function () {
 	    return view('/admin/news');
 	})->name('ad_news');

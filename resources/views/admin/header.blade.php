@@ -23,18 +23,9 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('header.store') }}" class="k-form k-form--label-right">
-            
-
+        <form method="POST" action="{{ URL::route('ad_header.header.store') }}" class="k-form k-form--label-right">
             {{ @csrf_field() }}
             <div class="k-portlet__body">
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Картинка для хедера</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="img_path" class="form-control" placeholder="" value="{{ old('img_path') }}">
-                        <span class="form-text text-muted">URL картинки для хедера</span> 
-                    </div>
-                </div>
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
@@ -50,28 +41,6 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" name="content" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
-                        <span class="form-text text-muted">Короткий опис</span> 
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="keywords" class="form-control" placeholder="" value="{{ old('keywords') }}">
-                        <span class="form-text text-muted">Набір ключових слов</span> 
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="description" class="form-control" placeholder="" value="{{ old('description') }}">
-                        <span class="form-text text-muted">Короткий опис для ключових слів</span> 
-                    </div>
-                </div>
-                
-                <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <form enctype="multipart/form-data" method="post">
@@ -84,14 +53,14 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="">
-                        <span class="form-text text-muted">Ключові слова для пошукової системи(виводити через кому) , наприклад: СумДУ, Сумський державний університет, СумГУ, SSU</span> 
+                        <input name="keywords" type="text" class="form-control" placeholder="" value="{{ old('keywords') }}">
+                        <span class="form-text text-muted">Ключові слова для пошукової системи(виводити через кому), наприклад: СумДУ, Сумський державний університет, СумГУ, SSU</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                        <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
                         <span class="form-text text-muted">Короткий опис сторінки</span> 
                     </div>
                 </div>

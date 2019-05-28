@@ -4,26 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Header;
-use App\Http\Requests\HeaderRequest;
+use App\PracticeIntershipCard;
+use App\Http\Requests\PracticeIntershipCardRequest;
 
-class HeaderController extends Controller
+class PracticCardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function index()
     {
-        $headers = Header::all();
+        $practicCards = PracticeIntershipCard::all();
 
         $data = [
-            'header' => $headers,
+            'practicCards' => $practicCards,
         ];
 
-        return view('admin.header', compact('data'));
+        return view('admin.practic-cards', compact('data'));
     }
 
     /**
@@ -33,7 +32,7 @@ class HeaderController extends Controller
      */
     public function create()
     {
-        //return view('admin.header');
+        //return view('admin.practic-cards');
     }
 
     /**
@@ -42,19 +41,18 @@ class HeaderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HeaderRequest $request)
+    public function store(PracticeIntershipCardRequest $request)
     {
-        // $img_path = 'image_path';
-        // $request->request->add(['img_path' => $img_path]);
-        // dump($request);die;
-        $header = Header::create($request->validated());
-        $header->save();
+        // $requestData = $request->all();
+        // dump($requestData);die;
+        $practicCard = PracticeIntershipCard::create($request->validated());
+        $practicCard->save();
 
         $data = [
-            'header' => $header,
+            'practicCard' => $practicCard,
         ];
 
-        return view('admin.header', compact('data'));
+        return view('admin.practic-cards', compact('data'));
     }
 
     /**
@@ -65,11 +63,13 @@ class HeaderController extends Controller
      */
     public function show($id)
     {
-        // $header = Header::findorFail($id);
-        // $data = [
-        //     'header' => $header
-        // ];
-        //return view('admin.header', compact('data'));
+        $practicCard = PracticeIntershipCard::findOrFail($id);
+
+        $data = [
+            'practicCard' => $practicCard
+        ];
+
+        return view('admin.practic-cards', compact('data'));
     }
 
     /**
@@ -80,12 +80,7 @@ class HeaderController extends Controller
      */
     public function edit($id)
     {
-        $header = Header::findOrfail($id);
-        $data = [
-            'header' => $header
-        ];
-
-        return view('admin.header', compact('data'));
+        //return view('admin.practic-cards');
     }
 
     /**
@@ -95,17 +90,17 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(HeaderRequest $request, $id)
+    public function update(PracticeIntershipCardRequest $request, $id)
     {
-        $header = Header::findOrfail($id);
+        $practicCard = PracticeIntershipCard::findOrfail($id);
 
-        $header->update($request->validated());
+        $practicCard->update($request->validated());
 
         $data = [
-            'header' => $header
+            'practicCard' => $practicCard
         ];
-        
-        return view('admin.header', compact('data'));
+
+        return view('admin.practic-cards', compact('data'));
     }
 
     /**
@@ -116,8 +111,8 @@ class HeaderController extends Controller
      */
     public function destroy($id)
     {
-        // $header = Header::findOrFail($id);
-        // $header->delete();
-        // return view('admin.header');
+        // $practicCard = PracticeIntershipCard::findOrfail($id);
+        // $practicCard->delete();
+        // return view('admin.practic-cards');
     }
 }
