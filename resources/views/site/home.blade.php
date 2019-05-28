@@ -132,7 +132,7 @@
             
                 <div class="row">
                     <div class="col-md-12 col-lg-9">
-                        <div class="card">
+                        <div class="card news__one">
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="card-title news__title">{{$data['news'][0]->title}}</h5>
@@ -162,8 +162,8 @@
 
                     @for($i = 1; $i < (count($data['news'])) && $i < 5; $i++)
 
-                    <div class="col-md-12 col-lg-6 mt-4">
-                        <div class="card">
+                    <div class="col-md-12 col-lg-6 mt-4 ">
+                        <div class="card news__one">
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="card-title news__title-item">{{$data['news'][$i]->title}}</h5>

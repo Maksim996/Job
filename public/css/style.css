@@ -969,9 +969,6 @@ close rgba(68,143,210,.36)*/
     font-family: SegoeUI-Light, Segoe UI;
     font-weight: 400;
 }
-.news__data{
-    text-align: right;
-}
 .news__border{
     border-bottom: 1px solid  rgba(0,0,0,.1); 
     margin-top: 2rem;
@@ -994,7 +991,7 @@ close rgba(68,143,210,.36)*/
         height: 100%;
     }
 .docum .btn-dark{
-    background: rgba(0,0,0,0);
+    background: rgba(0,0,0,0.2);
     margin:0.25rem 0;
     font-size: 1rem;
     transition: all 0.5s;
@@ -1155,6 +1152,7 @@ margin: auto 0;
 
     .news{
         margin:0 auto;
+
     }
     .news .card{
         padding: 10px 10px;
@@ -1353,4 +1351,9 @@ margin: auto 0;
     }
 /**/
 
+/*28.05.19*/
+ .docum .btn-dark:hover{
+    background: rgba(0,0,0,0.2);
+}
 
+/**/

@@ -89,8 +89,20 @@
     }
     .news{
         padding-top: 0rem;
+
+    }
+    /*27.05.19*/
+    .news__one{
+                        
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        margin-bottom: 10px;
+       
+    }
+    .news__data{
+        text-align: left;
     }
 
+ /**/
 /**/
     .practice__subtitle{
         font-size: 16px;
