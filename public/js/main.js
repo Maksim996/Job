@@ -169,7 +169,7 @@ $(window).scroll(function(){
     function deleteDiv(){               
         tutu.style.display='none';
     }
-    if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)+100  ) {
+    if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)-800  ) {
         $('.caption__last').addClass('hover');
         $('.caption__news').addClass('hover');  
         setTimeout( caption__display,2500);
