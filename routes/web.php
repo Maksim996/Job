@@ -29,8 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	    return view('/admin/header-menu');
 	})->name('ad_header-menu');
 
-	Route::resource('header', 'Admin\HeaderController')->name('ad_header');
-
+	Route::resource('header', 'Admin\HeaderController');
 	Route::get('practic-header', function () {
 	    return view('/admin/practic-header');
 	})->name('ad_practic-header');
