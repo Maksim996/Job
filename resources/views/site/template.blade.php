@@ -30,9 +30,9 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item {{ Route::currentRouteName() =='' ? 'active' : ''}}">
+                                <li class="nav-item {{ Route::currentRouteName() =='home' ? 'active' : ''}}">
                                     <!-- {{ Route::currentRouteName() == '' ? 'active' : ''}} -->
-                                    <a class="nav-link" href="/">Головна {!! Route::currentRouteName() == '' ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                    <a class="nav-link" href="/">Головна {!! Route::currentRouteName() == 'home' ? '<span class="sr-only">(current)</span>' : ''!!}</a>
                                      
                                 </li>
                                 <li class="nav-item {{ Route::currentRouteName() =='news' ? 'active' : ''}}">
@@ -129,11 +129,6 @@
                                         <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
                                         <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
                                         <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
-                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
-                                        <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
-                                        <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
-                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
-
                                     </ul>
                                 </li>
                             </ul>

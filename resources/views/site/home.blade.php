@@ -8,7 +8,7 @@
             <figure class="banner"><img src="{{ URL::asset('images/people-coffee-tea-meeting.png') }}"></figure>
             <figure class="filter"></figure>
             <div class="header-title_block">
-                <a href="admin/news" class="blueLine">
+                <a href="#" class="blueLine">
                     <h1>
                         ВІДДІЛ ПРАКТИКИ ТА ІНТЕГРАЦІЙНИХ<br> ЗВ'ЯЗКІВ ІЗ ЗАМОВНИКАМИ КАДРІВ
                     </h1>
@@ -38,7 +38,7 @@
                         <p class="practice__subtitle">Якщо ПРАКТИКА – це обов’язкова складова навчального процесу, то СТАЖУВАННЯ передбачає отримання практичного досвіду у вільний від навчання час. В обох випадках Ви отримаєте професійні навички та можливість проявити власні якості – ініціативність, креативність, наполегливість.</p>
                     </div>
                 </div>
-                <div class="row mt-md-5 mt-sm-2">
+                <div class="row mt-md-5 mt-4">
                     @foreach($data['practice_intership_card'] as $card)
                         <div class="col-md-12 col-lg-4 card  mb-4 ">
                             <a href="#" class="practice__item practice__card p-3 pb-4 ">
@@ -102,7 +102,7 @@
                     @endfor
                 </div>
 
-                <div class="row mt-5 preview__last-row">
+                <div class="row my-5 preview__last-row">
                     <div class="col-12 text-center">
                         <a href="/announcements" class="btn btn-outline-primary preview__button-more preview__button-not-hover">Більше анонсів</a>
                     </div>
@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="news_noanimation mt-5">
+        <div class="news_noanimation">
             <div class="col preview__title">
                 <h3>Новини</h3>
             </div>

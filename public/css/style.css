@@ -1,3 +1,55 @@
+@font-face{
+
+font-family: 'Arial-Regular';
+
+src: url('../fonts/ArialRegular.ttf');
+
+}
+@font-face{
+
+font-family: 'AvenirNext-Bold';
+
+src: url('../fonts/AvenirNext-Bold.ttf');
+
+}
+
+@font-face{
+
+font-family: 'AvenirNextCyr-Bold';
+
+src: url('../fonts/AvenirNextCyr-Bold.ttf'),
+url('../fonts/AvenirNextCyr-BoldItalic.ttf.ttf');
+
+}
+@font-face{
+
+font-family: 'AvenirNextCyr-Regular';
+
+src: url('../fonts/AvenirNextCyr-Regular.ttf');
+
+}
+@font-face{
+
+font-family: 'AvenirNextCyr-Light';
+
+src: url('../fonts/AvenirNextCyr-Light.ttf'),
+url('../fonts/AvenirNextCyr-LightItalic.ttf'),
+url('../fonts/AvenirNextCyr-UltraLight.ttf'),
+url('../fonts/AvenirNextCyr-UltraLightIt.ttf');
+
+}
+@font-face{
+
+font-family: 'AvenirNextCyr-Demi';
+
+src: url('../fonts/AvenirNextCyr-Demi.ttf'),
+url('../fonts/AvenirNextCyr-DemiItalic.ttf');
+
+
+}
+
+
+
 body {
     margin: 0;
     padding: 0;
@@ -127,6 +179,7 @@ ul{
     }
     .nav-item{
         height: 100%;
+        font-family: AvenirNext-Bold;
     }
     .navbar-expand-lg .navbar-nav .nav-link{
         height: 100%;
@@ -179,6 +232,7 @@ ul{
         padding-top: 0;
         padding-bottom: 0;
         min-width: 0;
+        font-family: AvenirNextCyr-Regular;
     }
     .dropdown-toggle::after{
         vertical-align: 0.120em;
@@ -304,6 +358,7 @@ ul{
     text-align: center;
     margin-top: 0;
     color: rgba(255,255,255,.8);
+    font-family: AvenirNext-Bold;
 }
 .blueLine h1{
     font-weight: bold;
@@ -322,6 +377,7 @@ ul{
     text-align: center;
     margin-bottom: 0;
     position: relative;
+    font-family: AvenirNextCyr-Light;
 }
 
 .down-arrow{
@@ -380,13 +436,13 @@ ul{
 
 .practice__title {
     font-size: 2rem;
-    font-family: SegoeUI-Light, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 300;
 }
 
 .practice__subtitle {
     font-size: 1.15rem;
-    font-family: SegoeUI-Light, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 300;
 
 }
@@ -416,12 +472,12 @@ a.practiceitem {
 
 .practice__topic {
     font-size: 0.9rem;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Demi;
 }
 
 .practice__text {
     font-size: 0.85rem;
-    font-family: SegoeUI-Regular, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 425;
 }
 
@@ -468,7 +524,7 @@ a.practiceitem {
     background: white;
     visibility: hidden;
     font-size: 0.85rem;
-    font-family: SegoeUI-Regular, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 425;
     display: block;
     opacity: 0;
@@ -491,7 +547,7 @@ a.practiceitem {
 .preview__item {
     height: 100%;
     font-size: 13px;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Regular;
     position: relative;
     z-index: 4;
     background: #fff;
@@ -505,8 +561,7 @@ a.practiceitem {
         position: absolute;
     top: 0;
     font-size: 18px;
-    font-family: SegoeUI, Segoe UI;
-    line-height: normal;
+     line-height: normal;
 }
 
 .preview__card:hover {
@@ -532,7 +587,7 @@ a.practiceitem {
 }
 .preview__button {
     font-size: 0.8rem;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Demi;
 }
 
 
@@ -617,57 +672,57 @@ a.practiceitem {
 
 .news__title {
     font-size: 26px;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Demi;
 }
 
 .news__link {
     color: #3fa3eb;
     font-size: 17px;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Regular;
 
 }
 
 .news__date {
     font-size: 15px;
-    font-family: ArialMT, Arial;
+    font-family: Arial;
     display: block;
     margin-bottom: 0;
 }
 
 .news__text {
     font-size: 18px;
-    font-family: SegoeUI-Light, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 400;
     margin-bottom: 0;
 }
 
 .news__title-item {
     font-size: 22px;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Demi;
 }
 
 .news__link-item {
     color: #3fa3eb;
     font-size: 15px;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Regular;
 }
 
 .news__date-item {
     font-size: 13px;
-    font-family: ArialMT, Arial;
+    font-family: Arial;
     margin-bottom: 0;
 }
 
 .news__text-item {
     font-size: 15px;
-    font-family: SegoeUI-Light, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 400;
     margin-bottom: 0;
 }
 
 .news__button {
     font-size: 1rem;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Demi;
     text-align: center;
 }
 
@@ -722,6 +777,7 @@ footer{
     background: #222222;
     font-size: 0.85rem;
     padding: 1.5rem 0 ;
+    font-family: Arial-Regular;
 }
 .footer_left {
     padding-left: 0;
@@ -870,7 +926,7 @@ footer{
 /*стили для акордиона collapse*/
 .accord{
     font-size: 1.5rem;
-    font-family: SegoeUI-Light, Segoe UI;
+    font-family: AvenirNextCyr-Light, Avenir Next Cyr;
     font-weight: 300;
 
 }
@@ -883,7 +939,7 @@ footer{
 }
 .accord__text{
     font-size: 1rem;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Regular;
 }
 
 .accord__table{
@@ -966,7 +1022,7 @@ close rgba(68,143,210,.36)*/
 
 .news__text-page {
     font-size: .9rem;
-    font-family: SegoeUI-Light, Segoe UI;
+    font-family: AvenirNextCyr-Light;
     font-weight: 400;
 }
 .news__border{
@@ -1026,7 +1082,7 @@ close rgba(68,143,210,.36)*/
 .docum__doc{
     background: rgba(0,0,0,0.75);
     color:rgba(255,255,255,1);
-
+font-family: AvenirNextCyr-Regular;
     overflow-y: scroll;
     height: 30rem;
       
@@ -1034,6 +1090,7 @@ close rgba(68,143,210,.36)*/
 .docum__btn{
     text-align: center;
 margin: auto 0;
+font-family: AvenirNextCyr-Bold;
 
 }
 .docum__li{
@@ -1108,7 +1165,7 @@ margin: auto 0;
     }
 
     .a_n__text-second{
-        font-family:SegoeUI-Bold, Segoe UI;
+        font-family:AvenirNext-Bold;
         position: fixed;
         left:-5%;
         font-size: 13rem;
@@ -1118,7 +1175,7 @@ margin: auto 0;
     }
 
     .a_n__text-third{
-        font-family:SegoeUI-Bold, Segoe UI;
+        font-family:AvenirNext-Bold;
         position: fixed;
         top:25%;
         left:-15%;
@@ -1129,7 +1186,7 @@ margin: auto 0;
         z-index: -3;
     }
     .a_n__text-fourth{
-        font-family:SegoeUI-Bold, Segoe UI;
+        font-family:AvenirNext-Bold;
         position: fixed;
         top:45%;
         right: -10%;
@@ -1190,7 +1247,7 @@ margin: auto 0;
         display: block;
         background: white;
         font-size: 0.85rem;
-        font-family: SegoeUI-Regular, Segoe UI;
+        font-family: AvenirNextCyr-Light;
         font-weight: 425;
         z-index: 2;
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
@@ -1199,7 +1256,7 @@ margin: auto 0;
 
     .preview__item-main {
         font-size: 0.9rem;
-        font-family: SegoeUI, Segoe UI;
+        font-family: AvenirNextCyr-Regular;
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
         position: relative;
     }
@@ -1265,14 +1322,14 @@ margin: auto 0;
 
     .news__title-page {
         font-size: 22px;
-        font-family: SegoeUI, Segoe UI;
+        font-family: AvenirNextCyr-Demi;
     }
 
 
     .news__link-page {
         color: #3fa3eb;
         font-size: 15px;
-        font-family: SegoeUI, Segoe UI;
+        font-family: AvenirNextCyr-Regular;
         display: block;
         line-height: 1.2;
 
@@ -1281,11 +1338,11 @@ margin: auto 0;
     .news__date-page {
         text-align: right;
         font-size: 1rem;
-        font-family: ArialMT, Arial;
+        font-family: Arial;
     }
     .news__text-page {
         font-size: 15px;
-        font-family: SegoeUI-Light, Segoe UI;
+        font-family: AvenirNextCyr-Light;
         font-weight: 400;
         display: block;
     }
@@ -1312,7 +1369,7 @@ margin: auto 0;
         display: block;
         background: white;
         font-size: 0.85rem;
-        font-family: SegoeUI-Regular, Segoe UI;
+        font-family: AvenirNextCyr-Light;
         font-weight: 425;
         z-index: 2; 
         padding: 1rem;
@@ -1320,7 +1377,7 @@ margin: auto 0;
 
     .preview__item-page {
         font-size: 0.9rem;
-        font-family: SegoeUI, Segoe UI; 
+        font-family: AvenirNextCyr-Regualr; 
         position: relative;
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }
@@ -1338,7 +1395,7 @@ margin: auto 0;
         position: absolute;
     top: 0;
     font-size: 18px;
-    font-family: SegoeUI, Segoe UI;
+    font-family: AvenirNextCyr-Regular;
     line-height: normal;
 }
     .preview__card-text-page{
