@@ -24,11 +24,11 @@ class InnerNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'bail|required|max:200',
+            //'type' => 'bail|required|max:200',
             'title' => 'required|max:200',
             'date' => 'required|date',
             'full_location' => 'nullabel|max:200',
-            'full_description' => 'required|max:200',
+            //'full_description' => 'required|max:200',
             'keywords' => 'required|max:200',
             'description' => 'required|max:200',
         ];

@@ -24,7 +24,7 @@ class HeaderRequest extends FormRequest
     public function rules()
     {
         return [
-            'img_path' => 'bail|required|url|max:200',
+            //'img_path' => 'bail|required|url|max:200',
             'title' => 'required|max:200',
             'link' => 'required|url',
             'content' => 'required|string',

@@ -15,8 +15,6 @@ class CreatePracticeIntershipCardTable extends Migration
     {
         Schema::create('practice_intership_card', function (Blueprint $table) {
             $table->increments('card_id');
-            $table->unsignedInteger('content_id');
-            $table->foreign('content_id')->references('content_id')->on('practice_intership_content')->onUpdate('cascade')->onDelete('cascade');
             $table->string('card_link', 200);
             $table->string('img_path', 200);
             $table->string('card_title', 200);

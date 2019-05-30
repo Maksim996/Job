@@ -42,7 +42,8 @@
                                                         {{$data['announcements'][$i]->short_location}}
                                                     </div>
                                                     <div class="card-text">
-                                                        {{$data['announcements'][$i]->date}}
+                                                        {{ date("d.m.Y", strtotime($data['announcements'][$i]->date)) }} |
+                                                        {{ date("H:i", strtotime($data['announcements'][$i]->date)) }}
                                                     </div>
                                                 </div>
                                             </div>

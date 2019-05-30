@@ -116,7 +116,7 @@
                                     </div>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_documents.documents.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('documents')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Документи
                                     </span></a>
                                 </li>
@@ -127,7 +127,7 @@
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_news')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_news.news.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Новини
                                     </span></a>
                                 </li>

@@ -44,7 +44,7 @@
                                             Детальніше...
                                         </a>
                                         <div class="news__date-page">
-                                            Дата публікації: {{$data['news'][$i]->date}}
+                                            Дата публікації: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
                                         </div>
                                     </div>
                                 </div>
