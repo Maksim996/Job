@@ -63,6 +63,39 @@
                     </div>
                 </div>
                 
+                <div class="anonc_block ">
+                    @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
+                        <div class=" col-md-7 preview__card ">
+                            <div class="card-body">
+                                <div class="card_img">
+                                    <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
+                                </div>
+                                <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
+                                <div class="card-location">
+                                    <i class="icon-location"></i>
+                                    {{$data['announcements'][$i]->short_location}}
+                                </div>
+                                <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
+                                <ul class="card-date">
+                                    <li class="card-date-item">
+                                        <i class="icon-clock-circular-outline"></i>
+                                        {{ date("H:i", strtotime($data['announcements'][$i]->date)) }}
+                                    </li>
+                                    <li class="card-date-item">
+                                        <i class="icon-calendar"></i>
+                                        {{ date("d.m.Y", strtotime($data['announcements'][$i]->date)) }} 
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button ">Детальніше</a>
+                            </div>
+                            
+
+
+                        </div>
+                    @endfor
+                </div>
 
                 <div class="anonc_block ">
                     @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
@@ -95,10 +128,6 @@
                             </div>
 
                         </div>
-
-
-
-
                     @endfor
                 </div>
 

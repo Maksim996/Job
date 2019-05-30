@@ -12,8 +12,11 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNextCyr/stylesheet.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNext/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick-theme.css') }} ">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/icon/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/media.css') }}">
 </head>
