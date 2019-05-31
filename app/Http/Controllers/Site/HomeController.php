@@ -71,11 +71,17 @@ class HomeController extends Controller
 
         $slider = DB::select("SELECT * FROM `partners`");
 
+
+        $category = DB::table("category")->get()->toArray();
+        $subcategory = DB::table("subcategory")->get()->toArray();
+
         $data = [
             'practice_intership_card' => $practice,
             'news' => $news,
             'announcements' => $announcements,
             'slider' => $slider,
+            'category' => $category,
+            'subcategory' => $subcategory,
         ];
 
         return view('site/home', compact('data'));

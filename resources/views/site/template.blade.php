@@ -25,6 +25,8 @@
     <div class="wrapper">
         <div class="wrapper-content">
             @section('menu')
+
+           
                 <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
                         <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
@@ -33,34 +35,39 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item {{ Route::currentRouteName() =='home' ? 'active' : ''}}">
-                                    <!-- {{ Route::currentRouteName() == '' ? 'active' : ''}} -->
-                                    <a class="nav-link" href="/">Головна {!! Route::currentRouteName() == 'home' ? '<span class="sr-only">(current)</span>' : ''!!}</a>
-                                     
-                                </li>
-                                <li class="nav-item {{ Route::currentRouteName() =='news' ? 'active' : ''}}">
-                                    <a class="nav-link" href="/news">
-                                        Новини 
-                                        {!! Route::currentRouteName() == 'news' ? '<span class="sr-only">(current)</span>' : ''!!}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Працевлаштування та практика</a>
-                                </li>
-                                <li class="nav-item dropdown {{ Route::currentRouteName() =='documents' ? 'active' : ''}} ">
+                            @foreach($data['category'] as $category) 
+                                @if($category->type != 'type3')
+                                 <li class="nav-item {{ Route::currentRouteName() == $category->link ? 'active' : ''}}">
+                                    @if($category->link == 'home')
+                                    <a class="nav-link" href="/">
+                                    @elseif($category->type == 'type2')
+                                    <a class="nav-link" href="{{$category->link}}">
+                                    @else
+                                    <a class="nav-link" href="/{{$category->link}}">
+                                    @endif
+                                    {{$category->title}} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                @else
+                                <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Документи
-
+                                       {{$category->title}}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="/documents?position=1">Нормативні</a>
-                                        <a class="dropdown-item" href="/documents?position=2">Рада роботодавців</a>
-                                        <a class="dropdown-item" href="/documents?position=3">Інші</a>
+                                    @foreach($data['subcategory'] as $subcategory)
+                                        @if($subcategory->category_id == $category->category_id)
+                                        @if($subcategory->type == "type2")
+                                        <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title}}</a>
+                                        @else
+                                        <a class="dropdown-item" href="{{$subcategory->link}}">{{$subcategory->title}}</a>
+                                        @endif
+                                        @endif
+                                    @endforeach
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Відомі випускники</a>
+                                @endif
+                                     
                                 </li>
+                            @endforeach
+                                
                                 <li class="nav-item dropdown language-full ">
                                     <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="{{ URL::asset('images/ukraine.svg')}}">

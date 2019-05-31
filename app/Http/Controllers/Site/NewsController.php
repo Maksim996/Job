@@ -41,8 +41,13 @@ class NewsController extends Controller
             $news[$i]->trans_title = $this->transliterate($news[$i]->title);
         }
 
+        $category = DB::table("category")->get()->toArray();
+        $subcategory = DB::table("subcategory")->get()->toArray();
+
         $data = [
             'news' => $news,
+            'category' => $category,
+            'subcategory' => $subcategory,
         ];
 
         return view('site/news', compact('data'));

@@ -19,12 +19,16 @@ class DocumentsController extends Controller
             array_push($ids, $item->subcategory_id);
         }
 
-        $subCategories = DB::table('subcategory')->whereIn('subcategory_id',$ids)->get()->toArray();
+        $category = DB::table("category")->get()->toArray();
+        $subcategory = DB::table("subcategory")->get()->toArray();
+        $subCategories = DB::table('subcategory')->whereIn('subcategory_id',$ids)->where('type','!=','type1')->get()->toArray();
 
 
         $data=[
             'documents' => $documents,
             'subcategories' => $subCategories,
+            'category' => $category,
+            'subcategory' => $subcategory,
         ];
 
     	return view('site/documents',compact('data'));

@@ -35,16 +35,21 @@ class AnnouncementsController extends Controller
             // ['date', '>', $date],
         ])
         ->orderBy('date', 'desc')
-        ->get()->toArray();
+        ->paginate(6);
 
-        // ->paginate(2);
+        
 
         for($i = 0; $i < count($announcements); $i++) {
             $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
         }
 
+        $category = DB::table("category")->get()->toArray();
+        $subcategory = DB::table("subcategory")->get()->toArray();
+
         $data = [
             'announcements' => $announcements,
+            'category' => $category,
+            'subcategory' => $subcategory,
         ];
 
     	return view('site/announcements', compact('data'));

@@ -1,7 +1,6 @@
 @extends('site.template')
-
 @section('menu')
-@parent
+    @parent
 @endsection
 @section('content')
         <header class="position-relative">
@@ -66,70 +65,43 @@
                 <div class="anonc_block ">
                     @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
                         <div class=" col-md-7 preview__card ">
-                            <div class="card-body">
-                                <div class="card_img">
-                                    <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
+                            <div class="card-body d-flex flex-column justify-content-between ">
+                                <div>
+                                    <div class="card_img">
+                                        <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
+                                    </div>
+                                    <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
+                                    <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
                                 </div>
-                                <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
-                                <div class="card-location">
-                                    <i class="icon-location"></i>
-                                    {{$data['announcements'][$i]->short_location}}
+                                
+                              
+                                <div>
+                                    <div class="card-location">
+                                        <i class="icon-location"></i>
+                                        {{$data['announcements'][$i]->short_location}}
+                                    </div>
+                                    <ul class="card-date">
+                                        <li class="card-date-item">
+                                            <i class="icon-clock-circular-outline"></i>
+                                            {{ date("H:i", strtotime($data['announcements'][$i]->date)) }}
+                                        </li>
+                                        <li class="card-date-item">
+                                            <i class="icon-calendar"></i>
+                                            {{ date("d.m.Y", strtotime($data['announcements'][$i]->date)) }} 
+                                        </li>
+                                    </ul>
                                 </div>
-                                <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
-                                <ul class="card-date">
-                                    <li class="card-date-item">
-                                        <i class="icon-clock-circular-outline"></i>
-                                        {{ date("H:i", strtotime($data['announcements'][$i]->date)) }}
-                                    </li>
-                                    <li class="card-date-item">
-                                        <i class="icon-calendar"></i>
-                                        {{ date("d.m.Y", strtotime($data['announcements'][$i]->date)) }} 
-                                    </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                 <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button ">Детальніше</a>
                             </div>
-                            
 
 
                         </div>
                     @endfor
                 </div>
 
-                <div class="anonc_block ">
-                    @for($i = 0; $i < count($data['announcements']) && $i < 4; $i++)
-                        <div class=" col-md-7 preview__card ">
-                            <div class="preview__item w-100">
-                                <div class="card_img">
-                                    <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
-                                    
-                                </div>
-
-                                <div class="card-body preview__body">
-                                    <h5 class="card-text preview__text">{{$data['announcements'][$i]->title}}</h5>
-                                    <div>
-                                        <div class="card-text">
-                                            {{$data['announcements'][$i]->short_location}}
-                                        </div>
-                                        <div class="card-text">
-                                            {{$data['announcements'][$i]->date}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-lg-none p-0 m-0 dropdown-divider"></div>
-                            <div class="preview__descr ">
-                                <div class="card-body text-center px-2 py-0">
-                                    <p class="card-text text-left">{{$data['announcements'][$i]->short_description}}</p>
-                                    <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button mb-2">Детальніше</a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    @endfor
-                </div>
+     
 
                 <div class="row my-5 preview__last-row">
                     <div class="col-12 text-center">

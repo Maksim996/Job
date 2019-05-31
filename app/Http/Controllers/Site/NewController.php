@@ -26,9 +26,14 @@ class NewController extends Controller
         ->toArray();
         //dump($slider_news);die;
 
+        $category = DB::table("category")->get()->toArray();
+        $subcategory = DB::table("subcategory")->get()->toArray();
+
     	$data = [
             'new' => $new,
             'slider' => $slider_news,
+            'category' => $category,
+            'subcategory' => $subcategory,
         ];
 
     	return view('site/post', compact('data'));

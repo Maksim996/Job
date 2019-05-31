@@ -69,9 +69,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 });
 
 //site routes
-Route::get('template', function(){
-	return view('site/template');
-});
+// Route::get('template', function(){
+// 	return view('site/template');
+// });
+// Route::get('template', 'Site\TemplateController@siteTemplate');
 Route::get('/', 'Site\HomeController@index')->name('home');
 
 Route::get('new/{id}-{title}', 'Site\NewController@index')->name('new');

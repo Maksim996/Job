@@ -448,6 +448,7 @@ a.practiceitem {
     margin: 0 15px 20px;
     z-index: 5;
     padding: 0 15px;
+    max-width: 304px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -501,9 +502,12 @@ a.practiceitem {
 }
 
 .card-footer a{
-    margin:0 auto;
-    width: 150px;
+    margin:5px auto;
+    width: 120px;
     display: block;
+    font-size: 12px;
+    font-weight: 530;
+    text-transform: uppercase;
 }
 .card_img{
     margin-bottom: 10px;
