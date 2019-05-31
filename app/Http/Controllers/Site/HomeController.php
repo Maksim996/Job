@@ -74,6 +74,8 @@ class HomeController extends Controller
 
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
+        $header = DB::table('header')->get()->toArray();
+        $internship = DB::table('practice_intership_content')->get()->toArray();
 
         $data = [
             'practice_intership_card' => $practice,
@@ -82,6 +84,8 @@ class HomeController extends Controller
             'slider' => $slider,
             'category' => $category,
             'subcategory' => $subcategory,
+            'header' => $header,
+            'internship' => $internship,
         ];
 
         return view('site/home', compact('data'));

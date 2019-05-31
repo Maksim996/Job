@@ -22,6 +22,7 @@ class DocumentsController extends Controller
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
         $subCategories = DB::table('subcategory')->whereIn('subcategory_id',$ids)->where('type','!=','type1')->get()->toArray();
+        $header = DB::table('header')->get()->toArray();
 
 
         $data=[
@@ -29,6 +30,7 @@ class DocumentsController extends Controller
             'subcategories' => $subCategories,
             'category' => $category,
             'subcategory' => $subcategory,
+            'header' => $header,
         ];
 
     	return view('site/documents',compact('data'));

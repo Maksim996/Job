@@ -2,11 +2,14 @@
     .card_img{
         min-height:calc(100vw / 8);  
     }
+     .blueLine h1{
+        font-size: 2.4rem ;
         
+    } 
 }
 @media (max-width:1200px){
     .blueLine h1{
-        font-size: 2.5rem ;
+        font-size: 2.1rem ;
         
     }
     .news__about{
@@ -16,9 +19,17 @@
 @media  (max-width: 1100px) {
     .navbar-expand-lg .navbar-nav .nav-link{
         padding: .55rem .8rem;
+        font-size: 15px;
+    }
+    .menu_header_home .navbar-brand img{
+        width:  140px;
+        top: 3px;
     }
 }
 @media  (max-width: 998px) {
+    .empty-fild{
+        display: none;
+    }
     .news__date{
         font-size: 13px;
     }
@@ -33,7 +44,7 @@
         text-align: center;
     }
     .blueLine h1{
-        font-size: 2rem ;
+        font-size: 1.8rem ;
         
     }
     .header__text{
@@ -182,7 +193,7 @@
 }
 @media  (max-width: 800px){
     .blueLine h1{
-        font-size: 1.25rem ;
+        font-size: 1.23rem ;
         margin-bottom: 0;
         
     }
@@ -228,11 +239,26 @@
 
 }
 @media  (max-width: 767px) {
+    .footer_right__aboutUs{
+        margin:2rem 0 1rem 0;
+    }
+    .news__button{
+                margin: 5rem 0rem;
+    }
+    .footer_right__aboutUs .circle{
+        display: none;
+    }
+    .footer_right__aboutUs div{
+        width: 100%;
+    }
     .footer_right{
         align-items: center;
     }
-    .footer_right__aboutUs{
-        margin:1rem 0;
+    .preview__title h3{
+        text-align: left;   
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        padding: 10px;   
+        margin-bottom: 20px; 
     }
     .news__card-item{
         padding: 0.5rem;
@@ -252,6 +278,9 @@
     .banner img{
         min-height: 220px;
     }
+    .blueLine h1{
+        font-size:1.15rem;
+    }
     /*.filter{
         height: 200px;
     }
@@ -262,7 +291,7 @@
 
 @media  (max-width: 500px) {
     .blueLine h1{
-        font-size:1rem;
+        font-size:.9rem;
     }
     .menu_header_home .navbar{
         margin-top: 5px;

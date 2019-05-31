@@ -64,7 +64,7 @@
                             @endfor
                             @if(count($data['announcements']) < 8)
                                     @for($i = count($data['announcements']); $i < 8; $i++)
-                                 <div class=" col-md-7 preview__card ">
+                                 <div class=" col-md-7 preview__card empty-fild">
                                     </div>
                                 @endfor                                    
                             @endif

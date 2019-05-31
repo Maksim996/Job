@@ -28,12 +28,14 @@ class NewController extends Controller
 
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
+        $header = DB::table('inner_news')->where('inner_news_id',$id)->get()->toArray();
 
     	$data = [
             'new' => $new,
             'slider' => $slider_news,
             'category' => $category,
             'subcategory' => $subcategory,
+            'header' => $header,
         ];
 
     	return view('site/post', compact('data'));

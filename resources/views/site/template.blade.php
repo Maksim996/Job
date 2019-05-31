@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <title>Job</title>
 
+
+    <meta name="keywords" content="{{$data['header'][0]->keywords}}">
+    <meta name="description" content="{{$data['header'][0]->description}}">
+
     <link rel="shortcut icon" type="image/svg" href="img/FavIcon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="{{ URL::asset('js/jquery3_3_1.js')}}"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNextCyr/stylesheet.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNext/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNext/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick-theme.css') }} ">
     <link rel="stylesheet" href="{{ URL::asset('fonts/icon/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/media.css') }}">
+    
 </head>
 
 <body id="body">
@@ -31,7 +36,8 @@
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
                         <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <img class="navbar-toggler-icon" src="{{URL::asset('images/menu-options.svg')}}" alt="menu">
+                        <i class="icon-menu-options"></i>
+                        
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">

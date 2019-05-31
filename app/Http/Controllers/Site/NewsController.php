@@ -43,11 +43,13 @@ class NewsController extends Controller
 
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
+        $header = DB::table('header')->get()->toArray();
 
         $data = [
             'news' => $news,
             'category' => $category,
             'subcategory' => $subcategory,
+            'header' => $header,
         ];
 
         return view('site/news', compact('data'));
