@@ -39,6 +39,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('news', 'Admin\NewsController', ['as' => 'ad_news']);
 
+	Route::resource('announcements', 'Admin\AnnouncementsController', ['as' => 'ad_announcements']);
+
 	//Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
 
 	// Route::get('practic-header', function () {
@@ -47,12 +49,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	// Route::get('practic-cards', function () {
 	//     return view('/admin/practic-cards');
 	// })->name('ad_practic-cards');
-    Route::get('announcements', function () {
-	    return view('/admin/announcements');
-	})->name('ad_announcements');
-	Route::get('announcement/{id}', function ($id) {
-	    return view('/admin/announcement', array('id' => $id));
-	});
+ //    Route::get('announcements', function () {
+	//     return view('/admin/announcements');
+	// })->name('ad_announcements');
+	// Route::get('announcement/{id}', function ($id) {
+	//     return view('/admin/announcement', array('id' => $id));
+	// });
 	Route::get('documents', function () {
 	    return view('/admin/documents');
 	})->name('ad_documents');

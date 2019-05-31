@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Partners;
+use App\Http\Request\PartnersRequest;
 
 class PartnersController extends Controller
 {
@@ -14,7 +16,7 @@ class PartnersController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

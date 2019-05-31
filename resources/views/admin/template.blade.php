@@ -87,7 +87,7 @@
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
 
-                                    <a href="{{ URL::route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+                                    <a href="{{ route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
 
                                 </li>
                                 <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here -->
@@ -121,7 +121,7 @@
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_announcements')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_announcements.announcements.index')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
 
                                         Анонси
                                     </span></a>
