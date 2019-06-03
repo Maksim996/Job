@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoryTableSeeder::class);
         $this->call(SubcategoryTableSeeder::class);
         $this->call(HeaderTableSeeder::class);
-        $this->call(HeaderTableSeeder::class);
         $this->call(PracticeIntershipContentTableSeeder::class);
         $this->call(PracticeIntershipCardTableSeeder::class);
         $this->call(PartnersTableSeeder::class);

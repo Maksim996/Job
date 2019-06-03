@@ -10,9 +10,9 @@
                 <h3 class="k-portlet__head-title">
                     Анонси
                 </h3>
-                <button class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
+                <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="/">
                         <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
-                </button>
+                </a>
             </div>
         </div>
         <div class="k-portlet">
@@ -40,18 +40,27 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Ship Date</th>
-                            <th>Actions</th>
+                            <th>Заголовок</th>
+                            <th>Дата анонсу</th>
+                            <th>Дії</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($data['announcements'] as $announcement)
                         <tr>
-                            <td>Gleichner, Ziemann and Gutkowski</td>
-                            <td>2/12/2018</td>
-                            <td nowrap></td>
+                            <td>{{ $announcement->title }}</td>
+                            <td>{{ $announcement->date }}</td>
+                            <!-- <td nowrap></td> -->
+                            <td>
+                                <a href="{{ URL::route('ad_announcements.announcements.show', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <i class="la la-pencil"></i>
+                                </a>
+                                <a href="{{ URL::route('ad_announcements.announcements.destroy', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <i class="la la-close"></i>
+                                </a>
+                            </td>
                         </tr>
-                        
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -23,60 +23,36 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('header.store') }}" class="k-form k-form--label-right">
-            
-
+        <form method="POST" action="{{ URL::route('ad_header.header.update', $data['header'][0]->id) }}" class="k-form k-form--label-right"
+            enctype="multipart/form-data">
             {{ @csrf_field() }}
+            @method('PUT')
             <div class="k-portlet__body">
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Картинка для хедера</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="img_path" class="form-control" placeholder="" value="{{ old('img_path') }}">
-                        <span class="form-text text-muted">URL картинки для хедера</span> 
-                    </div>
-                </div>
 				<div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок </label>
+                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="title" class="form-control" placeholder="" value="{{ old('title') }}">
+                        <input type="text" name="title" class="form-control" placeholder="" value="{{ $data['header'][0]->title }}">
                         <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="link" class="form-control" placeholder="" value="{{ old('link') }}">
+                        <input type="text" name="link" class="form-control" placeholder="" value="{{ $data['header'][0]->link }}">
                         <span class="form-text text-muted">По кліку на заголовок переходить на посиланням ...</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" name="content" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                        <textarea class="form-control" name="content" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['header'][0]->content }}</textarea>
                         <span class="form-text text-muted">Короткий опис</span> 
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="keywords" class="form-control" placeholder="" value="{{ old('keywords') }}">
-                        <span class="form-text text-muted">Набір ключових слов</span> 
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="description" class="form-control" placeholder="" value="{{ old('description') }}">
-                        <span class="form-text text-muted">Короткий опис для ключових слів</span> 
-                    </div>
-                </div>
-                
-                <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <form enctype="multipart/form-data" method="post">
-                            <input type="file"class="form-control">
-                        </form> 
+                        <input type="file" name="img_path" class="form-control">
                     </div>
                 </div>
                 <div class='black-line form-group row'></div>
@@ -84,14 +60,14 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="">
-                        <span class="form-text text-muted">Ключові слова для пошукової системи(виводити через кому) , наприклад: СумДУ, Сумський державний університет, СумГУ, SSU</span> 
+                        <input name="keywords" type="text" class="form-control" placeholder="" value="{{ $data['header'][0]->keywords }}">
+                        <span class="form-text text-muted">Ключові слова для пошукової системи(виводити через кому), наприклад: СумДУ, Сумський державний університет, СумГУ, SSU</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                        <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['header'][0]->description }}</textarea>
                         <span class="form-text text-muted">Короткий опис сторінки</span> 
                     </div>
                 </div>

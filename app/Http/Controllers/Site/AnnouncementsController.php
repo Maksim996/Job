@@ -35,7 +35,7 @@ class AnnouncementsController extends Controller
             // ['date', '>', $date],
         ])
         ->orderBy('date', 'desc')
-        ->paginate(6);
+        ->paginate(8);
 
         
 

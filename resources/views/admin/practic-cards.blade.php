@@ -19,47 +19,59 @@
                 height: 240px;
             }
         </style>
-        <form action="#" class="k-form">
+
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form">
+            {{ @csrf_field() }}
             <div class="k-portlet__body">
                 <div class="row mt-5">
                     <div id="block1" class="col-lg-4 col-md-12  mt-2">
                         <div class="col-lg-9 mx-auto admin_card">
-                            <img width="140px" src="{{ URL::asset('images/practice/deal.svg') }}" alt="" class="rounded-circle practice__image">
+                            <img width="140px" src="{{ URL::asset($data['practicCards'][0]->img_path) }}" alt="" class="rounded-circle practice__image">
                             
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">Де знайти місце проходження практики?</h5>
                                 <p class="card-text practice__text">Практика - це можливість набратись досвіду й знайти своє призначення</p>
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="card_title1" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->card_title }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
-                                <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                                <textarea name="card_description1" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][0]->card_description }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" class="form-control" placeholder="">
+                                <input name="img_path1" type="file" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->img_path }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="card_link1" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->card_link }}">
                             </div>
                         </div>
                     </div>
                     <div id="block2" class="col-lg-4 col-md-12  mt-2">
                         <div class="col-lg-9 mx-auto admin_card">
-                            <img width="140px" src="{{ URL::asset('images/practice/migrate.svg') }}" alt="" class="rounded-circle practice__image ">
+                            <img width="140px" src="{{ URL::asset($data['practicCards'][1]->img_path) }}" alt="" class="rounded-circle practice__image ">
                             <div class=" card-body mt-3">
                                 <h5 class="card-title practice__topic">Документи для проходження</h5>
                                 <p class="card-text practice__text">Все, що Вам потрібно для практики</p>
@@ -68,31 +80,31 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="card_title2" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->card_title }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
-                                <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                                <textarea name="card_description2" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][1]->card_description }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" class="form-control" placeholder="">
+                                <input type="file" name="img_path2" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->img_path }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="card_link2" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->card_link }}">
                             </div>
                         </div>
                     </div>
                     <div id="block3" class="col-lg-4 col-md-12    my-2">
                         <div class="col-lg-9 mx-auto admin_card">
-                            <img name="image" width="140px" src="{{ URL::asset('images/practice/share.svg') }}" alt="" class="rounded-circle practice__image ">
+                            <img name="image" width="140px" src="{{ URL::asset($data['practicCards'][2]->img_path) }}" alt="" class="rounded-circle practice__image ">
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">Центр студенської кар'єри</h5>
                                 <p class="card-text practice__text">Актуальні вакансії та пропозиції від роботодавців</p>
@@ -101,25 +113,25 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input name="card_title3" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->card_title }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
-                                <textarea name="description" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6"></textarea>
+                                <textarea name="card_description3" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][2]->card_description }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" class="form-control" placeholder="">
+                                <input type="file" name="img_path3" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->img_path }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="card_link3" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->card_link }}">
                             </div>
                         </div>
                     </div>
@@ -129,13 +141,12 @@
                 <div class="k-form__actions">
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="reset" class="btn btn-brand">Зберегти</button>
+                            <button type="submit" class="btn btn-brand">Зберегти</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-      
    </div>
    <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"

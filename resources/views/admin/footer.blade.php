@@ -14,7 +14,6 @@
         </div>
         
         <form action="#" class="k-form k-form--label-right">
-            
             <div class="k-portlet__body">
 				<!-- <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Адреса розшташування відділу</label>
@@ -38,33 +37,27 @@
                     </div>
                 </div>
                 <div class='black-line form-group row'></div> -->
-
-
-
                 <p class='info-seach'>Left column</p>
                 <div class="k-portlet__body" id='info_block'>
                 <div class='info' id='duplicater'>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" name="" value="">
                             <span class="form-text text-muted">Наприклад: локація</span> 
                         </div>
                     </div>
-                    
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" name="" value="">
                             <span class="form-text text-muted">По кліку переходить на посиланням ...</span> 
                         </div>
                     </div>
-
-
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Текст</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" name="" value="">
                             <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
                         </div>
                     </div>
@@ -109,8 +102,6 @@
 
                 <p class='info-seach'>Соціальні мережі</p>
 
-
-
                 <div class="k-portlet__body" id='partners_block'>
                 <div class='partners' id='duplicater'>
                     <div class="form-group row">
@@ -119,7 +110,6 @@
                             <input type="text" class="form-control" placeholder="">
                         </div>
                     </div>
-                    
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
@@ -127,8 +117,6 @@
                             <span class="form-text text-muted">По кліку зображення переходить на посиланням ...</span> 
                         </div>
                     </div>
-
-
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Кольор при наведенні на логотип соціальної мережі</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
@@ -136,7 +124,6 @@
                             <span class="form-text text-muted">Наприклад: rgb(0,0,0) або black або #000</span> 
                         </div>
                     </div>
-                    
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
@@ -169,9 +156,7 @@
                     </div>
                 </div>
             </div>
-
         </form>
-      
    </div>
     <!--end::Dashboard 1-->
 @endsection

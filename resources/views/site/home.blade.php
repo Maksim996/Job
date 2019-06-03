@@ -4,7 +4,7 @@
 @endsection
 @section('content')
         <header class="position-relative">
-            <figure class="banner"><img src="{{ URL::asset('images/people-coffee-tea-meeting.png') }}"></figure>
+            <figure class="banner"><img src="{{ URL::asset($data['header'][0]->img_path)  }}"></figure>
             <figure class="filter"></figure>
             <div class="header-title_block">
                 <a href="{{$data['header'][0]->link}}" class="blueLine">
@@ -71,13 +71,13 @@
                                     </div>
                                     <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
                                     <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
-                                </div>
-                                
+                                </div>                           
                               
                                 <div>
                                     <div class="card-location">
                                         <i class="icon-location"></i>
                                         {{$data['announcements'][$i]->short_location}}
+
                                     </div>
                                     <ul class="card-date">
                                         <li class="card-date-item">
@@ -149,7 +149,7 @@
                                         </p>
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
-                                            <p class="news__date">Дата публікації: {{$data['news'][0]->date}}</p>
+                                            <p class="news__date">Дата публікації: {{ date("d-m-Y H:i", strtotime($data['news'][0]->date)) }}</p>
                                         </div>
                                         
                                     </div>
@@ -181,7 +181,7 @@
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
                                             <p class="news__date-item">
-                                                Дата публікації: {{$data['news'][$i]->date}}
+                                                Дата публікації: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
                                             </p>
                                         </div>
                                     </div>

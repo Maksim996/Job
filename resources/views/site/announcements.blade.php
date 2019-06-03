@@ -26,12 +26,14 @@
                         <div class="row anon">
             
                         	@for($i = 0; $i < count($data['announcements']); $i++)
+
                                 
                                  <div class=" col-md-7 preview__card ">
                                     <div class="card-body d-flex flex-column justify-content-between ">
                                         <div>
                                             <div class="card_img">
                                                 <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
+
                                             </div>
                                             <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
                                             <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>

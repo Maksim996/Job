@@ -18,6 +18,7 @@
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
+
 	Route::get('/', function() {
 		if (Auth::guest()) {
 			return redirect('/auth/login');
@@ -25,41 +26,53 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 			return redirect('/admin/header');
 		}
 	});
+
+
 	Route::get('/header-menu', function () {
 	    return view('/admin/header-menu');
 	})->name('ad_header-menu');
 
+	Route::resource('header', 'Admin\HeaderController', ['as' => 'ad_header']);
 
-	// Route::resource('header', 'Admin\HeaderController')->name('ad_header');
-	Route::resource('header', 'Admin\HeaderController');
 
-	Route::get('practic-header', function () {
-	    return view('/admin/practic-header');
-	})->name('ad_practic-header');
-	Route::get('practic-cards', function () {
-	    return view('/admin/practic-cards');
-	})->name('ad_practic-cards');
-    Route::get('announcements', function () {
-	    return view('/admin/announcements');
-	})->name('ad_announcements');
-	Route::get('announcement/{id}', function ($id) {
-	    return view('/admin/announcement', array('id' => $id));
-	});
-	Route::get('documents', function () {
-	    return view('/admin/documents');
-	})->name('ad_documents');
-	Route::get('news', function () {
-	    return view('/admin/news');
-	})->name('ad_news');
+	Route::resource('practic-header', 'Admin\PracticHeaderController', ['as' => 'ad_practic-header']);
+
+	Route::resource('practic-cards', 'Admin\PracticCardController', ['as' => 'ad_practic-cards']);
+
+	Route::resource('news', 'Admin\NewsController', ['as' => 'ad_news']);
+
+	Route::resource('announcements', 'Admin\AnnouncementsController', ['as' => 'ad_announcements']);
+
+	Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
+
+	// Route::get('practic-header', function () {
+	//     return view('/admin/practic-header');
+	// })->name('ad_practic-header');
+	// Route::get('practic-cards', function () {
+	//     return view('/admin/practic-cards');
+	// })->name('ad_practic-cards');
+ //    Route::get('announcements', function () {
+	//     return view('/admin/announcements');
+	// })->name('ad_announcements');
+	// Route::get('announcement/{id}', function ($id) {
+	//     return view('/admin/announcement', array('id' => $id));
+	// });
+	// Route::get('documents', function () {
+	//     return view('/admin/documents');
+	// })->name('ad_documents');
+	// Route::get('news', function () {
+	//     return view('/admin/news');
+	// })->name('ad_news');
+
 	Route::get('brands', function () {
 	    return view('/admin/brands');
 	})->name('ad_brands');
 	Route::get('footer', function () {
 	    return view('/admin/footer');
 	})->name('ad_footer');
-	Route::get('new/{id}', function ($id) {
-	    return view('/admin/new', array('id' => $id));
-	});
+	// Route::get('new/{id}', function ($id) {
+	//     return view('/admin/new', array('id' => $id));
+	// });
 	Route::get('document/create', function () {
 	    return view('/admin/document_template');
 	});

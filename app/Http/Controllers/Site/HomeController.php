@@ -47,9 +47,6 @@ class HomeController extends Controller
         ->get()
         ->toArray();
 
-
-         
-
         $announcements = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
@@ -68,14 +65,16 @@ class HomeController extends Controller
         for($i = 0; $i < count($announcements); $i++) {
             $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
         }
-
+        
         $slider = DB::select("SELECT * FROM `partners`");
-
-
+        
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
         $header = DB::table('header')->get()->toArray();
         $internship = DB::table('practice_intership_content')->get()->toArray();
+
+
+
 
         $data = [
             'practice_intership_card' => $practice,
@@ -87,6 +86,7 @@ class HomeController extends Controller
             'header' => $header,
             'internship' => $internship,
         ];
+       
 
         return view('site/home', compact('data'));
     }

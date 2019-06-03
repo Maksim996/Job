@@ -24,7 +24,6 @@ class AnnouncementController extends Controller
         ])
         ->get()
         ->toArray();
-
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
         $header = DB::table('inner_news')->where('inner_news_id',$id)->get()->toArray();

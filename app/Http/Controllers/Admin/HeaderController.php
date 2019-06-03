@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
 use App\Header;
 use App\Http\Requests\HeaderRequest;
+use DB;
 
 class HeaderController extends Controller
 {
@@ -18,73 +18,13 @@ class HeaderController extends Controller
     
     public function index()
     {
-        $headers = Header::all();
-        $data = [
-            'header' => $headers,
-        ];
-        //dump($headers);die;
-
-        return view('admin.header', compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //return view('/admin/header', compact('data'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(HeaderRequest $request)
-    {
-        $header = Header::create($request->validated());
-        $header->save();
+        $header = Header::all();
 
         $data = [
             'header' => $header,
         ];
 
-        return view('/admin/header', compact('data'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        // $header = Header::find($id);
-        // $data = [
-        //     'header' => $header
-        // ];
-        //dump($header);die;
-        //return view('/admin/header', compact('data'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $header = Header::findOrfail($id);
-        $data = [
-            'header' => $header
-        ];
-        //dump($header);die;
-        return view('/admin/header', compact('data'));
+        return view('admin.header', compact('data'));
     }
 
     /**
@@ -94,38 +34,36 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HeaderRequest $request)
     {
-        $header = Header::find($id);
-        //dump($header);die;
+        $id =1;
+        // ->str_slug($request->input('name'))
+        
+        if($request->file('img_path')){
+        $filePath = 'header_img'.'.' . $request->file('img_path')->getClientOriginalExtension();
+        $path = $request->file('img_path')->storeAs('images/uploads_header',$filePath,'public');
+        $request->img_path = $path;
+        }
+        else
+            $path =   DB::table('header')->where('id', '=', $id)->value('img_path');
 
-        $request()->validate([
-            'img_path' => 'required|max:200',
-            'title' => 'required|max:200',
-            'link' => 'required|max:200',
-            'content' => 'required|max:200',
-            'keywords' => 'required|max:200',
-            'description' => 'description|max:200',
+        DB::table('header')
+        ->where('id', '=', $id)
+        ->update([
+            'img_path' => $path,
+            'title' => $request->title,
+            'link' => $request->link,
+            'content' => $request->content,
+            'keywords' => $request->keywords,
+            'description' => $request->description,
         ]);
 
-        $header->update($request->all());
+        $header = Header::all();
+
         $data = [
             'header' => $header
         ];
         
-        //return view('/admin/header', compact('data'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        // $header = Header::find($id);
-        // $header->delete();
-        // return view('/admin/header', compact('data'));
+        return view('admin.header', compact('data'));
     }
 }

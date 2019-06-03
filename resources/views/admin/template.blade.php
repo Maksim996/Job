@@ -87,7 +87,7 @@
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
 
-                                    <a href="{{ URL::route('header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+                                    <a href="{{ route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
 
                                 </li>
                                 <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here -->
@@ -100,13 +100,13 @@
                                                 <span class="k-menu__link"><span class="k-menu__link-text">Працевлаштування та практика</span></span>
                                             </li>
                                             <li class="k-menu__item" aria-haspopup="true" >
-                                                <a href="{{ route('ad_practic-header')}}" class="k-menu__link ">
+                                                <a href="{{ route('ad_practic-header.practic-header.index')}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Головна</span>
                                                 </a>
                                             </li>
                                             <li class="k-menu__item " aria-haspopup="true" >
-                                                <a href="{{ route('ad_practic-cards')}}" class="k-menu__link ">
+                                                <a href="{{ route('ad_practic-cards.practic-cards.index')}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Картки</span>
                                                 </a>
@@ -116,18 +116,17 @@
                                     </div>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_documents')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_documents.documents.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Документи
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_announcements')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
-
+                                    <a  href="{{ route('ad_announcements.announcements.index')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Анонси
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_news')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_news.news.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Новини
                                     </span></a>
                                 </li>
@@ -139,15 +138,11 @@
                                 <li class="k-menu__item " aria-haspopup="true" >
 
                                     <a href="{{ route('ad_footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
-
                                         Футер
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
-
+                                <li class="k-menu__item " aria-haspopup="true">
                                     <a  href="{{ route('logout') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i>
-
-                                   
                                         <span class="k-menu__link-text"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout
@@ -161,7 +156,6 @@
                         </div>
                     </div>
                     <!-- end:: Aside Menu -->
-                    
                 </div>
                 @show
                 <!-- end:: Aside -->
