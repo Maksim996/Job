@@ -24,10 +24,15 @@ class AnnouncementController extends Controller
         ])
         ->get()
         ->toArray();
-
+        $category = DB::table("category")->get()->toArray();
+        $subcategory = DB::table("subcategory")->get()->toArray();
+        $header = DB::table('header')->get()->toArray();
     	$data = [
             'new' => $announcement,
             'slider' => $slider_announcements,
+            'category' => $category,
+            'subcategory' => $subcategory,
+            'header' => $header,
         ];
 
     	return view('site/post', compact('data'));
