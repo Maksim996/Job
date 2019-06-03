@@ -5,59 +5,75 @@
     <meta charset="UTF-8">
     <title>Job</title>
 
+
+    <meta name="keywords" content="{{$data['header'][0]->keywords}}">
+    <meta name="description" content="{{$data['header'][0]->description}}">
+
     <link rel="shortcut icon" type="image/svg" href="img/FavIcon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="{{ URL::asset('js/jquery3_3_1.js')}}"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNextCyr/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNext/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick-theme.css') }} ">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/icon/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/media.css') }}">
+    
 </head>
 
 <body id="body">
     <div class="wrapper">
         <div class="wrapper-content">
             @section('menu')
+
+           
                 <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
                         <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <img class="navbar-toggler-icon" src="{{URL::asset('images/menu-options.svg')}}" alt="menu">
+                        <i class="icon-menu-options"></i>
+                        
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item {{ Route::currentRouteName() =='' ? 'active' : ''}}">
-                                    <!-- {{ Route::currentRouteName() == '' ? 'active' : ''}} -->
-                                    <a class="nav-link" href="/">Головна {!! Route::currentRouteName() == '' ? '<span class="sr-only">(current)</span>' : ''!!}</a>
-                                     
-                                </li>
-                                <li class="nav-item {{ Route::currentRouteName() =='news' ? 'active' : ''}}">
-                                    <a class="nav-link" href="/news">
-                                        Новини 
-                                        {!! Route::currentRouteName() == 'news' ? '<span class="sr-only">(current)</span>' : ''!!}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Працевлаштування та практика</a>
-                                </li>
-                                <li class="nav-item dropdown {{ Route::currentRouteName() =='documents' ? 'active' : ''}} ">
+                            @foreach($data['category'] as $category) 
+                                @if($category->type != 'type3')
+                                 <li class="nav-item {{ Route::currentRouteName() == $category->link ? 'active' : ''}}">
+                                    @if($category->link == 'home')
+                                    <a class="nav-link" href="/">
+                                    @elseif($category->type == 'type2')
+                                    <a class="nav-link" href="{{$category->link}}">
+                                    @else
+                                    <a class="nav-link" href="/{{$category->link}}">
+                                    @endif
+                                    {{$category->title}} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                @else
+                                <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Документи
-
+                                       {{$category->title}}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="/documents?position=1">Нормативні</a>
-                                        <a class="dropdown-item" href="/documents?position=2">Рада роботодавців</a>
-                                        <a class="dropdown-item" href="/documents?position=3">Інші</a>
+                                    @foreach($data['subcategory'] as $subcategory)
+                                        @if($subcategory->category_id == $category->category_id)
+                                        @if($subcategory->type == "type2")
+                                        <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title}}</a>
+                                        @else
+                                        <a class="dropdown-item" href="{{$subcategory->link}}">{{$subcategory->title}}</a>
+                                        @endif
+                                        @endif
+                                    @endforeach
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Відомі випускники</a>
+                                @endif
+                                     
                                 </li>
+                            @endforeach
+                                
                                 <li class="nav-item dropdown language-full ">
                                     <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="{{ URL::asset('images/ukraine.svg')}}">
@@ -129,11 +145,6 @@
                                         <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
                                         <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
                                         <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
-                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
-                                        <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
-                                        <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
-                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
-
                                     </ul>
                                 </li>
                             </ul>
