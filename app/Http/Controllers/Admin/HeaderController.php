@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Header;
 use App\Http\Requests\HeaderRequest;
+use DB;
 
 class HeaderController extends Controller
 {
@@ -35,13 +36,21 @@ class HeaderController extends Controller
      */
     public function update(HeaderRequest $request, $id)
     {
-        $img_path = 'http://job.sumdu.edu.ua/header.svg';
-        $request->merge(['img_path' => $img_path]);
-        //dump($request->all());die;
-
         $header = Header::findOrfail($id);
 
-        $header->update($request->validated());
+        $path = $request->file('img_path')->store('images/uploads_header','public');
+        $request->img_path = $path;
+
+        DB::table('header')
+        ->where('id', '=', $id)
+        ->update([
+            'img_path' => $path,
+            'title' => $request->title,
+            'link' => $request->link,
+            'content' => $request->content,
+            'keywords' => $request->keywords,
+            'description' => $request->description,
+        ]);
 
         $header = Header::all();
 

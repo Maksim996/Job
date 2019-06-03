@@ -116,13 +116,12 @@
                                     </div>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('documents')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_documents.documents.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Документи
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
                                     <a  href="{{ route('ad_announcements.announcements.index')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
-
                                         Анонси
                                     </span></a>
                                 </li>
@@ -139,15 +138,11 @@
                                 <li class="k-menu__item " aria-haspopup="true" >
 
                                     <a href="{{ route('ad_footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
-
                                         Футер
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
-
+                                <li class="k-menu__item " aria-haspopup="true">
                                     <a  href="{{ route('logout') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i>
-
-                                   
                                         <span class="k-menu__link-text"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout
@@ -161,7 +156,6 @@
                         </div>
                     </div>
                     <!-- end:: Aside Menu -->
-                    
                 </div>
                 @show
                 <!-- end:: Aside -->

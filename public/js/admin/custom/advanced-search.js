@@ -92,15 +92,15 @@ var DatatablesSearchOptionsAdvancedSearch = function() {
 					targets: -1,
 					title: 'Actions',
 					orderable: false,
-					render: function(data, type, full, meta) {
-						return `
-                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
-                          <i class="la la-pencil"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
-                          <i class="la la-close"></i>
-                        </a>`;
-					},
+					// render: function(data, type, full, meta) {
+					// 	return `
+     //                    <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+     //                      <i class="la la-pencil"></i>
+     //                    </a>
+     //                    <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+     //                      <i class="la la-close"></i>
+     //                    </a>`;
+					// },
 				},
 				// {
 				// 	targets: -1,

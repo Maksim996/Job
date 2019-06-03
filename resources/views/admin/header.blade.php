@@ -23,12 +23,13 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ URL::route('ad_header.header.update', $data['header'][0]->id) }}" class="k-form k-form--label-right">
+        <form method="POST" action="{{ URL::route('ad_header.header.update', $data['header'][0]->id) }}" class="k-form k-form--label-right"
+            enctype="multipart/form-data">
             {{ @csrf_field() }}
             @method('PUT')
             <div class="k-portlet__body">
 				<div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок </label>
+                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input type="text" name="title" class="form-control" placeholder="" value="{{ $data['header'][0]->title }}">
                         <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span> 
@@ -48,22 +49,12 @@
                         <span class="form-text text-muted">Короткий опис</span> 
                     </div>
                 </div>
-                <!-- <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <form enctype="multipart/form-data" method="post">
-                            <input type="file"class="form-control">
-                        </form> 
-                    </div>
-                </div> -->
-
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="file" name="image" class="form-control">
+                        <input type="file" name="img_path" class="form-control">
                     </div>
                 </div>
-
                 <div class='black-line form-group row'></div>
                 <p class='info-seach'>Додаткова інформація для пошукової системи</p>
                 <div class="form-group row">

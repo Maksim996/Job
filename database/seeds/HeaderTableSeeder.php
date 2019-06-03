@@ -12,7 +12,7 @@ class HeaderTableSeeder extends Seeder
     public function run()
     {
         DB::table('header')->insert([
-    		'img_path' => 'http://job.sumdu.edu.ua/header.html',
+    		'img_path' => '',
     		'title' => 'Header_title',
     		'link' => 'http://job.sumdu.edu.ua/',
     		'content' => 'Відділ практики та інтеграційних зв\'язків із замовниками кадрів',

@@ -40,18 +40,27 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Ship Date</th>
-                            <th>Actions</th>
+                            <th>Заголовок</th>
+                            <th>Дата новини</th>
+                            <th>Дії</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($data['news'] as $new)
                         <tr>
-                            <td>Gleichner, Ziemann and Gutkowski</td>
-                            <td>2/12/2018</td>
-                            <td nowrap></td>
+                            <td>{{ $new->title }}</td>
+                            <td>{{ $new->date }}</td>
+                            <!-- <td nowrap></td> -->
+                            <td>
+                                <a href="{{ URL::route('ad_news.news.show', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <i class="la la-pencil"></i>
+                                </a>
+                                <a href="{{ URL::route('ad_news.news.destroy', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <i class="la la-close"></i>
+                                </a>
+                            </td>
                         </tr>
-                        
+                        @endforeach
                     </tbody>
                 </table>
             </div>

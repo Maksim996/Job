@@ -18,6 +18,7 @@
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
+
 	Route::get('/', function() {
 		if (Auth::guest()) {
 			return redirect('/auth/login');
@@ -25,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 			return redirect('/admin/header');
 		}
 	});
+
 	Route::get('/header-menu', function () {
 	    return view('/admin/header-menu');
 	})->name('ad_header-menu');
@@ -41,7 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('announcements', 'Admin\AnnouncementsController', ['as' => 'ad_announcements']);
 
-	//Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
+	Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
 
 	// Route::get('practic-header', function () {
 	//     return view('/admin/practic-header');
@@ -55,9 +57,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	// Route::get('announcement/{id}', function ($id) {
 	//     return view('/admin/announcement', array('id' => $id));
 	// });
-	Route::get('documents', function () {
-	    return view('/admin/documents');
-	})->name('ad_documents');
+	// Route::get('documents', function () {
+	//     return view('/admin/documents');
+	// })->name('ad_documents');
 	// Route::get('news', function () {
 	//     return view('/admin/news');
 	// })->name('ad_news');
