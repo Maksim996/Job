@@ -17,72 +17,10 @@ class HeaderController extends Controller
     
     public function index()
     {
-        $headers = Header::all();
-
-        $data = [
-            'header' => $headers,
-        ];
-
-        return view('admin.header', compact('data'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //return view('admin.header');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(HeaderRequest $request)
-    {
-        // $img_path = 'image_path';
-        // $request->request->add(['img_path' => $img_path]);
-        // dump($request);die;
-        $header = Header::create($request->validated());
-        $header->save();
+        $header = Header::all();
 
         $data = [
             'header' => $header,
-        ];
-
-        return view('admin.header', compact('data'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        // $header = Header::findorFail($id);
-        // $data = [
-        //     'header' => $header
-        // ];
-        //return view('admin.header', compact('data'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $header = Header::findOrfail($id);
-        $data = [
-            'header' => $header
         ];
 
         return view('admin.header', compact('data'));
@@ -97,27 +35,20 @@ class HeaderController extends Controller
      */
     public function update(HeaderRequest $request, $id)
     {
+        $img_path = 'http://job.sumdu.edu.ua/header.svg';
+        $request->merge(['img_path' => $img_path]);
+        //dump($request->all());die;
+
         $header = Header::findOrfail($id);
 
         $header->update($request->validated());
+
+        $header = Header::all();
 
         $data = [
             'header' => $header
         ];
         
         return view('admin.header', compact('data'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        // $header = Header::findOrFail($id);
-        // $header->delete();
-        // return view('admin.header');
     }
 }

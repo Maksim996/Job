@@ -8,7 +8,7 @@ use App\InnerNews;
 use App\Http\Requests\InnerNewsRequest;
 use DB;
 
-class NewsController extends Controller
+class AnnouncementsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +17,28 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = DB::table('inner_news')
+        $announcements = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
-            ['type', '=', 'new'],
+            ['type', '=', 'announcement'],
         ])
         ->get();
 
         $data = [
-            'news' => $news,
+            'announcements' => $announcements,
         ];
 
-        return view('admin.news', compact('data'));
+        return view('admin.announcements', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -40,7 +50,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         //
-        echo "news_store";
+        echo "announcement_store";
     }
 
     /**
@@ -51,19 +61,30 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        $new = DB::table('inner_news')
+        $announcement = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
-            ['type', '=', 'new'],
+            ['type', '=', 'announcement'],
             ['inner_news.inner_news_id', '=', $id],
         ])
         ->get();
 
         $data = [
-            'new' => $new,
+            'announcement' => $announcement,
         ];
 
-        return view('admin.new', compact('data'));
+        return view('admin.announcement', compact('data'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -75,16 +96,20 @@ class NewsController extends Controller
      */
     public function update(InnerNewsRequest $request, $id)
     {
-        $request->merge(['full_location' => 'SumDU news']);
-        $request->merge(['full_description' => 'Lorem ipsum news']);
+        $request->merge(['full_location' => 'SumDU-Announcements']);
+        $request->merge(['full_description' => 'Lorem ipsum announcements']);
         $request->merge(['img_path' => '/images/main/brands/cisco.png']);
-        $request->merge(['short_location' => 'Short-Location-News-SumDU']);
+        $request->merge(['short_location' => 'Short-Location-Announcements-SumDU']);
 
         $full_location = $request->get('SumDU');
         $full_description = $request->get('Lorem ipsum');
+        //dump($request->all());die;
 
         DB::table('inner_news')
-        ->where('inner_news_id', '=', $id)
+        ->where([
+            //['type', '=', 'announcement'],
+            ['inner_news_id', '=', $id],
+        ])
         ->update([
             'title' => $request->get('title'),
             'date' => $request->get('date'),
@@ -95,25 +120,39 @@ class NewsController extends Controller
         ]);
 
         DB::table('preview')
-        ->where('inner_news_id', '=', $id)
+        ->where([
+            //['type', '=', 'announcement'],
+            ['inner_news_id', '=', $id],
+        ])
         ->update([
             'img_path' => $request->get('img_path'),
             'short_location' => $request->get('short_location'),
             'short_description' => $request->get('short_description'),
         ]);
 
-        $new = DB::table('inner_news')
+        $announcement = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
-            ['type', '=', 'new'],
+            ['type', '=', 'announcement'],
             ['inner_news.inner_news_id', '=', $id],
         ])
         ->get();
 
         $data = [
-            'new' => $new,
+            'announcement' => $announcement,
         ];
 
-        return view('admin.new', compact('data'));
+        return view('admin.announcement', compact('data'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

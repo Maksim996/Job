@@ -17,7 +17,7 @@ class CreateSliderNewsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('inner_news_id');
             $table->foreign('inner_news_id')->references('inner_news_id')->on('inner_news')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('img_path', 200);
+            $table->text('img_path');
         });
     }
 
