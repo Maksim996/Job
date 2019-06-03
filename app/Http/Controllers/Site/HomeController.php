@@ -65,7 +65,7 @@ class HomeController extends Controller
         for($i = 0; $i < count($announcements); $i++) {
             $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
         }
-
+        
         $slider = DB::select("SELECT * FROM `partners`");
 
         $data = [
