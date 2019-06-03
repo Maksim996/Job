@@ -38,7 +38,7 @@ class AnnouncementsController extends Controller
      */
     public function create()
     {
-        //
+        echo "create announcements";
     }
 
     /**
@@ -153,6 +153,8 @@ class AnnouncementsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $announcement = InnerNews::findOrFail($id);
+        // $announcement->delete();
+        // return redirect()->route('admin.announcements')->with('success', 'Анонс видалено успішно');
     }
 }

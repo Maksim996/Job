@@ -27,8 +27,31 @@ class NewsController extends Controller
         $data = [
             'news' => $news,
         ];
+        //dump($data['news']);die;
 
         return view('admin.news', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // $news = DB::table('inner_news')
+        // //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        // ->where([
+        //     ['type', '=', 'new'],
+        //     //['inner_news_id', '=', 0],
+        // ])
+        // ->get();
+
+        // $data = [
+        //     'news' => $news,
+        // ];
+
+        return view('admin.new');
     }
 
     /**
@@ -115,5 +138,18 @@ class NewsController extends Controller
         ];
 
         return view('admin.new', compact('data'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $new = InnerNews::findOrFail($id);
+        $new->delete();
+        return redirect()->route('admin.news')->with('success', 'Новину видалено успішно');
     }
 }
