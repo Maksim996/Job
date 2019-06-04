@@ -65,18 +65,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	// })->name('ad_news');
 	Route::resource('partners', 'Admin\PartnersController', ['as' => 'ad_partners']);
 
+	Route::resource('menus', 'Admin\MenuController', ['as' => 'ad_menus']);
+
 	Route::get('footer', function () {
 	    return view('/admin/footer');
 	})->name('ad_footer');
-	Route::get('menu_prac', function () {
-	    return view('/admin/menu_prac');
-	})->name('menu_prac');
-	Route::get('menu_doc', function () {
-	    return view('/admin/menu_doc');
-	})->name('menu_doc');
-	Route::get('menu_vip', function () {
-	    return view('/admin/menu_vip');
-	})->name('menu_vip');
+	Route::get('menu/{id}', 'Admin\MenuController@index')->name('menu');
 	// Route::get('new/{id}', function ($id) {
 	//     return view('/admin/new', array('id' => $id));
 	// });

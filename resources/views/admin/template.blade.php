@@ -91,21 +91,33 @@
                                                 <span class="k-menu__link"><span class="k-menu__link-text">Меню</span></span>
                                             </li>
                                             <li class="k-menu__item" aria-haspopup="true" >
-                                                <a href="{{ route('menu_prac')}}" class="k-menu__link ">
+                                                <a href="{{ route('menu',array('id' => '3'))}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Практика</span>
                                                 </a>
                                             </li>
                                             <li class="k-menu__item " aria-haspopup="true" >
-                                                <a href="{{ route('menu_doc')}}" class="k-menu__link ">
+                                                <a href="{{ route('menu',array('id' => '4'))}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Документи</span>
                                                 </a>
                                             </li>
                                             <li class="k-menu__item " aria-haspopup="true" >
-                                                <a href="{{ route('menu_vip')}}" class="k-menu__link ">
+                                                <a href="{{ route('menu',array('id' => '5'))}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Випускники</span>
+                                                </a>
+                                            </li>
+                                             <li class="k-menu__item " aria-haspopup="true" >
+                                                <a href="{{ route('menu',array('id' => '1'))}}" class="k-menu__link ">
+                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
+                                                    <span class="k-menu__link-text">Головна</span>
+                                                </a>
+                                            </li>
+                                             <li class="k-menu__item " aria-haspopup="true" >
+                                                <a href="{{ route('menu',array('id' => '2'))}}" class="k-menu__link ">
+                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
+                                                    <span class="k-menu__link-text">Новини</span>
                                                 </a>
                                             </li>
                                             
