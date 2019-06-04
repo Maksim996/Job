@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Partners;
 use App\Http\Request\PartnersRequest;
+use DB;
+use File;
 
 class PartnersController extends Controller
 {
@@ -16,7 +18,11 @@ class PartnersController extends Controller
      */
     public function index()
     {
-        
+        $partners = DB::table('partners')->get()->toArray();
+         $data = [
+            'partners' => $partners,
+         ];
+         return view('/admin/partners', compact('data'));
     }
 
     /**
@@ -48,7 +54,19 @@ class PartnersController extends Controller
      */
     public function show($id)
     {
-        //
+        $partners = DB::table('partners')
+        ->where(
+            [
+                ['id', '=', $id],
+                
+            ])
+        ->get()->toArray();
+         $data = [
+            'partners' => $partners[0],
+         ];
+         dump($data);
+         return view('/admin/partner', compact('data'));
+
     }
 
     /**
@@ -59,7 +77,22 @@ class PartnersController extends Controller
      */
     public function edit($id)
     {
-        //
+        if($id!=0){
+            $partners = DB::table('partners')
+            ->where(
+                [
+                    ['id', '=', $id],
+                    
+                ])
+            ->get()->toArray();
+             $data = [
+                'id' => $id,
+                'partners' => $partners[0],
+             ];
+         }
+         else  $data = ['id' => $id,];             
+         
+         return view('/admin/partner', compact('data'));
     }
 
     /**
@@ -72,6 +105,49 @@ class PartnersController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+       if($request->file('img_path')){
+
+        $filePath = 'partner_img-'.$id.'.' . $request->file('img_path')->getClientOriginalExtension();
+        $path = $request->file('img_path')->storeAs('images/partners',$filePath,'public');
+        $request->img_path = $path;
+        
+        }
+        else if($id!=0)
+            $path =   DB::table('partners')->where('id', '=', $id)->value('img_path');
+        else $path = "";
+
+        if($id!=0){
+            DB::table('partners')
+            ->where(
+                [
+                    ['id', '=', $id],
+                    
+                ])
+            ->update([
+                'name_brand' => $request->name,
+                'link' => $request->link,
+                'img_path' => $path,
+            ]);
+        }
+        else {
+            $id = DB::table('partners')
+            ->where(
+                [
+                    ['id', '=', $id],
+                    
+                ])
+            ->insertGetId([
+                'name_brand' => $request->name,
+                'link' => $request->link,
+                'img_path' => $path,
+            ]);
+        }
+          $partners = DB::table('partners')->get()->toArray();
+         $data = [
+            'partners' => $partners,
+         ];
+        return view('/admin/partners', compact('data'));
     }
 
     /**
@@ -82,6 +158,22 @@ class PartnersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+       $file = DB::table('partners')
+        ->where(
+            [
+                ['id', '=', $id],
+                
+            ])->value('img_path');
+        dump($file);
+        File::delete($file);
+        DB::table('partners')
+        ->where(
+            [
+                ['id', '=', $id],
+                
+            ])
+        ->delete();
+      
     }
 }

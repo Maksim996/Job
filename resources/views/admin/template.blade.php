@@ -81,10 +81,39 @@
                     <div class="k-aside-menu-wrapper k-grid__item k-grid__item--fluid" id="k_aside_menu_wrapper">
                         <div id="k_aside_menu" class="k-aside-menu " data-kmenu-vertical="1" data-kmenu-scroll="1" data-kmenu-dropdown-timeout="500" >
                             <ul class="k-menu__nav ">
-                                <li class="k-menu__item k-menu__item--active" aria-haspopup="true" >
 
-                                    <a href="{{ route('ad_header-menu')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Меню</span></a>
+                                <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="k-menu__link k-menu__toggle"><i class="k-menu__link-icon flaticon2-graphic"></i><span class="k-menu__link-text">Меню</span><i class="k-menu__ver-arrow la la-angle-right"></i></a>
+                                    <div class="k-menu__submenu ">
+                                        <span class="k-menu__arrow"></span>
+                                        <ul class="k-menu__subnav">
+                                            <li class="k-menu__item k-menu__item--parent" aria-haspopup="true" >
+                                                <span class="k-menu__link"><span class="k-menu__link-text">Меню</span></span>
+                                            </li>
+                                            <li class="k-menu__item" aria-haspopup="true" >
+                                                <a href="{{ route('menu_prac')}}" class="k-menu__link ">
+                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
+                                                    <span class="k-menu__link-text">Практика</span>
+                                                </a>
+                                            </li>
+                                            <li class="k-menu__item " aria-haspopup="true" >
+                                                <a href="{{ route('menu_doc')}}" class="k-menu__link ">
+                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
+                                                    <span class="k-menu__link-text">Документи</span>
+                                                </a>
+                                            </li>
+                                            <li class="k-menu__item " aria-haspopup="true" >
+                                                <a href="{{ route('menu_vip')}}" class="k-menu__link ">
+                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
+                                                    <span class="k-menu__link-text">Випускники</span>
+                                                </a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
                                 </li>
+
+                                
                                 <li class="k-menu__item " aria-haspopup="true" >
 
                                     <a href="{{ route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
@@ -131,7 +160,7 @@
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
-                                    <a  href="{{ route('ad_partners')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_partners.partners.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Наши партнери
                                     </span></a>
                                 </li>
@@ -225,6 +254,7 @@
         <script src="{{ URL::asset('js/admin/photo.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/footer.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/document.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/menu_edit.js') }}" type="text/javascript"></script>
 
         <!-- end::Global Config -->
         <!--begin:: Global Mandatory Vendors -->

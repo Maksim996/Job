@@ -40,9 +40,11 @@ class HeaderController extends Controller
         // ->str_slug($request->input('name'))
         
         if($request->file('img_path')){
+
         $filePath = 'header_img'.'.' . $request->file('img_path')->getClientOriginalExtension();
         $path = $request->file('img_path')->storeAs('images/uploads_header',$filePath,'public');
         $request->img_path = $path;
+        
         }
         else
             $path =   DB::table('header')->where('id', '=', $id)->value('img_path');

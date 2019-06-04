@@ -63,22 +63,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	// Route::get('news', function () {
 	//     return view('/admin/news');
 	// })->name('ad_news');
+	Route::resource('partners', 'Admin\PartnersController', ['as' => 'ad_partners']);
 
-	Route::get('brands', function () {
-	    return view('/admin/brands');
-	})->name('ad_brands');
 	Route::get('footer', function () {
 	    return view('/admin/footer');
 	})->name('ad_footer');
+	Route::get('menu_prac', function () {
+	    return view('/admin/menu_prac');
+	})->name('menu_prac');
+	Route::get('menu_doc', function () {
+	    return view('/admin/menu_doc');
+	})->name('menu_doc');
+	Route::get('menu_vip', function () {
+	    return view('/admin/menu_vip');
+	})->name('menu_vip');
 	// Route::get('new/{id}', function ($id) {
 	//     return view('/admin/new', array('id' => $id));
 	// });
 	Route::get('document/create', function () {
 	    return view('/admin/document_template');
 	});
-	Route::get('partners', function () {
-	    return view('/admin/partners');
-	})->name('ad_partners');
 });
 
 //site routes
