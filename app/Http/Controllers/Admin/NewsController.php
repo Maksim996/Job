@@ -18,7 +18,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
             ['type', '=', 'new'],
         ])
@@ -27,7 +27,6 @@ class NewsController extends Controller
         $data = [
             'news' => $news,
         ];
-        //dump($data['news']);die;
 
         return view('admin.news', compact('data'));
     }
@@ -39,19 +38,19 @@ class NewsController extends Controller
      */
     public function create()
     {
-        // $news = DB::table('inner_news')
-        // //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        // ->where([
-        //     ['type', '=', 'new'],
-        //     //['inner_news_id', '=', 0],
-        // ])
-        // ->get();
+        $new = DB::table('inner_news')
+        //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+        ->where([
+            ['type', '=', 'new'],
+            ['inner_news.inner_news_id', '=', 0],
+        ])
+        ->get();
 
-        // $data = [
-        //     'news' => $news,
-        // ];
+        $data = [
+            'new' => $new,
+        ];
 
-        return view('admin.new');
+        return view('admin.new', compact('data'));
     }
 
     /**
@@ -60,10 +59,36 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InnerNewsRequest $request)
     {
-        //
-        echo "news_store";
+        $request->img_path = $request->file('img_path')->store('images/uploads_news','public');
+
+        $last_id = DB::table('inner_news')
+        ->insertGetId([
+            'type' => 'new',
+            'title' => $request->title,
+            'date' => $request->date,
+            'full_location' => $request->full_location,
+            'full_description' => $request->full_description,
+            'keywords' => $request->keywords,
+            'description' => $request->description
+        ]);
+
+        DB::table('preview')
+        ->insert([
+            'inner_news_id' => $last_id,
+            'img_path' => $request->img_path,
+            'short_location' => $request->short_location,
+            'short_description' => $request->short_description,
+        ]);
+
+        // DB::table('slider_news')
+        // ->insert([
+        //     'inner_news_id' => $last_id,
+        //     'img_path' => 'test_slider_image_path',
+        // ]);
+
+        return redirect()->route('ad_news.news.index');
     }
 
     /**

@@ -24,7 +24,7 @@ class FooterRequest extends FormRequest
     public function rules()
     {
         return [
-            'img_path' => 'bail|required|max:200',
+            'img_path' => 'bail|required',
             'link' => 'nullable|url|max:200',
             'content' => 'required|string',
             'type' => 'required|max:200',

@@ -33,8 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('header', 'Admin\HeaderController', ['as' => 'ad_header']);
 
-	Route::post('header', 'Admin\HeaderController@upload')->name('image.upload');
-
 	Route::resource('practic-header', 'Admin\PracticHeaderController', ['as' => 'ad_practic-header']);
 
 	Route::resource('practic-cards', 'Admin\PracticCardController', ['as' => 'ad_practic-cards']);

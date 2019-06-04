@@ -10,8 +10,8 @@
                 <h3 class="k-portlet__head-title">
                     Анонси
                 </h3>
-                <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="/">
-                        <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
+                <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="{{ route('ad_announcements.announcements.create') }}">
+                    <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
                 </a>
             </div>
         </div>
@@ -55,7 +55,7 @@
                                 <a href="{{ URL::route('ad_announcements.announcements.show', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
                                     <i class="la la-pencil"></i>
                                 </a>
-                                <a href="{{ URL::route('ad_announcements.announcements.destroy', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                <a href="{{ URL::route('ad_announcements.announcements.destroy', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">
                                     <i class="la la-close"></i>
                                 </a>
                             </td>

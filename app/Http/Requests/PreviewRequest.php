@@ -25,7 +25,7 @@ class PreviewRequest extends FormRequest
     {
         return [
             'inner_news_id' => 'bail|required|integer',
-            'img_path' => 'required|url|max:200',
+            //'img_path' => 'required|url|max:200',
             'short_location' => 'required|max:200',
             'short_description' => 'required|max:200',
         ];

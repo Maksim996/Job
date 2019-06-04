@@ -34,8 +34,9 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(HeaderRequest $request, $id)
+    public function update(HeaderRequest $request)
     {
+        $id = 1;
         $header = Header::findOrfail($id);
 
         $path = $request->file('img_path')->store('images/uploads_header','public');

@@ -18,7 +18,6 @@ class AnnouncementsController extends Controller
     public function index()
     {
         $announcements = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
             ['type', '=', 'announcement'],
         ])
@@ -38,7 +37,18 @@ class AnnouncementsController extends Controller
      */
     public function create()
     {
-        echo "create announcements";
+        $announcement = DB::table('inner_news')
+        ->where([
+            ['type', '=', 'announcement'],
+            ['inner_news.inner_news_id', '=', 0],
+        ])
+        ->get();
+
+        $data = [
+            'announcement' => $announcement,
+        ];
+
+        return view('admin.announcement', compact('data'));
     }
 
     /**
@@ -47,10 +57,37 @@ class AnnouncementsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InnerNewsRequest $request)
     {
-        //
-        echo "announcement_store";
+        dump($request);die;
+        $request->img_path = $request->file('img_path')->store('images/uploads_announcements','public');
+
+        $last_id = DB::table('inner_news')
+        ->insertGetId([
+            'type' => 'announcement',
+            'title' => $request->title,
+            'date' => $request->date,
+            'full_location' => $request->full_location,
+            'full_description' => $request->full_description,
+            'keywords' => $request->keywords,
+            'description' => $request->description
+        ]);
+
+        DB::table('preview')
+        ->insert([
+            'inner_news_id' => $last_id,
+            'img_path' => $request->img_path,
+            'short_location' => $request->short_location,
+            'short_description' => $request->short_description,
+        ]);
+
+        // DB::table('slider_news')
+        // ->insert([
+        //     'inner_news_id' => $last_id,
+        //     'img_path' => 'test_slider_image_path',
+        // ]);
+
+        return redirect()->route('ad_announcements.announcements.index');
     }
 
     /**
@@ -103,11 +140,9 @@ class AnnouncementsController extends Controller
 
         $full_location = $request->get('SumDU');
         $full_description = $request->get('Lorem ipsum');
-        //dump($request->all());die;
 
         DB::table('inner_news')
         ->where([
-            //['type', '=', 'announcement'],
             ['inner_news_id', '=', $id],
         ])
         ->update([
@@ -121,11 +156,10 @@ class AnnouncementsController extends Controller
 
         DB::table('preview')
         ->where([
-            //['type', '=', 'announcement'],
             ['inner_news_id', '=', $id],
         ])
         ->update([
-            'img_path' => $request->get('img_path'),
+            'img_path' => $path,
             'short_location' => $request->get('short_location'),
             'short_description' => $request->get('short_description'),
         ]);
@@ -142,7 +176,7 @@ class AnnouncementsController extends Controller
             'announcement' => $announcement,
         ];
 
-        return view('admin.announcement', compact('data'));
+        return redirect()->route('ad_announcements.announcements.index', compact('data'));
     }
 
     /**
