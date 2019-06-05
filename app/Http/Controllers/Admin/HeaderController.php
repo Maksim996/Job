@@ -39,13 +39,12 @@ class HeaderController extends Controller
         $id = 1;
         $header = Header::findOrfail($id);
 
-        $path = $request->file('img_path')->store('images/uploads_header','public');
-        $request->img_path = $path;
+        $request->img_path = $request->file('img_path')->store('images/uploads_header','public');
 
         DB::table('header')
         ->where('id', '=', $id)
         ->update([
-            'img_path' => $path,
+            'img_path' => $request->img_path,
             'title' => $request->title,
             'link' => $request->link,
             'content' => $request->content,

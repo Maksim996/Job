@@ -52,10 +52,10 @@
                             <td>{{ $new->date }}</td>
                             <!-- <td nowrap></td> -->
                             <td>
-                                <a href="{{ URL::route('ad_news.news.show', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                <a href="{{ URL::route('ad_news.news.show', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Перегляд">
                                     <i class="la la-pencil"></i>
                                 </a>
-                                <a href="{{ URL::route('ad_news.news.destroy', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">
+                                <a href="{{ URL::route('ad_news.news.destroy', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Видалення">
                                     <i class="la la-close"></i>
                                 </a>
                             </td>

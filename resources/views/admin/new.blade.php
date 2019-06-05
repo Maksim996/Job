@@ -102,11 +102,11 @@
                         <input type="file"class="form-control" name="img_path">
                     </div>
                 </div>
-                <!-- <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдеру</label>
-                    <input type="file" id="files" name="files[]" multiple />
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдера</label>
+                    <input type="file" id="files" name="files[]" multiple>
                     <output id="list"></output>
-                </div> -->
+                </div>
                 <div class='black-line form-group row'></div>
                 <p class='info-seach'>Додаткова інформація для пошукової системи</p>
                 <div class="form-group row">

@@ -40,7 +40,7 @@ class AnnouncementsController extends Controller
         $announcement = DB::table('inner_news')
         ->where([
             ['type', '=', 'announcement'],
-            ['inner_news.inner_news_id', '=', 0],
+            ['inner_news_id', '=', 0],
         ])
         ->get();
 
@@ -59,7 +59,6 @@ class AnnouncementsController extends Controller
      */
     public function store(InnerNewsRequest $request)
     {
-        dump($request);die;
         $request->img_path = $request->file('img_path')->store('images/uploads_announcements','public');
 
         $last_id = DB::table('inner_news')
@@ -81,11 +80,15 @@ class AnnouncementsController extends Controller
             'short_description' => $request->short_description,
         ]);
 
-        // DB::table('slider_news')
-        // ->insert([
-        //     'inner_news_id' => $last_id,
-        //     'img_path' => 'test_slider_image_path',
-        // ]);
+        $cnt = count($request->file('files'));
+        for ($i = 0; $i < $cnt; $i++) { 
+            $path = $request->file('files')[$i]->store('images/uploads_slider', 'public');
+            DB::table('slider_news')
+            ->insert([
+                'inner_news_id' => $last_id,
+                'img_path' => $path
+            ]);
+        }
 
         return redirect()->route('ad_announcements.announcements.index');
     }
@@ -106,22 +109,16 @@ class AnnouncementsController extends Controller
         ])
         ->get();
 
+        $slider = DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->get();
+
         $data = [
             'announcement' => $announcement,
+            'slider' => $slider
         ];
 
         return view('admin.announcement', compact('data'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -133,50 +130,41 @@ class AnnouncementsController extends Controller
      */
     public function update(InnerNewsRequest $request, $id)
     {
-        $request->merge(['full_location' => 'SumDU-Announcements']);
-        $request->merge(['full_description' => 'Lorem ipsum announcements']);
-        $request->merge(['img_path' => '/images/main/brands/cisco.png']);
-        $request->merge(['short_location' => 'Short-Location-Announcements-SumDU']);
-
-        $full_location = $request->get('SumDU');
-        $full_description = $request->get('Lorem ipsum');
+        $request->img_path = $request->file('img_path')->store('images/uploads_announcements','public');
+        //$request->validated();
 
         DB::table('inner_news')
         ->where([
             ['inner_news_id', '=', $id],
         ])
         ->update([
-            'title' => $request->get('title'),
-            'date' => $request->get('date'),
-            'full_location' => $request->get('full_location'),
-            'full_description' => $request->get('full_description'),
-            'keywords' => $request->get('keywords'),
-            'description' => $request->get('description'),
+            'title' => $request->title,
+            'date' => $request->date,
+            'full_location' => $request->full_location,
+            'full_description' => $request->full_description,
+            'keywords' => $request->keywords,
+            'description' => $request->description
         ]);
 
         DB::table('preview')
-        ->where([
-            ['inner_news_id', '=', $id],
-        ])
+        ->where('inner_news_id', '=', $id)
         ->update([
-            'img_path' => $path,
-            'short_location' => $request->get('short_location'),
-            'short_description' => $request->get('short_description'),
+            'img_path' => $request->img_path,
+            'short_location' => $request->short_location,
+            'short_description' => $request->short_description,
         ]);
 
-        $announcement = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        ->where([
-            ['type', '=', 'announcement'],
-            ['inner_news.inner_news_id', '=', $id],
-        ])
-        ->get();
+        $cnt = count($request->file('files'));
+        for ($i = 0; $i < $cnt; $i++) { 
+            $path = $request->file('files')[$i]->store('images/uploads_slider', 'public');
+            DB::table('slider_news')
+            ->insert([
+                'inner_news_id' => $id,
+                'img_path' => $path
+            ]);
+        }
 
-        $data = [
-            'announcement' => $announcement,
-        ];
-
-        return redirect()->route('ad_announcements.announcements.index', compact('data'));
+        return redirect()->route('ad_announcements.announcements.index');
     }
 
     /**

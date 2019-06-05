@@ -18,7 +18,6 @@ class NewsController extends Controller
     public function index()
     {
         $news = DB::table('inner_news')
-        //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
             ['type', '=', 'new'],
         ])
@@ -39,7 +38,6 @@ class NewsController extends Controller
     public function create()
     {
         $new = DB::table('inner_news')
-        //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
             ['type', '=', 'new'],
             ['inner_news.inner_news_id', '=', 0],
@@ -82,11 +80,15 @@ class NewsController extends Controller
             'short_description' => $request->short_description,
         ]);
 
-        // DB::table('slider_news')
-        // ->insert([
-        //     'inner_news_id' => $last_id,
-        //     'img_path' => 'test_slider_image_path',
-        // ]);
+        $cnt = count($request->file('files'));
+        for ($i = 0; $i < $cnt; $i++) { 
+            $path = $request->file('files')[$i]->store('images/uploads_slider', 'public');
+            DB::table('slider_news')
+            ->insert([
+                'inner_news_id' => $last_id,
+                'img_path' => $path
+            ]);
+        }
 
         return redirect()->route('ad_news.news.index');
     }
@@ -107,8 +109,13 @@ class NewsController extends Controller
         ])
         ->get();
 
+        $slider = DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->get();
+
         $data = [
             'new' => $new,
+            'slider' => $slider
         ];
 
         return view('admin.new', compact('data'));
@@ -123,46 +130,38 @@ class NewsController extends Controller
      */
     public function update(InnerNewsRequest $request, $id)
     {
-        $request->merge(['full_location' => 'SumDU news']);
-        $request->merge(['full_description' => 'Lorem ipsum news']);
-        $request->merge(['img_path' => '/images/main/brands/cisco.png']);
-        $request->merge(['short_location' => 'Short-Location-News-SumDU']);
-
-        $full_location = $request->get('SumDU');
-        $full_description = $request->get('Lorem ipsum');
+        $request->img_path = $request->file('img_path')->store('images/uploads_news','public');
 
         DB::table('inner_news')
         ->where('inner_news_id', '=', $id)
         ->update([
-            'title' => $request->get('title'),
-            'date' => $request->get('date'),
-            'full_location' => $request->get('full_location'),
-            'full_description' => $request->get('full_description'),
-            'keywords' => $request->get('keywords'),
-            'description' => $request->get('description'),
+            'title' => $request->title,
+            'date' => $request->date,
+            'full_location' => $request->full_location,
+            'full_description' => $request->full_description,
+            'keywords' => $request->keywords,
+            'description' => $request->description
         ]);
 
         DB::table('preview')
         ->where('inner_news_id', '=', $id)
         ->update([
-            'img_path' => $request->get('img_path'),
-            'short_location' => $request->get('short_location'),
-            'short_description' => $request->get('short_description'),
+            'img_path' => $request->img_path,
+            'short_location' => $request->short_location,
+            'short_description' => $request->short_description,
         ]);
 
-        $new = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        ->where([
-            ['type', '=', 'new'],
-            ['inner_news.inner_news_id', '=', $id],
-        ])
-        ->get();
+        $cnt = count($request->file('files'));
+        for ($i = 0; $i < $cnt; $i++) { 
+            $path = $request->file('files')[$i]->store('images/uploads_slider', 'public');
+            DB::table('slider_news')
+            ->insert([
+                'inner_news_id' => $id,
+                'img_path' => $path
+            ]);
+        }
 
-        $data = [
-            'new' => $new,
-        ];
-
-        return view('admin.new', compact('data'));
+        return redirect()->route('ad_news.news.index');
     }
 
     /**
@@ -173,8 +172,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $new = InnerNews::findOrFail($id);
-        $new->delete();
-        return redirect()->route('admin.news')->with('success', 'Новину видалено успішно');
+        // $new = InnerNews::findOrFail($id);
+        // $new->delete();
+        // return redirect()->route('admin.news')->with('success', 'Новину видалено успішно');
     }
 }
