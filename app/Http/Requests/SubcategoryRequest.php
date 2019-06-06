@@ -24,10 +24,19 @@ class SubcategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'bail|required|integer',
+            'category_id' => 'required|integer',
             'title' => 'required|max:200',
             'type' => 'required|max:200',
             'link' => 'required|url|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'category_id' => 'Ідентифікатор категорії',
+            'title' => 'Назва підкатегорії',
+            'type' => 'Тип підкатегорії',
+            'link' => 'Посилання',
         ];
     }
 }

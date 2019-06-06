@@ -172,8 +172,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        // $new = InnerNews::findOrFail($id);
-        // $new->delete();
-        // return redirect()->route('admin.news')->with('success', 'Новину видалено успішно');
+        $new = InnerNews::findOrFail($id);
+        $new->delete();
+        return redirect()->route('ad_news.news.index')->with('success', 'Новину видалено успішно');
     }
 }

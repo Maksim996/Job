@@ -131,7 +131,6 @@ class AnnouncementsController extends Controller
     public function update(InnerNewsRequest $request, $id)
     {
         $request->img_path = $request->file('img_path')->store('images/uploads_announcements','public');
-        //$request->validated();
 
         DB::table('inner_news')
         ->where([
@@ -175,8 +174,8 @@ class AnnouncementsController extends Controller
      */
     public function destroy($id)
     {
-        // $announcement = InnerNews::findOrFail($id);
-        // $announcement->delete();
-        // return redirect()->route('admin.announcements')->with('success', 'Анонс видалено успішно');
+        $announcement = InnerNews::findOrFail($id);
+        $announcement->delete();
+        return redirect()->route('ad_announcements.announcements.index')->with('success', 'Анонс видалено успішно');
     }
 }

@@ -24,10 +24,19 @@ class PreviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'inner_news_id' => 'bail|required|integer',
-            //'img_path' => 'required|url|max:200',
+            'inner_news_id' => 'required|integer',
+            'img_path' => 'required|mime:jpg',
             'short_location' => 'required|max:200',
             'short_description' => 'required|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'inner_news_id' => 'Ідентифікатор новини / анонсу',
+            'img_path' => 'Головне зображення',
+            'short_location' => 'Місце проведення коротке',
+            'short_description' => 'Короткий опис',
         ];
     }
 }

@@ -13,7 +13,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,17 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'bail|required|max:200',
+            'title' => 'required|max:200',
             'type' => 'required|max:200',
             'link' => 'required|url|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'title' => 'Категорія',
+            'type' => 'Тип категорії',
+            'link' => 'Посилання',
         ];
     }
 }

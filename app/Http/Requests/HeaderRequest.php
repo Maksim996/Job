@@ -24,12 +24,23 @@ class HeaderRequest extends FormRequest
     public function rules()
     {
         return [
-            'img_path' => 'bail|required',
+            'img_path' => 'required',
             'title' => 'required|max:200',
-            'link' => 'required|url',
+            'link' => 'required|url|max:200',
             'content' => 'required|string',
             'keywords' => 'required|string|max:200',
             'description' => 'required|string|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'img_path' => 'Загрузка фото',
+            'title' => 'Основний заголовок',
+            'link' => 'Посилання',
+            'content' => 'Короткий опис',
+            'keywords' => 'Ключові слова',
+            'description' => 'Опис',
         ];
     }
 }
