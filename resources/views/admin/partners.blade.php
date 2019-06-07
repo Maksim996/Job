@@ -10,7 +10,7 @@
                 <h3 class="k-portlet__head-title">
                     Партнери
                 </h3>
-                <a href="{{ URL::route('ad_partners.partners.edit', 0) }}"class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
+                <a href="{{ URL::route('ad_partners.partners.edit', 0) }}" class="btn btn-brand k-btn k-btn--icon but-plus mr-4" id="m_plus">
                     <span> <i class="la la-plus"></i> <span>Додати нового партнера</span> </span>
                 </a>
             </div>
@@ -67,13 +67,20 @@
         </div>  
    </div>
     <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(event) { 
+    document.addEventListener("DOMContentLoaded", function() { 
+            let count = $('tr').length;
+           if(count == 2){
+            $('.delete_partner').hide();
+           }
+
             $('.delete_partner').on('click',function(){
                 let id = $(this).val();
+               
                $.ajax({
                     url: "{{ URL::route('ad_partners.partners.destroy', $partners->id) }}",
                     method: 'delete',
-                    data : {_token: '{{csrf_token()}}'},
+                    data : {_token: '{{csrf_token()}}',
+                            id:id,},
                     
                     success: function(res){
                         alert("Success");
@@ -81,7 +88,7 @@
                     }
                 })   
             });
-       });
+        });
 
    </script>
     <!--end::Dashboard 1-->

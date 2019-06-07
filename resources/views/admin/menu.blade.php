@@ -26,32 +26,17 @@
                         </div>
                     </div>
                     
-                    <div class="form-group row">
-                        <label class="col-form-label col-lg-2 col-sm-12">Виберіть</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12" >
-                            
-                            <input type="radio" @if($data['category']->type != 'type3') checked @endif class="radio_menu" id="contactChoice1"
-                            name="contact" value="link" >
-                           
-                            <label for="contactChoice1">link</label>
-                          
-                            <input type="radio"   @if($data['category']->type == 'type3') checked  @endif class="radio_menu" id="contactChoice2"
-                            name="contact" value="dropdown">
-                            
-                            <label for="contactChoice2">dropdown</label>
-                        </div>
-                    </div>
                 </div> 
 
 
             <div class="k-portlet__body">
-                <div class='partners row' id='linkBar1' style="display:none;">
+                <div class='partners row' id='linkBar1'>
                     <div class="form-group col-lg-6 col-md-9  col-sm-12">
                         <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="catSelect">  
-                                <option value= "External">Зовнішнє</option>                
-                                <option value= "news" @if($data['category']->link == 'news') selected @endif>news</option>
-                                <option value= "home" @if($data['category']->link == 'home') selected @endif >home</option>
-                                <option value= "documents" @if($data['category']->link == 'documents') selected @endif>Documents</option>                      
+                                <option value= "external">Зовнішнє</option>                
+                                <option value= "news" @if($data['category']->link == 'news') selected @endif>Новини</option>
+                                <option value= "home" @if($data['category']->link == 'home') selected @endif >Головна</option>
+                                <option value= "documents" @if($data['category']->link == 'documents') selected @endif>Документи</option>                      
                         </select>
                     </div>
                     
@@ -64,24 +49,27 @@
                 </div>           
             </div>
             <div id="dropdownBar">
-            <div class="k-portlet__body  partnerss border" style="display:none;" id="linkBar2">
-                <input id="countSubcats" type="text" style="display:none" value="count($data['subcategories']">
-                @foreach($data['subcategories'] as $sub)
+             <input id="countSubcats" type="text" style="display:none" value="{{count($data['subcategories'])}}">
+            
+              @foreach($data['subcategories'] as $sub)
+                     <div class="partnerss border">
+                     
                      <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Title</label>
                         <div class="col-lg-8 col-md-9 col-sm-12">
+                         <input type="text" class="subIdsField" name="id[{{$loop->index}}]" style="display:none" value="{{$sub->subcategory_id}}">
                             <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->title}}">
-                            <input type="text" name="id[{{$loop->index}}]" style="display:none" value="{{$sub->subcategory_id}}">
+                           
                         </div>
                     </div>
                     
                     <div class='row'>
                         <div class="form-group col-lg-6 col-md-9  col-sm-12">
                             <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="subcatSelect[{{$loop->index}}]">                  
-                                <option value= "External">Зовнішнє</option>
-                                <option value= "news" @if($sub->link == 'news') selected @endif>news</option>
-                                <option value= "home" @if($sub->link == 'home') selected @endif>home</option>
-                                <option value= "documents" @if($sub->link == 'documents') selected @endif>Documents</option>                      
+                                <option value= "external">Зовнішнє</option>
+                                <option value= "news" @if($sub->link == 'news') selected @endif>Новини</option>
+                                <option value= "home" @if($sub->link == 'home') selected @endif>Головна</option>
+                                <option value= "documents" @if($sub->link == 'documents') selected @endif>Документи</option>                      
                             </select>
                         </div>
                         
@@ -93,12 +81,15 @@
                         </div>
                     </div>     
                     <div class="form-group row">
-                        <button class="btn btn-brand-minus k-btn k-btn--icon but-minus col-form-label mt-5 col-lg-2 col-sm-12 " id="minus">
+                        <button type="button" class="btn btn-brand-minus k-btn k-btn--icon but-minus col-form-label mt-5 col-lg-2 col-sm-12 minus">
                             <span> <i class="la la-minus"></i> <span>Видалити</span> </span>
                         </button>
                     </div>
+                     </div> 
                 @endforeach    
+                
                 @if(count($data['subcategories']) == 0)  
+                  <div class="k-portlet__body partnerss border" style="display:none;" id="linkBar2">
                  <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Title</label>
                         <div class="col-lg-8 col-md-9 col-sm-12">
@@ -129,8 +120,9 @@
                             <span> <i class="la la-minus"></i> <span>Видалити</span> </span>
                         </button>
                     </div>
+                     </div> 
                     @endif
-            </div> 
+           
             </div>
             <div class="row add-partners k-portlet__body">
                 <div class="col-lg-12">

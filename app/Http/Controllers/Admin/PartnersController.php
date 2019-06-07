@@ -77,6 +77,7 @@ class PartnersController extends Controller
      */
     public function edit($id)
     {
+         $count = count(DB::table('partners')->get());
         if($id!=0){
             $partners = DB::table('partners')
             ->where(
@@ -85,12 +86,18 @@ class PartnersController extends Controller
                     
                 ])
             ->get()->toArray();
+
              $data = [
                 'id' => $id,
                 'partners' => $partners[0],
+                'count' => $count
              ];
          }
-         else  $data = ['id' => $id,];             
+          else  
+            $data = ['id' => $id, 'count' => $count];
+             
+        
+                    
          
          return view('/admin/partner', compact('data'));
     }
@@ -158,14 +165,14 @@ class PartnersController extends Controller
      */
     public function destroy($id)
     {
-        
+        dump($id);
        $file = DB::table('partners')
         ->where(
             [
                 ['id', '=', $id],
                 
             ])->value('img_path');
-        dump($file);
+       dump($file);
         File::delete($file);
         DB::table('partners')
         ->where(

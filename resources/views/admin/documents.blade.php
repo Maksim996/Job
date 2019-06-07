@@ -55,12 +55,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Gleichner, Ziemann and Gutkowski</td>
-                            <td>Нормативні</td>
-                            <td>2/12/2018</td>
-                            <td nowrap></td>
+                    @foreach($data['documents'] as $doc)
+                        <tr >
+                            <td>{{$doc->title}}</td>
+                            @foreach($data['subcategories'] as $sub)
+                            @if($sub->subcategory_id == $doc->subcategory_id)
+                                <td>{{$sub->title}}</td>
+                            @endif
+                            @endforeach
+                            <td>{{$doc->doc_date}}</td>
+                            <td>
+                                <input class="id" value="{{$doc->doc_id}}" style="display:none">
+                                <a href="{{ URL::route('ad_documents.documents.show', $doc->doc_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <i class="la la-pencil"></i>
+                                </a>
+                                <a class="btn btn-sm btn-clean btn-icon btn-icon-md delete_document" title="View">
+                                    <i class="la la-close"></i>
+                                </a>
+                            </td>
                         </tr>
+                    @endforeach    
                         
                     </tbody>
                 </table>
@@ -68,5 +82,35 @@
        
         </div>  
    </div>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() { 
+            let count = $('tr').length;
+           if(count == 2){
+            $('.delete_document').hide();
+           }
+
+            $('.delete_document').on('click', (e) => {
+                e.preventDefault();
+
+                let id = $(e.target).closest('td').find('.id').val();
+                $(e.target).closest('tr').remove();
+              
+               $.ajax({
+                     headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                   url: "/admin/delete-document",
+                   method: 'post',
+                   data : {'id':id},
+                    dataType: 'json',    
+                   success: function(res){                                    
+                       //alert("Success");
+                       //location.href = "http://job.test/admin/partners"
+                   }
+               }); 
+            });
+    });
+
+   </script>
     <!--end::Dashboard 1-->
 @endsection

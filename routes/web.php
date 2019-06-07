@@ -65,7 +65,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	// })->name('ad_news');
 	Route::resource('partners', 'Admin\PartnersController', ['as' => 'ad_partners']);
 
+
+	Route::post('delete-subcategory', 'Admin\MenuController@deleteSubcategory');
+	Route::post('delete-document', 'Admin\DocumentsController@deleteDocument');
+
+
 	Route::resource('menus', 'Admin\MenuController', ['as' => 'ad_menus']);
+
 
 	Route::get('footer', function () {
 	    return view('/admin/footer');

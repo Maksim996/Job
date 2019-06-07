@@ -50,7 +50,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Дата та час проведення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="date" value="{{ $data['new'][0]->date }}">
+                        <input id="k_datetimepicker_3" type="text" class="form-control" placeholder="" name="date" value="{{ $data['new'][0]->date }}">
                         <span class="form-text text-muted">Приклад: 21 грудня о 14:00</span> 
                     </div>
                 </div>
@@ -92,6 +92,10 @@
                 </div>
             </div>
         </form>
+
+
+ 
+   
    </div>
     <!--end::Dashboard 1-->
 @endsection

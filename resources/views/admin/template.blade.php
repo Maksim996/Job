@@ -7,6 +7,7 @@
         <title>Keen | Dashboard</title>
         <!-- <meta name="description" content="Latest updates and statistic charts"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="csrf-token" content="{{ csrf_token() }}" style="display:none">
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
         <!--begin::Fonts -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
@@ -287,7 +288,7 @@
         <script src="{{ URL::asset('js/admin/general/jquery.input.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/repeater.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/summernote.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/general/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/general/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/bootstrap-timepicker/init.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
@@ -307,7 +308,7 @@
         
         <script src="{{ URL::asset('js/admin/custom/repeater.js') }}" type="text/javascript"></script>
 
-
+        <script src="{{ URL::asset('js/admin/general/lang-sommernote/summernote-uk-UA.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/custom/summernote.js') }}" type="text/javascript"></script>
 
         
@@ -315,7 +316,7 @@
 
         
         <script src="{{ URL::asset('js/admin/custom/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-
+         <script src="{{ URL::asset('js/admin/general/locales/bootstrap-datetimepicker.ua.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/custom/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
 
         <script src="{{ URL::asset('js/admin/custom/dropzone.js') }}" type="text/javascript"></script>

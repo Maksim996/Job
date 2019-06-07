@@ -52,6 +52,11 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-brand">Зберегти</button>
+                             @if($data['count'] != 1)
+                              <a value="{{$data['partners']->id}}" class="btn btn-danger" id="brand_minus">
+                                  <span> <i class="la la-minus"></i> <span>Видалити бренд</span> </span>
+                              </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -59,9 +64,7 @@
 
         </form>
              <div class="form-group row">
-                <button type="submit" value="{{$data['partners']->id}}" class="btn btn-brand-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 " id="brand_minus">
-                    <span> <i class="la la-minus"></i> <span>Видалити бренд</span> </span>
-                </button>
+            
             </div>
         @else
         <form method="POST" action="{{ URL::route('ad_partners.partners.update', 0) }}" class="k-form k-form--label-right" id='partners_blocks' enctype="multipart/form-data">
@@ -113,12 +116,12 @@
                    
    </div>
 
-  <!--  <script type="text/javascript">
+   <script type="text/javascript">
    document.addEventListener("DOMContentLoaded", function(event) { 
            $('#brand_minus').on('click',function(){
                let id = $(this).val();
               $.ajax({
-                   url: "{{ URL::route('ad_partners.partners.destroy', 0) }}",
+                   url: "{{ URL::route('ad_partners.partners.destroy', $data['id']) }}",
                    method: 'delete',
                    data : {_token: '{{csrf_token()}}'},
                    
@@ -130,6 +133,6 @@
            });
       });
   
-  </script> -->
+  </script>
        
 @endsection

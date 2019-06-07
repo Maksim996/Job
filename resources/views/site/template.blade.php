@@ -51,11 +51,11 @@
                                     @else
                                     <a class="nav-link" href="/{{$category->link}}">
                                     @endif
-                                    {{$category->title}} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                    {!!$category->title!!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
                                 @else
                                 <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       {{$category->title}}
+                                       {!!$category->title!!}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach($data['subcategory'] as $subcategory)
