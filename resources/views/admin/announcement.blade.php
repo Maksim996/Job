@@ -140,10 +140,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-brand">Зберегти</button>
-                            @if(isset($data['announcement'][0]))
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-brand">Видалити</button>
-                            @endif
                         </div>
                     </div>
                 </div>
