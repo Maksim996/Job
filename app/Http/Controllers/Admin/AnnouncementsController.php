@@ -38,7 +38,11 @@ class AnnouncementsController extends Controller
      */
     public function create()
     {
-        echo "create announcements";
+
+        $data = [
+            'type' => "0",
+        ];
+        return view('admin.announcement', compact('data'));
     }
 
     /**
@@ -70,6 +74,7 @@ class AnnouncementsController extends Controller
         ->get();
 
         $data = [
+            'type' => '1',
             'announcement' => $announcement,
         ];
 
@@ -105,44 +110,65 @@ class AnnouncementsController extends Controller
         $full_description = $request->get('Lorem ipsum');
         //dump($request->all());die;
 
-        DB::table('inner_news')
-        ->where([
-            //['type', '=', 'announcement'],
-            ['inner_news_id', '=', $id],
-        ])
-        ->update([
-            'title' => $request->get('title'),
-            'date' => $request->get('date'),
-            'full_location' => $request->get('full_location'),
-            'full_description' => $request->get('full_description'),
-            'keywords' => $request->get('keywords'),
-            'description' => $request->get('description'),
-        ]);
+        if ($id != 0){
+            DB::table('inner_news')
+                ->where([
+                    //['type', '=', 'announcement'],
+                    ['inner_news_id', '=', $id],
+                ])
+                ->update([
+                    'title' => $request->get('title'),
+                    'date' => $request->get('date'),
+                    'full_location' => $request->get('full_location'),
+                    'full_description' => $request->get('full_description'),
+                    'keywords' => $request->get('keywords'),
+                    'description' => $request->get('description'),
+                ]);
 
         DB::table('preview')
-        ->where([
-            //['type', '=', 'announcement'],
-            ['inner_news_id', '=', $id],
-        ])
-        ->update([
-            'img_path' => $request->get('img_path'),
-            'short_location' => $request->get('short_location'),
-            'short_description' => $request->get('short_description'),
-        ]);
+            ->where([
+                //['type', '=', 'announcement'],
+                ['inner_news_id', '=', $id],
+            ])
+            ->update([
+                'img_path' => $request->get('img_path'),
+                'short_location' => $request->get('short_location'),
+                'short_description' => $request->get('short_description'),
+            ]);
+        }
+        else {
+            $newId = DB::table('inner_news')
+                ->insertGetId([
+                    'type' => 'announcement',
+                    'title' => $request->get('title'),
+                    'date' => $request->get('date'),
+                    'full_location' => $request->get('full_location'),
+                    'full_description' => $request->get('full_description'),
+                    'keywords' => $request->get('keywords'),
+                    'description' => $request->get('description'),
+                ]);
 
-        $announcement = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        ->where([
-            ['type', '=', 'announcement'],
-            ['inner_news.inner_news_id', '=', $id],
-        ])
-        ->get();
+            DB::table('preview')
+                ->insert([
+                    'inner_news_id' => $newId,
+                    'img_path' => $request->get('img_path'),
+                    'short_location' => $request->get('short_location'),
+                    'short_description' => $request->get('short_description'),
+                ]);
+        }
+
+        $announcements = DB::table('inner_news')
+            ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+            ->where([
+                ['type', '=', 'announcement'],
+            ])
+            ->get();
 
         $data = [
-            'announcement' => $announcement,
+            'announcements' => $announcements,
         ];
 
-        return view('admin.announcement', compact('data'));
+        return view('admin.announcements', compact('data'));
     }
 
     /**
@@ -151,10 +177,10 @@ class AnnouncementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        // $announcement = InnerNews::findOrFail($id);
-        // $announcement->delete();
-        // return redirect()->route('admin.announcements')->with('success', 'Анонс видалено успішно');
+        //
+        $id = $request->id;
+        DB::table('inner_news')->where('inner_news_id',$id)->delete();
     }
 }

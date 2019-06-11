@@ -68,6 +68,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::post('delete-subcategory', 'Admin\MenuController@deleteSubcategory');
 	Route::post('delete-document', 'Admin\DocumentsController@deleteDocument');
+    Route::post('delete-new', 'Admin\NewsController@destroy');
+    Route::post('delete-announcement', 'Admin\AnnouncementsController@destroy');
 
 
 	Route::resource('menus', 'Admin\MenuController', ['as' => 'ad_menus']);
