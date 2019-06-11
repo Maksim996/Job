@@ -114,8 +114,7 @@
                    data : {'id':id},
                     dataType: 'json',    
                    success: function(res){                                    
-                       //alert("Success");
-                       //location.href = "http://job.test/admin/partners"
+
                    }
                }); 
             });

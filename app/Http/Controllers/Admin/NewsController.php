@@ -39,19 +39,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        // $news = DB::table('inner_news')
-        // //->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        // ->where([
-        //     ['type', '=', 'new'],
-        //     //['inner_news_id', '=', 0],
-        // ])
-        // ->get();
-
-        // $data = [
-        //     'news' => $news,
-        // ];
-
-        return view('admin.new');
+        $data = [
+            'type' => "0",
+        ];
+        return view('admin.new',compact('data'));
     }
 
     /**
@@ -83,6 +74,7 @@ class NewsController extends Controller
         ->get();
 
         $data = [
+            'type' => "1",
             'new' => $new,
         ];
 
@@ -106,6 +98,7 @@ class NewsController extends Controller
         $full_location = $request->get('SumDU');
         $full_description = $request->get('Lorem ipsum');
 
+        if($id != 0){
         DB::table('inner_news')
         ->where('inner_news_id', '=', $id)
         ->update([
@@ -124,20 +117,41 @@ class NewsController extends Controller
             'short_location' => $request->get('short_location'),
             'short_description' => $request->get('short_description'),
         ]);
+        }
+        else{
+            $newId = DB::table('inner_news')
+                ->insertGetId([
+                    'title' => $request->get('title'),
+                    'date' => $request->get('date'),
+                    'type' => 'new',
+                    'full_location' => $request->get('full_location'),
+                    'full_description' => $request->get('full_description'),
+                    'keywords' => $request->get('keywords'),
+                    'description' => $request->get('description'),
+                ]);
 
-        $new = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        ->where([
-            ['type', '=', 'new'],
-            ['inner_news.inner_news_id', '=', $id],
-        ])
-        ->get();
+            DB::table('preview')
+                ->insert([
+                    'inner_news_id' => $newId,
+                    'img_path' => $request->get('img_path'),
+                    'short_location' => $request->get('short_location'),
+                    'short_description' => $request->get('short_description'),
+                ]);
+        }
+
+        $news = DB::table('inner_news')
+            ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+            ->where([
+                ['type', '=', 'new'],
+            ])
+            ->get();
 
         $data = [
-            'new' => $new,
+            'news' => $news,
         ];
 
-        return view('admin.new', compact('data'));
+
+        return view('admin.news', compact('data'));
     }
 
     /**
@@ -146,10 +160,8 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $new = InnerNews::findOrFail($id);
-        $new->delete();
-        return redirect()->route('admin.news')->with('success', 'Новину видалено успішно');
+        DB::table('inner_news')->where('inner_news_id', $request->id)->delete();
     }
 }

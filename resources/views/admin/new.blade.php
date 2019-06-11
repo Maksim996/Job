@@ -8,7 +8,9 @@
        <div class="k-portlet__head">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-                   Новина номер {{$data['new'][0]->inner_news_id}}
+                    @if($data['type'] == '1') Новина номер {{$data['new'][0]->inner_news_id}}
+                    @else Нова новина
+                    @endif
                 </h3>
             </div>
         </div>
@@ -23,21 +25,21 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ URL::route('ad_news.news.update', $data['new'][0]->inner_news_id) }}" class="k-form k-form--label-right">
+        <form method="POST" @if($data['type'] == '1') action="{{ URL::route('ad_news.news.update', $data['new'][0]->inner_news_id) }}" @else action="{{ URL::route('ad_news.news.update',0) }}" @endif class="k-form k-form--label-right">
             {{ @csrf_field() }}
             @method('PUT')
             <div class="k-portlet__body">
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="title" value="{{ $data['new'][0]->title }}">
+                        <input type="text" class="form-control" placeholder="" name="title" @if($data['type'] == '1') value="{{ $data['new'][0]->title }}" @endif>
                         <span class="form-text text-muted">Основний заголовок на головній сторінці</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="short_description">{{ $data['new'][0]->short_description }}</textarea>
+                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="short_description"> @if($data['type'] == '1') {{ $data['new'][0]->short_description }} @endif</textarea>
                         <span class="form-text text-muted"></span> 
                     </div>
                 </div>
@@ -50,7 +52,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Дата та час проведення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input id="k_datetimepicker_3" type="text" class="form-control" placeholder="" name="date" value="{{ $data['new'][0]->date }}">
+                        <input id="k_datetimepicker_3" type="text" class="form-control" placeholder="" name="date" @if($data['type'] == '1') value="{{ $data['new'][0]->date }}" @endif>
                         <span class="form-text text-muted">Приклад: 21 грудня о 14:00</span> 
                     </div>
                 </div>
@@ -70,14 +72,14 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="keywords" value="{{ $data['new'][0]->keywords }}">
+                        <input type="text" class="form-control" placeholder="" name="keywords" @if($data['type'] == '1') value="{{ $data['new'][0]->keywords }}" @endif>
                         <span class="form-text text-muted">Ключові слова для пошукової системи(виводити через кому) , наприклад: СумДУ, Сумський державний університет, СумГУ, SSU</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="description">{{ $data['new'][0]->description }}</textarea>
+                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="description"> @if($data['type'] == '1') {{ $data['new'][0]->description }} @endif </textarea>
                         <span class="form-text text-muted">Короткий опис сторінки</span> 
                     </div>
                 </div>
