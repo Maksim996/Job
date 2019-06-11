@@ -10,9 +10,9 @@
                 <h3 class="k-portlet__head-title">
                    Документи
                 </h3>
-                <button class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
-                        <span> <i class="la la-plus"></i> <span>Створити документ</span> </span>
-                </button>
+                <a href="{{ URL::route('ad_documents.documents.create') }}" class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
+                        <span> <i class="la la-plus"></i>  <span>Створити документ</span> </span>
+                </a>
             </div>
         </div>
         <div class="k-portlet">
@@ -88,12 +88,22 @@
            if(count == 2){
             $('.delete_document').hide();
            }
+           else $('.delete_document').show();
 
             $('.delete_document').on('click', (e) => {
+
                 e.preventDefault();
 
                 let id = $(e.target).closest('td').find('.id').val();
                 $(e.target).closest('tr').remove();
+
+                count = $('tr').length;
+                console.log(count);
+
+                if(count == 2){
+                    $('.delete_document').hide();
+                }
+                else $('.delete_document').show();
               
                $.ajax({
                      headers: {

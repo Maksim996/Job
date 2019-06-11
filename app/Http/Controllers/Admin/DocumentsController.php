@@ -33,6 +33,12 @@ class DocumentsController extends Controller
     public function create()
     {
         //
+        $subcats = DB::table('subcategory')->where('link','documents')->get()->toArray();
+        $data = [
+            'subcategories' => $subcats,
+          'type' => "0",
+        ];
+        return view('admin.document_template',compact('data'));
     }
 
     /**
@@ -58,7 +64,8 @@ class DocumentsController extends Controller
         $document = DB::table('documents')->where('doc_id',$id)->get();
         $subcats = DB::table('subcategory')->where('link','documents')->get()->toArray();
         $data = [
-                'document' => $document[0],
+            'type' => "1",
+            'document' => $document[0],
                 'subcategories' => $subcats,
                     ];
         return view('admin.document_template',compact('data'));
@@ -85,14 +92,19 @@ class DocumentsController extends Controller
     public function update(Request $request, $id)
     {
         //!!!!no file save!!!!!
-       
-        DB::table('documents')->where('doc_id',$id)->update(['title' => $request->title, 'doc_date' => date("Y-m-d H:i:s"),'subcategory_id' => $request->cat]);
+
+        $link = $request->link;
+
+        if($id == 0)
+            DB::table('documents')->insert(['title' => $request->title ,'file_link' => $link , 'doc_date' => date("Y-m-d H:i:s"),'subcategory_id' => $request->cat]);
+        else
+            DB::table('documents')->where('doc_id',$id)->update(['title' => $request->title ,'file_link' => $link, 'doc_date' => date("Y-m-d H:i:s"),'subcategory_id' => $request->cat]);
 
         $documents = DB::table('documents')->get()->toArray();
         $subcats = DB::table('subcategory')->get()->toArray();
         $data = ['documents' => $documents,
                 'subcategories' => $subcats,];
-        return view('admin.documents',compact('data'));
+         return view('admin.documents',compact('data'));
 
     }
 
@@ -111,6 +123,6 @@ class DocumentsController extends Controller
     {
         //
         $id = $request->id;
-       // DB::table('documents')->where('doc_id',$id)->delete();
+        DB::table('documents')->where('doc_id',$id)->delete();
     }
 }
