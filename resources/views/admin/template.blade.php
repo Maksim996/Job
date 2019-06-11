@@ -9,6 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
         <!--begin::Fonts -->
+        <script
+              src="https://code.jquery.com/jquery-3.4.1.min.js"
+              integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+              crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="{{ URL::asset('css/admin/font.js') }}"></script>
         
@@ -209,15 +213,10 @@
             <!-- end:: Page -->
         </div>
         <!-- end:: Root -->
-        <script
-			  src="https://code.jquery.com/jquery-3.4.1.min.js"
-			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			  crossorigin="anonymous"></script>
        
         <!-- begin:: Scrolltop -->
         <div id="k_scrolltop" class="k-scrolltop"> <i class="la la-arrow-up"></i> </div>
         <!-- end:: Scrolltop -->
-        
         
         <!-- begin::Global Config(global config for global JS sciprts) -->
         <script src="{{ URL::asset('js/admin/main.js') }}" type="text/javascript"></script>
@@ -283,6 +282,7 @@
       //  <script src="{{ URL::asset('js/admin/custom/datatables.bundle.js') }}" type="text/javascript"></script>
 
         <script src="{{ URL::asset('js/admin/custom/advanced-search.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/saveForm.js') }}"></script>
         
         <!-- <script src="../assets/app/scripts/custom/dashboard.js" type="text/javascript"></script> -->
         <!--end::Page Scripts -->

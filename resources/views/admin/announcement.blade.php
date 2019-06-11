@@ -25,7 +25,9 @@
             </div>
         @endif
 
-        <form method="POST"
+        <form 
+        id="news-announcements-form"
+            method="POST"
             @if(isset($data['announcement'][0]))
                 action="{{ URL::route('ad_announcements.announcements.update', $data['announcement'][0]->inner_news_id) }}"
             @else
@@ -33,6 +35,7 @@
             @endif
         class="k-form k-form--label-right" enctype="multipart/form-data">
             {{ @csrf_field() }}
+
             @if(isset($data['announcement'][0]))
                 <input type="hidden" name="_method" value="PUT">
             @endif
@@ -40,7 +43,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="title"
+                        <input type="text" class="form-control form-title" placeholder="" name="title"
                             @if(isset($data['announcement'][0]))
                                 value="{{ $data['announcement'][0]->title }}"
                             @else
@@ -53,20 +56,20 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="short_description">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->short_description }}@endif</textarea>
+                        <textarea class="form-control short-description" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="short_description">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->short_description }}@endif</textarea>
                         <span class="form-text text-muted"></span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Детальний опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="summernote" id="m_summernote_1" maxlength="250" placeholder="" rows="6" name="full_description">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->full_description }}@endif</textarea>
+                        <textarea id="m_summernote_1" class="summernote full-description" maxlength="250" placeholder="" rows="6" name="full_description">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->full_description }}@endif</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Місце проведення коротке</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="short_location"
+                        <input type="text" class="form-control short-location" placeholder="" name="short_location"
                             @if(isset($data['announcement'][0]))
                                 value="{{ $data['announcement'][0]->short_location }}"
                             @else
@@ -79,7 +82,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Місце проведення повне</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="full_location"
+                        <input type="text" class="form-control full-location" placeholder="" name="full_location"
                             @if(isset($data['announcement'][0]))
                                 value="{{ $data['announcement'][0]->full_location }}"
                             @else
@@ -92,7 +95,8 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Дата та час проведення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="date"
+                        <input type="date" class="form-control date-meeting" placeholder="" name="date"
+                            id="k_datetimepicker_3"
                             @if(isset($data['announcement'][0]))
                                 value="{{ $data['announcement'][0]->date }}"
                             @else
@@ -104,12 +108,12 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="file" class="form-control" name="img_path">
+                        <input type="file" class="form-control main-image" name="img_path">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдера</label>
-                    <input type="file" id="files" name="files[]" multiple>
+                    <input type="file" id="files" name="slider-image" name="files[]" multiple />
                     <output id="list"></output>
                 </div>
                 <div class='black-line form-group row'></div>
@@ -117,7 +121,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" class="form-control" placeholder="" name="keywords"
+                        <input type="text" class="form-control additional-info" placeholder="" name="keywords"
                             @if(isset($data['announcement'][0]))
                                 value="{{ $data['announcement'][0]->keywords }}"
                             @else
@@ -130,7 +134,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="description">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->description }}@endif</textarea>
+                        <textarea class="form-control page-description" id="k_maxlength_5" maxlength="250" placeholder="" rows="6" name="description">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->description }}@endif</textarea>
                         <span class="form-text text-muted">Короткий опис сторінки</span>
                     </div>
                 </div>
@@ -139,7 +143,7 @@
                 <div class="k-form__actions">
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn btn-brand">Зберегти</button>
+                            <button type="submit" id="a_send" class="btn btn-brand">Зберегти</button>
                         </div>
                     </div>
                 </div>

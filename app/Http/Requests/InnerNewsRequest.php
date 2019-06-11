@@ -24,16 +24,16 @@ class InnerNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:200',
-            'date' => 'required|date',
-            'full_location' => 'nullable|max:200',
-            'full_description' => 'required|max:200',
-            'keywords' => 'required|max:200',
-            'description' => 'required|max:200',
-            'img_path' => 'required',
-            'short_location' => 'required|max:200',
-            'short_description' => 'required|max:200',
-            'files' => 'required',
+            // 'title' => 'required|max:200',
+            // 'date' => 'required|date',
+            // 'full_location' => 'nullable|max:200',
+            // 'full_description' => 'required|max:200',
+            // 'keywords' => 'required|max:200',
+            // 'description' => 'required|max:200',
+            // 'img_path' => 'required',
+            // 'short_location' => 'required|max:200',
+            // 'short_description' => 'required|max:200',
+            // 'files' => 'required',
         ];
     }
 
