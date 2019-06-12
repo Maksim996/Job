@@ -64,7 +64,6 @@ class PartnersController extends Controller
          $data = [
             'partners' => $partners[0],
          ];
-         dump($data);
          return view('/admin/partner', compact('data'));
 
     }
@@ -114,7 +113,6 @@ class PartnersController extends Controller
         //
 
        if($request->file('img_path')){
-
         $filePath = 'partner_img-'.$id.'.' . $request->file('img_path')->getClientOriginalExtension();
         $path = $request->file('img_path')->storeAs('images/partners',$filePath,'public');
         $request->img_path = $path;
@@ -150,7 +148,7 @@ class PartnersController extends Controller
                 'img_path' => $path,
             ]);
         }
-          $partners = DB::table('partners')->get()->toArray();
+        $partners = DB::table('partners')->get()->toArray();
          $data = [
             'partners' => $partners,
          ];
