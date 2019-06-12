@@ -34,8 +34,6 @@ class PracticCardController extends Controller
      */
     public function store(PracticeIntershipCardRequest $request)
     {
-        //dump($request);die;
-        //$practicCards = PracticeIntershipCard::all();
 
         $img_path1 = 'http://job.sumdu.edu.ua/card1.png';
         $img_path2 = 'http://job.sumdu.edu.ua/card2.png';

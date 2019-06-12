@@ -112,17 +112,19 @@ class PartnersController extends Controller
     {
         //
 
-       if($request->file('img_path')){
-        $filePath = 'partner_img-'.$id.'.' . $request->file('img_path')->getClientOriginalExtension();
-        $path = $request->file('img_path')->storeAs('images/partners',$filePath,'public');
-        $request->img_path = $path;
-        
-        }
-        else if($id!=0)
-            $path =   DB::table('partners')->where('id', '=', $id)->value('img_path');
-        else $path = "";
+
 
         if($id!=0){
+            if($request->file('img_path')){
+
+                $filePath = 'partner_img-'.$id.'.' . $request->file('img_path')->getClientOriginalExtension();
+                $path = $request->file('img_path')->storeAs('images/partners',$filePath,'public');
+                $request->img_path = $path;
+
+            }
+            else
+                $path =   DB::table('partners')->where('id', '=', $id)->value('img_path');
+
             DB::table('partners')
             ->where(
                 [
@@ -137,16 +139,30 @@ class PartnersController extends Controller
         }
         else {
             $id = DB::table('partners')
-            ->where(
-                [
-                    ['id', '=', $id],
-                    
-                ])
             ->insertGetId([
                 'name_brand' => $request->name,
                 'link' => $request->link,
-                'img_path' => $path,
             ]);
+
+            if($request->file('img_path')){
+
+                $filePath = 'partner_img-'.$id.'.' . $request->file('img_path')->getClientOriginalExtension();
+                $path = $request->file('img_path')->storeAs('images/partners',$filePath,'public');
+                $request->img_path = $path;
+
+            }
+            else
+                $path = "";
+
+            DB::table('partners')
+                ->where(
+                    [
+                        ['id', '=', $id],
+
+                    ])
+                ->update([
+                    'img_path' => $path,
+                ]);
         }
         $partners = DB::table('partners')->get()->toArray();
          $data = [
