@@ -44,6 +44,7 @@
                             @foreach($data['category'] as $category) 
                                 @if($category->type != 'type3')
                                  <li class="nav-item {{ Route::currentRouteName() == $category->link ? 'active' : ''}}">
+
                                     @if($category->link == 'home')
                                     <a class="nav-link" href="/">
                                     @elseif($category->type == 'type2')

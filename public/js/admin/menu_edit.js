@@ -2,27 +2,26 @@
 const pluc = document.querySelector('#plus');
 const dropdownBar = document.querySelector('#dropdownBar');
 const selectBut= $('.sel_change');  
+const contactChoice1 =  document.querySelector('#linkBar1');
+const contactChoice2 =  document.querySelector('#linkBar2');
 // let extString = document.querySelector(".extString");
 
-
-
 // select link or dropdown
-const radioBut= $('input[name="contact"]');  
+const radioBut= $('input[name="type"]');  
 jQuery(document).ready(function(){
-    let e = $('input[name="contact"]:checked');
+    let e = $('input[name="type"]:checked');
     changeVal(e);
 });
 
-function changeVal(e){
-const target_ch= $(e);    
-    if (target_ch.val()=='link'){
-      
-       pluc.style.display='none';
-       dropdownBar.style.display='none';
-    } else if (target_ch.val()=='dropdown'){
-      
-       pluc.style.display='flex';
-       dropdownBar.style.display="block";
+function changeVal(e) {
+    const target_ch= $(e);
+
+    if (target_ch.val() == 'link'){
+       contactChoice1.style.display='flex';
+       contactChoice2.style.display='none';
+    } else if (target_ch.val() == 'file'){
+       contactChoice2.style.display='flex';
+       contactChoice1.style.display='none';
     }
 }
 
@@ -32,6 +31,8 @@ radioBut.on('change',function(){
 
 
 //end
+
+
 
 // add new block in dropdown
 
@@ -56,7 +57,8 @@ function add(parent) {
                             <option value= "external">Зовнішнє</option>
                             <option value= "news">news</option>
                             <option value= "home">home</option>
-                            <option value= "documents">Documents</option>                      
+                            <option value= "documents">Documents</option> 
+                            <option value= "pracevlashtuvannya-praktika">Працевлаштування та практика</option>                      
                         </select>
                     </div>
                     

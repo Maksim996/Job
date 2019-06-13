@@ -4,18 +4,28 @@
 @endsection
 
 @section('content')
-        <div class="a_n__line">
+@foreach($data['category'] as $category)
+    @if(Route::currentRouteName() == $category->link)
+        <div class="a_n__line mb-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8 a_n__text-center">
-                        <div class="a_n__text-first">Документи</div>
+                    <div class="col-md-10 a_n__text-center">
+                        <div class="a_n__text-first">{{$category->title}}</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="a_n__text-second">Документи</div>
-        <div class="a_n__text-third">Документи</div>
-        <div class="a_n__text-fourth">Документи</div>
+        
+        <div class="a_n__text-second">{{$category->title}}</div>
+        <div class="a_n__text-third">{{$category->title}}</div>
+        <div class="a_n__text-fourth">{{$category->title}}</div>
+    @endif
+ 
+        
+        
+
+@endforeach
+       
        <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-10 docum">
@@ -39,7 +49,7 @@
                                         <ul class="docum__ul">
                                             @foreach($data['documents'] as $document)
                                                 @if($document->subcategory_id == $category->subcategory_id)
-                                                <li class="docum__li"><a href="#" class="docum__link">{{$document->title}}</a></li>
+                                                <li class="docum__li"><a href="{{$document->file_link}}" class="docum__link">{{$document->title}}</a></li>
                                                 @endif
                                             @endforeach
                                         </ul>

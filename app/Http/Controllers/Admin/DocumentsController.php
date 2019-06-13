@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Documents;
 use App\Http\Requests\DocumentsRequest;
 use DB;
-
 class DocumentsController extends Controller
 {
     /**
@@ -33,11 +32,13 @@ class DocumentsController extends Controller
     public function create()
     {
         //
-        $subcats = DB::table('subcategory')->where('link','documents')->get()->toArray();
+        $subcats = DB::table('subcategory')->whereIn('link',['documents', 'pracevlashtuvannya-praktika'])->get()->toArray();
         $data = [
             'subcategories' => $subcats,
-          'type' => "0",
+            'type' => "0",
         ];
+        dump($data);
+
         return view('admin.document_template',compact('data'));
     }
 
@@ -61,8 +62,10 @@ class DocumentsController extends Controller
     public function show($id)
     {
         //
+
+
         $document = DB::table('documents')->where('doc_id',$id)->get();
-        $subcats = DB::table('subcategory')->where('link','documents')->get()->toArray();
+        $subcats = DB::table('subcategory')->whereIn('link',['documents','pracevlashtuvannya-praktika'])->get()->toArray();
         $data = [
             'type' => "1",
             'document' => $document[0],
@@ -91,19 +94,59 @@ class DocumentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //!!!!no file save!!!!!
+        // $link = $request->file('file')->store('documents', 'public');
 
-        $link = $request->link;
+        $type = $request->type; 
 
-        if($id == 0)
-            DB::table('documents')->insert(['title' => $request->title ,'file_link' => $link , 'doc_date' => date("Y-m-d H:i:s"),'subcategory_id' => $request->cat]);
-        else
-            DB::table('documents')->where('doc_id',$id)->update(['title' => $request->title ,'file_link' => $link, 'doc_date' => date("Y-m-d H:i:s"),'subcategory_id' => $request->cat]);
+        $changedId = $id != 0 ?
+                $id :
+                DB::table('documents')->insertGetId([
+                    'title' => $request->title,
+                    'file_link' => '-' ,
+                     'doc_date' => date("Y-m-d H:i:s"),
+                     'subcategory_id' => $request->cat,
+                     'type' => $type
+                     ]);
+
+        if($type === 'link') {
+           $link = $request->link;
+        }
+        else {
+            $file = $request->file('file');
+            $ext = $request->file->getClientOriginalExtension();
+
+            $fileName = $changedId . '.' . $ext;
+
+            $link = $file->storeAs('documents', $fileName, 'public');
+        }
+
+
+        if($id == 0) {
+            DB::table('documents')->where('doc_id', $changedId)->update(['file_link' => $link]);
+        }
+        else {
+            DB::table('documents')->where('doc_id', $changedId)->update([
+                'title' => $request->title,
+                'file_link' => $link,
+                'doc_date' => date("Y-m-d H:i:s"),
+                'subcategory_id' => $request->cat,
+                'type' => $type
+            ]);
+        }
+
+
+        // $file = $request->type === 'link' ?
+            
+            
+
+
+
+        
 
         $documents = DB::table('documents')->get()->toArray();
         $subcats = DB::table('subcategory')->get()->toArray();
         $data = ['documents' => $documents,
-                'subcategories' => $subcats,];
+                'subcategories' => $subcats];
          return view('admin.documents',compact('data'));
 
     }

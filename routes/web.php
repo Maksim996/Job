@@ -11,9 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Auth::routes();
 
@@ -45,24 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
 
-	// Route::get('practic-header', function () {
-	//     return view('/admin/practic-header');
-	// })->name('ad_practic-header');
-	// Route::get('practic-cards', function () {
-	//     return view('/admin/practic-cards');
-	// })->name('ad_practic-cards');
- //    Route::get('announcements', function () {
-	//     return view('/admin/announcements');
-	// })->name('ad_announcements');
-	// Route::get('announcement/{id}', function ($id) {
-	//     return view('/admin/announcement', array('id' => $id));
-	// });
-	// Route::get('documents', function () {
-	//     return view('/admin/documents');
-	// })->name('ad_documents');
-	// Route::get('news', function () {
-	//     return view('/admin/news');
-	// })->name('ad_news');
+
 	Route::resource('partners', 'Admin\PartnersController', ['as' => 'ad_partners']);
 
 
@@ -87,17 +68,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	});
 });
 
-//site routes
-// Route::get('template', function(){
-// 	return view('site/template');
-// });
-// Route::get('template', 'Site\TemplateController@siteTemplate');
+
 Route::get('/', 'Site\HomeController@index')->name('home');
 
 Route::get('new/{id}-{title}', 'Site\NewController@index')->name('new');
 Route::get('announcement/{id}-{title}', 'Site\AnnouncementController@index')->name('announcement');
-Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
+// Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
 
 Route::get('news', 'Site\NewsController@index')->name('news');
 Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
-Route::get('documents', 'Site\DocumentsController@index')->name('documents');
+Route::get('document', 'Site\DocumentsController@index')->name('document');
+
+Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
+

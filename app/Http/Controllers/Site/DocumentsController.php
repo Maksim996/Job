@@ -9,19 +9,17 @@ class DocumentsController extends Controller
 {
     public function index(){
         $documents = DB::table('documents')->get()->toArray();
-
-        $queryIdDocuments = DB::table('documents')
-            ->get(['subcategory_id'])
-            ->toArray();
-
-        $ids = [];
-        foreach ($queryIdDocuments as $item) {
-            array_push($ids, $item->subcategory_id);
-        }
+        $subcategory = DB::table("subcategory")->where('link','documents')->get()->toArray();
 
         $category = DB::table("category")->get()->toArray();
-        $subcategory = DB::table("subcategory")->get()->toArray();
-        $subCategories = DB::table('subcategory')->whereIn('subcategory_id',$ids)->where('type','!=','type1')->get()->toArray();
+       
+        $subCategories = DB::table('subcategory')
+            ->where('link','documents')
+            ->where('type','!=','type1')
+
+            ->get()
+            ->toArray();
+
         $header = DB::table('header')->get()->toArray();
 
 
@@ -33,6 +31,6 @@ class DocumentsController extends Controller
             'header' => $header,
         ];
 
-    	return view('site/documents',compact('data'));
+    	return view('site.documents',compact('data'));
     }
 }

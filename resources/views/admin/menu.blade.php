@@ -36,7 +36,7 @@
                                 <option value= "external">Зовнішнє</option>                
                                 <option value= "news" @if($data['category']->link == 'news') selected @endif>Новини</option>
                                 <option value= "home" @if($data['category']->link == 'home') selected @endif >Головна</option>
-                                <option value= "documents" @if($data['category']->link == 'documents') selected @endif>Документи</option>                      
+                                <option value= "documents" @if($data['category']->link == 'document') selected @endif>Документи</option>             <option value= "pracevlashtuvannya-praktika" @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif>Працевлаштування та практика</option>                      
                         </select>
                     </div>
                     
@@ -69,7 +69,8 @@
                                 <option value= "external">Зовнішнє</option>
                                 <option value= "news" @if($sub->link == 'news') selected @endif>Новини</option>
                                 <option value= "home" @if($sub->link == 'home') selected @endif>Головна</option>
-                                <option value= "documents" @if($sub->link == 'documents') selected @endif>Документи</option>                      
+                                <option value= "documents" @if($sub->link == 'document') selected @endif>Документи</option>
+                                <option value= "pracevlashtuvannya-praktika" @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif>Працевлаштування та практика</option>                       
                             </select>
                         </div>
                         
@@ -101,10 +102,11 @@
                     <div class='row'>
                         <div class="form-group col-lg-6 col-md-9  col-sm-12">
                             <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="subcatSelect[0]">                  
-                                <option value= "External">Зовнішнє</option>
-                                <option value= "news" >news</option>
-                                <option value= "home" >home</option>
-                                <option value= "documents" >Documents</option>                      
+                                <option value= "external">Зовнішнє</option>
+                                <option value= "news">Новини</option>
+                                <option value= "home">Головна</option>
+                                <option value= "document">Документи</option>
+                                <option value= "pracevlashtuvannya-praktika" >Працевлаштування та практика</option>                        
                             </select>
                         </div>
                         
