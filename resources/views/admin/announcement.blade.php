@@ -28,17 +28,27 @@
         <form 
         id="news-announcements-form"
             method="POST"
-            @if(isset($data['announcement'][0]))
-                action="{{ URL::route('ad_announcements.announcements.update', $data['announcement'][0]->inner_news_id) }}"
-            @else
-                action="{{ URL::route('ad_announcements.announcements.store') }}"
-            @endif
-        class="k-form k-form--label-right" enctype="multipart/form-data">
+                @if(isset($data['announcement'][0]))
+                    action="{{ URL::route('ad_announcements.announcements.update', $data['announcement'][0]->inner_news_id) }}"
+                @else
+                    action="{{ URL::route('ad_announcements.announcements.store') }}"
+                @endif
+            class="k-form k-form--label-right" enctype="multipart/form-data"
+                @if(isset($data['announcement'][0]))
+                    data-is-update="1"
+                @else
+                    data-is-update="0"
+                @endif
+                @if(isset($data['announcement'][0]))
+                    data-id="{{$data['announcement'][0]->inner_news_id}}"
+                @endif
+            >
             {{ @csrf_field() }}
-
-            @if(isset($data['announcement'][0]))
-                <input type="hidden" name="_method" value="PUT">
-            @endif
+            <!-- 
+                @if(isset($data['announcement'][0]))
+                    <input type="hidden" name="_method" value="PUT">
+                @endif 
+            -->
             <div class="k-portlet__body">
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
@@ -108,13 +118,26 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="file" class="form-control main-image" name="img_path">
+                        <input type="file" id="main_image" class="form-control main-image" name="img_path">
+                        <output id="single_img">
+                            @if(isset($data['announcement'][0]))
+                                <span><img src="{{ $data['announcement'][0]->img_path }}" style="max-width: 100px; height: auto;"></span>
+                            @endif
+                        </output>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдера</label>
                     <input type="file" id="files" name="slider-image" name="files[]" multiple />
-                    <output id="list"></output>
+                    <output id="list">
+                        @if(isset($data['sliders']))
+                            @foreach($data['sliders'] as $slider)
+                                <span>
+                                    <img src="{{ $slider->img_path }}" data-id="{{ $slider->id }}" style="max-width: 100px; height: auto;">
+                                </span>
+                            @endforeach
+                        @endif
+                    </output>
                 </div>
                 <div class='black-line form-group row'></div>
                 <p class='info-seach'>Додаткова інформація для пошукової системи</p>
@@ -143,7 +166,7 @@
                 <div class="k-form__actions">
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="submit" id="a_send" class="btn btn-brand">Зберегти</button>
+                            <button type="submit" class="btn btn-brand">Зберегти</button>
                         </div>
                     </div>
                 </div>

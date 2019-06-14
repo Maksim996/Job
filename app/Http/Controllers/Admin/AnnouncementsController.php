@@ -60,8 +60,6 @@ class AnnouncementsController extends Controller
      */
     public function store(InnerNewsRequest $request)
     {
-        $img_path = $request->file('mainImage')->store('images/uploads_announcements','public');
-
         $last_id = DB::table('inner_news')
         ->insertGetId([
             'type' => 'announcement',
@@ -73,52 +71,42 @@ class AnnouncementsController extends Controller
             'description' => $request->pageDescription
         ]);
 
+        $previewPhotoInfo = explode(";base64,", $request->mainImage);
+        $previewPhotoExt = str_replace('data:image/', '', $previewPhotoInfo[0]);
+        $previewPhoto = str_replace(' ', '+', $previewPhotoInfo[1]);
+        $previewFileName = 'preview' . '_' . $last_id . '.' . $previewPhotoExt;
+        Storage::disk('public')->put('images/uploads_announcements/' . $previewFileName, base64_decode($previewPhoto));
+        $previewPhotoPath = Storage::url('images/uploads_announcements/' . $previewFileName);
+        $previewPhotoPath = str_replace('/storage/', '', $previewPhotoPath);
+
         DB::table('preview')
         ->insert([
             'inner_news_id' => $last_id,
-            'img_path' => $request->mainImage,
+            'img_path' => $previewPhotoPath,
             'short_location' => $request->shortLocation,
             'short_description' => $request->shortDescription,
         ]);
 
-        $fNames = [];
-
-        $sliderImageBase64 = $request->sliderImageBase64;
-
-        dd(unserialize($sliderImageBase64));
         $cnt = count($request->sliderImageBase64);
 
         for ($i = 0; $i < $cnt; $i++) {
-            $image = $request->sliderImageBase64[$i];
-            $imageInfo = explode(";base64,", $image);
-            $imgExt = str_replace('data:image/', '', $imageInfo[0]);
-            $image = str_replace(' ', '+', $imageInfo[1]);
-            $fileName = 'announcement' . '_' . $last_id . '_' . $i . '.' . $imgExt;
-            Storage::disk('public')->put('images/uploads_slider/' . $fileName, base64_decode($image));
-            // $convertedBase64 = str_replace(' ', '+', $request->sliderImageBase64[$i]);
-            // $image = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $convertedBase64));
-            // $fileName = 'announcement' . '-' . $sliderId . '-' . $i . $extension;
-            // $fileName = 'announcement' . '_' . $last_id . '_' . $i . $extension;
-            // dump($fileName);die;
-            // Storage::disk('public')->put('images/uploads_slider/' . $fileName, $image);
-
-            $imgPath = Storage::url('images/uploads_slider/' . $fileName);
-
-            // $path = $request->file('files')[$i]->store('images/uploads_slider', 'public');
-            // DB::table('slider_news')
-            // ->where('id', $sliderId)
-            // ->update([
-            //     'img_path' => $imgPath
-            // ]);
-
-            $fNames[] = $fileName;
+            $sliderImage = $request->sliderImageBase64[$i];
+            $sliderImageInfo = explode(";base64,", $sliderImage);
+            $sliderImageExt = str_replace('data:image/', '', $sliderImageInfo[0]);
+            $sliderImage = str_replace(' ', '+', $sliderImageInfo[1]);
+            $sliderImageFileName = 'announcement' . '_' . $last_id . '_' . $i . '.' . $sliderImageExt;
+            Storage::disk('public')->put('images/uploads_slider/' . $sliderImageFileName, base64_decode($sliderImage));
+            $sliderImagePath = Storage::url('images/uploads_slider/' . $sliderImageFileName);
+            $sliderImagePath = str_replace('/storage/', '', $sliderImagePath);
 
             DB::table('slider_news')
             ->insert([
                 'inner_news_id' => $last_id,
-                'img_path' => $imgPath
+                'img_path' => $sliderImagePath
             ]);
         }
+
+        return response(200, 200);
     }
 
     /**
@@ -135,15 +123,39 @@ class AnnouncementsController extends Controller
             ['type', '=', 'announcement'],
             ['inner_news.inner_news_id', '=', $id],
         ])
-        ->get();
+        ->get()
+        ->toArray();
 
-        $slider = DB::table('slider_news')
+        $preview = DB::table('preview')
         ->where('inner_news_id', '=', $id)
-        ->get();
+        ->get()
+        ->toArray();
+
+        $sliders = DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        $preview_image = array_map(function($prev_img) {
+            $preview_path = public_path($prev_img->img_path);
+            $mime_type = mime_content_type($preview_path);
+            $base64 = base64_encode(file_get_contents($preview_path));
+            $prev_img->img_path = 'data:' . $mime_type . ';base64,' . $base64;
+            return $prev_img;
+        }, $announcement);
+
+        $slider_data = array_map(function($slider) {
+            $full_path = public_path($slider->img_path);
+            $mime_type = mime_content_type($full_path);
+            $base64 = base64_encode(file_get_contents($full_path));
+            $slider->img_path = 'data:' . $mime_type . ';base64,' . $base64;
+            return $slider;
+        }, $sliders);
 
         $data = [
             'announcement' => $announcement,
-            'slider' => $slider
+            'preview' => $preview,
+            'sliders' => $slider_data
         ];
 
         return view('admin.announcement', compact('data'));
@@ -158,40 +170,82 @@ class AnnouncementsController extends Controller
      */
     public function update(InnerNewsRequest $request, $id)
     {
-        $request->img_path = $request->file('img_path')->store('images/uploads_announcements','public');
-
         DB::table('inner_news')
         ->where([
             ['inner_news_id', '=', $id],
         ])
         ->update([
-            'title' => $request->title,
-            'date' => $request->date,
-            'full_location' => $request->full_location,
-            'full_description' => $request->full_description,
-            'keywords' => $request->keywords,
-            'description' => $request->description
+            'type' => 'announcement',
+            'title' => $request->formTitle,
+            'date' => $request->dateMeeting,
+            'full_location' => $request->fullLocation,
+            'full_description' => $request->fullDescription,
+            'keywords' => $request->additionalInfo,
+            'description' => $request->pageDescription
         ]);
+
+        $preview = DB::table('preview')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        $preview_path = public_path($preview[0]->img_path);
+        unlink($preview_path);
 
         DB::table('preview')
         ->where('inner_news_id', '=', $id)
-        ->update([
-            'img_path' => $request->img_path,
-            'short_location' => $request->short_location,
-            'short_description' => $request->short_description,
+        ->delete();
+
+        $sliders = DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        foreach ($sliders as $slider) {
+            $slider_path = public_path($slider->img_path);
+            unlink($slider_path);
+        }
+
+        DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->delete();
+
+        $previewPhotoInfo = explode(";base64,", $request->mainImage);
+        $previewPhotoExt = str_replace('data:image/', '', $previewPhotoInfo[0]);
+        $previewPhoto = str_replace(' ', '+', $previewPhotoInfo[1]);
+        $previewFileName = 'preview' . '_' . $id . '.' . $previewPhotoExt;
+        Storage::disk('public')->put('images/uploads_announcements/' . $previewFileName, base64_decode($previewPhoto));
+        $previewPhotoPath = Storage::url('images/uploads_announcements/' . $previewFileName);
+        $previewPhotoPath = str_replace('/storage/', '', $previewPhotoPath);
+
+        DB::table('preview')
+        ->insert([
+            'inner_news_id' => $id,
+            'img_path' => $previewPhotoPath,
+            'short_location' => $request->shortLocation,
+            'short_description' => $request->shortDescription,
         ]);
 
-        $cnt = count($request->file('files'));
-        for ($i = 0; $i < $cnt; $i++) { 
-            $path = $request->file('files')[$i]->store('images/uploads_slider', 'public');
+        $cnt = count($request->sliderImageBase64);
+
+        for ($i = 0; $i < $cnt; $i++) {
+            $sliderImage = $request->sliderImageBase64[$i];
+            $sliderImageInfo = explode(";base64,", $sliderImage);
+            $sliderImageExt = str_replace('data:image/', '', $sliderImageInfo[0]);
+            $sliderImage = str_replace(' ', '+', $sliderImageInfo[1]);
+            $sliderImageFileName = 'announcement' . '_' . $id . '_' . $i . '.' . $sliderImageExt;
+            Storage::disk('public')->put('images/uploads_slider/' . $sliderImageFileName, base64_decode($sliderImage));
+            $sliderImagePath = Storage::url('images/uploads_slider/' . $sliderImageFileName);
+            $sliderImagePath = str_replace('/storage/', '', $sliderImagePath);
+
             DB::table('slider_news')
             ->insert([
                 'inner_news_id' => $id,
-                'img_path' => $path
+                'img_path' => $sliderImagePath
             ]);
         }
 
-        return redirect()->route('ad_announcements.announcements.index');
+        return response(200, 200);
     }
 
     /**

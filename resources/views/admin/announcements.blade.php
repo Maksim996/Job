@@ -23,7 +23,6 @@
                         <div class="col-lg-8 k-margin-b-10-tablet-and-mobile">
                             <input type="text" class="form-control k-input" placeholder="Заголовок" data-col-index="0">
                         </div>
-                    
                     </div>
                     <div class="row col-lg-4 m-0">
                         <button class="btn btn-brand k-btn k-btn--icon" id="m_search">
