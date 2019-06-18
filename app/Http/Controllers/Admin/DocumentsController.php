@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Documents;
 use App\Http\Requests\DocumentsRequest;
 use DB;
+use File;
+use Storage;
+
 class DocumentsController extends Controller
 {
     /**
@@ -37,7 +40,6 @@ class DocumentsController extends Controller
             'subcategories' => $subcats,
             'type' => "0",
         ];
-        dump($data);
 
         return view('admin.document_template',compact('data'));
     }
@@ -96,6 +98,8 @@ class DocumentsController extends Controller
     {
         // $link = $request->file('file')->store('documents', 'public');
 
+
+
         $type = $request->type; 
 
         $changedId = $id != 0 ?
@@ -108,16 +112,33 @@ class DocumentsController extends Controller
                      'type' => $type
                      ]);
 
+
+
+        //filter files which are contain searcing id
+        $filesToDelete = array_filter(Storage::disk('public')->files('documents'), function ($file) use($changedId) {
+            $fileName = str_replace('documents/', '', $file);
+            $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
+            return intval($withoutExt) === intval($changedId);
+        });
+
+        //delete filtered files
+        foreach($filesToDelete as $file) {
+            $fullFilePath = public_path($file);
+            unlink($fullFilePath);
+        }
+
         if($type === 'link') {
            $link = $request->link;
         }
         else {
             $file = $request->file('file');
-            $ext = $request->file->getClientOriginalExtension();
+            $link = null;
+            if($file) {
+                $ext = $request->file->getClientOriginalExtension();
+                $fileName = $changedId . '.' . $ext;
 
-            $fileName = $changedId . '.' . $ext;
-
-            $link = $file->storeAs('documents', $fileName, 'public');
+                $link = $file->storeAs('documents', $fileName, 'public');
+            }
         }
 
 
@@ -125,13 +146,18 @@ class DocumentsController extends Controller
             DB::table('documents')->where('doc_id', $changedId)->update(['file_link' => $link]);
         }
         else {
-            DB::table('documents')->where('doc_id', $changedId)->update([
+            $dataToSave = [
                 'title' => $request->title,
-                'file_link' => $link,
                 'doc_date' => date("Y-m-d H:i:s"),
                 'subcategory_id' => $request->cat,
                 'type' => $type
-            ]);
+            ];
+
+            if($link) {
+                $dataToSave['file_link'] = $link;
+            }
+
+            DB::table('documents')->where('doc_id', $changedId)->update($dataToSave);
         }
 
 
@@ -143,12 +169,13 @@ class DocumentsController extends Controller
 
         
 
-        $documents = DB::table('documents')->get()->toArray();
-        $subcats = DB::table('subcategory')->get()->toArray();
-        $data = ['documents' => $documents,
-                'subcategories' => $subcats];
-         return view('admin.documents',compact('data'));
-
+        // $documents = DB::table('documents')->get()->toArray();
+        // $subcats = DB::table('subcategory')->get()->toArray();
+        // $data = ['documents' => $documents,
+        //         'subcategories' => $subcats];
+        //  return view('admin.documents',compact('data'));
+        // Route::redirect('/home');
+        return redirect()->route('ad_documents.documents.index');
     }
 
     /**
@@ -164,8 +191,14 @@ class DocumentsController extends Controller
     }
      public function deleteDocument(Request $request)
     {
-        //
         $id = $request->id;
+        $file = DB::table('documents')
+        ->where(
+            [
+                ['doc_id', '=', $id],
+                
+            ])->value('file_link');
+        File::delete($file);
         DB::table('documents')->where('doc_id',$id)->delete();
     }
 }

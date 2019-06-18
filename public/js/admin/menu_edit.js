@@ -15,13 +15,16 @@ jQuery(document).ready(function(){
 
 function changeVal(e) {
     const target_ch= $(e);
-
+    const linked = $("#linkBar1").find('input[name="link"]');
     if (target_ch.val() == 'link'){
        contactChoice1.style.display='flex';
+        linked.addClass('required');
        contactChoice2.style.display='none';
     } else if (target_ch.val() == 'file'){
        contactChoice2.style.display='flex';
        contactChoice1.style.display='none';
+        linked.removeClass('required');
+
     }
 }
 

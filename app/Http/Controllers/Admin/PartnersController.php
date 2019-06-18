@@ -110,20 +110,15 @@ class PartnersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-
-
-
         if($id!=0){
             if($request->file('img_path')){
-
                 $filePath = 'partner_img-'.$id.'.' . $request->file('img_path')->getClientOriginalExtension();
                 $path = $request->file('img_path')->storeAs('images/partners',$filePath,'public');
                 $request->img_path = $path;
-
             }
-            else
-                $path =   DB::table('partners')->where('id', '=', $id)->value('img_path');
+            else {
+                $path = DB::table('partners')->where('id', '=', $id)->value('img_path');
+            }
 
             DB::table('partners')
             ->where(
@@ -179,14 +174,13 @@ class PartnersController extends Controller
      */
     public function destroy($id)
     {
-        dump($id);
+
        $file = DB::table('partners')
         ->where(
             [
                 ['id', '=', $id],
                 
             ])->value('img_path');
-       dump($file);
         File::delete($file);
         DB::table('partners')
         ->where(

@@ -4,19 +4,28 @@
 @endsection
 
 @section('content')
-
-    <div class="a_n__line">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 a_n__text-center">
-                    <div class="a_n__text-first">Новини</div>
+    @foreach($data['category'] as $category)
+        @if(Route::currentRouteName() == $category->link )
+            <div class="a_n__line mb-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 a_n__text-center">
+                            <div class="a_n__text-first">{{$category->title}}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="a_n__text-second">Новини</div>
-    <div class="a_n__text-third">Новини</div>
-    <div class="a_n__text-fourth">Новини</div>
+
+            <div class="a_n__text-second">{{$category->title}}</div>
+            <div class="a_n__text-third">{{$category->title}}</div>
+            <div class="a_n__text-fourth">{{$category->title}}</div>
+        @endif
+
+
+
+
+    @endforeach
+
     <div class="container">
         <div class="news">
     	@for($i = 0; $i < count($data['news']); $i++)
@@ -41,10 +50,10 @@
                                     </p>
                                     <div class="news__about">
                                         <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-page">
-                                            Детальніше...
+                                            {{trans('base.link_more')}}
                                         </a>
                                         <div class="news__date-page">
-                                            Дата публікації: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
+                                            {{trans('base.date_post')}}: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
                                         </div>
                                     </div>
                                 </div>

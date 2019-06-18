@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App;
 
 class DocumentsController extends Controller
 {
@@ -16,14 +17,14 @@ class DocumentsController extends Controller
         $subCategories = DB::table('subcategory')
             ->where('link','documents')
             ->where('type','!=','type1')
-
             ->get()
             ->toArray();
+
 
         $header = DB::table('header')->get()->toArray();
 
 
-        $data=[
+        $data= [
             'documents' => $documents,
             'subcategories' => $subCategories,
             'category' => $category,

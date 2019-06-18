@@ -5,15 +5,16 @@
 @section('content')
 <!--begin::Dashboard 1-->
     <div class="k-portlet">
-       <div class="k-portlet__head">
+       <div class="k-portlet__head align-items-center justify-content-between">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
                    Документи
                 </h3>
-                <a href="{{ URL::route('ad_documents.documents.create') }}" class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
-                        <span> <i class="la la-plus"></i>  <span>Створити документ</span> </span>
-                </a>
+
             </div>
+           <a href="{{ URL::route('ad_documents.documents.create') }}" class=" btn btn-brand k-btn k-btn--icon  " id="m_plus">
+               <i class="la la-plus"></i>  <span>Створити документ</span>
+           </a>
         </div>
         <div class="k-portlet">
             <div class="k-portlet__head">
@@ -28,16 +29,16 @@
                         <label>Категорія документу:</label>
                         <select class="form-control k-input" data-col-index="1">
                             <option value="">Вибрати</option>
-                            <option value="Нормативні">Нормативні</option>
-                            <option value="Рада роботодавців">Рада роботодавців</option>
-                            <option value="Інші">Інші</option>
+                            @foreach($data['subcategories'] as $cat)
+                                <option value="{{$cat->title}}">{{$cat->title}}</option>
+                            @endforeach
                         </select>
-                    </div>    
+                    </div>
                     <div class="row col-lg-3 ml-auto m-0">
                         <button class="btn btn-brand k-btn k-btn--icon" id="m_search">
                             <span> <i class="la la-search"></i> <span>Шукати</span> </span>
                         </button>
-                        &nbsp;&nbsp; 
+                        &nbsp;&nbsp;
                         <button class="btn btn-secondary k-btn k-btn--icon" id="m_reset">
                             <span> <i class="la la-close"></i> <span>Очистити</span> </span>
                         </button>
@@ -74,18 +75,18 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach    
-                        
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
-       
-        </div>  
+
+        </div>
    </div>
     <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function() { 
+    document.addEventListener("DOMContentLoaded", function() {
             let count = $('tr').length;
-           if(count == 2){
+           if(count == 2) {
             $('.delete_document').hide();
            }
            else $('.delete_document').show();
@@ -104,7 +105,7 @@
                     $('.delete_document').hide();
                 }
                 else $('.delete_document').show();
-              
+
                $.ajax({
                      headers: {
                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -112,11 +113,11 @@
                    url: "/admin/delete-document",
                    method: 'post',
                    data : {'id':id},
-                    dataType: 'json',    
-                   success: function(res){                                    
+                    dataType: 'json',
+                   success: function(res){
 
                    }
-               }); 
+               });
             });
     });
 

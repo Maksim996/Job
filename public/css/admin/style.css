@@ -33,6 +33,9 @@
 #files{
     margin-top: 10px;
 }
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active{
+    -webkit-text-fill-color: #495057 !important;
+}
 
 #list span::before, #list span::after {
     position: absolute;

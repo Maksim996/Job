@@ -251,11 +251,12 @@
             <!-- end:: Page -->
         </div>
         <!-- end:: Root -->
-        <script
-			  src="https://code.jquery.com/jquery-3.4.1.min.js"
-			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			  crossorigin="anonymous"></script>
-       
+        <script src="{{ URL::asset('js/jquery3_3_1.js') }}" type="text/javascript"></script>
+        {{--<script--}}
+			  {{--src="https://code.jquery.com/jquery-3.4.1.min.js"--}}
+			  {{--integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="--}}
+			  {{--crossorigin="anonymous"></script>--}}
+       {{----}}
         <!-- begin:: Scrolltop -->
         <div id="k_scrolltop" class="k-scrolltop"> <i class="la la-arrow-up"></i> </div>
         <!-- end:: Scrolltop -->
@@ -305,7 +306,17 @@
         <!--end::Global Theme Bundle -->
        
         <!--begin::Page Scripts(used by this page) -->
-        
+
+
+        {{--validation plugin--}}
+            <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/jquery.validate.js') }}" type="text/javascript" charset="UTF-8"></script>
+        <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/additional-methods.js') }}" type="text/javascript" charset="UTF-8"></script>
+        <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/localization/messages_uk.js') }}" type="text/javascript" charset="UTF-8"></script>
+        <script src="{{ URL::asset('js/admin//custom/jquery-validation/init.js') }}" type="text/javascript" charset="UTF-8"></script>
+        <script src="{{ URL::asset('js/admin//custom/jquery-validation/controls.js') }}" type="text/javascript" charset="UTF-8"></script>
+
+        {{--end validation plugin--}}
+
         <script src="{{ URL::asset('js/admin/custom/repeater.js') }}" type="text/javascript"></script>
 
         <script src="{{ URL::asset('js/admin/general/lang-sommernote/summernote-uk-UA.js') }}" type="text/javascript" charset="UTF-8"></script>
@@ -334,5 +345,5 @@
         <!--end::Global App Bundle -->
 
     </body>
-    <!-- end::Body -->
+    <!-- end::Body --> 
 </html>

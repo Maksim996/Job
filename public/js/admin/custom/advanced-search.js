@@ -90,7 +90,7 @@ var DatatablesSearchOptionsAdvancedSearch = function() {
 			columnDefs: [
 				{
 					targets: -1,
-					title: 'Actions',
+					// title: 'Actions',
 					orderable: false,
 					// render: function(data, type, full, meta) {
 					// 	return `
@@ -267,7 +267,7 @@ var DatatablesSearchOptionsAdvancedSearch = function() {
 			columnDefs: [
 				{
 					targets: -1,
-					title: 'Actions',
+					// title: 'Actions',
 					orderable: false,
 					render: function(data, type, full, meta) {
 						return `

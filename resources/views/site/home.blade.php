@@ -57,7 +57,7 @@
             <div class="preview mt-3">
                 <div class="row">
                     <div class="col preview__title">
-                        <h3>Найближчим часом</h3>
+                        <h3>{{trans('base.recently')}}</h3>
                     </div>
                 </div>
                 
@@ -92,7 +92,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button ">Детальніше</a>
+                                <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}"
+                                   class="btn btn-outline-primary preview__button ">{{trans('base.button_more')}}</a>
                             </div>
 
 
@@ -104,7 +105,8 @@
 
                 <div class="row  preview__last-row">
                     <div class="col-12 text-center">
-                        <a href="/announcements" class="btn btn-outline-primary preview__button-more preview__button-not-hover">Більше анонсів</a>
+                        <a href="/announcements"
+                           class="btn btn-outline-primary preview__button-more preview__button-not-hover">{{trans('base.button_announcements')}}</a>
                     </div>
                 </div>
             </div>
@@ -114,8 +116,8 @@
                 <div class="caption mt-5">
                     <div class="row ">
                         <div class="col-lg-12 caption__display ">
-                            <p class="caption__last caption__all">ОСТАННІ</p>
-                            <p class="caption__news caption__all">НОВИНИ</p>
+                            <p class="caption__last caption__all text-uppercase">{{trans('base.latest')}}</p>
+                            <p class="caption__news caption__all text-uppercase">{{trans('base.news')}}/p>
                         </div>
                     </div>
                 </div>
@@ -123,7 +125,7 @@
         </div>
         <div class="news_noanimation">
             <div class="col preview__title">
-                <h3>Новини</h3>
+                <h3>{{trans('base.news')}}</h3>
             </div>
         </div>
         <div class="container">
@@ -148,8 +150,8 @@
                                             {{$data['news'][0]->short_description}}
                                         </p>
                                         <div>
-                                            <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">Детальніше...</a>
-                                            <p class="news__date">Дата публікації: {{ date("d-m-Y H:i", strtotime($data['news'][0]->date)) }}</p>
+                                            <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">{{trans('base.link_more')}}</a>
+                                            <p class="news__date">{{trans('base.date_post')}}: {{ date("d-m-Y H:i", strtotime($data['news'][0]->date)) }}</p>
                                         </div>
                                         
                                     </div>
@@ -179,9 +181,9 @@
                                             {{$data['news'][$i]->short_description}}
                                         </p>
                                         <div>
-                                            <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">Детальніше...</a>
+                                            <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">{{trans('base.link_more')}}</a>
                                             <p class="news__date-item">
-                                                Дата публікації: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
+                                                {{trans('base.date_post')}}: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
                                             </p>
                                         </div>
                                     </div>
@@ -195,7 +197,7 @@
 
                 <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <a href="/news" class="btn btn-outline-primary news__button ">Більше новин</a>
+                        <a href="/news" class="btn btn-outline-primary news__button ">{{trans('base.button_news')}}</a>
                     </div>
                 </div>
             </div>

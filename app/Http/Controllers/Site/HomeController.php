@@ -5,7 +5,7 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App;
 class HomeController extends Controller
 {
     /**
@@ -31,8 +31,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+//        App::setLocale('ru');
+//        $val = $request->session();
+//        dd($val);
+
         $date = Carbon::now()->toDateTimeString();
         $practice = DB::select("SELECT * FROM `practice_intership_card`");
 
@@ -72,7 +76,6 @@ class HomeController extends Controller
         $subcategory = DB::table("subcategory")->get()->toArray();
         $header = DB::table('header')->get()->toArray();
         $internship = DB::table('practice_intership_content')->get()->toArray();
-
 
 
 

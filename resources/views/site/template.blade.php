@@ -74,7 +74,7 @@
                                      
                                 </li>
                             @endforeach
-                                
+
                                 <li class="nav-item dropdown language-full ">
                                     <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="{{ URL::asset('images/ukraine.svg')}}">
@@ -137,11 +137,11 @@
                                         <span class="circle">
                                             <img src="{{ URL::asset('images/info-sign.svg')}}">
                                         </span>
-                                        <div>Про наш відділ</div>
+                                        <div>{{trans('base.about_department')}}</div>
                                     </a>
                                 </li>
                                 <li class="footer_right__socialNetworks">
-                                    <p>Слідкуйте за нами у соціальних мережах:</p>
+                                    <p>{{trans('base.follow_social')}}</p>
                                     <ul class="iconNetwork">
                                         <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
                                         <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>

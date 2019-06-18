@@ -9,15 +9,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10 a_n__text-center">
-                    <div class="a_n__text-first">Анонси</div>
+                    <div class="a_n__text-first">{{trans('base.announcements')}}</div>
                 </div>
             </div>
         </div>
     </div>
     <div>
-        <div class="a_n__text-second">Анонси</div>
-        <div class="a_n__text-third">Анонси</div>
-        <div class="a_n__text-fourth">Анонси</div>
+        <div class="a_n__text-second">{{trans('base.announcements')}}</div>
+        <div class="a_n__text-third">{{trans('base.announcements')}}</div>
+        <div class="a_n__text-fourth">{{trans('base.announcements')}}</div>
     </div>
         <div class="container">
             <div class="preview">
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button ">Детальніше</a>
+                                        <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}" class="btn btn-outline-primary preview__button ">{{trans('base.button_more')}}</a>
                                     </div>
 
 
