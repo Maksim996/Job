@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\InnerNews;
 use App\Http\Requests\InnerNewsRequest;
 use DB;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -73,7 +74,7 @@ class NewsController extends Controller
         $previewPhotoInfo = explode(";base64,", $request->mainImage);
         $previewPhotoExt = str_replace('data:image/', '', $previewPhotoInfo[0]);
         $previewPhoto = str_replace(' ', '+', $previewPhotoInfo[1]);
-        $previewFileName = 'new' . '_' . $last_id . '.' . $previewPhotoExt;
+        $previewFileName = 'preview' . '_' . $last_id . '.' . $previewPhotoExt;
         Storage::disk('public')->put('images/uploads_news/' . $previewFileName, base64_decode($previewPhoto));
         $previewPhotoPath = Storage::url('images/uploads_news/' . $previewFileName);
         $previewPhotoPath = str_replace('/storage/', '', $previewPhotoPath);
@@ -253,10 +254,28 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(InnerNewsRequest $request)
     {
-        $new = InnerNews::findOrFail($id);
-        $new->delete();
-        return redirect()->route('ad_news.news.index')->with('success', 'Новину видалено успішно');
+        $id = $request->id;
+
+        $preview = DB::table('preview')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        $preview_path = public_path($preview[0]->img_path);
+        unlink($preview_path);
+
+        $sliders = DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        foreach ($sliders as $slider) {
+            $slider_path = public_path($slider->img_path);
+            unlink($slider_path);
+        }
+
+        DB::table('inner_news')->where('inner_news_id', $id)->delete();
     }
 }

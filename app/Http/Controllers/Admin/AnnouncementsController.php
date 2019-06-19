@@ -254,10 +254,28 @@ class AnnouncementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(InnerNewsRequest $request)
     {
-        $announcement = InnerNews::findOrFail($id);
-        $announcement->delete();
-        return redirect()->route('ad_announcements.announcements.index')->with('success', 'Анонс видалено успішно');
+        $id = $request->id;
+
+        $preview = DB::table('preview')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        $preview_path = public_path($preview[0]->img_path);
+        unlink($preview_path);
+
+        $sliders = DB::table('slider_news')
+        ->where('inner_news_id', '=', $id)
+        ->get()
+        ->toArray();
+
+        foreach ($sliders as $slider) {
+            $slider_path = public_path($slider->img_path);
+            unlink($slider_path);
+        }
+
+        DB::table('inner_news')->where('inner_news_id', $id)->delete();
     }
 }

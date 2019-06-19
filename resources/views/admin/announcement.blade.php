@@ -26,7 +26,7 @@
         @endif
 
         <form 
-        id="news-announcements-form"
+            id="announcements-form"
             method="POST"
                 @if(isset($data['announcement'][0]))
                     action="{{ URL::route('ad_announcements.announcements.update', $data['announcement'][0]->inner_news_id) }}"
@@ -39,9 +39,9 @@
                 @else
                     data-is-update="0"
                 @endif
-                @if(isset($data['announcement'][0]))
-                    data-id="{{$data['announcement'][0]->inner_news_id}}"
-                @endif
+            @if(isset($data['announcement'][0]))
+                data-id="{{$data['announcement'][0]->inner_news_id}}"
+            @endif
             >
             {{ @csrf_field() }}
             <!-- 

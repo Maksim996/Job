@@ -1,28 +1,46 @@
-const form = $('#news-announcements-form');
+const announcementsForm = $('#announcements-form'),
+    newsForm = $('#news-form');
 
-function submitForm (id, data) {
-
-	const isUpdate = $('#news-announcements-form').attr('data-is-update') === '1',
-		baseUrl = '/admin/announcements',
-		url = isUpdate ? `${baseUrl}/${id}` : baseUrl,
-		type = isUpdate ? 'PUT' : 'POST';
-
-	$.ajax({
-        url,
-        type,
-        data,
-        success: function(data) {
-        	window.location.href = '/admin/announcements';
-        },
-        error(err) {
-            console.log(err);
-        }
-    });
+function submitForm (id, data, isNews) {
+    if (isNews) {
+        const isUpdate = $('#news-form').attr('data-is-update') === '1',
+        baseUrl = '/admin/news',
+        url = isUpdate ? `${baseUrl}/${id}` : baseUrl,
+        type = isUpdate ? 'PUT' : 'POST';
+        $.ajax({
+            url,
+            type,
+            data,
+            success: function(data) {
+                window.location.href = '/admin/news';
+            },
+            error(err) {
+                console.log(err);
+            }
+        });
+    } else {
+        const isUpdate = $('#announcements-form').attr('data-is-update') === '1',
+        baseUrl = '/admin/announcements',
+        url = isUpdate ? `${baseUrl}/${id}` : baseUrl,
+        type = isUpdate ? 'PUT' : 'POST';
+        $.ajax({
+            url,
+            type,
+            data,
+            success: function(data) {
+                window.location.href = '/admin/announcements';
+            },
+            error(err) {
+                console.log(err);
+            }
+        });
+    }
 }
 
-function collectFormData (e) {
+function collectFormData (e, isNews) {
 	e.preventDefault();
-	const id = $(form).attr('data-id');
+    const form = $(e.currentTarget),
+        id = form.attr('data-id');
 
     const formTitle = form.find('.form-title').val(),
         shortDescription = form.find('.short-description').val(),
@@ -52,7 +70,12 @@ function collectFormData (e) {
         sliderImageBase64
     };
 
-    submitForm(id, dataToSend);
+    if (isNews) {
+        submitForm(id, dataToSend, true);
+    } else {
+        submitForm(id, dataToSend, false);
+    }
 }
 
-form.on('submit', collectFormData);
+announcementsForm.on('submit', (e) => collectFormData(e, false));
+newsForm.on('submit', (e) => collectFormData(e, true));

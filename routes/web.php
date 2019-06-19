@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('documents', 'Admin\DocumentsController', ['as' => 'ad_documents']);
 
+	Route::post('delete-announcement', 'Admin\AnnouncementsController@destroy');
+
+	Route::post('delete-new', 'Admin\NewsController@destroy');
+
 	// Route::get('practic-header', function () {
 	//     return view('/admin/practic-header');
 	// })->name('ad_practic-header');

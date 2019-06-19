@@ -25,19 +25,20 @@
             </div>
         @endif
 
-        <form method="POST"
-        id="news-announcements-form"
-            @if(isset($data['new'][0]))
-                action="{{ URL::route('ad_news.news.update', $data['new'][0]->inner_news_id) }}"
-            @else
-                action="{{ URL::route('ad_news.news.store') }}"
-            @endif
+        <form
+            method="POST"
+            id="news-form"
+                @if(isset($data['new'][0]))
+                    action="{{ URL::route('ad_news.news.update', $data['new'][0]->inner_news_id) }}"
+                @else
+                    action="{{ URL::route('ad_news.news.store') }}"
+                @endif
             class="k-form k-form--label-right" enctype="multipart/form-data"
-            @if(isset($data['new'][0]))
-                data-is-update="1"
-            @else
-                data-is-update="0"
-            @endif
+                @if(isset($data['new'][0]))
+                    data-is-update="1"
+                @else
+                    data-is-update="0"
+                @endif
             @if(isset($data['new'][0]))
                 data-id="{{$data['new'][0]->inner_news_id}}"
             @endif
@@ -91,8 +92,8 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Дата та час проведення</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="data" class="form-control date-meeting" placeholder="" name="date"
-                        id="k_datetimepicker_3"
+                        <input type="date" class="form-control date-meeting" placeholder="" name="date"
+                            id="k_datetimepicker_3"
                             @if(isset($data['new'][0]))
                                 value="{{ $data['new'][0]->date }}"
                             @else

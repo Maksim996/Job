@@ -7,6 +7,7 @@
         <title>Keen | Dashboard</title>
         <!-- <meta name="description" content="Latest updates and statistic charts"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="csrf-token" content="{{ csrf_token() }}" style="display:none">
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
         <!--begin::Fonts -->
         <script
