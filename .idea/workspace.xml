@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59c460e4-b26a-45b6-ba52-6ea247f87a00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/js/admin/general/summernote.js" beforeDir="false" />
-    </list>
+    <list default="true" id="59c460e4-b26a-45b6-ba52-6ea247f87a00" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -455,12 +453,12 @@
       <workItem from="1560774775491" duration="6920000" />
       <workItem from="1560839637705" duration="16538000" />
       <workItem from="1560924643070" duration="10267000" />
-      <workItem from="1560948480660" duration="4478000" />
+      <workItem from="1560948480660" duration="4798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56874000" />
+    <option name="totallyTimeSpent" value="57194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-331" width="1936" height="1056" extended-state="6" />
