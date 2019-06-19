@@ -24,8 +24,15 @@ class SliderNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'inner_news_id' => 'bail|required|integer',
+            'inner_news_id' => 'required|integer',
             'img_path' => 'required|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'inner_news_id' => 'Ідентифікатор новини / анонсу',
+            'img_path' => 'Зображення для слайдера',
         ];
     }
 }

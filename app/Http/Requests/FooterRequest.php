@@ -24,7 +24,7 @@ class FooterRequest extends FormRequest
     public function rules()
     {
         return [
-            'img_path' => 'bail|required|max:200',
+            'img_path' => 'required',
             'link' => 'nullable|url|max:200',
             'content_ua' => 'required|string',
             'content_ru' => 'required|string',
@@ -32,6 +32,17 @@ class FooterRequest extends FormRequest
             'type' => 'required|max:200',
             'name' => 'required|max:200',
             'color_bg' => 'nullable|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'img_path' => 'Загрузка фото',
+            'link' => 'Посилання',
+            'content' => 'Текст',
+            'type' => 'Тип посилання',
+            'name' => 'Назва сціальної мережі',
+            'color_bg' => 'Кольор при наведенні на логотип соціальної мережі',
         ];
     }
 }

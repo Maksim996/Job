@@ -36,6 +36,7 @@ class HeaderController extends Controller
      */
     public function update(HeaderRequest $request)
     {
+
         $id =1;
         // ->str_slug($request->input('name'))
         
@@ -49,10 +50,11 @@ class HeaderController extends Controller
         else
             $path =   DB::table('header')->where('id', '=', $id)->value('img_path');
 
+
         DB::table('header')
         ->where('id', '=', $id)
         ->update([
-            'img_path' => $path,
+            'img_path' => $request->img_path,
             'title' => $request->title,
             'link' => $request->link,
             'content' => $request->content,

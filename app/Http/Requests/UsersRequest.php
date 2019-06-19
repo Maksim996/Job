@@ -24,9 +24,17 @@ class UsersRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|max:255',
             'password' => 'required|max:255',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'name' => 'Ім\'я користувача',
+            'email' => 'Електронна адреса',
+            'password' => 'Пароль користувача',
         ];
     }
 }

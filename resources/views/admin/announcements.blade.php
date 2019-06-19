@@ -10,8 +10,9 @@
                 <h3 class="k-portlet__head-title">
                     Анонси
                 </h3>
-                <a href="{{ URL::route('ad_announcements.announcements.create') }}"  class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
-                        <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
+
+                <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="{{ route('ad_announcements.announcements.create') }}">
+                    <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
                 </a>
             </div>
         </div>
@@ -23,7 +24,6 @@
                         <div class="col-lg-8 k-margin-b-10-tablet-and-mobile">
                             <input type="text" class="form-control k-input" placeholder="Заголовок" data-col-index="0">
                         </div>
-                    
                     </div>
                     <div class="row col-lg-4 m-0">
                         <button class="btn btn-brand k-btn k-btn--icon" id="m_search">
@@ -53,10 +53,11 @@
                             <!-- <td nowrap></td> -->
                             <td>
                                 <input class="id" value="{{$announcement->inner_news_id}}" style="display:none">
-                                <a href="{{ URL::route('ad_announcements.announcements.show', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+
+                                <a href="{{ URL::route('ad_announcements.announcements.show', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Перегляд">
                                     <i class="la la-pencil"></i>
                                 </a>
-                                <a class="btn btn-sm btn-clean btn-icon btn-icon-md delete_announcement" title="View">
+                                <a class="btn btn-sm btn-clean btn-icon btn-icon-md delete_announcement" title="Видалення">
                                     <i class="la la-close"></i>
                                 </a>
                             </td>
@@ -68,44 +69,36 @@
        
         </div>  
    </div>
-<script type="text/javascript">
+
+    <script type="text/javascript" >
     document.addEventListener("DOMContentLoaded", function() {
         let count = $('tr').length;
-        if(count == 2){
+        if (count == 2) {
             $('.delete_announcement').hide();
-        }
-        else $('.delete_announcement').show();
-
+        } else $('.delete_announcement').show();
         $('.delete_announcement').on('click', (e) => {
-
             e.preventDefault();
-
-        let id = $(e.target).closest('td').find('.id').val();
-        $(e.target).closest('tr').remove();
-
-        count = $('tr').length;
-        console.log(count);
-
-        if(count == 2){
-            $('.delete_announcement').hide();
-        }
-        else $('.delete_announcement').show();
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "/admin/delete-announcement",
-            method: 'post',
-            data : {'id':id},
-            dataType: 'json',
-            success: function(res){
-
-            }
+            let id = $(e.target).closest('td').find('.id').val();
+            $(e.target).closest('tr').remove();
+            count = $('tr').length;
+            console.log(count);
+            if (count == 2) {
+                $('.delete_announcement').hide();
+            } else $('.delete_announcement').show();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/admin/delete-announcement",
+                method: 'post',
+                data: {
+                    'id': id
+                },
+                dataType: 'json',
+                success: function(res) {}
+            });
         });
     });
-    });
-
-</script>
+    </script>
     <!--end::Dashboard 1-->
 @endsection

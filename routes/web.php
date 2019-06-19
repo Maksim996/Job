@@ -79,9 +79,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
     Route::post('footer-delete', 'Admin\FooterController@destroy');
 
 	Route::get('menu/{id}', 'Admin\MenuController@index')->name('menu');
-	// Route::get('new/{id}', function ($id) {
-	//     return view('/admin/new', array('id' => $id));
-	// });
+
+	Route::post('delete-announcement', 'Admin\AnnouncementsController@destroy');
+
+	Route::post('delete-new', 'Admin\NewsController@destroy');
+
+
 	Route::get('document/create', function () {
 	    return view('/admin/document_template');
 	});
