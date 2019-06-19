@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	Route::resource('partners', 'Admin\PartnersController', ['as' => 'ad_partners']);
 
 
+
 	Route::post('delete-subcategory', 'Admin\MenuController@deleteSubcategory');
 	Route::post('delete-document', 'Admin\DocumentsController@deleteDocument');
     Route::post('delete-new', 'Admin\NewsController@destroy');
@@ -73,10 +74,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('menus', 'Admin\MenuController', ['as' => 'ad_menus']);
 
+    Route::resource('footer', 'Admin\FooterController', ['as' => 'ad_footer']);
+    Route::post('footer', 'Admin\FooterController@update');
+    Route::post('footer-delete', 'Admin\FooterController@destroy');
 
-	Route::get('footer', function () {
-	    return view('/admin/footer');
-	})->name('ad_footer');
 	Route::get('menu/{id}', 'Admin\MenuController@index')->name('menu');
 	// Route::get('new/{id}', function ($id) {
 	//     return view('/admin/new', array('id' => $id));

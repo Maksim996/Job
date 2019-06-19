@@ -9,11 +9,11 @@
             <div class="header-title_block">
                 <a href="{{$data['header'][0]->link}}" class="blueLine">
                     <h1 class="text-uppercase">
-                        {!! $data['header'][0]->title !!}
+                        {!! $data['header'][0]->{'title_' . $data['locale']} !!}
                     </h1>
                 </a>
                 <div class="header__text col-xl-10 mx-auto">
-                    <p> {!! $data['header'][0]->content !!}</p>
+                    <p> {!! $data['header'][0]->{'content_' . $data['locale']} !!}</p>
                 </div>
             </div>
             <span class="scroll_yak">
@@ -27,23 +27,23 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <p class="practice__title">
-                            {!! $data['internship'][0]->title !!}
+                            {!! $data['internship'][0]->{'title_' . $data['locale']} !!}
                         </p>
                     </div>
                 </div>
                 <div class="row mt-md-5 mt-sm-1 justify-content-center">
                     <div class="col-12 col-md-10">
-                        <p class="practice__subtitle">{!! $data['internship'][0]->content !!}</p>
+                        <p class="practice__subtitle">{!! $data['internship'][0]->{'content_' . $data['locale']} !!}</p>
                     </div>
                 </div>
                 <div class="row mt-md-5 mt-4">
                     @foreach($data['practice_intership_card'] as $card)
                         <div class="col-md-12 col-lg-4 card  mb-4 ">
                             <a href="{{$card->card_link}}" class="practice__item practice__card p-3 pb-4 ">
-                                <img src="{{ URL::asset($card->img_path) }}" alt="{{$card->card_title}}" class="rounded-circle practice__image mx-auto ">
+                                <img src="{{ URL::asset($card->img_path) }}" alt="{{$card->{'card_title_' . $data['locale']} }}" class="rounded-circle practice__image mx-auto ">
                                 <div class="card-body mt-4">
-                                    <h5 class="card-title practice__topic">{{$card->card_title}}</h5>
-                                    <p class="card-text practice__text">{{$card->card_description}}</p>
+                                    <h5 class="card-title practice__topic">{{$card->{'card_title_' . $data['locale']} }}</h5>
+                                    <p class="card-text practice__text">{{$card->{'card_description_' . $data['locale']} }}</p>
                                 </div>
                             </a>
                         </div>
@@ -69,14 +69,14 @@
                                     <div class="card_img">
                                         <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
                                     </div>
-                                    <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
-                                    <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
+                                    <h5 class="card-title">{{$data['announcements'][$i]->{'title_' . $data['locale']} }}</h5>
+                                    <p class="card-description">{{$data['announcements'][$i]->{'short_description_' . $data['locale']} }}</p>
                                 </div>                           
                               
                                 <div>
                                     <div class="card-location">
                                         <i class="icon-location"></i>
-                                        {{$data['announcements'][$i]->short_location}}
+                                        {{$data['announcements'][$i]->{'short_location_' . $data['locale']} }}
 
                                     </div>
                                     <ul class="card-date">
@@ -93,10 +93,10 @@
                             </div>
                             <div class="card-footer">
                                 <a href="{{ route('announcement', array('id' => $data['announcements'][$i]->inner_news_id, 'title' => $data['announcements'][$i]->trans_title)) }}"
-                                   class="btn btn-outline-primary preview__button ">{{trans('base.button_more')}}</a>
+                                   class="btn btn-outline-primary preview__button ">
+                                    {{trans('base.button_more')}}
+                                </a>
                             </div>
-
-
                         </div>
                     @endfor
                 </div>
@@ -137,7 +137,7 @@
                         <div class="card news__one">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title">{{$data['news'][0]->title}}</h5>
+                                    <h5 class="card-title news__title">{{$data['news'][0]->{'title_' . $data['locale']} }}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -147,7 +147,7 @@
                                 <div class="col-md-8 pl-md-3">
                                     <div class="card-body">
                                         <p class="card-text news__text  ">  
-                                            {{$data['news'][0]->short_description}}
+                                            {{$data['news'][0]->{'short_description_' . $data['locale']} }}
                                         </p>
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">{{trans('base.link_more')}}</a>
@@ -168,7 +168,7 @@
                         <div class="card news__one">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">{{$data['news'][$i]->title}}</h5>
+                                    <h5 class="card-title news__title-item">{{$data['news'][$i]->{'title_' . $data['locale']} }}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -178,7 +178,7 @@
                                 <div class="col-md-8   pl-md-3">
                                     <div class="card-body">
                                         <p class="card-text news__text-item">
-                                            {{$data['news'][$i]->short_description}}
+                                            {{$data['news'][$i]->{'short_description_' . $data['locale']} }}
                                         </p>
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">{{trans('base.link_more')}}</a>

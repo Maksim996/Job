@@ -72,16 +72,6 @@ class PreviewTableSeeder extends Seeder
             'short_description_us' => 'Lorem ipsum dolor sit amet us',
         ]);
         DB::table('preview')->insert([
-            'inner_news_id' => 11,
-            'img_path' => '/images/main/brands/portaone.png',
-            'short_location_ua' => 'СумДУ ua',
-            'short_location_ru' => 'СумДУ ru',
-            'short_location_us' => 'СумДУ us',
-            'short_description_ua' => 'Lorem ipsum dolor sit amet ua',
-            'short_description_ru' => 'Lorem ipsum dolor sit amet ru',
-            'short_description_us' => 'Lorem ipsum dolor sit amet us',
-        ]);
-        DB::table('preview')->insert([
             'inner_news_id' => 7,
             'img_path' => '/images/main/brands/cisco.png',
             'short_location_ua' => 'СумДУ ua',
@@ -104,26 +94,6 @@ class PreviewTableSeeder extends Seeder
         DB::table('preview')->insert([
             'inner_news_id' => 9,
             'img_path' => '/images/main/announcement/fourth.svg',
-            'short_location_ua' => 'СумДУ ua',
-            'short_location_ru' => 'СумДУ ru',
-            'short_location_us' => 'СумДУ us',
-            'short_description_ua' => 'Lorem ipsum dolor sit amet ua',
-            'short_description_ru' => 'Lorem ipsum dolor sit amet ru',
-            'short_description_us' => 'Lorem ipsum dolor sit amet us',
-        ]);
-        DB::table('preview')->insert([
-            'inner_news_id' => 10,
-            'img_path' => '/images/main/announcement/second.svg',
-            'short_location_ua' => 'СумДУ ua',
-            'short_location_ru' => 'СумДУ ru',
-            'short_location_us' => 'СумДУ us',
-            'short_description_ua' => 'Lorem ipsum dolor sit amet ua',
-            'short_description_ru' => 'Lorem ipsum dolor sit amet ru',
-            'short_description_us' => 'Lorem ipsum dolor sit amet us',
-        ]);
-        DB::table('preview')->insert([
-            'inner_news_id' => 12,
-            'img_path' => '/images/main/announcement/third.svg',
             'short_location_ua' => 'СумДУ ua',
             'short_location_ru' => 'СумДУ ru',
             'short_location_us' => 'СумДУ us',

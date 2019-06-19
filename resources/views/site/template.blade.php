@@ -50,20 +50,22 @@
                                     @else
                                     <a class="nav-link" href="/{{$category->link}}">
                                     @endif
-                                    {!!$category->title!!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                    {!!$category->{'title_' . $data['locale']} !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
                                 @else
                                 <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       {!!$category->title!!}
+                                       {!!$category->{'title_' . $data['locale']} !!}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach($data['subcategory'] as $subcategory)
                                         @if($subcategory->category_id == $category->category_id)
-                                        @if($subcategory->type == "type2")
-                                        <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title_}}</a>
-                                        @else
-                                        <a class="dropdown-item" href="{{$subcategory->link}}">{{$subcategory->title}}</a>
-                                        @endif
+                                            @if($subcategory->type == "type2")
+                                                <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title . '_' . $data['locale']}}</a>
+                                            @else
+                                                <a class="dropdown-item" href="{{$subcategory->link}}">
+                                                    {!! $subcategory->{'title_' . $data['locale']} !!}
+                                                </a>
+                                            @endif
                                         @endif
                                     @endforeach
                                     </div>
@@ -114,48 +116,68 @@
                     <div class=" row justify-content-between">
                         <div class="col-12 col-md-6">
                             <ul class="footer_left ">
-                                <li class="footer_left__location">
-                                    <div class="circle"><img src="{{ URL::asset('images/location.svg')}}"></div>
-                                    <p>Україна, м.Суми, вул. Римського-Корсакова, 2, Сумський державний університет, Головний корпус, каб. Г-1012</p>
-                                </li>
-                                <li class="footer_left__telNumber">
-                                    <div class="circle"><img src="{{ URL::asset('images/phone-receiver.svg')}}"></div>
-                                    <p>+38(0542)687-851</p>
-                                </li>
-                                <li class="footer_left__email">
-                                    <div class="circle"><img src="{{ URL::asset('images/envelope.svg')}}"></div>
-                                    <a href="#">info@job.sumdu.edu.ua</a>
-                                </li>
+                                @for($i = 0; $i < count($data['left_footer']); $i++)
+                                    @if(empty($data['left_footer'][$i]))
+                                        <p></p>
+                                    @else
+                                        <li class="">
+                                            <div class="circle"><img src="{{ URL::asset($data['left_footer'][$i]->img_path) }}"></div>
+                                            @if(empty($data['left_footer'][$i]->link))
+                                                <p class="content">{{$data['left_footer'][$i]->{'content_' . $data['locale']} }}</p>
+                                            @else
+                                                <a href="{{ $data['left_footer'][$i]->link }}">{{$data['left_footer'][$i]->{'content_' . $data['locale']} }}</a>
+                                            @endif
+                                        </li>
+                                    @endif
+                                @endfor
                             </ul>
                         </div>
                         <div class="col-12 col-md-5 pl-2 col-xl-3 ">
                             <ul class="footer_right ">
-                                <li class="footer_right__aboutUs">
-                                    <a href="#" >
+                                @for($i = 0; $i < count($data['about_footer']) && $i < 1; $i++)
+                                    @if(empty($data['about_footer'][$i]))
+                                        <p></p>
+                                    @else
+                                        <li class="footer_right__aboutUs">
+                                            <a href="{{ $data['about_footer'][$i]->link }}" >
                                         <span class="circle">
                                             <img src="{{ URL::asset('images/info-sign.svg')}}">
                                         </span>
-                                        <div>{{trans('base.about_department')}}</div>
-                                    </a>
-                                </li>
+                                                <div>Про наш відділ</div>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endfor
+
                                 <li class="footer_right__socialNetworks">
-                                    <p>{{trans('base.follow_social')}}</p>
+                                    <p>Слідкуйте за нами у соціальних мережах:</p>
                                     <ul class="iconNetwork">
-                                        <li class="facebook"><a href="#" class="circle"><img src="{{ URL::asset('images/facebook-logo.svg')}}"></a></li>
-                                        <li class="instagram"><a href="#" class="circle"><img src="{{ URL::asset('images/instagram.svg')}}"></a></li>
-                                        <li class="telegram"><a href="#" class="circle"><img src="{{ URL::asset('images/telegram-logo.svg')}}"></a></li>
+                                        {{--@for($i = 0; $i < count($data['right_footer']) && $i < 7; $i++)--}}
+                                        @foreach($data['right_footer'] as $social_hover)
+                                            <li class=""><a href="{{ $social_hover->link }}"
+                                                            class="circle {{str_replace(' ','_',$social_hover->name )}}"><img src="{{ URL::asset($social_hover->img_path) }}"></a></li>
+
+                                        @endforeach
+                                        {{--@endfor--}}
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
             </footer>
         @show
     </div>
-    
-    
+
+    <style>
+        {{--        @for($i = 0; $i < count($data['right_footer']) && $i < 7; $i++)--}}
+        @foreach($data['right_footer'] as $social_hover)
+              .{{str_replace(' ','_',$social_hover->name )}}:hover{
+            background:{{$social_hover->color_bg}} ;
+        }
+        @endforeach
+        {{--@endfor--}}
+    </style>
 
 
     <script src="js/ajax1_14_7.js"></script>

@@ -34,10 +34,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $locale = $request['locale'];
-
-//        App::setLocale('ru');
-//        $val = $request->session();
-//        dd($val);
+        $titleLocale = 'title_' . $locale;
 
         $date = Carbon::now()->toDateTimeString();
         $practice = DB::select("SELECT * FROM `practice_intership_card`");
@@ -64,12 +61,14 @@ class HomeController extends Controller
         ->get()
         ->toArray();
 
+
+        // $titleLocale or ->{'title' . '_' . $locale} work similar
         for($i = 0; $i < count($news); $i++) {
-            $news[$i]->trans_title = $this->transliterate($news[$i]->title);
+            $news[$i]->trans_title = $this->transliterate($news[$i]->$titleLocale);
         }
 
         for($i = 0; $i < count($announcements); $i++) {
-            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
+            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->$titleLocale);
         }
         
         $slider = DB::select("SELECT * FROM `partners`");
@@ -79,6 +78,31 @@ class HomeController extends Controller
         $header = DB::table('header')->get()->toArray();
         $internship = DB::table('practice_intership_content')->get()->toArray();
 
+        $left_footer = DB::table('footer')
+            ->where([
+                ['type', '=', 'left_column'],
+            ])
+            ->orderBy('footer_id', 'asc')
+            ->get()
+            ->toArray();
+
+        $about_footer = DB::table('footer')
+            ->where([
+                ['type', '=', 'about_as'],
+            ])
+            ->orderBy('footer_id', 'desc')
+            ->limit(1)
+            ->get()
+            ->toArray();
+
+        $right_footer = DB::table('footer')
+            ->where([
+                ['type', '=', 'social'],
+            ])
+            ->orderBy('footer_id', 'asc')
+            ->limit(7)
+            ->get()
+            ->toArray();
 
 
         $data = [
@@ -91,6 +115,9 @@ class HomeController extends Controller
             'header' => $header,
             'internship' => $internship,
             'locale' => $locale,
+            'left_footer' => $left_footer,
+            'about_footer' => $about_footer,
+            'right_footer' => $right_footer,
         ];
        
 

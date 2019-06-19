@@ -28,7 +28,31 @@ class AnnouncementController extends Controller
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
         $header = DB::table('inner_news')->where('inner_news_id',$id)->get()->toArray();
+        $left_footer = DB::table('footer')
+            ->where([
+                ['type', '=', 'left_column'],
+            ])
+            ->orderBy('footer_id', 'asc')
+            ->get()
+            ->toArray();
 
+        $about_footer = DB::table('footer')
+            ->where([
+                ['type', '=', 'about_as'],
+            ])
+            ->orderBy('footer_id', 'desc')
+            ->limit(1)
+            ->get()
+            ->toArray();
+
+        $right_footer = DB::table('footer')
+            ->where([
+                ['type', '=', 'social'],
+            ])
+            ->orderBy('footer_id', 'asc')
+            ->limit(7)
+            ->get()
+            ->toArray();
     	$data = [
             'new' => $announcement,
             'slider' => $slider_announcements,
@@ -36,6 +60,9 @@ class AnnouncementController extends Controller
             'subcategory' => $subcategory,
             'header' => $header,
             'locale' => $locale,
+            'left_footer' => $left_footer,
+            'about_footer' => $about_footer,
+            'right_footer' => $right_footer,
         ];
 
     	return view('site/post', compact('data'));

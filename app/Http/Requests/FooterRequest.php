@@ -26,7 +26,9 @@ class FooterRequest extends FormRequest
         return [
             'img_path' => 'bail|required|max:200',
             'link' => 'nullable|url|max:200',
-            'content' => 'required|string',
+            'content_ua' => 'required|string',
+            'content_ru' => 'required|string',
+            'content_us' => 'required|string',
             'type' => 'required|max:200',
             'name' => 'required|max:200',
             'color_bg' => 'nullable|max:200',

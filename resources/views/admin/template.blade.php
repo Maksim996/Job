@@ -11,8 +11,10 @@
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
         <!--begin::Fonts -->
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
         <script src="{{ URL::asset('css/admin/font.js') }}"></script>
-        
+        {{--<script src="{{ URL::asset('js/app.js') }}"></script>--}}
+
         <!--end::Fonts -->
         <!--begin::Page Vendors Styles(used by this page) -->
         <!-- <link href="../assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" /> -->
@@ -179,7 +181,7 @@
                                 </li>
                                 <li class="k-menu__item " aria-haspopup="true" >
 
-                                    <a href="{{ route('ad_footer')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a href="{{ route('ad_footer.footer.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Футер
                                     </span></a>
                                 </li>
@@ -251,12 +253,12 @@
             <!-- end:: Page -->
         </div>
         <!-- end:: Root -->
-        <script src="{{ URL::asset('js/jquery3_3_1.js') }}" type="text/javascript"></script>
-        {{--<script--}}
-			  {{--src="https://code.jquery.com/jquery-3.4.1.min.js"--}}
-			  {{--integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="--}}
-			  {{--crossorigin="anonymous"></script>--}}
-       {{----}}
+{{--        <script src="{{ URL::asset('js/jquery3_3_1.js') }}" type="text/javascript"></script>--}}
+        <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+
         <!-- begin:: Scrolltop -->
         <div id="k_scrolltop" class="k-scrolltop"> <i class="la la-arrow-up"></i> </div>
         <!-- end:: Scrolltop -->

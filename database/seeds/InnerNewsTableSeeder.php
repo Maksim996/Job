@@ -231,37 +231,5 @@ class InnerNewsTableSeeder extends Seeder
     		'description' => 'Ut enim ad minim veniam, quis nostrud
     		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
         ]);
-        DB::table('inner_news')->insert([
-            'type' => 'new',
-            'title_ua' => 'Участь у конференції11',
-            'title_ru' => 'Участь у конференції11 ru',
-            'title_us' => 'Участь у конференції11 us',
-            'date' => '2019-05-17 12:34:47',
-            'full_location_ua' => 'СумДУ',
-    		'full_location_ru' => 'СумДУ ru',
-    		'full_location_us' => 'СумДУ us',
-            'full_description' => 'Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua',
-            'keywords' => 'Lorem, ipsum, dolor, sit, amet',
-            'description' => 'Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-        ]);
-        DB::table('inner_news')->insert([
-            'type' => 'announcement',
-            'title_ua' => 'Участь у конференції4',
-            'title_ru' => 'Участь у конференції4 ru',
-            'title_us' => 'Участь у конференції4 us',
-            'date' => '2019-05-22 00:00:00',
-            'full_location_ua' => 'СумДУ',
-    		'full_location_ru' => 'СумДУ ru',
-    		'full_location_us' => 'СумДУ us',
-            'full_description' => 'Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua',
-            'keywords' => 'Lorem, ipsum, dolor, sit, amet',
-            'description' => 'Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-        ]);
     }
 }

@@ -24,6 +24,18 @@ class SliderNewsTableSeeder extends Seeder
     		'img_path' => '/images/main/brands/cisco.png',
         ]);
         DB::table('slider_news')->insert([
+            'inner_news_id' => 1,
+            'img_path' => '/images/main/brands/cisco.png',
+        ]);
+        DB::table('slider_news')->insert([
+            'inner_news_id' => 1,
+            'img_path' => '/images/main/brands/portaone.png',
+        ]);
+        DB::table('slider_news')->insert([
+            'inner_news_id' => 1,
+            'img_path' => '/images/main/brands/portaone.png',
+        ]);
+        DB::table('slider_news')->insert([
     		'inner_news_id' => 2,
     		'img_path' => '/images/main/brands/cisco.png',
         ]);
@@ -48,6 +60,10 @@ class SliderNewsTableSeeder extends Seeder
     		'img_path' => '/images/main/brands/new-generation.png',
         ]);
         DB::table('slider_news')->insert([
+            'inner_news_id' => 6,
+            'img_path' => '/images/main/brands/new-generation.png',
+        ]);
+        DB::table('slider_news')->insert([
     		'inner_news_id' => 7,
     		'img_path' => '/images/main/brands/portaone.png',
         ]);
@@ -59,30 +75,5 @@ class SliderNewsTableSeeder extends Seeder
     		'inner_news_id' => 9,
     		'img_path' => '/images/main/brands/portaone.png',
         ]);
-        DB::table('slider_news')->insert([
-    		'inner_news_id' => 10,
-    		'img_path' => '/images/main/brands/cisco.png',
-        ]);
-        DB::table('slider_news')->insert([
-            'inner_news_id' => 1,
-            'img_path' => '/images/main/brands/cisco.png',
-        ]);
-        DB::table('slider_news')->insert([
-            'inner_news_id' => 1,
-            'img_path' => '/images/main/brands/portaone.png',
-        ]);
-        DB::table('slider_news')->insert([
-            'inner_news_id' => 1,
-            'img_path' => '/images/main/brands/portaone.png',
-        ]);
-        DB::table('slider_news')->insert([
-            'inner_news_id' => 6,
-            'img_path' => '/images/main/brands/new-generation.png',
-        ]);
-        DB::table('slider_news')->insert([
-            'inner_news_id' => 12,
-            'img_path' => '/images/main/brands/new-generation.png',
-        ]);
-        
     }
 }
