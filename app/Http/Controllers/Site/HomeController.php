@@ -33,6 +33,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $locale = $request['locale'];
+
 //        App::setLocale('ru');
 //        $val = $request->session();
 //        dd($val);
@@ -88,6 +90,7 @@ class HomeController extends Controller
             'subcategory' => $subcategory,
             'header' => $header,
             'internship' => $internship,
+            'locale' => $locale,
         ];
        
 

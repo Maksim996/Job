@@ -30,8 +30,6 @@
     <div class="wrapper">
         <div class="wrapper-content">
             @section('menu')
-
-           
                 <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
                         <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
@@ -62,7 +60,7 @@
                                     @foreach($data['subcategory'] as $subcategory)
                                         @if($subcategory->category_id == $category->category_id)
                                         @if($subcategory->type == "type2")
-                                        <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title}}</a>
+                                        <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title_}}</a>
                                         @else
                                         <a class="dropdown-item" href="{{$subcategory->link}}">{{$subcategory->title}}</a>
                                         @endif

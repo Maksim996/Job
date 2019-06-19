@@ -13,6 +13,7 @@ class AnnouncementsController extends Controller
      * @param string $s строка для транслитерации
      * @return string транслитерированная строка
      */
+
     function transliterate($s) {
         $s = (string) $s;
         $s = strip_tags($s);
@@ -27,7 +28,8 @@ class AnnouncementsController extends Controller
     }
 
     public function index(){
-    	$date = Carbon::now()->toDateTimeString();
+        $locale = $request['locale'];
+        $date = Carbon::now()->toDateTimeString();
         $announcements = DB::table('inner_news')
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
@@ -52,6 +54,8 @@ class AnnouncementsController extends Controller
             'category' => $category,
             'subcategory' => $subcategory,
             'header' => $header,
+            'locale' => $locale,
+
         ];
 
     	return view('site/announcements', compact('data'));
