@@ -8,6 +8,7 @@ use DB;
 class AnnouncementController extends Controller
 {
     public function index($id, $title){
+        $locale = $request['locale'];
         $announcement = DB::table('inner_news')
         ->select('*')
         ->where([
@@ -34,6 +35,7 @@ class AnnouncementController extends Controller
             'category' => $category,
             'subcategory' => $subcategory,
             'header' => $header,
+            'locale' => $locale,
         ];
 
     	return view('site/post', compact('data'));

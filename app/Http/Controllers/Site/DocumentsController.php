@@ -9,6 +9,9 @@ use App;
 class DocumentsController extends Controller
 {
     public function index(){
+
+        $locale = $request['locale'];
+
         $documents = DB::table('documents')->get()->toArray();
         $subcategory = DB::table("subcategory")->where('link','documents')->get()->toArray();
 
@@ -30,6 +33,8 @@ class DocumentsController extends Controller
             'category' => $category,
             'subcategory' => $subcategory,
             'header' => $header,
+            'locale' => $locale,
+
         ];
 
     	return view('site.documents',compact('data'));

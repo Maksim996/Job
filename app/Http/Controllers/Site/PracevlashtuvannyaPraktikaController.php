@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 class PracevlashtuvannyaPraktikaController extends Controller
 {
     public function index(){
+        $locale = $request['locale'];
         $subcategory = DB::table("subcategory")->where('link','pracevlashtuvannya-praktika')->get()->toArray();
 
        
@@ -28,6 +29,8 @@ class PracevlashtuvannyaPraktikaController extends Controller
             'category' => $category,
             'subcategory' => $subcategory,
             'header' => $header,
+            'locale' => $locale,
+
         ];
         
     	return view('site/documents',compact('data'));

@@ -15,6 +15,24 @@
 
 Auth::routes();
 
+
+
+Route::group(['middleware' => 'setLocale'], function() {
+    Route::get('/', 'Site\HomeController@index')->name('home');
+
+    Route::get('new/{id}-{title}', 'Site\NewController@index')->name('new');
+    Route::get('announcement/{id}-{title}', 'Site\AnnouncementController@index')->name('announcement');
+// Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
+
+    Route::get('news', 'Site\NewsController@index')->name('news');
+    Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
+    Route::get('document', 'Site\DocumentsController@index')->name('document');
+
+    Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
+
+});
+
+
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
 
 	Route::get('/', function() {
@@ -67,17 +85,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	    return view('/admin/document_template');
 	});
 });
-
-
-Route::get('/', 'Site\HomeController@index')->name('home');
-
-Route::get('new/{id}-{title}', 'Site\NewController@index')->name('new');
-Route::get('announcement/{id}-{title}', 'Site\AnnouncementController@index')->name('announcement');
-// Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
-
-Route::get('news', 'Site\NewsController@index')->name('news');
-Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
-Route::get('document', 'Site\DocumentsController@index')->name('document');
-
-Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
-

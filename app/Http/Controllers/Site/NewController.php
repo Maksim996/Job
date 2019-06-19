@@ -8,7 +8,8 @@ use DB;
 class NewController extends Controller
 {
     public function index($id, $title){
-    	$new = DB::table('inner_news')
+        $locale = $request['locale'];
+        $new = DB::table('inner_news')
         ->select('*')
         ->where([
             ['type', '=', 'new'],
@@ -36,6 +37,8 @@ class NewController extends Controller
             'category' => $category,
             'subcategory' => $subcategory,
             'header' => $header,
+            'locale' => $locale,
+
         ];
 
     	return view('site/post', compact('data'));

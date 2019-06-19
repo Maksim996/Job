@@ -17,8 +17,12 @@ class CreatePracticeIntershipCardTable extends Migration
             $table->increments('card_id');
             $table->string('card_link', 200);
             $table->string('img_path', 200);
-            $table->string('card_title', 200);
-            $table->text('card_description');
+            $table->string('card_title_ua', 200);
+            $table->string('card_title_ru', 200)->nullable();
+            $table->string('card_title_us', 200)->nullable();
+            $table->text('card_description_ua');
+            $table->text('card_description_ru')->nullable();
+            $table->text('card_description_us')->nullable();
         });
     }
 

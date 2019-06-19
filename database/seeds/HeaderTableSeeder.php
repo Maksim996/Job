@@ -13,9 +13,13 @@ class HeaderTableSeeder extends Seeder
     {
         DB::table('header')->insert([
     		'img_path' => '',
-    		'title' => 'Header_title',
+    		'title_ua' => 'Header_title',
+    		'title_ru' => 'Header_title ru',
+    		'title_us' => 'Header_title us',
     		'link' => 'http://job.sumdu.edu.ua/',
-    		'content' => 'Відділ практики та інтеграційних зв\'язків із замовниками кадрів',
+    		'content_ua' => 'Відділ практики та інтеграційних зв\'язків із замовниками кадрів',
+    		'content_ru' => 'Відділ практики та інтеграційних зв\'язків із замовниками кадрів ru',
+    		'content_us' => 'Відділ практики та інтеграційних зв\'язків із замовниками кадрів us',
     		'keywords' => 'СумДУ, практика, замовники кадрів',
     		'description' => 'На нашому сайті ви можете дізнатися більше про види практики',
         ]);

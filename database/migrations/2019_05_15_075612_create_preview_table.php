@@ -18,8 +18,13 @@ class CreatePreviewTable extends Migration
             $table->unsignedInteger('inner_news_id');
             $table->foreign('inner_news_id')->references('inner_news_id')->on('inner_news')->onUpdate('cascade')->onDelete('cascade');
             $table->text('img_path');
-            $table->string('short_location', 200);
-            $table->string('short_description', 200);
+            $table->string('short_location_ua', 200);
+            $table->string('short_location_ru', 200)->nullable();
+            $table->string('short_location_us', 200)->nullable();
+            $table->string('short_description_ua', 200);
+            $table->string('short_description_ru', 200)->nullable();
+            $table->string('short_description_us', 200)->nullable();
+
         });
     }
 

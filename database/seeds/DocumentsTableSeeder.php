@@ -13,45 +13,44 @@ class DocumentsTableSeeder extends Seeder
     {
         DB::table('documents')->insert([
     		'subcategory_id' => 1,
-    		'title' => 'Document1',
+    		'title_ua' => 'Document1',
+    		'title_ru' => 'Document1',
+    		'title_us' => 'Document1',
     		'doc_date' => '2019-05-17 00:00:00',
     		'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
         ]);
         DB::table('documents')->insert([
             'subcategory_id' => 1,
-            'title' => 'Document12',
+            'title_ua' => 'Document12',
+            'title_ru' => 'Document12',
+            'title_us' => 'Document12',
             'doc_date' => '2019-05-17 00:00:00',
             'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
         ]);
         DB::table('documents')->insert([
             'subcategory_id' => 2,
-            'title' => 'Document21',
+            'title_ua' => 'Document21',
+            'title_ru' => 'Document21',
+            'title_us' => 'Document21',
+            'doc_date' => '2019-05-17 00:00:00',
+            'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
+        ]);
+        DB::table('documents')->insert([
+            'subcategory_id' => 1,
+            'title_ua' => 'Document12',
+            'title_ru' => 'Document12',
+            'title_us' => 'Document12',
             'doc_date' => '2019-05-17 00:00:00',
             'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
         ]);
         DB::table('documents')->insert([
             'subcategory_id' => 2,
-            'title' => 'Document22',
+            'title_ua' => 'Document21',
+            'title_ru' => 'Document21',
+            'title_us' => 'Document21',
             'doc_date' => '2019-05-17 00:00:00',
             'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
         ]);
-        DB::table('documents')->insert([
-            'subcategory_id' => 2,
-            'title' => 'Document23',
-            'doc_date' => '2019-05-17 00:00:00',
-            'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
-        ]);
-        DB::table('documents')->insert([
-            'subcategory_id' => 3,
-            'title' => 'Document31',
-            'doc_date' => '2019-05-17 00:00:00',
-            'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
-        ]);
-        DB::table('documents')->insert([
-            'subcategory_id' => 3,
-            'title' => 'Document32',
-            'doc_date' => '2019-05-17 00:00:00',
-            'file_link' => 'http://job.sumdu.edu.ua/document1.pdf',
-        ]);
+
     }
 }

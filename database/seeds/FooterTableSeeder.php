@@ -14,7 +14,9 @@ class FooterTableSeeder extends Seeder
         DB::table('footer')->insert([
     		'img_path' => 'footer.png',
     		'link' => 'footer1_link.com',
-    		'content' => 'footer1_content',
+    		'content_ua' => 'footer1_content',
+    		'content_ru' => 'footer1_content ru',
+    		'content_us' => 'footer1_content us',
             'type' => 'footer_type',
             'name' => 'footer_name',
             'color_bg' => 'footer_color',
