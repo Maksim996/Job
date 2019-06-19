@@ -34,10 +34,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $locale = $request['locale'];
-
-//        App::setLocale('ru');
-//        $val = $request->session();
-//        dd($val);
+        $titleLocale = 'title_' . $locale;
 
         $date = Carbon::now()->toDateTimeString();
         $practice = DB::select("SELECT * FROM `practice_intership_card`");
@@ -64,12 +61,14 @@ class HomeController extends Controller
         ->get()
         ->toArray();
 
+
+        // $titleLocale or ->{'title' . '_' . $locale} work similar
         for($i = 0; $i < count($news); $i++) {
-            $news[$i]->trans_title = $this->transliterate($news[$i]->title);
+            $news[$i]->trans_title = $this->transliterate($news[$i]->$titleLocale);
         }
 
         for($i = 0; $i < count($announcements); $i++) {
-            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
+            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->$titleLocale);
         }
         
         $slider = DB::select("SELECT * FROM `partners`");
@@ -90,7 +89,7 @@ class HomeController extends Controller
             'subcategory' => $subcategory,
             'header' => $header,
             'internship' => $internship,
-            'locale' => $locale,
+            'locale' => $locale
         ];
        
 

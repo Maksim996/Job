@@ -50,20 +50,22 @@
                                     @else
                                     <a class="nav-link" href="/{{$category->link}}">
                                     @endif
-                                    {!!$category->title!!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                    {!!$category->{'title_' . $data['locale']} !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
                                 @else
                                 <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       {!!$category->title!!}
+                                       {!!$category->{'title_' . $data['locale']} !!}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach($data['subcategory'] as $subcategory)
                                         @if($subcategory->category_id == $category->category_id)
-                                        @if($subcategory->type == "type2")
-                                        <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title_}}</a>
-                                        @else
-                                        <a class="dropdown-item" href="{{$subcategory->link}}">{{$subcategory->title}}</a>
-                                        @endif
+                                            @if($subcategory->type == "type2")
+                                                <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title . '_' . $data['locale']}}</a>
+                                            @else
+                                                <a class="dropdown-item" href="{{$subcategory->link}}">
+                                                    {!! $subcategory->{'title_' . $data['locale']} !!}
+                                                </a>
+                                            @endif
                                         @endif
                                     @endforeach
                                     </div>
