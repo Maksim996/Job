@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PracticeIntershipContentTableSeeder::class);
         $this->call(PracticeIntershipCardTableSeeder::class);
         $this->call(PartnersTableSeeder::class);
-        $this->call(InnerNewsTableSeeder::class);
+        // $this->call(InnerNewsTableSeeder::class);
         $this->call(PreviewTableSeeder::class);
         $this->call(SliderNewsTableSeeder::class);
         $this->call(FooterTableSeeder::class);

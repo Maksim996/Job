@@ -19,7 +19,7 @@ class CreateFooterTable extends Migration
             $table->string('link', 200)->nullable();
             $table->text('content');
             $table->string('type', 200);
-            $table->string('name', 200);
+            $table->string('name', 200)->nullable();
             $table->string('color_bg', 200)->nullable();
         });
     }

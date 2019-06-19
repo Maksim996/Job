@@ -30,14 +30,13 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form">
+        <form method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form" enctype="multipart/form-data">
             {{ @csrf_field() }}
             <div class="k-portlet__body">
                 <div class="row mt-5">
                     <div id="block1" class="col-lg-4 col-md-12  mt-2">
                         <div class="col-lg-9 mx-auto admin_card">
                             <img width="140px" src="{{ URL::asset($data['practicCards'][0]->img_path) }}" alt="" class="rounded-circle practice__image">
-                            
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">Де знайти місце проходження практики?</h5>
                                 <p class="card-text practice__text">Практика - це можливість набратись досвіду й знайти своє призначення</p>
@@ -59,7 +58,7 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input name="img_path1" type="file" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->img_path }}">
+                                <input type="file" name="img_path1" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -92,7 +91,7 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" name="img_path2" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->img_path }}">
+                                <input type="file" name="img_path2" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -125,7 +124,7 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
-                                <input type="file" name="img_path3" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->img_path }}">
+                                <input type="file" name="img_path3" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">

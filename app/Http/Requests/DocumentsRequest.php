@@ -24,10 +24,19 @@ class DocumentsRequest extends FormRequest
     public function rules()
     {
         return [
-            'subcategory_id' => 'bail|required|integer',
+            'subcategory_id' => 'required|integer',
             'title' => 'required|max:200',
             'doc_date' => 'required|date',
             'file_link' => 'required|url|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'subcategory_id' => 'Категорія документу',
+            'title' => 'Заголовок документу',
+            'doc_date' => 'Дата документу',
+            'file_link' => 'Посилання',
         ];
     }
 }

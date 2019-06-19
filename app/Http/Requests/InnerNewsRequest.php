@@ -24,13 +24,31 @@ class InnerNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'type' => 'bail|required|max:200',
             // 'title' => 'required|max:200',
             // 'date' => 'required|date',
-            // 'full_location' => 'nullabel|max:200',
+            // 'full_location' => 'nullable|max:200',
             // 'full_description' => 'required|max:200',
             // 'keywords' => 'required|max:200',
             // 'description' => 'required|max:200',
+            // 'img_path' => 'required',
+            // 'short_location' => 'required|max:200',
+            // 'short_description' => 'required|max:200',
+            // 'files' => 'required',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'title' => 'Заголовок',
+            'date' => 'Дата та час проведення',
+            'full_location' => 'Місце проведення повне',
+            'full_description' => 'Детальний опис',
+            'keywords' => 'Ключові слова',
+            'description' => 'Опис',
+            'img_path' => 'Головне зображення',
+            'short_location' => 'Місце проведення коротке',
+            'short_description' => 'Короткий опис',
+            'files' => 'Зображення для слайдера',
         ];
     }
 }

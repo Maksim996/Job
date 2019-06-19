@@ -24,8 +24,15 @@ class PracticeIntershipContentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'bail|required|max:200',
+            'title' => 'required|string|max:200',
             'content' => 'required|string',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'title' => 'Заголовок',
+            'content' => 'Короткий опис',
         ];
     }
 }

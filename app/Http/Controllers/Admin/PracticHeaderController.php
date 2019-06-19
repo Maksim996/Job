@@ -36,7 +36,7 @@ class PracticHeaderController extends Controller
     {
         $practicContent = PracticeIntershipContent::findOrfail($id);
 
-        $practicContent->update($request->validated());
+        $practicContent->update($request->all());
 
         $practicContent = PracticeIntershipContent::all();
 

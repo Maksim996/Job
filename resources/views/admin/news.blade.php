@@ -10,9 +10,9 @@
                 <h3 class="k-portlet__head-title">
                     Новини
                 </h3>
-                <button class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus">
-                        <span> <i class="la la-plus"></i> <span>Додати новину</span> </span>
-                </button>
+                <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="{{ route('ad_news.news.create') }}">
+                    <span> <i class="la la-plus"></i> <span>Додати новину</span> </span>
+                </a>
             </div>
         </div>
         <div class="k-portlet">
@@ -52,10 +52,11 @@
                             <td>{{ $new->date }}</td>
                             <!-- <td nowrap></td> -->
                             <td>
-                                <a href="{{ URL::route('ad_news.news.show', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                <input class="id" value="{{$new->inner_news_id}}" style="display:none">
+                                <a href="{{ URL::route('ad_news.news.show', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Перегляд">
                                     <i class="la la-pencil"></i>
                                 </a>
-                                <a href="{{ URL::route('ad_news.news.destroy', $new->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                <a class="btn btn-sm btn-clean btn-icon btn-icon-md delete_new" title="Видалення">
                                     <i class="la la-close"></i>
                                 </a>
                             </td>
@@ -67,5 +68,35 @@
        
         </div>  
    </div>
+    <script type="text/javascript" >
+    document.addEventListener("DOMContentLoaded", function() {
+        let count = $('tr').length;
+        if (count == 2) {
+            $('.delete_new').hide();
+        } else $('.delete_new').show();
+        $('.delete_new').on('click', (e) => {
+            e.preventDefault();
+            let id = $(e.target).closest('td').find('.id').val();
+            $(e.target).closest('tr').remove();
+            count = $('tr').length;
+            console.log(count);
+            if (count == 2) {
+                $('.delete_new').hide();
+            } else $('.delete_new').show();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/admin/delete-new",
+                method: 'post',
+                data: {
+                    'id': id
+                },
+                dataType: 'json',
+                success: function(res) {}
+            });
+        });
+    });
+    </script>
     <!--end::Dashboard 1-->
 @endsection

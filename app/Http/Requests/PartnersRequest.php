@@ -24,9 +24,17 @@ class PartnersRequest extends FormRequest
     public function rules()
     {
         return [
-            'img_path' => 'bail|required|url|max:200',
+            'img_path' => 'required',
             'link' => 'required|url|max:200',
             'name_brand' => 'required|max:200',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'img_path' => 'Загрузка фото',
+            'link' => 'Посилання',
+            'name_brand' => 'Ім\'я партнера',
         ];
     }
 }
