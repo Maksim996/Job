@@ -76,10 +76,10 @@
                             @endforeach
 
                                 <li class="nav-item dropdown language-full ">
-                                    <select name="" id="language-choice" style="margin-top: 25%; border: none; background: rgba(0,0,0,.3); color: white; font-weight: 700;">
-                                        <option value="ua">Ua</option>
-                                        <option value="ru">Ru</option>
-                                        <option value="us">Us</option>
+                                    <select id="language-choice" style="margin-top: 25%; border: none; background: rgba(0,0,0,.3); color: white; font-weight: 700; text-transform: capitalize;">
+                                        @foreach(['ua', 'ru', 'us'] as $locale)
+                                            <option value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
+                                        @endforeach
                                     </select>
                                     {{--<a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
                                         {{--<img src="{{ URL::asset('images/ukraine.svg')}}">--}}

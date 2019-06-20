@@ -8,5 +8,7 @@ const languageSelect = $('#language-choice'),
 languageSelect.on(changeAction, (e) => {
     let curLocale = $(e.currentTarget).val();
 
+    window.location.reload();
+
     Cookies.set(localeKey, curLocale, {expires: daysExpired});
 });

@@ -284,6 +284,7 @@ var languageSelect = $('#language-choice'),
     daysExpired = 7;
 languageSelect.on(changeAction, function (e) {
   var curLocale = $(e.currentTarget).val();
+  window.location.reload();
   js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.set(localeKey, curLocale, {
     expires: daysExpired
   });
