@@ -8,7 +8,7 @@
        <div class="k-portlet__head">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-                    {{!empty($data['document']->title)? $data['document']->title:'Новий документ'}}
+                    {{!empty($data['document']->title_ua)? $data['document']->title_ua:'Новий документ'}}
                 </h3>
             </div>
         </div>
@@ -28,7 +28,8 @@
                                                 selected
                                             @endif
                                         @endif
-                                            value="{{$sub->subcategory_id}}">{{$sub->title}}
+                                            value="{{$sub->subcategory_id}}">
+                                    {{$sub->title_ua}}
                                 </option>
                             @endforeach
                             </select>
@@ -37,7 +38,7 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу:</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input  type="text" class="form-control" placeholder="" name="title" @if($data['type'] == '1') value="{{$data['document']->title}}" @endif>
+                            <input  type="text" class="form-control" placeholder="" name="title_ua" @if($data['type'] == '1') value="{{$data['document']->title_ua}}" @endif>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -93,11 +94,89 @@
                                     <i class="la la-4x la-file-text"></i>
                                     <b class="mr-4">
                                         @if($data['type'] == '1')
-                                            {{ strlen($data['document']->title)>= 50 ? substr( $data['document']->title , 0, 47 ).'...' :  $data['document']->title }}
+                                            {{ strlen($data['document']->title_ua)>= 50 ? substr( $data['document']->title_ua , 0, 47 ).'...' :  $data['document']->title_ua }}
                                         @endif
                                     </b>
                                 </a>
                             @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-2 col-sm-12 col-form-label">Виберіть додаткову мову</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <div class="k-checkbox-inline">
+                                <label class="k-checkbox k-checkbox--brand" cheched="">
+                                    <input  name="local_ru"
+                                            type="checkbox"
+                                            value="local_ru"
+                                            loc-name="local_ru"
+                                            @if(!empty($data['document']->title_ru)) checked @endif
+                                    >
+                                    RU <span></span>
+                                </label>
+                                <label class="k-checkbox k-checkbox--brand">
+                                    <input name="local_us"
+                                           type="checkbox"
+                                           value="local_us"
+                                           loc-name="local_us"
+                                           @if(!empty($data['document']->title_us)) checked @endif
+                                    >
+                                    ENG <span></span>
+                                </label>
+
+                            </div>
+                            {{--<span class="form-text text-muted">Some help text goes here</span>--}}
+                        </div>
+                    </div>
+
+                    {{--ru--}}
+
+                    <div class="k-portlet" id="local_ru">
+                        <div class="k-portlet__head">
+                            <div class="k-portlet__head-label">
+                                <h3 class="k-portlet__head-title">
+                                    RU
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="k-portlet__body ">
+                            <div class="form-group row" >
+                                <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                                <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <input type="text"
+                                           name="title_ru"
+                                           class="form-control"
+                                           placeholder=""
+                                           @if(!empty($data['document'])) value="{{ $data['document'][0]->title_ru }}">  @endif
+                                    <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{--us --}}
+
+                    <div class="k-portlet" id="local_us">
+                        <div class="k-portlet__head">
+                            <div class="k-portlet__head-label">
+                                <h3 class="k-portlet__head-title">
+                                    ENG
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="k-portlet__body ">
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                                <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <input type="text"
+                                           name="title_us"
+                                           class="form-control"
+                                           placeholder=""
+                                           @if(!empty($data['document'])) value="{{ $data['document'][0]->title_us }}">  @endif
+                                    <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

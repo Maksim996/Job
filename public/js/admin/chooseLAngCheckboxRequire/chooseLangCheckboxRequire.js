@@ -4,8 +4,8 @@ let ru, us,
     arr_practic_header_ru,
     arr_practic_header_us;
 
-ru = $('input[name="local_ru"]');
-us = $('input[name="local_us"]');
+ru = $('input[loc-name="local_ru"]');
+us = $('input[loc-name="local_us"]');
 arr_header_ru = [
     'title_ru','content_ru'
 ];
@@ -46,16 +46,16 @@ function checkLocal(tag,block){
 }
 
 function updateCheckLocal() {
-    for(let i=0; i<$('input[name^="local_"]').length; i++){
-        let input = $('input[name^="local_"]')[i];
+    for(let i=0; i<$('input[loc-name^="local_"]').length; i++){
+        let input = $('input[loc-name^="local_"]')[i];
         let t =  $(input).val();
         let tt = '#' + t;
         $(input).prop('checked')? $(tt).show("slow") : $(tt).hide("slow");
     }
 }
 function updateReqiureFieldsLocal(arr) {
-    for(let i=0; i<$('input[name^="local_"]').length; i++){
-        let input = $('input[name^="local_"]')[i];
+    for(let i=0; i<$('input[loc-name^="local_"]').length; i++){
+        let input = $('input[loc-name^="local_"]')[i];
         reqiureFieldsLocal($(input) , arr);
     }
 }

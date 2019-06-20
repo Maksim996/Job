@@ -17,13 +17,15 @@ class DocumentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $locale = $request['locale'];
+
         $documents = DB::table('documents')->get()->toArray();
         $subcats = DB::table('subcategory')->get()->toArray();
         $data = ['documents' => $documents,
-                'subcategories' => $subcats,];
+                'subcategories' => $subcats,
+                'locale' => $locale,];
         return view('admin.documents',compact('data'));
     }
 
@@ -35,6 +37,7 @@ class DocumentsController extends Controller
     public function create()
     {
         //
+
         $subcats = DB::table('subcategory')->whereIn('link',['documents', 'pracevlashtuvannya-praktika'])->get()->toArray();
         $data = [
             'subcategories' => $subcats,
@@ -64,7 +67,6 @@ class DocumentsController extends Controller
     public function show($id)
     {
         //
-
 
         $document = DB::table('documents')->where('doc_id',$id)->get();
         $subcats = DB::table('subcategory')->whereIn('link',['documents','pracevlashtuvannya-praktika'])->get()->toArray();
@@ -105,7 +107,9 @@ class DocumentsController extends Controller
         $changedId = $id != 0 ?
                 $id :
                 DB::table('documents')->insertGetId([
-                    'title' => $request->title,
+                    'title_ua' => $request->title_ua,
+                    'title_ru' => $request->local_ru ? $request->title_ru : null,
+                    'title_us' => $request->local_us ? $request->title_us : null,
                     'file_link' => '-' ,
                      'doc_date' => date("Y-m-d H:i:s"),
                      'subcategory_id' => $request->cat,
@@ -147,7 +151,9 @@ class DocumentsController extends Controller
         }
         else {
             $dataToSave = [
-                'title' => $request->title,
+                'title_ua' => $request->title_ua,
+                'title_ru' => $request->local_ru ? $request->title_ru : null,
+                'title_us' => $request->local_us ? $request->title_us : null,
                 'doc_date' => date("Y-m-d H:i:s"),
                 'subcategory_id' => $request->cat,
                 'type' => $type
