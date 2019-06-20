@@ -16,7 +16,7 @@ class CreatePracticeIntershipCardTable extends Migration
         Schema::create('practice_intership_card', function (Blueprint $table) {
             $table->increments('card_id');
             $table->string('card_link', 200);
-            $table->string('img_path', 200);
+            $table->string('img_path', 200)->nullable();
             $table->string('card_title_ua', 200);
             $table->string('card_title_ru', 200)->nullable();
             $table->string('card_title_us', 200)->nullable();
