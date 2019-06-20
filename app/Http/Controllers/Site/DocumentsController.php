@@ -8,7 +8,7 @@ use App;
 
 class DocumentsController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
         $locale = $request['locale'];
 
@@ -63,7 +63,6 @@ class DocumentsController extends Controller
             'right_footer' => $right_footer,
 
         ];
-
     	return view('site.documents',compact('data'));
     }
 }

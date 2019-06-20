@@ -22,6 +22,7 @@ class CreateDocumentsTable extends Migration
             $table->string('title_us', 200)->nullable();
             $table->dateTime('doc_date');
             $table->string('file_link', 200);
+            $table->string('type', 200);
         });
     }
 

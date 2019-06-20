@@ -26,7 +26,7 @@ class NewsController extends Controller
         return $s;
     }
 
-    public function index(){
+    public function index(Request $request){
         $locale = $request['locale'];
         $date = Carbon::now()->toDateTimeString();
         $news = DB::table('inner_news')
@@ -39,7 +39,7 @@ class NewsController extends Controller
         ->paginate(2);
 
         for($i = 0; $i < count($news); $i++) {
-            $news[$i]->trans_title = $this->transliterate($news[$i]->title);
+            $news[$i]->trans_title = $this->transliterate($news[$i]->{'title_' . $locale});
         }
 
         $category = DB::table("category")->get()->toArray();
