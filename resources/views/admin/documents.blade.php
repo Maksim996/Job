@@ -30,7 +30,7 @@
                         <select class="form-control k-input" data-col-index="1">
                             <option value="">Вибрати</option>
                             @foreach($data['subcategories'] as $cat)
-                                <option value="{{$cat->title}}">{{$cat->title}}</option>
+                                <option value="{{$cat->title_ua}}">{{$cat->title_ua}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -57,11 +57,11 @@
                     </thead>
                     <tbody>
                     @foreach($data['documents'] as $doc)
-                        <tr >
-                            <td>{{$doc->title}}</td>
+                        <tr>
+                            <td>{{$doc->title_ua}}</td>
                             @foreach($data['subcategories'] as $sub)
                             @if($sub->subcategory_id == $doc->subcategory_id)
-                                <td>{{$sub->title}}</td>
+                                <td>{{$sub->title_ua}}</td>
                             @endif
                             @endforeach
                             <td>{{$doc->doc_date}}</td>
@@ -79,9 +79,12 @@
 
                     </tbody>
                 </table>
+
             </div>
 
         </div>
+
+
    </div>
     <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {

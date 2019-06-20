@@ -28,15 +28,18 @@
                 {{ @csrf_field() }}
                 @method('PUT')
                 <div class="left-column-container">
+
+
                     @for($i = 0; $i < count($data['footer']); $i++)
+                        <h1>dd</h1>
                         @if($data['footer'][$i]->type == 'left_column')
-                            <div class='partners' class="k-portlet__body left-footer-column" id='info_block' data-id="{{$data['footer'][$i]->footer_id}}">
+                            <div class="k-portlet__body left-footer-column partners" id='info_block' data-id="{{$data['footer'][$i]->footer_id}}">
                                 <div class='info-class' id='duplicater'>
                                     <div class="form-group row">
                                         <input style="display: none;" type="text" class="form-control left-type" name="left-type[]" value="{{ $data['footer'][$i]->type }}">
                                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
                                         <div class="col-lg-6 col-md-9 col-sm-12">
-                                            <input type="text" class="form-control item-name" placeholder="" name="left-name[]" value="{{ $data['footer'][$i]->name }}">
+                                            <input type="text" class="form-control item-name" placeholder="" name="left-name[]" value="{{ $data['footer'][$i]->name_ua }}">
                                             <span class="form-text text-muted">Наприклад: локація</span>
                                         </div>
                                     </div>
@@ -67,7 +70,9 @@
                                     </div>
                                     <div class="form-group row">
                                         <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 ">
-                                            <span> <i class="la la-minus"></i> <span>Видалити</span> </span>
+                                            <span>
+                                                <i class="la la-minus"></i> <span>Видалити</span>
+                                            </span>
                                         </button>
 
                                     </div>
