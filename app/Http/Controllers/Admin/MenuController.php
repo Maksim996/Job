@@ -14,14 +14,16 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(Request $request, $id)
     {
-
+        $locale = $request['locale'];
         $category = DB::table('category')->where('category_id',$id)->get();
         $subcategories = DB::table('subcategory')->where('category_id',$id)->get()->toArray();
         $data = [
             'category' => $category[0],
             'subcategories' => $subcategories,
+            'locale' => $locale,
+
         ];
         return view('/admin/menu',compact('data'));
     }

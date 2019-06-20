@@ -31,7 +31,7 @@
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="text" name="title" class="form-control" placeholder="" value="{{ $data['header'][0]->title }}">
+                        <input type="text" name="title_ua" class="form-control" placeholder="" value="{{ $data['header'][0]->title_ua }}">
                         <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span> 
                     </div>
                 </div>
@@ -45,15 +45,22 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
-                        <textarea class="form-control" name="content" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['header'][0]->content }}</textarea>
+                        <textarea class="form-control" name="content_ua" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['header'][0]->content_ua }}</textarea>
                         <span class="form-text text-muted">Короткий опис</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input type="file" name="img_path" class="form-control">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <figure class="figure">
+                            <img id="blah" src="{{asset($data['header'][0]->img_path) }}" class="figure-img img-fluid rounded" alt="{{ $data['header'][0]->{'content_' . $data['locale']} }}">
+                            <figcaption class="figure-caption">Поточне зображення</figcaption>
+                        </figure>
                     </div>
+                    <div class="d-flex align-items-center pb-5 col-lg-3 col-md-6 col-sm-6">
+                        <input type="file" name="img_path" class="form-control-file">
+                    </div>
+
                 </div>
                 <div class='black-line form-group row'></div>
                 <p class='info-seach'>Додаткова інформація для пошукової системи</p>
@@ -71,6 +78,109 @@
                         <span class="form-text text-muted">Короткий опис сторінки</span> 
                     </div>
                 </div>
+
+
+
+                <div class="form-group row">
+                    <label class="col-lg-2 col-sm-12 col-form-label">Виберіть додаткову мову</label>
+                    <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="k-checkbox-inline">
+                            <label class="k-checkbox k-checkbox--brand" cheched="">
+                                <input  name="local_ru"
+                                       type="checkbox"
+                                       value="local_ru"
+                                        @if(!empty($data['header'][0]->title_ru)) checked @endif
+                                >
+                                RU <span></span>
+                            </label>
+                            <label class="k-checkbox k-checkbox--brand">
+                                <input name="local_us"
+                                       type="checkbox"
+                                       value="local_us"
+                                       @if(!empty($data['header'][0]->title_us)) checked @endif
+                                >
+                                ENG <span></span>
+                            </label>
+
+                        </div>
+                        {{--<span class="form-text text-muted">Some help text goes here</span>--}}
+                    </div>
+                </div>
+
+         {{--ru--}}
+
+                <div class="k-portlet" id="local_ru">
+                    <div class="k-portlet__head">
+                        <div class="k-portlet__head-label">
+                            <h3 class="k-portlet__head-title">
+                                RU
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="k-portlet__body ">
+                        <div class="form-group row" >
+                            <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <input type="text"
+                                       name="title_ru"
+                                       class="form-control"
+                                       placeholder=""
+                                       value="{{ $data['header'][0]->title_ru }}">
+                                <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <textarea class="form-control"
+                                          name="content_ru"
+                                          id="k_maxlength_5"
+                                          maxlength="250"
+                                          placeholder=""
+                                          rows="6">{{ $data['header'][0]->content_ru }}</textarea>
+                                <span class="form-text text-muted">Короткий опис</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        {{--us --}}
+
+                <div class="k-portlet" id="local_us">
+                    <div class="k-portlet__head">
+                        <div class="k-portlet__head-label">
+                            <h3 class="k-portlet__head-title">
+                                ENG
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="k-portlet__body ">
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <input type="text"
+                                       name="title_us"
+                                       class="form-control"
+                                       placeholder=""
+                                       value="{{ $data['header'][0]->title_us }}">
+                                <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <textarea class=" form-control"
+                                          name="content_us"
+                                          id="k_maxlength_5"
+                                          maxlength="250"
+                                          placeholder=""
+                                          rows="6">{{ $data['header'][0]->content_us }}</textarea>
+                                <span class="form-text text-muted">Короткий опис</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="k-portlet__foot">
                 <div class="k-form__actions">
@@ -83,5 +193,79 @@
             </div>
         </form>
    </div>
+<script>
+    let ru, us, arr_ru, arr_us;
+        ru = $('input[name="local_ru"]');
+        us = $('input[name="local_us"]');
+        arr_ru = [
+            'title_ru','content_ru'
+        ];
+        arr_us = [
+            'title_us','content_us'
+        ];
+
+    function checkLocal(tag,block){
+        let t =  tag.val();
+        let tt = '#' + t;
+        if(tag.prop('checked')){
+            $(tt).show("slow");
+        } else{
+            $(tt).hide("slow");
+        }
+    }
+
+    function updateCheckLocal() {
+        for(let i=0; i<$('input[name^="local_"]').length; i++){
+            let input = $('input[name^="local_"]')[i];
+            let t =  $(input).val();
+            let tt = '#' + t;
+            $(input).prop('checked')? $(tt).show("slow") : $(tt).hide("slow");
+        }
+    }
+    function updateReqiureFieldsLocal(arr) {
+        for(let i=0; i<$('input[name^="local_"]').length; i++){
+            let input = $('input[name^="local_"]')[i];
+            reqiureFieldsLocal($(input) , arr);
+        }
+    }
+    function reqiureFieldsLocal(tag, arr){
+        let t =  tag.val();
+        let tt = '#' + t;
+        for(let i=0;i<arr.length; i++ ){
+            if(tag.prop('checked')){
+                $(tt).find('input[name='+ arr[i]+"]").addClass('required');
+                $(tt).find( 'textarea[name='+ arr[i]+"]" ).addClass('required');
+            } else{
+                $(tt).find('input[name='+ arr[i]+"]").removeClass('required');
+                $(tt).find( 'textarea[name='+ arr[i]+"]").removeClass('required');
+            }
+        }
+
+    }
+
+    updateCheckLocal();
+    updateReqiureFieldsLocal(arr_ru);
+    updateReqiureFieldsLocal(arr_us);
+    ru.on('change', function () {
+        checkLocal($(this));
+        reqiureFieldsLocal($(this), arr_ru);
+    });
+    us.on('change', function () {
+        checkLocal($(this));
+        reqiureFieldsLocal($(this), arr_us);
+
+    });
+    
+    
+    $('input[name="img_path"]').on('change', function () {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result);
+
+        };
+        reader.readAsDataURL(this.files[0]);
+    })
+</script>
     <!--end::Dashboard 1-->
 @endsection

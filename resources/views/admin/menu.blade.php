@@ -8,7 +8,7 @@
        <div class="k-portlet__head">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-                   Редагування Меню : {{$data['category']->title}}.
+                   Редагування Меню : {{$data['category']->{'title_' . $data['locale']} }}.
                 </h3>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Title</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="text" class="form-control" name="catTitle" placeholder="" value="{{$data['category']->title}}">
+                            <input type="text" class="form-control" name="catTitle" placeholder="" value="{{$data['category']->{'title_' . $data['locale']} }}">
                         </div>
                     </div>
                     

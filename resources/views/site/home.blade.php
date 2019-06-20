@@ -9,11 +9,11 @@
             <div class="header-title_block">
                 <a href="{{$data['header'][0]->link}}" class="blueLine">
                     <h1 class="text-uppercase">
-                        {!! $data['header'][0]->{'title_' . $data['locale']} !!}
+                        {!! !empty($data['header'][0]->{'title_' . $data['locale']}) ? $data['header'][0]->{'title_' . $data['locale']} : $data['header'][0]-> title_ua !!}
                     </h1>
                 </a>
                 <div class="header__text col-xl-10 mx-auto">
-                    <p> {!! $data['header'][0]->{'content_' . $data['locale']} !!}</p>
+                    <p> {!! !empty($data['header'][0]->{'content_' . $data['locale']}) ? $data['header'][0]->{'content_' . $data['locale']} : $data['header'][0]-> content_ua !!}</p>
                 </div>
             </div>
             <span class="scroll_yak">
@@ -27,23 +27,23 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <p class="practice__title">
-                            {!! $data['internship'][0]->{'title_' . $data['locale']} !!}
+                            {!! !empty($data['internship'][0]->{'title_' . $data['locale']}) ? $data['internship'][0]->{'title_' . $data['locale']} : $data['internship'][0]-> title_ua !!}
                         </p>
                     </div>
                 </div>
                 <div class="row mt-md-5 mt-sm-1 justify-content-center">
                     <div class="col-12 col-md-10">
-                        <p class="practice__subtitle">{!! $data['internship'][0]->{'content_' . $data['locale']} !!}</p>
+                        <p class="practice__subtitle">{!! !empty($data['internship'][0]->{'content_' . $data['locale']}) ? $data['internship'][0]->{'content_' . $data['locale']} : $data['internship'][0]-> content_ua !!}</p>
                     </div>
                 </div>
                 <div class="row mt-md-5 mt-4">
                     @foreach($data['practice_intership_card'] as $card)
                         <div class="col-md-12 col-lg-4 card  mb-4 ">
                             <a href="{{$card->card_link}}" class="practice__item practice__card p-3 pb-4 ">
-                                <img src="{{ URL::asset($card->img_path) }}" alt="{{$card->{'card_title_' . $data['locale']} }}" class="rounded-circle practice__image mx-auto ">
+                                <img src="{ URL::asset($card->img_path) }}" alt="{!! !empty($card->{'card_title_' . $data['locale']}) ? $card->{'card_title_' . $data['locale']} : $card->card_title_ua !!}" class="rounded-circle practice__image mx-auto ">
                                 <div class="card-body mt-4">
-                                    <h5 class="card-title practice__topic">{{$card->{'card_title_' . $data['locale']} }}</h5>
-                                    <p class="card-text practice__text">{{$card->{'card_description_' . $data['locale']} }}</p>
+                                    <h5 class="card-title practice__topic">{!! !empty($card->{'card_title_' . $data['locale']}) ? $card->{'card_title_' . $data['locale']} : $card->card_title_ua !!}</h5>
+                                    <p class="card-text practice__text">{!! !empty($card->{'card_description_' . $data['locale']}) ? $card->{'card_description_' . $data['locale']} : $card->card_description_ua !!}</p>
                                 </div>
                             </a>
                         </div>
@@ -69,14 +69,14 @@
                                     <div class="card_img">
                                         <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
                                     </div>
-                                    <h5 class="card-title">{{$data['announcements'][$i]->{'title_' . $data['locale']} }}</h5>
-                                    <p class="card-description">{{$data['announcements'][$i]->{'short_description_' . $data['locale']} }}</p>
+                                    <h5 class="card-title">{!! !empty($data['announcements'][$i]->{'title_' . $data['locale']}) ? $data['announcements'][$i]->{'title_' . $data['locale']} : $data['announcements'][$i]-> title_ua !!}</h5>
+                                    <p class="card-description">{!! !empty($data['announcements'][$i]->{'short_description_' . $data['locale']}) ? $data['announcements'][$i]->{'short_description_' . $data['locale']} : $data['announcements'][$i]-> short_description_ua !!}</p>
                                 </div>                           
                               
                                 <div>
                                     <div class="card-location">
                                         <i class="icon-location"></i>
-                                        {{$data['announcements'][$i]->{'short_location_' . $data['locale']} }}
+                                        {!! !empty($data['announcements'][$i]->{'short_location_' . $data['locale']}) ? $data['announcements'][$i]->{'short_location_' . $data['locale']} : $data['announcements'][$i]-> short_location_ua !!}
 
                                     </div>
                                     <ul class="card-date">
@@ -137,7 +137,7 @@
                         <div class="card news__one">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title">{{$data['news'][0]->{'title_' . $data['locale']} }}</h5>
+                                    <h5 class="card-title news__title">{!! !empty($data['news'][0]->{'title_' . $data['locale']}) ? $data['news'][0]->{'title_' . $data['locale']} : $data['news'][0]-> title_ua !!}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -147,7 +147,7 @@
                                 <div class="col-md-8 pl-md-3">
                                     <div class="card-body">
                                         <p class="card-text news__text  ">  
-                                            {{$data['news'][0]->{'short_description_' . $data['locale']} }}
+                                            {!! !empty($data['news'][0]->{'short_description_' . $data['locale']}) ? $data['news'][0]->{'short_description_' . $data['locale']} : $data['news'][0]-> short_description_ua !!}
                                         </p>
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">{{trans('base.link_more')}}</a>
@@ -168,7 +168,7 @@
                         <div class="card news__one">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="card-title news__title-item">{{$data['news'][$i]->{'title_' . $data['locale']} }}</h5>
+                                    <h5 class="card-title news__title-item">{!! !empty($data['news'][$i]->{'title_' . $data['locale']}) ? $data['news'][$i]->{'title_' . $data['locale']} : $data['news'][$i]-> title_ua !!}</h5>
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -178,7 +178,7 @@
                                 <div class="col-md-8   pl-md-3">
                                     <div class="card-body">
                                         <p class="card-text news__text-item">
-                                            {{$data['news'][$i]->{'short_description_' . $data['locale']} }}
+                                            {!! !empty($data['news'][$i]->{'short_description_' . $data['locale']}) ? $data['news'][$i]->{'short_description_' . $data['locale']} : $data['news'][$i]-> short_description_ua !!}
                                         </p>
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">{{trans('base.link_more')}}</a>

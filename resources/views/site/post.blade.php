@@ -12,12 +12,12 @@
                     <div class="col-10 offset-1 my-3">
                         <div class="row">
                             <div class="col-12">
-                                <h1 class="">{{$data['new']->title}}</h1>
+                                <h1 class="">{!! !empty($data['new']->{'title_' . $data['locale']}) ? $data['new']->{'title_' . $data['locale']} : $data['new']-> title_ua !!}</h1>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <div>{{$data['new']->full_location}}</div>
+                                <div>{!! !empty($data['new']->{'full_location_' . $data['locale']}) ? $data['new']->{'full_location_' . $data['locale']} : $data['new']-> full_location_ua !!}</div>
                             </div>
                             <div class="col-12 col-md-6 news__data">
                                 <div>{{$data['new']->date}}</div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-12">
-                                {{$data['new']->full_description}}
+                                {!! !empty($data['new']->{'full_description_' . $data['locale']}) ? $data['new']->{'full_description_' . $data['locale']} : $data['new']-> full_description_ua !!}
                                 
                             </div>
                         </div>

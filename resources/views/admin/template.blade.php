@@ -308,10 +308,10 @@
 <!--end:: Global Optional Vendors -->
 
         <!--begin::Global Theme Bundle(used by all pages) -->
-        
+
         <script src="{{ URL::asset('js/admin/custom/scripts.bundle.js') }}" type="text/javascript"></script>
         <!--end::Global Theme Bundle -->
-       
+
         <!--begin::Page Scripts(used by this page) -->
 
 
@@ -329,10 +329,10 @@
         <script src="{{ URL::asset('js/admin/general/lang-sommernote/summernote-uk-UA.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/custom/summernote.js') }}" type="text/javascript"></script>
 
-        
+
         <script src="{{ URL::asset('js/admin/custom/bootstrap-timepicker.js') }}" type="text/javascript"></script>
 
-        
+
         <script src="{{ URL::asset('js/admin/custom/bootstrap-datepicker.js') }}" type="text/javascript"></script>
          <script src="{{ URL::asset('js/admin/general/locales/bootstrap-datetimepicker.ua.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/custom/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>

@@ -35,15 +35,15 @@
                                                 <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
 
                                             </div>
-                                            <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
-                                            <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
+                                            <h5 class="card-title">{!! !empty($data['announcements'][$i]->{'title_' . $data['locale']}) ? $data['announcements'][$i]->{'title_' . $data['locale']} : $data['announcements'][$i]-> title_ua !!}</h5>
+                                            <p class="card-description">{!! !empty($data['announcements'][$i]->{'short_description_' . $data['locale']}) ? $data['announcements'][$i]->{'short_description_' . $data['locale']} : $data['announcements'][$i]-> short_description_ua !!}</p>
                                         </div>
                                         
                                       
                                         <div>
                                             <div class="card-location">
                                                 <i class="icon-location"></i>
-                                                {{$data['announcements'][$i]->short_location}}
+                                                {!! !empty($data['announcements'][$i]->{'short_location_' . $data['locale']}) ? $data['announcements'][$i]->{'short_location_' . $data['locale']} : $data['announcements'][$i]-> short_location_ua !!}
                                             </div>
                                             <ul class="card-date">
                                                 <li class="card-date-item">

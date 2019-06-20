@@ -50,11 +50,11 @@
                                     @else
                                     <a class="nav-link" href="/{{$category->link}}">
                                     @endif
-                                    {!!$category->{'title_' . $data['locale']} !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                    {!! !empty($category->{'title_' . $data['locale']}) ? $category->{'title_' . $data['locale']} : $category-> title_ua !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
                                 @else
                                 <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       {!!$category->{'title_' . $data['locale']} !!}
+                                       {!! !empty($category->{'title_' . $data['locale']}) ? $category->{'title_' . $data['locale']} : $category-> title_ua !!}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach($data['subcategory'] as $subcategory)
@@ -63,7 +63,7 @@
                                                 <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title . '_' . $data['locale']}}</a>
                                             @else
                                                 <a class="dropdown-item" href="{{$subcategory->link}}">
-                                                    {!! $subcategory->{'title_' . $data['locale']} !!}
+                                                    {!! !empty($subcategory->{'title_' . $data['locale']}) ? $subcategory->{'title_' . $data['locale']} : $subcategory-> title_ua !!}
                                                 </a>
                                             @endif
                                         @endif
@@ -121,9 +121,9 @@
                                         <li class="">
                                             <div class="circle"><img src="{{ URL::asset($data['left_footer'][$i]->img_path) }}"></div>
                                             @if(empty($data['left_footer'][$i]->link))
-                                                <p class="content">{{$data['left_footer'][$i]->{'content_' . $data['locale']} }}</p>
+                                                <p class="content">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</p>
                                             @else
-                                                <a href="{{ $data['left_footer'][$i]->link }}">{{$data['left_footer'][$i]->{'content_' . $data['locale']} }}</a>
+                                                <a href="{{ $data['left_footer'][$i]->link }}">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</a>
                                             @endif
                                         </li>
                                     @endif
@@ -150,13 +150,11 @@
                                 <li class="footer_right__socialNetworks">
                                     <p>Слідкуйте за нами у соціальних мережах:</p>
                                     <ul class="iconNetwork">
-                                        {{--@for($i = 0; $i < count($data['right_footer']) && $i < 7; $i++)--}}
                                         @foreach($data['right_footer'] as $social_hover)
                                             <li class=""><a href="{{ $social_hover->link }}"
                                                             class="circle {{str_replace(' ','_',$social_hover->name )}}"><img src="{{ URL::asset($social_hover->img_path) }}"></a></li>
 
                                         @endforeach
-                                        {{--@endfor--}}
                                     </ul>
                                 </li>
                             </ul>
@@ -168,13 +166,11 @@
     </div>
 
     <style>
-        {{--        @for($i = 0; $i < count($data['right_footer']) && $i < 7; $i++)--}}
         @foreach($data['right_footer'] as $social_hover)
               .{{str_replace(' ','_',$social_hover->name )}}:hover{
             background:{{$social_hover->color_bg}} ;
         }
         @endforeach
-        {{--@endfor--}}
     </style>
 
 
