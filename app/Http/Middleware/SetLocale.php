@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App;
 
 class SetLocale
 {
@@ -15,7 +16,22 @@ class SetLocale
      */
     public function handle($request, Closure $next)
     {
-        $request['locale'] = 'ru';
+        $localeKey = 'locale';
+        $settedLocale = App::getLocale();
+        $newLocale = $request->cookie($localeKey);
+        $allowedLocale = ['ua', 'ru', 'us'];
+        $locale = null;
+
+        if(!$newLocale) {
+            $locale = $settedLocale;
+        }
+        else {
+            $locale = in_array($newLocale, $allowedLocale) ? $newLocale : $settedLocale;
+        }
+
+        App::setLocale($locale);
+        $request['locale'] = $locale;
+
         return $next($request);
     }
 }
