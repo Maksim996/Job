@@ -9,5 +9,5 @@ class PracticeIntershipContent extends Model
     public $timestamps = false;
     protected $table = 'practice_intership_content';
     protected $primaryKey = 'content_id';
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title_ua','title_ru','title_us', 'content_ua','content_ru','content_us'];
 }

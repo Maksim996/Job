@@ -32,7 +32,7 @@ class PracticCardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PracticeIntershipCardRequest $request)
+    public function store(Request $request)
     {
 
 //        $img_path1 = 'http://job.sumdu.edu.ua/card1.png';
@@ -62,14 +62,18 @@ class PracticCardController extends Controller
         $request->img_path2 = $request->file('img_path2')->store('images/uploads_practic_cards','public');
         $request->img_path3 = $request->file('img_path3')->store('images/uploads_practic_cards','public');
 
-
+//        dd($request);
         DB::table('practice_intership_card')
         ->where('card_id', 1)
         ->update([
             'card_link' => $request->card_link1,
             'img_path' => $request->img_path1,
-            'card_title' => $request->card_title1,
-            'card_description' => $request->card_description1
+            'card_title_ua' => $request->card_title1_ua,
+            'card_title_ru' => $request->local1_ru ? $card_title1_ru : null,
+            'card_title_us' => $request->local1_us ? $card_title1_us : null,
+            'card_description_ua' => $request->card_description1_ua,
+            'card_description_ru' => $request->card_description1_ru,
+            'card_description_us' => $request->card_description1_us,
         ]);
 
         DB::table('practice_intership_card')
@@ -77,8 +81,12 @@ class PracticCardController extends Controller
         ->update([
             'card_link' => $request->card_link2,
             'img_path' => $request->img_path2,
-            'card_title' => $request->card_title2,
-            'card_description' => $request->card_description2
+            'card_title_ua' => $request->card_title2_ua,
+            'card_title_ru' => $request->card_title2_ru,
+            'card_title_us' => $request->card_title2_us,
+            'card_description_ua' => $request->card_description2_ua,
+            'card_description_ru' => $request->card_description2_ru,
+            'card_description_us' => $request->card_description2_us,
         ]);
 
         DB::table('practice_intership_card')
@@ -86,8 +94,12 @@ class PracticCardController extends Controller
         ->update([
             'card_link' => $request->card_link3,
             'img_path' => $request->img_path3,
-            'card_title' => $request->card_title3,
-            'card_description' => $request->card_description3
+            'card_title_ua' => $request->card_title3_ua,
+            'card_title_ru' => $request->card_title3_ru,
+            'card_title_us' => $request->card_title3_us,
+            'card_description_ua' => $request->card_description3_ua,
+            'card_description_ru' => $request->card_description3_ru,
+            'card_description_us' => $request->card_description3_us,
         ]);
 
         $practicCards = PracticeIntershipCard::all();

@@ -9,7 +9,7 @@
             <div class="header-title_block">
                 <a href="{{$data['header'][0]->link}}" class="blueLine">
                     <h1 class="text-uppercase">
-                        {!! $data['header'][0]->{'title_' . $data['locale']} !!}
+                        {!! !empty($data['header'][0]->{'title_' . $data['locale']}) ? $data['header'][0]->{'title_' . $data['locale']} : $data['header'][0]-> title_ua !!}
                     </h1>
                 </a>
                 <div class="header__text col-xl-10 mx-auto">

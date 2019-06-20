@@ -345,7 +345,9 @@
 
         <script src="{{ URL::asset('js/admin/custom/advanced-search.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/saveForm.js') }}"></script>
-        
+        <script src="{{ URL::asset('js/admin/chooseLangCheckboxRequire/chooseLangCheckboxRequire.js') }}"></script>
+
+
         <!-- <script src="../assets/app/scripts/custom/dashboard.js" type="text/javascript"></script> -->
         <!--end::Page Scripts -->
         <!--begin::Global App Bundle(used by all pages) -->

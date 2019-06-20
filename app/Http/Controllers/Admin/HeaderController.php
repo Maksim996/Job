@@ -40,8 +40,7 @@ class HeaderController extends Controller
     {
 
         $id =1;
-        // ->str_slug($request->input('name'))
-        
+
         if($request->file('img_path')){
 
         $filePath = 'header_img'.'.' . $request->file('img_path')->getClientOriginalExtension();
