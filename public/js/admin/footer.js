@@ -87,7 +87,7 @@ $('button#delSocial').click(function(e) {
 	})
 		.catch( (err) => {
 			console.log(err);
-		});
+		})
 	$(this).parents('.social-networks').remove();
 });
 

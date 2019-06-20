@@ -50,11 +50,11 @@
                                     @else
                                     <a class="nav-link" href="/{{$category->link}}">
                                     @endif
-                                    {!!$category->{'title_' . $data['locale']} !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
+                                    {!! !empty($category->{'title_' . $data['locale']}) ? $category->{'title_' . $data['locale']} : $category-> title_ua !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
                                 @else
                                 <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       {!!$category->{'title_' . $data['locale']} !!}
+                                       {!! !empty($category->{'title_' . $data['locale']}) ? $category->{'title_' . $data['locale']} : $category-> title_ua !!}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach($data['subcategory'] as $subcategory)
@@ -63,7 +63,7 @@
                                                 <a class="dropdown-item" href="/{{$subcategory->link}}?position={{$subcategory->subcategory_id}}">{{$subcategory->title . '_' . $data['locale']}}</a>
                                             @else
                                                 <a class="dropdown-item" href="{{$subcategory->link}}">
-                                                    {!! $subcategory->{'title_' . $data['locale']} !!}
+                                                    {!! !empty($subcategory->{'title_' . $data['locale']}) ? $subcategory->{'title_' . $data['locale']} : $subcategory-> title_ua !!}
                                                 </a>
                                             @endif
                                         @endif
@@ -76,13 +76,18 @@
                             @endforeach
 
                                 <li class="nav-item dropdown language-full ">
-                                    <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ URL::asset('images/ukraine.svg')}}">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>
-                                        <a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>
-                                    </div>
+                                    <select id="language-choice" style="margin-top: 25%; border: none; background: rgba(0,0,0,.3); color: white; font-weight: 700; text-transform: capitalize;">
+                                        @foreach(['ua', 'ru', 'us'] as $locale)
+                                            <option value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
+                                        @endforeach
+                                    </select>
+                                    {{--<a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                        {{--<img src="{{ URL::asset('images/ukraine.svg')}}">--}}
+                                    {{--</a>--}}
+                                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">--}}
+                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>--}}
+                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>--}}
+                                    {{--</div>--}}
                                 </li>
                                 <li class="nav-item dropdown language-media">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,9 +126,9 @@
                                         <li class="">
                                             <div class="circle"><img src="{{ URL::asset($data['left_footer'][$i]->img_path) }}"></div>
                                             @if(empty($data['left_footer'][$i]->link))
-                                                <p class="content">{{$data['left_footer'][$i]->{'content_' . $data['locale']} }}</p>
+                                                <p class="content">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</p>
                                             @else
-                                                <a href="{{ $data['left_footer'][$i]->link }}">{{$data['left_footer'][$i]->{'content_' . $data['locale']} }}</a>
+                                                <a href="{{ $data['left_footer'][$i]->link }}">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</a>
                                             @endif
                                         </li>
                                     @endif
@@ -174,10 +179,14 @@
     </style>
 
 
+
+
+    {{-- что это за аякс ?!!!!! (с) Вадим. Скажи Вадиму зачем он здесь кто это видит --}}
     <script src="js/ajax1_14_7.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('plugins/slick-slider/slick.min.js')}}"></script>
     <script src="{{ URL::asset('js/main.js')}}"></script>
+    <script src="{{ URL::asset('js/changeLocale.js')}}"></script>
 </body>
 
 </html>

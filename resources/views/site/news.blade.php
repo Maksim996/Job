@@ -10,15 +10,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-10 a_n__text-center">
-                            <div class="a_n__text-first">{{$category->{'title_' . $data['locale'] } }}</div>
+                            <div class="a_n__text-first">{!! !empty($category->{'title_' . $data['locale'] }) ? $category->{'title_' . $data['locale'] } : $category-> title_ua !!}</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="a_n__text-second">{{$category->{'title_' . $data['locale'] } }}</div>
-            <div class="a_n__text-third">{{$category->{'title_' . $data['locale'] } }}</div>
-            <div class="a_n__text-fourth">{{$category->{'title_' . $data['locale'] } }}</div>
+            <div class="a_n__text-second">{!! !empty($category->{'title_' . $data['locale'] }) ? $category->{'title_' . $data['locale'] } : $category-> title_ua !!}</div>
+            <div class="a_n__text-third">{!! !empty($category->{'title_' . $data['locale'] }) ? $category->{'title_' . $data['locale'] } : $category-> title_ua !!}</div>
+            <div class="a_n__text-fourth">{!! !empty($category->{'title_' . $data['locale'] }) ? $category->{'title_' . $data['locale'] } : $category-> title_ua !!}</div>
         @endif
 
 
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="card-title news__title-page">
-                                        {{$data['news'][$i]->{'title_' . $data['locale'] } }}
+                                        {!! !empty($data['news'][$i]->{'title_' . $data['locale'] }) ? $data['news'][$i]->{'title_' . $data['locale'] } : $data['news'][$i]-> title_ua !!}
                                     </h5>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="card-body pl-lg-3 col-lg-8">
                                     <p class="card-text news__text-page mb-4 py-0">
-                                        {{$data['news'][$i]->{'full_description_' . $data['locale']} }}
+                                        {!! !empty($data['news'][$i]->{'full_description_' . $data['locale']}) ? $data['news'][$i]->{'full_description_' . $data['locale']} : $data['news'][$i]-> full_description_ua !!}
                                     </p>
                                     <div class="news__about">
                                         <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-page">

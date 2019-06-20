@@ -13,15 +13,15 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-10 a_n__text-center">
-                        <div class="a_n__text-first">{{$category->{'title_'. $data['locale']} }}</div>
+                        <div class="a_n__text-first">{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="a_n__text-second">{{$category->{'title_'. $data['locale']} }}</div>
-        <div class="a_n__text-third">{{$category->{'title_'. $data['locale']} }}</div>
-        <div class="a_n__text-fourth">{{$category->{'title_'. $data['locale']} }}</div>
+        <div class="a_n__text-second">{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}</div>
+        <div class="a_n__text-third">{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}</div>
+        <div class="a_n__text-fourth">{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}</div>
     @endif
  
         
@@ -43,9 +43,9 @@
                                        data-toggle="pill"
                                        href="#v-pills-{{$category->subcategory_id}}"
                                        role="tab"
-                                       aria-controls="v-pills-{{$category->{'title_'. $data['locale']} }}"
+                                       aria-controls="v-pills-{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}"
                                        aria-selected="true">
-                                        {{$category->{'title_'. $data['locale']} }}
+                                        {!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}
                                     </a>
                             @endforeach
 
@@ -65,8 +65,8 @@
                                             @foreach($data['documents'] as $document)
                                                 @if($document->subcategory_id == $category->subcategory_id)
                                                 <li class="docum__li"><a href="{{$document->file_link}}" @if ($document->type === 'file')
-                                                    download="{{ $document->{'title_' . $data['locale']} }}" @endif
-                                                    class="docum__link">{{$document->{'title_'. $data['locale']} }}</a></li>
+                                                    download="{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}" @endif
+                                                    class="docum__link">{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}</a></li>
                                                 @endif
                                             @endforeach
                                         </ul>

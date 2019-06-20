@@ -12,5 +12,4 @@ return [
     'news' => 'Новини',
     'recently' => 'Найближчим часом',
     'announcements' => 'Анонси'
-
 ];
