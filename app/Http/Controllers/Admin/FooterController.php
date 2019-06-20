@@ -20,12 +20,12 @@ class FooterController extends Controller
     {
         $footers = Footer::all();
 
-
         //$types = DB::table('footer')->where('footer_id',$id)->get()->toArray();
         $data = [
             'footer' => $footers,
 			//'types' => $types,
         ];
+
         //dump($headers);die;
 
         return view('admin/footer', compact('data'));
