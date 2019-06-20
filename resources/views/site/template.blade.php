@@ -150,13 +150,11 @@
                                 <li class="footer_right__socialNetworks">
                                     <p>Слідкуйте за нами у соціальних мережах:</p>
                                     <ul class="iconNetwork">
-                                        {{--@for($i = 0; $i < count($data['right_footer']) && $i < 7; $i++)--}}
                                         @foreach($data['right_footer'] as $social_hover)
                                             <li class=""><a href="{{ $social_hover->link }}"
                                                             class="circle {{str_replace(' ','_',$social_hover->name )}}"><img src="{{ URL::asset($social_hover->img_path) }}"></a></li>
 
                                         @endforeach
-                                        {{--@endfor--}}
                                     </ul>
                                 </li>
                             </ul>
@@ -168,13 +166,11 @@
     </div>
 
     <style>
-        {{--        @for($i = 0; $i < count($data['right_footer']) && $i < 7; $i++)--}}
         @foreach($data['right_footer'] as $social_hover)
               .{{str_replace(' ','_',$social_hover->name )}}:hover{
             background:{{$social_hover->color_bg}} ;
         }
         @endforeach
-        {{--@endfor--}}
     </style>
 
 

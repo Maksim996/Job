@@ -35,15 +35,15 @@
                                                 <img src="{{ URL::asset($data['announcements'][$i]->img_path) }}" alt="" class="card-img-top preview__image">
 
                                             </div>
-                                            <h5 class="card-title">{{$data['announcements'][$i]->title}}</h5>
-                                            <p class="card-description">{{$data['announcements'][$i]->short_description}}</p>
+                                            <h5 class="card-title">{{$data['announcements'][$i]->{'title_' . $data['locale']} }}</h5>
+                                            <p class="card-description">{{$data['announcements'][$i]->{'short_description_' . $data['locale']} }}</p>
                                         </div>
                                         
                                       
                                         <div>
                                             <div class="card-location">
                                                 <i class="icon-location"></i>
-                                                {{$data['announcements'][$i]->short_location}}
+                                                {{$data['announcements'][$i]->{'short_location_' . $data['locale']} }}
                                             </div>
                                             <ul class="card-date">
                                                 <li class="card-date-item">

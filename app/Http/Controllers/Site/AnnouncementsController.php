@@ -27,7 +27,7 @@ class AnnouncementsController extends Controller
         return $s;
     }
 
-    public function index(){
+    public function index(Request $request){
         $locale = $request['locale'];
         $date = Carbon::now()->toDateTimeString();
         $announcements = DB::table('inner_news')
@@ -42,7 +42,7 @@ class AnnouncementsController extends Controller
         
 
         for($i = 0; $i < count($announcements); $i++) {
-            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->title);
+            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->{'title_'.$locale});
         }
 
         $category = DB::table("category")->get()->toArray();

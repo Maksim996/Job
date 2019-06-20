@@ -7,22 +7,21 @@
 
 
 
-    <h1>{{trans('basic.test')}}</h1>
 @foreach($data['category'] as $category)
     @if(Route::currentRouteName() == $category->link)
         <div class="a_n__line mb-4">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-10 a_n__text-center">
-                        <div class="a_n__text-first">{{$category->title}}</div>
+                        <div class="a_n__text-first">{{$category->{'title_'. $data['locale']} }}</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="a_n__text-second">{{$category->title}}</div>
-        <div class="a_n__text-third">{{$category->title}}</div>
-        <div class="a_n__text-fourth">{{$category->title}}</div>
+        <div class="a_n__text-second">{{$category->{'title_'. $data['locale']} }}</div>
+        <div class="a_n__text-third">{{$category->{'title_'. $data['locale']} }}</div>
+        <div class="a_n__text-fourth">{{$category->{'title_'. $data['locale']} }}</div>
     @endif
  
         
@@ -39,8 +38,17 @@
                         <div class="nav flex-column nav-pills py-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                             @foreach($data['subcategories'] as $category)
-                                    <a class="nav-link btn-dark @if($loop->index == '0') active @endif" id="v-pills-{{$category->subcategory_id}}-tab" data-toggle="pill" href="#v-pills-{{$category->subcategory_id}}" role="tab" aria-controls="v-pills-{{$category->title}}" aria-selected="true">{{$category->title}}</a>
+                                    <a class="nav-link btn-dark @if($loop->index == '0') active @endif"
+                                       id="v-pills-{{$category->subcategory_id}}-tab"
+                                       data-toggle="pill"
+                                       href="#v-pills-{{$category->subcategory_id}}"
+                                       role="tab"
+                                       aria-controls="v-pills-{{$category->{'title_'. $data['locale']} }}"
+                                       aria-selected="true">
+                                        {{$category->{'title_'. $data['locale']} }}
+                                    </a>
                             @endforeach
+
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6 docum__doc px-0 py-3">
@@ -48,12 +56,17 @@
 
                             @foreach($data['subcategories'] as $category)
                              
-                                    <div  class="tab-pane fade show @if($loop->index == '0') active @endif" id="v-pills-{{$category->subcategory_id}}" role="tabpanel" aria-labelledby="v-pills-{{$category->subcategory_id}}-tab">
+                                    <div  class="tab-pane fade show @if($loop->index == '0') active @endif"
+                                          id="v-pills-{{$category->subcategory_id}}"
+                                          role="tabpanel"
+                                          aria-labelledby="v-pills-{{$category->subcategory_id}}-tab">
                                
                                         <ul class="docum__ul">
                                             @foreach($data['documents'] as $document)
                                                 @if($document->subcategory_id == $category->subcategory_id)
-                                                <li class="docum__li"><a href="{{$document->file_link}}" @if ($document->type === 'file') download="{{$document->title}}" @endif class="docum__link">{{$document->title}}</a></li>
+                                                <li class="docum__li"><a href="{{$document->file_link}}" @if ($document->type === 'file')
+                                                    download="{{ $document->{'title_' . $data['locale']} }}" @endif
+                                                    class="docum__link">{{$document->{'title_'. $data['locale']} }}</a></li>
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -67,15 +80,15 @@
         </div>
     </div>
 
-<!-- <script type="text/javascript">
-        $(document).ready(function(){
-           var qs = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
-           var v1 = qs.substring(qs.indexOf('=')+1,parent.document.URL.length);
-    
-            $("#v-pills-"+v1+"-tab").addClass("active");
-            $("#v-pills-"+v1).addClass("active");
-        });
-    </script> -->
+    {{--<script type="text/javascript">--}}
+        {{--$(document).ready(function(){--}}
+           {{--var qs = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);--}}
+           {{--var v1 = qs.substring(qs.indexOf('=')+1,parent.document.URL.length);--}}
+    {{----}}
+            {{--$("#v-pills-"+v1+"-tab").addClass("active");--}}
+            {{--$("#v-pills-"+v1).addClass("active");--}}
+        {{--});--}}
+    {{--</script>--}}
 
 @endsection
 

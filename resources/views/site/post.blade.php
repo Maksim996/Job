@@ -12,12 +12,12 @@
                     <div class="col-10 offset-1 my-3">
                         <div class="row">
                             <div class="col-12">
-                                <h1 class="">{{$data['new']->title}}</h1>
+                                <h1 class="">{{$data['new']->{'title_' . $data['locale']} }}</h1>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <div>{{$data['new']->full_location}}</div>
+                                <div>{{$data['new']->{'full_location_' . $data['locale']} }}</div>
                             </div>
                             <div class="col-12 col-md-6 news__data">
                                 <div>{{$data['new']->date}}</div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-12">
-                                {{$data['new']->full_description}}
+                                {{$data['new']->{'full_description_' . $data['locale']} }}
                                 
                             </div>
                         </div>

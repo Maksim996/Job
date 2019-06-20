@@ -7,7 +7,7 @@ use DB;
 
 class NewController extends Controller
 {
-    public function index($id, $title){
+    public function index(Request $request, $id, $title){
         $locale = $request['locale'];
         $new = DB::table('inner_news')
         ->select('*')

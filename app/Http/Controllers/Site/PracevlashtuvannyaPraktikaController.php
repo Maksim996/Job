@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class PracevlashtuvannyaPraktikaController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $locale = $request['locale'];
         $subcategory = DB::table("subcategory")->where('link','pracevlashtuvannya-praktika')->get()->toArray();
 
