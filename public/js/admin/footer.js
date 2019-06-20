@@ -179,7 +179,7 @@ const updateFooter = (data) => {
 
 
 
-const collectFormData = (e) => {
+const collectFooterData = (e) => {
 	e.preventDefault();
 
 	let formData = new FormData();
@@ -245,4 +245,4 @@ const collectFormData = (e) => {
 };
 
 
-formFooter.on('submit', collectFormData);
+formFooter.on('submit', collectFooterData);
