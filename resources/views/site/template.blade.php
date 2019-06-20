@@ -76,13 +76,18 @@
                             @endforeach
 
                                 <li class="nav-item dropdown language-full ">
-                                    <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ URL::asset('images/ukraine.svg')}}">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>
-                                        <a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>
-                                    </div>
+                                    <select id="language-choice" style="margin-top: 25%; border: none; background: rgba(0,0,0,.3); color: white; font-weight: 700; text-transform: capitalize;">
+                                        @foreach(['ua', 'ru', 'us'] as $locale)
+                                            <option value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
+                                        @endforeach
+                                    </select>
+                                    {{--<a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                        {{--<img src="{{ URL::asset('images/ukraine.svg')}}">--}}
+                                    {{--</a>--}}
+                                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">--}}
+                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>--}}
+                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>--}}
+                                    {{--</div>--}}
                                 </li>
                                 <li class="nav-item dropdown language-media">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -174,10 +179,14 @@
     </style>
 
 
+
+
+    {{-- что это за аякс ?!!!!! (с) Вадим. Скажи Вадиму зачем он здесь кто это видит --}}
     <script src="js/ajax1_14_7.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('plugins/slick-slider/slick.min.js')}}"></script>
     <script src="{{ URL::asset('js/main.js')}}"></script>
+    <script src="{{ URL::asset('js/changeLocale.js')}}"></script>
 </body>
 
 </html>
