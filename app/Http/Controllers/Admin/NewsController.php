@@ -54,15 +54,19 @@ class NewsController extends Controller
         $last_id = DB::table('inner_news')
             ->insertGetId([
                 'type' => 'new',
-                'title' => $request->formTitle,
-                'date' => $request->dateMeeting,
-                'full_location' => $request->fullLocation,
-                'full_description' => $request->fullDescription,
+                'title_ua' => $request->formTitleUa,
+                'title_ru' => ($request->checkLocalRu === 'true') ? $request->formTitleRu : null,
+                'title_us' =>($request->checkLocalUs === 'true') ? $request->formTitleUs : null,
+                'date' => date('Y-m-d H:i:s', strtotime($request->dateMeeting)),
+//                'full_location' => $request->fullLocation,
+                'full_description_ua' => $request->fullDescriptionUa,
+                'full_description_ru' => ($request->checkLocalRu === 'true') ? $request->fullDescriptionRu: null,
+                'full_description_us' =>($request->checkLocalUs === 'true') ? $request->fullDescriptionUs: null,
                 'keywords' => $request->additionalInfo,
                 'description' => $request->pageDescription
             ]);
         $previewPhotoInfo = explode(";base64,", $request->mainImage);
-        $previewPhotoExt = str_replace('data:image/', '', $previewPhotoInfo[0]);
+        $previewPhotoExt =preg_replace('/\+[A-Za-z]*/i', '', str_replace('data:image/', '', $previewPhotoInfo[0]));
         $previewPhoto = str_replace(' ', '+', $previewPhotoInfo[1]);
         $previewFileName = 'preview' . '_' . $last_id . '.' . $previewPhotoExt;
         Storage::disk('public')->put('images/uploads_news/' . $previewFileName, base64_decode($previewPhoto));
@@ -72,14 +76,16 @@ class NewsController extends Controller
             ->insert([
                 'inner_news_id' => $last_id,
                 'img_path' => $previewPhotoPath,
-                'short_location' => $request->shortLocation,
-                'short_description' => $request->shortDescription,
+//                'short_location' => $request->shortLocation,
+                'short_description_ua' => $request->shortDescriptionUa,
+                'short_description_ru' => ($request->checkLocalRu === 'true') ? $request->shortDescriptionRu : null,
+                'short_description_us' =>($request->checkLocalUs === 'true') ? $request->shortDescriptionUs : null,
             ]);
         $cnt = count($request->sliderImageBase64);
         for ($i = 0; $i < $cnt; $i++) {
             $sliderImage = $request->sliderImageBase64[$i];
             $sliderImageInfo = explode(";base64,", $sliderImage);
-            $sliderImageExt = str_replace('data:image/', '', $sliderImageInfo[0]);
+            $sliderImageExt = preg_replace('/\+[A-Za-z]*/i', '', str_replace('data:image/', '', $sliderImageInfo[0]));
             $sliderImage = str_replace(' ', '+', $sliderImageInfo[1]);
             $sliderImageFileName = 'new' . '_' . $last_id . '_' . $i . '.' . $sliderImageExt;
             Storage::disk('public')->put('images/uploads_slider/' . $sliderImageFileName, base64_decode($sliderImage));
@@ -153,10 +159,13 @@ class NewsController extends Controller
             ])
             ->update([
                 'type' => 'new',
-                'title' => $request->formTitle,
-                'date' => $request->dateMeeting,
-                'full_location' => $request->fullLocation,
-                'full_description' => $request->fullDescription,
+                'title_ua' => $request->formTitleUa,
+                'title_ru' => ($request->checkLocalRu === 'true') ? $request->formTitleRu : null,
+                'title_us' =>($request->checkLocalUs === 'true') ? $request->formTitleUs : null,
+                'date' => date('Y-m-d H:i:s', strtotime($request->dateMeeting)),
+                'full_description_ua' => $request->fullDescriptionUa,
+                'full_description_ru' => ($request->checkLocalRu === 'true') ? $request->fullDescriptionRu: null,
+                'full_description_us' =>($request->checkLocalUs === 'true') ? $request->fullDescriptionUs: null,
                 'keywords' => $request->additionalInfo,
                 'description' => $request->pageDescription
             ]);
@@ -181,7 +190,7 @@ class NewsController extends Controller
             ->where('inner_news_id', '=', $id)
             ->delete();
         $previewPhotoInfo = explode(";base64,", $request->mainImage);
-        $previewPhotoExt = str_replace('data:image/', '', $previewPhotoInfo[0]);
+        $previewPhotoExt =preg_replace('/\+[A-Za-z]*/i', '', str_replace('data:image/', '', $previewPhotoInfo[0]));
         $previewPhoto = str_replace(' ', '+', $previewPhotoInfo[1]);
         $previewFileName = 'preview' . '_' . $id . '.' . $previewPhotoExt;
         Storage::disk('public')->put('images/uploads_news/' . $previewFileName, base64_decode($previewPhoto));
@@ -191,14 +200,15 @@ class NewsController extends Controller
             ->insert([
                 'inner_news_id' => $id,
                 'img_path' => $previewPhotoPath,
-                'short_location' => $request->shortLocation,
-                'short_description' => $request->shortDescription,
+                'short_description_ua' => $request->shortDescriptionUa,
+                'short_description_ru' => ($request->checkLocalRu === 'true') ? $request->shortDescriptionRu : null,
+                'short_description_us' =>($request->checkLocalUs === 'true') ? $request->shortDescriptionUs : null,
             ]);
         $cnt = count($request->sliderImageBase64);
         for ($i = 0; $i < $cnt; $i++) {
             $sliderImage = $request->sliderImageBase64[$i];
             $sliderImageInfo = explode(";base64,", $sliderImage);
-            $sliderImageExt = str_replace('data:image/', '', $sliderImageInfo[0]);
+            $sliderImageExt = preg_replace('/\+[A-Za-z]*/i', '', str_replace('data:image/', '', $sliderImageInfo[0]));
             $sliderImage = str_replace(' ', '+', $sliderImageInfo[1]);
             $sliderImageFileName = 'new' . '_' . $id . '_' . $i . '.' . $sliderImageExt;
             Storage::disk('public')->put('images/uploads_slider/' . $sliderImageFileName, base64_decode($sliderImage));

@@ -242,11 +242,11 @@ class AnnouncementsController extends Controller
             'inner_news_id' => $id,
             'img_path' => $previewPhotoPath,
             'short_location_ua' => $request->shortLocationUa,
-            'short_location_ru' => ($request->checkLocalRu === true) ? $request->shortLocationRu : null,
-            'short_location_us' =>($request->checkLocalUs === true) ? $request->shortLocationUs : null,
+            'short_location_ru' => ($request->checkLocalRu === 'true') ? $request->shortLocationRu : null,
+            'short_location_us' =>($request->checkLocalUs === 'true') ? $request->shortLocationUs : null,
             'short_description_ua' => $request->shortDescriptionUa,
-            'short_description_ru' => ($request->checkLocalRu === true) ? $request->shortDescriptionRu : null,
-            'short_description_us' =>($request->checkLocalUs === true) ? $request->shortDescriptionUs : null,
+            'short_description_ru' => ($request->checkLocalRu === 'true') ? $request->shortDescriptionRu : null,
+            'short_description_us' =>($request->checkLocalUs === 'true') ? $request->shortDescriptionUs : null,
         ]);
 
         $cnt = count($request->sliderImageBase64);
