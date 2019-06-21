@@ -142,14 +142,16 @@
                         </div>
                         <div class="k-portlet__body ">
                             <div class="form-group row" >
-                                <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                                <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу російською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
                                     <input type="text"
+                                           value="local_ru"
                                            name="title_ru"
                                            class="form-control"
                                            placeholder=""
-                                           @if(!empty($data['document'])) value="{{ $data['document'][0]->title_ru }}">  @endif
-                                    <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
+                                           @if(!empty($data['document']->title_ru)) checked @endif
+                                    >
+                                    <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>
                             </div>
                         </div>
@@ -167,14 +169,16 @@
                         </div>
                         <div class="k-portlet__body ">
                             <div class="form-group row">
-                                <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                                <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу англійською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
                                     <input type="text"
+                                           value="local_us"
                                            name="title_us"
                                            class="form-control"
                                            placeholder=""
-                                           @if(!empty($data['document'])) value="{{ $data['document'][0]->title_us }}">  @endif
-                                    <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
+                                           @if(!empty($data['document']->title_us)) checked @endif
+                                    >
+                                    <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>
                             </div>
                         </div>
