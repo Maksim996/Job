@@ -72,17 +72,19 @@
                             <div class="col-lg-6 col-sm-12">
                                 <div class="k-checkbox-inline">
                                     <label class="k-checkbox k-checkbox--brand" >
-                                        <input  name="local_ru"
+                                        <input  name="local1_ru"
                                                 type="checkbox"
                                                 value="local1_ru"
+                                                loc-name="local_ru"
                                                 @if(!empty($data['practicCards'][0]->card_title_ru)) checked @endif
                                         >
                                         RU <span></span>
                                     </label>
                                     <label class="k-checkbox k-checkbox--brand">
-                                        <input name="local_us"
+                                        <input name="local1_us"
                                                type="checkbox"
                                                value="local1_us"
+                                               loc-name="local_us"
                                                @if(!empty($data['practicCards'][0]->card_title_us)) checked @endif
                                         >
                                         ENG <span></span>
@@ -203,17 +205,19 @@
                             <div class="col-lg-6 col-sm-12">
                                 <div class="k-checkbox-inline">
                                     <label class="k-checkbox k-checkbox--brand" >
-                                        <input  name="local_ru"
+                                        <input  name="local2_ru"
                                                 type="checkbox"
                                                 value="local2_ru"
+                                                loc-name="local_ru"
                                                 @if(!empty($data['practicCards'][1]->card_title_ru)) checked @endif
                                         >
                                         RU <span></span>
                                     </label>
                                     <label class="k-checkbox k-checkbox--brand">
-                                        <input name="local_us"
+                                        <input name="local2_us"
                                                type="checkbox"
                                                value="local2_us"
+                                               loc-name="local_us"
                                                @if(!empty($data['practicCards'][1]->card_title_us)) checked @endif
                                         >
                                         ENG <span></span>
@@ -334,17 +338,19 @@
                             <div class="col-lg-6 col-sm-12">
                                 <div class="k-checkbox-inline">
                                     <label class="k-checkbox k-checkbox--brand" >
-                                        <input  name="local_ru"
+                                        <input  name="local3_ru"
                                                 type="checkbox"
                                                 value="local3_ru"
+                                                loc-name="local_ru"
                                                 @if(!empty($data['practicCards'][2]->card_title_ru)) checked @endif
                                         >
                                         RU <span></span>
                                     </label>
                                     <label class="k-checkbox k-checkbox--brand">
-                                        <input name="local_us"
+                                        <input name="local3_us"
                                                type="checkbox"
                                                value="local3_us"
+                                               loc-name="local_us"
                                                @if(!empty($data['practicCards'][2]->card_title_us)) checked @endif
                                         >
                                         ENG <span></span>

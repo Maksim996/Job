@@ -89,6 +89,7 @@
                                 <input  name="local_ru"
                                        type="checkbox"
                                        value="local_ru"
+                                        loc-name="local_ru"
                                         @if(!empty($data['header'][0]->title_ru)) checked @endif
                                 >
                                 RU <span></span>
@@ -97,6 +98,7 @@
                                 <input name="local_us"
                                        type="checkbox"
                                        value="local_us"
+                                       loc-name="local_us"
                                        @if(!empty($data['header'][0]->title_us)) checked @endif
                                 >
                                 ENG <span></span>

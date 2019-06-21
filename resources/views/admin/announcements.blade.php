@@ -5,23 +5,24 @@
 @section('content')
 <!--begin::Dashboard 1-->
     <div class="k-portlet">
-       <div class="k-portlet__head">
+       <div class="k-portlet__head align-items-center justify-content-between">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
                     Анонси
                 </h3>
 
-                <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="{{ route('ad_announcements.announcements.create') }}">
-                    <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
-                </a>
+
             </div>
+           <a class="btn btn-brand k-btn k-btn--icon " id="m_plus" href="{{ route('ad_announcements.announcements.create') }}">
+               <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
+           </a>
         </div>
         <div class="k-portlet">
             <div class="k-portlet__head">
-                <form class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-center">
+                <form class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end">
                     <div class="row  col-lg-8 col-md-12">
                         <label>Назва статті</label>
-                        <div class="col-lg-8 k-margin-b-10-tablet-and-mobile">
+                        <div class="col-lg-12 row k-margin-b-10-tablet-and-mobile">
                             <input type="text" class="form-control k-input" placeholder="Заголовок" data-col-index="0">
                         </div>
                     </div>
@@ -48,7 +49,7 @@
                     <tbody>
                         @foreach($data['announcements'] as $announcement)
                         <tr>
-                            <td>{{ $announcement->title }}</td>
+                            <td>{{ $announcement->title_ua }}</td>
                             <td>{{ $announcement->date }}</td>
                             <!-- <td nowrap></td> -->
                             <td>
