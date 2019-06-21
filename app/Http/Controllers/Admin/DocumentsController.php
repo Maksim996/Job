@@ -64,17 +64,20 @@ class DocumentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         //
 
         $document = DB::table('documents')->where('doc_id',$id)->get();
         $subcats = DB::table('subcategory')->whereIn('link',['documents','pracevlashtuvannya-praktika'])->get()->toArray();
+        $locale = $request['locale'];
         $data = [
             'type' => "1",
             'document' => $document[0],
                 'subcategories' => $subcats,
+                'locale' => $locale,
                     ];
+
         return view('admin.document_template',compact('data'));
     }
 
