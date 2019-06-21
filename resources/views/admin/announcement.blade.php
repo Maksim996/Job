@@ -54,7 +54,7 @@
             -->
             <div class="k-portlet__body">
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
+                    <label class="col-form-label col-lg-2 col-sm-12">Заголовок анонсу</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
 
                         <input type="text" class="form-control form-title-ua" placeholder="" name="title_ua"
@@ -64,7 +64,7 @@
                                 value="" 
                             @endif
                         >
-                        <span class="form-text text-muted">Основний заголовок на головній сторінці</span>
+                        <span class="form-text text-muted">Заголовок анонсу на головній сторінці</span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -221,7 +221,7 @@
                     </div>
                     <div class="k-portlet__body ">
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
+                            <label class="col-form-label col-lg-2 col-sm-12">Заголовок анонсу</label>
                             <div class="col-lg-6 col-md-9 col-sm-12">
 
                                 <input type="text" class="form-control form-title-ru" placeholder="" name="title_ru"
@@ -231,7 +231,7 @@
                                        value=""
                                     @endif
                                 >
-                                <span class="form-text text-muted">Основний заголовок на головній сторінці</span>
+                                <span class="form-text text-muted">Заголовок анонсу на головній сторінці: російською</span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -300,7 +300,7 @@
                     </div>
                     <div class="k-portlet__body ">
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
+                            <label class="col-form-label col-lg-2 col-sm-12">Заголовок анонсу</label>
                             <div class="col-lg-6 col-md-9 col-sm-12">
 
                                 <input type="text" class="form-control form-title-us" placeholder="" name="title_us"
@@ -310,7 +310,7 @@
                                        value=""
                                     @endif
                                 >
-                                <span class="form-text text-muted">Основний заголовок на головній сторінці</span>
+                                <span class="form-text text-muted">Заголовок анонсу на головній сторінці: англійською</span>
                             </div>
                         </div>
                         <div class="form-group row">

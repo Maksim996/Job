@@ -58,7 +58,7 @@
                         <label class="col-form-label col-lg-2 col-sm-12">Title</label>
                         <div class="col-lg-8 col-md-9 col-sm-12">
                          <input type="text" class="subIdsField" name="id[{{$loop->index}}]" style="display:none" value="{{$sub->subcategory_id}}">
-                            <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->title}}">
+                            <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->title_ua}}">
                            
                         </div>
                     </div>
