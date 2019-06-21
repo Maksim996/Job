@@ -145,7 +145,7 @@
                                 <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу російською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
                                     <input type="text"
-                                           value="local_ru"
+                                           value="@if(empty($data['document']->title_ru))@else{{$data['document']->title_ru}}@endif"
                                            name="title_ru"
                                            class="form-control"
                                            placeholder=""
@@ -172,7 +172,7 @@
                                 <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу англійською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
                                     <input type="text"
-                                           value="local_us"
+                                           value="@if(empty($data['document']->title_us))@else{{$data['document']->title_us}}@endif"
                                            name="title_us"
                                            class="form-control"
                                            placeholder=""
