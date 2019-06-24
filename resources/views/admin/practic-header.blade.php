@@ -23,7 +23,7 @@
             {{--</div>--}}
         {{--@endif--}}
 
-        <form method="POST" action="{{ URL::route('ad_practic-header.practic-header.update', $data['practicContent'][0]->content_id) }}" class="k-form k-form--label-right">
+        <form id="practic-header" method="POST" action="{{ URL::route('ad_practic-header.practic-header.update', $data['practicContent'][0]->content_id) }}" class="k-form k-form--label-right">
             {{ @csrf_field() }}
             @method('PUT')
             <div class="k-portlet__body">

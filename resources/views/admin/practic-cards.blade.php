@@ -30,13 +30,16 @@
             {{--</div>--}}
         {{--@endif--}}
 
-        <form method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form" enctype="multipart/form-data">
+        <form id="practic-cards" method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form" enctype="multipart/form-data">
             {{ @csrf_field() }}
             <div class="k-portlet__body">
                 <div class="row mt-5">
                     <div id="block1" class="col-lg-4 col-md-12  mt-2">
-                        <div class="col-lg-9 mx-auto admin_card">
-                            <img width="140px" src="{{ URL::asset($data['practicCards'][0]->img_path) }}" alt="" class="rounded-circle practice__image">
+                        <div class="col-lg-9 mx-auto admin_card d-flex flex-column align-items-center">
+                            {{--<div class="d-flex justify-content-center align-items-center">--}}
+                                <img width="140px" src="{{ URL::asset($data['practicCards'][0]->img_path) }}" alt="" class="rounded-circle practice__image">
+                            {{--</div>--}}
+
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">{{ $data['practicCards'][0]->card_title_ua }}</h5>
                                 <p class="card-text practice__text">{{ $data['practicCards'][0]->card_description_ua }}</p>
@@ -45,25 +48,25 @@
 
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
+                                <label class="col-form-label col-lg-12">Заголовок картки</label>
                                 <input name="card_title1_ua" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->card_title_ua }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
+                                <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea name="card_description1_ua" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][0]->card_description_ua }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
+                                <label class="col-form-label col-lg-12">Зображення</label>
                                 <input type="file" name="img_path1" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
+                                <label class="col-form-label col-lg-12">Посилання</label>
                                 <input type="text" name="card_link1" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->card_link }}">
                             </div>
                         </div>
@@ -104,31 +107,29 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="k-portlet__body ">
+
                                 <div class="form-group row" >
-                                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title1_ru"
                                                class="form-control"
                                                placeholder=""
                                                value="{{ $data['practicCards'][0]->card_title_ru }}">
-                                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea class="form-control"
                                           name="card_description1_ru"
                                           id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][0]->card_description_ru }}</textarea>
-                                        <span class="form-text text-muted">Короткий опис</span>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
 
                         {{--us --}}
@@ -141,35 +142,33 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="k-portlet__body ">
+
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title1_us"
                                                class="form-control"
                                                placeholder=""
                                                value="{{ $data['practicCards'][0]->card_title_us }}">
-                                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea class=" form-control"
                                           name="card_description1_us"
                                           id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][0]->card_description_us }}</textarea>
-                                        <span class="form-text text-muted">Короткий опис</span>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
                     </div>
                     <div id="block2" class="col-lg-4 col-md-12  mt-2">
-                        <div class="col-lg-9 mx-auto admin_card">
+                        <div class="col-lg-9 mx-auto admin_card d-flex flex-column align-items-center">
                             <img width="140px" src="{{ URL::asset($data['practicCards'][1]->img_path) }}" alt="" class="rounded-circle practice__image ">
                             <div class=" card-body mt-3">
                                 <h5 class="card-title practice__topic">{{ $data['practicCards'][1]->card_title_ua }}</h5>
@@ -178,25 +177,25 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
+                                <label class="col-form-label col-lg-12">Заголовок картки</label>
                                 <input name="card_title2_ua" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->card_title_ua }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
+                                <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea name="card_description2_ua" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][1]->card_description_ua }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
+                                <label class="col-form-label col-lg-12">Зображення</label>
                                 <input type="file" name="img_path2" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
+                                <label class="col-form-label col-lg-12">Посилання</label>
                                 <input type="text" name="card_link2" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->card_link }}">
                             </div>
                         </div>
@@ -237,31 +236,29 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="k-portlet__body ">
+
                                 <div class="form-group row" >
-                                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title2_ru"
                                                class="form-control"
                                                placeholder=""
                                                value="{{ $data['practicCards'][1]->card_title_ru }}">
-                                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea class="form-control"
                                           name="card_description2_ru"
                                           id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][1]->card_description_ru }}</textarea>
-                                        <span class="form-text text-muted">Короткий опис</span>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
 
                         {{--us --}}
@@ -274,35 +271,34 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="k-portlet__body ">
+
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title2_us"
                                                class="form-control"
                                                placeholder=""
                                                value="{{ $data['practicCards'][1]->card_title_us }}">
-                                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Короткий опис</label>
+
                                 <textarea class=" form-control"
                                           name="card_description2_us"
                                           id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][1]->card_description_us }}</textarea>
-                                        <span class="form-text text-muted">Короткий опис</span>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
                     </div>
                     <div id="block3" class="col-lg-4 col-md-12    my-2">
-                        <div class="col-lg-9 mx-auto admin_card">
+                        <div class="col-lg-9 mx-auto admin_card d-flex flex-column align-items-center">
                             <img name="image" width="140px" src="{{ URL::asset($data['practicCards'][2]->img_path) }}" alt="" class="rounded-circle practice__image ">
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">{{ $data['practicCards'][2]->card_title_ua }}и</h5>
@@ -311,25 +307,25 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Заголовок</label>
+                                <label class="col-form-label col-lg-12">Заголовок картки</label>
                                 <input name="card_title3_ua" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->card_title_ua }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Короткий опис</label>
+                                <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea name="card_description3_ua" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][2]->card_description_ua }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Зображення</label>
+                                <label class="col-form-label col-lg-12">Зображення</label>
                                 <input type="file" name="img_path3" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
-                                <label class="col-form-label col-lg-4 col-sm-12">Посилання</label>
+                                <label class="col-form-label col-lg-12">Посилання</label>
                                 <input type="text" name="card_link3" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->card_link }}">
                             </div>
                         </div>
@@ -370,31 +366,30 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="k-portlet__body ">
+
                                 <div class="form-group row" >
-                                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title3_ru"
                                                class="form-control"
                                                placeholder=""
                                                value="{{ $data['practicCards'][2]->card_title_ru }}">
-                                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Короткий опис</label>
+
                                 <textarea class="form-control"
                                           name="card_description3_ru"
                                           id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][2]->card_description_ru }}</textarea>
-                                        <span class="form-text text-muted">Короткий опис</span>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
 
                         {{--us --}}
@@ -407,31 +402,30 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="k-portlet__body ">
+
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Заголовок картки</label>
+
                                         <input type="text"
                                                name="card_title3_us"
                                                class="form-control"
                                                placeholder=""
                                                value="{{ $data['practicCards'][2]->card_title_us }}">
-                                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
-                                    <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="col-lg">
+                                    <label class="col-form-label col-lg-12">Короткий опис</label>
                                 <textarea class=" form-control"
                                           name="card_description3_us"
                                           id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][2]->card_description_us }}</textarea>
-                                        <span class="form-text text-muted">Короткий опис</span>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -58,7 +58,11 @@
                         <label class="col-form-label col-lg-2 col-sm-12">Title</label>
                         <div class="col-lg-8 col-md-9 col-sm-12">
                          <input type="text" class="subIdsField" name="id[{{$loop->index}}]" style="display:none" value="{{$sub->subcategory_id}}">
+<<<<<<< HEAD
                             <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->{'title_'.$data['locale']} }}">
+=======
+                            <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->title_ua}}">
+>>>>>>> b75eb33f1e0b8252111ce52f62a10d8f67404f36
                            
                         </div>
                     </div>

@@ -6,68 +6,68 @@
 
     <!--begin::Dashboard 1-->
     <div class="k-portlet">
-        <form action="{{route('ad_nav.nav.update',$data['category']->category_id)}}"  method="POST">
+        <form id="nav_menu" action="{{route('ad_nav.nav.update',$data['category']->category_id)}}"  method="POST">
             @method('PUT')
             {{csrf_field()}}
-        <div class="k-portlet__head align-items-center justify-content-between">
-            <div class="k-portlet__head-label">
-                <h3 class="k-portlet__head-title">
-                    Назва категорії меню: {{$data['category']->title_ua}}
-                </h3>
+            <div class="k-portlet__head align-items-center justify-content-between">
+                <div class="k-portlet__head-label">
+                    <h3 class="k-portlet__head-title">
+                        Назва категорії меню: {{$data['category']->title_ua}}
+                    </h3>
 
 
+                </div>
             </div>
-        </div>
 
-        <div class="k-portlet">
-            <div class="k-portlet__body">
+            <div class="k-portlet">
+                <div class="k-portlet__body">
 
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (українською)</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input name="title_ua" type="text" class="form-control" placeholder="" value="{{ $data['category']->title_ua }}">
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (українською)</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input  name="title_ua" type="text" class="form-control required" placeholder="" value="{{ $data['category']->title_ua }}">
 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (російською)</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input name="title_ru" type="text" class="form-control" placeholder="" value="{{ $data['category']->title_ru }}">
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (російською)</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input  name="title_ru" type="text" class="form-control required" placeholder="" value="{{ $data['category']->title_ru }}">
 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (англійською)</label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <input name="title_us" type="text" class="form-control" placeholder="" value="{{ $data['category']->title_us }}">
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (англійською)</label>
+                        <div class="col-lg-6 col-md-9 col-sm-12">
+                            <input  name="title_us" type="text" class="form-control required" placeholder="" value="{{ $data['category']->title_us }}">
 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">Посилання</label>
-                    <div class="form-group col-lg-6 col-md-9  col-sm-12">
-                        <select class="form-control sel_change" name="catSelect">
-                            <option value= "external">Зовнішнє</option>
-                            <option value= "document"   @if($data['category']->link == 'document') selected @endif >Документи</option>
-                            <option value= "announcements"   @if($data['category']->link == 'announcements') selected @endif >Анонси</option>
-                            <option value= "pracevlashtuvannya-praktika"   @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif >Працевлаштування та практика</option>
-                        </select>
-                        <div class="form-group row mt-3 extString" style="display:none">
-                            <div class="col-lg-12 col-md-9 col-sm-12">
-                                <label class="col-form-label col-lg-12 col-sm-12">Зовнішнє</label>
-                                <input type="text" class="form-control" @if($data['category']->type == 'type2') value="{{$data['category']->link}}" @endif placeholder="" name="catLink">
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Посилання</label>
+                        <div class="form-group col-lg-6 col-md-9  col-sm-12">
+                            <select class="form-control sel_change" name="catSelect">
+                                <option value= "external">Зовнішнє</option>
+                                <option value= "document"   @if($data['category']->link == 'document') selected @endif >Документи</option>
+                                <option value= "announcements"   @if($data['category']->link == 'announcements') selected @endif >Анонси</option>
+                                <option value= "pracevlashtuvannya-praktika"   @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif >Працевлаштування та практика</option>
+                            </select>
+                            <div class="form-group row mt-3 extString" style="display:none">
+                                <div class="col-lg-12 col-md-9 col-sm-12">
+                                    <label class="col-form-label col-lg-12 col-sm-12">Зовнішнє</label>
+                                    <input type="text" class="form-control" @if($data['category']->type == 'type2') value="{{$data['category']->link}}" @endif placeholder="" name="catLink">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="k-portlet__foot">
-            <div class="k-form__actions">
-                <button type="submit" class="btn btn-primary">Зберегти</button>
-                <a href="{{ URL::previous() }}" class="btn btn-dark">Назад</a>
+            <div class="k-portlet__foot">
+                <div class="k-form__actions">
+                    <button type="submit" class="btn btn-primary">Зберегти</button>
+                    <a href="{{ URL::previous() }}" class="btn btn-dark">Назад</a>
+                </div>
             </div>
-        </div>
         </form>
         <div class="k-portlet tableHide">
             <div class="k-portlet__head ">

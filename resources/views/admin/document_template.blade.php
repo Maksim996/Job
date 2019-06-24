@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <form novalidate="novalidate"  method="POST" @if($data['type'] == '1') action="{{ URL::route('ad_documents.documents.update', $data['document']->doc_id) }}" @else action="{{ URL::route('ad_documents.documents.update',0) }}" @endif class="k-form k-form--label-right" id='partners_blocks' enctype="multipart/form-data">
+        <form method="POST" @if($data['type'] == '1') action="{{ URL::route('ad_documents.documents.update', $data['document']->doc_id) }}" @else action="{{ URL::route('ad_documents.documents.update',0) }}" @endif class="k-form k-form--label-right" id='partners_blocks' enctype="multipart/form-data">
               {{ @csrf_field() }}
                @method('PUT')
             <div class="k-portlet__body" id='documents_block'>
@@ -154,7 +154,6 @@
                                            @else
                                            value=""
                                         @endif
-                                    >
                                     <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>
                             </div>
@@ -181,7 +180,6 @@
                                            @else
                                            value=""
                                         @endif
-                                    >
                                     <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>
                             </div>

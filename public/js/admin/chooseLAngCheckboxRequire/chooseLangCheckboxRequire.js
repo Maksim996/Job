@@ -42,6 +42,12 @@ arr_documents_ru=[
 arr_documents_us=[
     'title_us'
 ];
+arr_nav_ru=[
+    'title_ru'
+];
+arr_nav_us=[
+    'title_us'
+];
 function parseUrl(){
     let name_route = location.pathname.split("/")[2]
     switch (name_route) {
@@ -73,6 +79,11 @@ function parseUrl(){
         case 'documents':{
             updateReqiureFieldsLocal(arr_news_ru);
             updateReqiureFieldsLocal(arr_news_us);
+        }
+        break;
+        case 'nav':{
+            updateReqiureFieldsLocal(arr_nav_ru);
+            updateReqiureFieldsLocal(arr_nav_us);
         }
         break;
     }

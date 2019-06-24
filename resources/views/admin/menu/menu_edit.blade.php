@@ -12,7 +12,7 @@
                 </h3>
             </div>
         </div>
-        <form action="{{route('ad_subcat.subcat.update',$data['subcategory']->subcategory_id)}}"  method="POST">
+        <form id="subcat" action="{{route('ad_subcat.subcat.update',$data['subcategory']->subcategory_id)}}"  method="POST">
             @method('PUT')
             {{csrf_field()}}
             @include('admin.menu.menu_form')

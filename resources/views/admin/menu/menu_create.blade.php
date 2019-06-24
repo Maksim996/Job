@@ -12,7 +12,7 @@
                 </h3>
             </div>
         </div>
-        <form action="{{route('ad_subcat.subcat.store')}}"  method="POST">
+        <form id="subcat" action="{{route('ad_subcat.subcat.store')}}"  method="POST">
             {{csrf_field()}}
             @include('admin.menu.menu_form')
         </form>

@@ -29,17 +29,16 @@
             @method('PUT')
             <div class="k-portlet__body">
 				<div class="form-group row">
-                    <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                    <label class="col-form-label col-lg-2 col-sm-12">Заголовок головної сторінки</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input type="text" name="title_ua" class="form-control" placeholder="" value="{{ $data['header'][0]->title_ua }}">
-                        <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input type="text" name="link" class="form-control" placeholder="" value="{{ $data['header'][0]->link }}">
-                        <span class="form-text text-muted">По кліку на заголовок переходить на посиланням ...</span> 
+                        <span class="form-text text-muted">По кліку на заголовок переходить за посиланням ...</span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -121,14 +120,13 @@
                     </div>
                     <div class="k-portlet__body ">
                         <div class="form-group row" >
-                            <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                            <label class="col-form-label col-lg-2 col-sm-12">Заголовок головної сторінки російською</label>
                             <div class="col-lg-6 col-md-9 col-sm-12">
                                 <input type="text"
                                        name="title_ru"
                                        class="form-control"
                                        placeholder=""
                                        value="{{ $data['header'][0]->title_ru }}">
-                                <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -158,14 +156,13 @@
                     </div>
                     <div class="k-portlet__body ">
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2 col-sm-12">Основний заголовок</label>
+                            <label class="col-form-label col-lg-2 col-sm-12">Заголовок головної сторінки англійською</label>
                             <div class="col-lg-6 col-md-9 col-sm-12">
                                 <input type="text"
                                        name="title_us"
                                        class="form-control"
                                        placeholder=""
                                        value="{{ $data['header'][0]->title_us }}">
-                                <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                             </div>
                         </div>
                         <div class="form-group row">

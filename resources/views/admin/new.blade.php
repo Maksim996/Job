@@ -114,7 +114,7 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдера</label>
-                    <input type="file" id="files" name="files[]" multiple>
+                    <input type="file" id="files" name="slider-image" multiple>
                     <output id="list">
                         @if(isset($data['sliders']))
                             @foreach($data['sliders'] as $slider)

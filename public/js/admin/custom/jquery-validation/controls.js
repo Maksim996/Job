@@ -3,37 +3,19 @@
 
 var KFormControls = function () {
     // Private functions
-
-
     var demo1 = function () {
-        $( "#partners_blocks" ).validate({
+        $("#nav_menu").validate({
             // define validation rules
             rules: {
-                email: {
+                title_ua: {
                     required: true,
-                    email: true
+                    maxlength: 200
                 },
-                link: {
-                    // required: true
-                },
-                phone: {
+                title_ru: {
                     required: true,
-                    phoneUS: true
+                    maxlength: 200
                 },
-                option: {
-                    required: true
-                },
-                options: {
-                    required: true,
-                    minlength: 2,
-                    maxlength: 4
-                },
-                memo: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 100
-                },
-                title: {
+                title_us: {
                     required: true,
                     maxlength: 200
                 },
@@ -42,17 +24,14 @@ var KFormControls = function () {
 
             //display error alert on form submit
             invalidHandler: function(event, validator) {
-                var alert = $('#k_form_1_msg');
-                alert.parent().removeClass('k-hidden');
-                KUtil.scrollTo("partners_blocks", -200);
+                KUtil.scrollTo("nav_menu", -200);
             },
 
             submitHandler: function (form) {
                 form[0].submit(); // submit the form
             }
         });
-    }
-
+    };
     var demo2 = function () {
         $( "#admin_header" ).validate({
             // define validation rules
@@ -90,40 +69,268 @@ var KFormControls = function () {
 
             },
 
-            //display error alert on form submit
-            // invalidHandler: function(event, validator) {
-            //     swal({
-            //         "title": "",
-            //         "text": "There are some errors in your submission. Please correct them.",
-            //         "type": "error",
-            //         "confirmButtonClass": "btn btn-secondary k-btn k-btn--wide",
-            //         "onClose": function(e) {
-            //             console.log('on close event fired!');
-            //         }
-            //     });
-            //
-            //     event.preventDefault();
-            // },
-            //
-            // submitHandler: function (form) {
-            //     //form[0].submit(); // submit the form
-            //     swal({
-            //         "title": "",
-            //         "text": "Form validation passed. All good!",
-            //         "type": "success",
-            //         "confirmButtonClass": "btn btn-secondary"
-            //     });
-            //
-            //     return false;
-            // }
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("admin_header", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
         });
-    }
+    };
+
+    var demo3 = function () {
+        $("#announcements-form").validate({
+            // define validation rules
+            rules: {
+                title_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                short_description_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                full_description_ua: {
+                    required: true
+                },
+                short_location_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                full_location_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                date: {
+                    required: true
+                },
+                img_path: {
+                    required: true
+                },
+                "slider-image": {
+                    required: true
+                },
+                keywords: {
+                    required: true,
+                    maxlength: 200
+                },
+                description: {
+                    required: true,
+                    maxlength: 200
+                },
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("announcements-form", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
+
+    var demo4 = function () {
+        $("#news-form").validate({
+            // define validation rules
+            rules: {
+                title_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                short_description_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                full_description_ua: {
+                    required: true
+                },
+                short_location_ua: {
+                    maxlength: 200
+                },
+                full_location_ua: {
+                    maxlength: 200
+                },
+                date: {
+                    required: true
+                },
+                img_path: {
+                    required: true
+                },
+                "slider-image": {
+                    required: true
+                },
+                keywords: {
+                    required: true,
+                    maxlength: 200
+                },
+                description: {
+                    required: true,
+                    maxlength: 200
+                },
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("news-form", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
+    var demo5 = function () {
+        $("#practic-header").validate({
+            // define validation rules
+            rules: {
+                title_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                content_ua: {
+                    required: true
+                }
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("practic-header", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
+
+    var demo6 = function () {
+        $("#practic-cards").validate({
+            // define validation rules
+            rules: {
+                card_title1_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                card_description1_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                card_link1: {
+                    required: true,
+                    maxlength: 200
+                },
+
+                card_title2_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                card_description2_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                card_link2: {
+                    required: true,
+                    maxlength: 200
+                },
+
+                card_title3_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                card_description3_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                card_link3: {
+                    required: true,
+                    maxlength: 200
+                },
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("practic-cards", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
+
+    var demo7 = function () {
+        $("#partners_blocks").validate({
+            // define validation rules
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 200
+                },
+                link: {
+                    required: true
+                },
+                img_path: {
+                    required: true
+                },
+                cat: {
+                    required: true
+                },
+                title_ua: {
+                    required: true
+                },
+                file: {
+                    required: true
+                }
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("partners_blocks", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
+    var demo8 = function () {
+        $("#subcat").validate({
+            // define validation rules
+            rules: {
+                title_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                content_ua: {
+                    required: true
+                }
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("practic-header", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
 
     return {
         // public functions
         init: function() {
             demo1();
             demo2();
+            demo3();
+            demo4();
+            demo5();
+            demo6();
+            demo7();
+            demo8();
         }
     };
 }();
