@@ -22,16 +22,20 @@
                         <label class="col-form-label col-lg-2 col-sm-12">Категорія документу:</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
                             <select class="form-control" required name="cat">
-                            @foreach($data['subcategories'] as $sub)
+                                @foreach($data['subcategories'] as $sub)
                                 <option @if($data['type'] == '1')
                                             @if($data['document']->subcategory_id == $sub->subcategory_id)
                                                 selected
                                             @endif
                                         @endif
                                             value="{{$sub->subcategory_id}}">
-                                    {{$sub->title_ua}}
+                                            @foreach($data['category'] as $cat)
+                                                 @if($cat->category_id ==$sub->category_id )Категорія {{$cat->title_ua}} :@endif
+                                            @endforeach
+                                        {{$sub->title_ua}}
                                 </option>
                             @endforeach
+
                             </select>
                         </div>
                     </div>
@@ -144,12 +148,12 @@
                             <div class="form-group row" >
                                 <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу російською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <input type="text"
-                                           value="local_ru"
-                                           name="title_ru"
-                                           class="form-control"
-                                           placeholder=""
-                                           @if(!empty($data['document']->title_ru)) checked @endif
+                                    <input type="text" class="form-control form-title-ru" placeholder="" name="title_ru"
+                                           @if(isset($data['document']))
+                                           value="{{ $data['document']->title_ru }}"
+                                           @else
+                                           value=""
+                                        @endif
                                     >
                                     <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>
@@ -171,12 +175,12 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу англійською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <input type="text"
-                                           value="local_us"
-                                           name="title_us"
-                                           class="form-control"
-                                           placeholder=""
-                                           @if(!empty($data['document']->title_us)) checked @endif
+                                    <input type="text" class="form-control form-title-us" placeholder="" name="title_us"
+                                           @if(isset($data['document']))
+                                           value="{{ $data['document']->title_us }}"
+                                           @else
+                                           value=""
+                                        @endif
                                     >
                                     <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>

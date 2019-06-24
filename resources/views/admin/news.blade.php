@@ -10,10 +10,8 @@
                 <h3 class="k-portlet__head-title">
                     Новини
                 </h3>
-
-
             </div>
-           <a class="btn btn-brand k-btn k-btn--icon but-plus" id="m_plus" href="{{ route('ad_news.news.create') }}">
+           <a class="btn btn-brand k-btn k-btn--icon" id="m_plus" href="{{ route('ad_news.news.create') }}">
                <span> <i class="la la-plus"></i> <span>Додати новину</span> </span>
            </a>
         </div>

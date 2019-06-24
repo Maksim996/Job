@@ -8,10 +8,7 @@
        <div class="k-portlet__head">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-
-                    @isset($data['announcement'][0])
-                        Анонс номер {{$data['announcement'][0]->inner_news_id}}
-                    @endisset
+                    {{isset($data['announcement'][0])?$data['announcement'][0]->title_ua  :'Новий анонс'}}
                 </h3>
             </div>
         </div>

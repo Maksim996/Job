@@ -164,7 +164,6 @@ class AnnouncementsController extends Controller
         }, $sliders);
 
         $data = [
-            'type' => '1',
             'announcement' => $announcement,
             'preview' => $preview,
             'sliders' => $slider_data

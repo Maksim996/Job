@@ -64,7 +64,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('partners', 'Admin\PartnersController', ['as' => 'ad_partners']);
 
+    Route::resource('nav','Admin\navMenuController', ['as' => 'ad_nav']);
 
+    Route::resource('subcat','Admin\SubcatController', ['as' => 'ad_subcat']);
 
 	Route::post('delete-subcategory', 'Admin\MenuController@deleteSubcategory');
 	Route::post('delete-document', 'Admin\DocumentsController@deleteDocument');

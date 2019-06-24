@@ -16,7 +16,7 @@ class CreatePartnersTable extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('img_path', 200)->nullable();
-            $table->string('link', 200);
+            $table->text('link');
             $table->string('name_brand', 200);
 
         });

@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ URL::route('ad_header.header.update', $data['header'][0]->id) }}" class="k-form k-form--label-right"
+        <form id="admin_header" method="POST" action="{{ URL::route('ad_header.header.update', $data['header'][0]->id) }}" class="k-form k-form--label-right"
             enctype="multipart/form-data">
             {{ @csrf_field() }}
             @method('PUT')

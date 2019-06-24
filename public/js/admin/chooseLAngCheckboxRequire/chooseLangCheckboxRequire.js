@@ -13,11 +13,35 @@ arr_header_us = [
     'title_us','content_us'
 ];
 arr_practic_header_ru =[
-    'card_title_ru','card_description_ru'
+    'title_ru','content_ru'
 ];
 arr_practic_header_us =[
-    'card_title_us','card_description_us'
-]
+    'title_us','content_us'
+];
+arr_practic_card_ru =[
+    'card_title1_ru','card_title2_ru','card_title3_ru','card_description1_ru','card_description2_ru','card_description3_ru'
+];
+arr_practic_card_us =[
+    'card_title1_us','card_title2_us','card_title3_us','card_description1_us','card_description2_us','card_description3_us'
+];
+arr_announcement_ru =[
+    'title_ru','short_description_ru','full_description_ru','short_location_ru','full_location_ru',
+];
+arr_announcement_us =[
+    'title_us','short_description_us','full_description_us','short_location_us','full_location_us',
+];
+arr_news_ru =[
+    'title_ru','short_description_ru','full_description_ru',
+];
+arr_news_us =[
+    'title_us','short_description_us','full_description_us',
+];
+arr_documents_ru=[
+    'title_ru'
+];
+arr_documents_us=[
+    'title_us'
+];
 function parseUrl(){
     let name_route = location.pathname.split("/")[2]
     switch (name_route) {
@@ -27,9 +51,28 @@ function parseUrl(){
         }
         break;
         case 'practic-cards':{
+            updateReqiureFieldsLocal(arr_practic_card_ru);
+            updateReqiureFieldsLocal(arr_practic_card_us);
+        }
+        break;
+        case 'practic-header':{
             updateReqiureFieldsLocal(arr_practic_header_ru);
             updateReqiureFieldsLocal(arr_practic_header_us);
-
+        }
+        break;
+        case 'announcements':{
+            updateReqiureFieldsLocal(arr_announcement_ru);
+            updateReqiureFieldsLocal(arr_announcement_us);
+        }
+        break;
+        case 'news':{
+            updateReqiureFieldsLocal(arr_news_ru);
+            updateReqiureFieldsLocal(arr_news_us);
+        }
+        break;
+        case 'documents':{
+            updateReqiureFieldsLocal(arr_news_ru);
+            updateReqiureFieldsLocal(arr_news_us);
         }
         break;
     }

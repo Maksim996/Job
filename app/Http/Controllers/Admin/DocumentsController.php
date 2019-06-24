@@ -23,8 +23,10 @@ class DocumentsController extends Controller
 
         $documents = DB::table('documents')->get()->toArray();
         $subcats = DB::table('subcategory')->get()->toArray();
+        $category = DB::table('category')->get()->toArray();
         $data = ['documents' => $documents,
                 'subcategories' => $subcats,
+                'category' => $category,
                 'locale' => $locale,];
         return view('admin.documents',compact('data'));
     }
@@ -37,10 +39,11 @@ class DocumentsController extends Controller
     public function create()
     {
         //
-
-        $subcats = DB::table('subcategory')->whereIn('link',['documents', 'pracevlashtuvannya-praktika'])->get()->toArray();
+        $category = DB::table('category')->get()->toArray();
+        $subcats = DB::table('subcategory')->whereIn('link',['document', 'pracevlashtuvannya-praktika'])->get()->toArray();
         $data = [
             'subcategories' => $subcats,
+            'category' => $category,
             'type' => "0",
         ];
 
@@ -69,15 +72,18 @@ class DocumentsController extends Controller
         //
 
         $document = DB::table('documents')->where('doc_id',$id)->get();
-        $subcats = DB::table('subcategory')->whereIn('link',['documents','pracevlashtuvannya-praktika'])->get()->toArray();
+//        $subcategory = DB::table('subcategory')->where('subcategory_id',$document[0]->subcategory_id)->get();
+        $subcats = DB::table('subcategory')->whereIn('link',['document','pracevlashtuvannya-praktika'])->get()->toArray();
+        $category = DB::table('category')->get()->toArray();
+//        dd($category);
         $locale = $request['locale'];
         $data = [
             'type' => "1",
             'document' => $document[0],
-                'subcategories' => $subcats,
-                'locale' => $locale,
-                    ];
-
+            'subcategories' => $subcats ,
+            'category' => $category,
+            'locale' => $locale,
+            ];
         return view('admin.document_template',compact('data'));
     }
 

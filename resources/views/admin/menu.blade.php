@@ -13,7 +13,7 @@
             </div>
         </div>
         
-        <form method="post" action="{{ URL::route('ad_menus.menus.update', $data['category']->category_id) }}"" class="k-form k-form--label-right"  id ="linkBar">
+        <form method="post" action="{{ URL::route('ad_menus.menus.update', $data['category']->category_id) }}" class="k-form k-form--label-right"  id ="linkBar">
          {{ @csrf_field() }}
                @method('PUT') 
             
@@ -25,8 +25,7 @@
                             <input type="text" class="form-control" name="catTitle" placeholder="" value="{{$data['category']->{'title_' . $data['locale']} }}">
                         </div>
                     </div>
-                    
-                </div> 
+                </div>
 
 
             <div class="k-portlet__body">
@@ -34,9 +33,10 @@
                     <div class="form-group col-lg-6 col-md-9  col-sm-12">
                         <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="catSelect">  
                                 <option value= "external">Зовнішнє</option>                
-                                <option value= "news" @if($data['category']->link == 'news') selected @endif>Новини</option>
-                                <option value= "home" @if($data['category']->link == 'home') selected @endif >Головна</option>
-                                <option value= "documents" @if($data['category']->link == 'document') selected @endif>Документи</option>             <option value= "pracevlashtuvannya-praktika" @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif>Працевлаштування та практика</option>                      
+                                {{--<option value= "news" @if($data['category']->link == 'news') selected @endif>Новини</option>--}}
+                                {{--<option value= "home" @if($data['category']->link == 'home') selected @endif >Головна</option>--}}
+                                <option value= "documents" @if($data['category']->link == 'document') selected @endif>Документи</option>
+                                <option value= "pracevlashtuvannya-praktika" @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif>Працевлаштування та практика</option>
                         </select>
                     </div>
                     
@@ -58,7 +58,7 @@
                         <label class="col-form-label col-lg-2 col-sm-12">Title</label>
                         <div class="col-lg-8 col-md-9 col-sm-12">
                          <input type="text" class="subIdsField" name="id[{{$loop->index}}]" style="display:none" value="{{$sub->subcategory_id}}">
-                            <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->title}}">
+                            <input type="text" class="form-control" name="subcatTitle[{{$loop->index}}]" placeholder="" value="{{$sub->{'title_'.$data['locale']} }}">
                            
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                         <div class="form-group col-lg-6 col-md-9  col-sm-12">
                             <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="subcatSelect[{{$loop->index}}]">                  
                                 <option value= "external">Зовнішнє</option>
-                                <option value= "news" @if($sub->link == 'news') selected @endif>Новини</option>
-                                <option value= "home" @if($sub->link == 'home') selected @endif>Головна</option>
+                                {{--<option value= "news" @if($sub->link == 'news') selected @endif>Новини</option>--}}
+                                {{--<option value= "home" @if($sub->link == 'home') selected @endif>Головна</option>--}}
                                 <option value= "documents" @if($sub->link == 'document') selected @endif>Документи</option>
                                 <option value= "pracevlashtuvannya-praktika" @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif>Працевлаштування та практика</option>                       
                             </select>
@@ -103,8 +103,8 @@
                         <div class="form-group col-lg-6 col-md-9  col-sm-12">
                             <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="subcatSelect[0]">                  
                                 <option value= "external">Зовнішнє</option>
-                                <option value= "news">Новини</option>
-                                <option value= "home">Головна</option>
+                                {{--<option value= "news">Новини</option>--}}
+                                {{--<option value= "home">Головна</option>--}}
                                 <option value= "document">Документи</option>
                                 <option value= "pracevlashtuvannya-praktika" >Працевлаштування та практика</option>                        
                             </select>

@@ -58,7 +58,9 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .form-group:first-child{
     margin-top:2rem;
 }
-
+div[id^="local"] {
+    display: none;
+}
 .partners{
     border: 2px solid #ebedf2;
     max-width: auto;

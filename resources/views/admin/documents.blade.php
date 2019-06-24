@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="col-lg-2 k-margin-b-10-tablet-and-mobile">
-                        <label>Категорія документу:</label>
+                        <label>Розділ документу:</label>
                         <select class="form-control k-input" data-col-index="1">
                             <option value="">Вибрати</option>
                             @foreach($data['subcategories'] as $cat)
@@ -51,7 +51,7 @@
                         <tr>
                             <th>Заголовок</th>
                             <th>Категорія</th>
-                            <th>Дата</th>
+                            <th>Розділ</th>
                             <th>Дії</th>
                         </tr>
                     </thead>
@@ -60,11 +60,20 @@
                         <tr>
                             <td>{{$doc->title_ua}}</td>
                             @foreach($data['subcategories'] as $sub)
-                            @if($sub->subcategory_id == $doc->subcategory_id)
-                                <td>{{$sub->title_ua}}</td>
-                            @endif
+                                @if($sub->subcategory_id == $doc->subcategory_id)
+                                    @foreach($data['category'] as $cat)
+                                        @if($cat->category_id == $sub->category_id)
+                                            <td>{{$cat->title_ua}}</td>
+                                        @endif
+                                    @endforeach
+                                @endif
                             @endforeach
-                            <td>{{$doc->doc_date}}</td>
+                            @foreach($data['subcategories'] as $sub)
+                                @if($sub->subcategory_id == $doc->subcategory_id)
+                                    <td>{{$sub->title_ua}}</td>
+                                @endif
+                            @endforeach
+                            {{--<td>{{$doc->doc_date}}</td>--}}
                             <td>
                                 <input class="id" value="{{$doc->doc_id}}" style="display:none">
                                 <a href="{{ URL::route('ad_documents.documents.show', $doc->doc_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">

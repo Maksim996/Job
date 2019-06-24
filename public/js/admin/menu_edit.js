@@ -58,9 +58,9 @@ function add(parent) {
                     <div class="form-group col-lg-6 col-md-9  col-sm-12">
                         <select class="col-lg-6 col-md-9 ml-5 col-sm-12 sel_change" name="subcatSelect[${count}]">                  
                             <option value= "external">Зовнішнє</option>
-                            <option value= "news">news</option>
-                            <option value= "home">home</option>
-                            <option value= "documents">Documents</option> 
+                            <!--<option value= "news">Новини</option>-->
+                            <!--<option value= "home">Головна</option>-->
+                            <option value= "documents">Документы</option> 
                             <option value= "pracevlashtuvannya-praktika">Працевлаштування та практика</option>                      
                         </select>
                     </div>
@@ -93,9 +93,9 @@ function add(parent) {
     }  );
   }
 
-  document.getElementById("plus").onclick = () => {
+  /*document.getElementById("plus").onclick = () => {
     add(document.getElementById("dropdownBar"))
-  }
+  }*/
 
 
  
@@ -140,11 +140,14 @@ jQuery(document).ready(function(){
 
 function selectVal(j){
 let target_sel= $(j); 
-const extString = $(j).parents(".row").find(".extString");
+const extString = $('body').find(".extString");
+const table = $('body').find(".tableHide");
     if (target_sel.val()=='external'){
-        extString.show();
+        extString.show('slow');
+        table.hide('slow');
     } else {
-        extString.hide();
+        extString.hide('slow');
+        table.show('slow');
     }
 }
 selectBut.on('change',function(){

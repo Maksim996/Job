@@ -13,12 +13,12 @@ class DocumentsController extends Controller
         $locale = $request['locale'];
 
         $documents = DB::table('documents')->get()->toArray();
-        $subcategory = DB::table("subcategory")->where('link','documents')->get()->toArray();
+        $subcategory = DB::table("subcategory")->where('link','document')->get()->toArray();
 
         $category = DB::table("category")->get()->toArray();
        
         $subCategories = DB::table('subcategory')
-            ->where('link','documents')
+            ->where('link','document')
             ->where('type','!=','type1')
             ->get()
             ->toArray();

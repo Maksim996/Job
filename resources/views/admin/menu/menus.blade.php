@@ -8,15 +8,14 @@
        <div class="k-portlet__head align-items-center justify-content-between">
             <div class="k-portlet__head-label">
                 <h3 class="k-portlet__head-title">
-                    Анонси
+                    Меню
                 </h3>
+
+
             </div>
-           <a class="btn btn-brand k-btn k-btn--icon " id="m_plus" href="{{ route('ad_announcements.announcements.create') }}">
-               <span> <i class="la la-plus"></i> <span>Додати анонс</span> </span>
-           </a>
         </div>
         <div class="k-portlet">
-            <div class="k-portlet__head">
+           {{-- <div class="k-portlet__head">
                 <form class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end">
                     <div class="row  col-lg-8 col-md-12">
                         <label>Назва статті</label>
@@ -34,31 +33,28 @@
                         </button>
                     </div>
                 </form>
-            </div>
+            </div>--}}
             <div class="k-portlet__body">
                 <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                     <thead>
                         <tr>
                             <th>Заголовок</th>
-                            <th>Дата анонсу</th>
                             <th>Дії</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($data['announcements'] as $announcement)
+                        @foreach($data['categories'] as $category)
                         <tr>
-                            <td>{{ $announcement->title_ua }}</td>
-                            <td>{{ $announcement->date }}</td>
-                            <!-- <td nowrap></td> -->
+                            <td>{{ $category->title_ua }}</td>
                             <td>
-                                <input class="id" value="{{$announcement->inner_news_id}}" style="display:none">
 
-                                <a href="{{ URL::route('ad_announcements.announcements.show', $announcement->inner_news_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Перегляд">
+                                <a href="{{ URL::route('ad_nav.nav.show', $category->category_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Перегляд">
                                     <i class="la la-pencil"></i>
                                 </a>
-                                <a class="btn btn-sm btn-clean btn-icon btn-icon-md delete_announcement" title="Видалення">
+                                {{--<a class="btn btn-sm btn-clean btn-icon btn-icon-md delete_new" title="Видалення">
+
                                     <i class="la la-close"></i>
-                                </a>
+                                </a>--}}
                             </td>
                         </tr>
                         @endforeach
@@ -73,22 +69,22 @@
     document.addEventListener("DOMContentLoaded", function() {
         let count = $('tr').length;
         if (count == 2) {
-            $('.delete_announcement').hide();
-        } else $('.delete_announcement').show();
-        $('.delete_announcement').on('click', (e) => {
+            $('.delete_new').hide();
+        } else $('.delete_new').show();
+        $('.delete_new').on('click', (e) => {
             e.preventDefault();
             let id = $(e.target).closest('td').find('.id').val();
             $(e.target).closest('tr').remove();
             count = $('tr').length;
             console.log(count);
             if (count == 2) {
-                $('.delete_announcement').hide();
-            } else $('.delete_announcement').show();
+                $('.delete_new').hide();
+            } else $('.delete_new').show();
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "/admin/delete-announcement",
+                url: "/admin/delete-new",
                 method: 'post',
                 data: {
                     'id': id

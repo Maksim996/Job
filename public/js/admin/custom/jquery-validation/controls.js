@@ -4,6 +4,7 @@
 var KFormControls = function () {
     // Private functions
 
+
     var demo1 = function () {
         $( "#partners_blocks" ).validate({
             // define validation rules
@@ -53,79 +54,68 @@ var KFormControls = function () {
     }
 
     var demo2 = function () {
-        $( "#k_form_2" ).validate({
+        $( "#admin_header" ).validate({
             // define validation rules
             rules: {
-                //= Client Information(step 3)
-                // Billing Information
-                billing_card_name: {
-                    required: true
-                },
-                billing_card_number: {
+                title_ua: {
                     required: true,
-                    creditcard: true
+                    maxlength: 200,
                 },
-                billing_card_exp_month: {
-                    required: true
+                title_ru: {
+                    maxlength: 200,
                 },
-                billing_card_exp_year: {
-                    required: true
+                title_us: {
+                    maxlength: 200,
                 },
-                billing_card_cvv: {
+                link:{
                     required: true,
-                    minlength: 2,
-                    maxlength: 3
+                },
+                content_ua:{
+                    required: true,
+                    maxlength: 250,
+                },
+                content_ru:{
+                    maxlength: 250,
+                },
+                content_us:{
+                    maxlength: 250,
+                },
+                keywords:{
+                    required: true,
+                    maxlength:200,
+                },
+                description:{
+                    required: true,
                 },
 
-                // Billing Address
-                billing_address_1: {
-                    required: true
-                },
-                billing_address_2: {
-
-                },
-                billing_city: {
-                    required: true
-                },
-                billing_state: {
-                    required: true
-                },
-                billing_zip: {
-                    required: true,
-                    number: true
-                },
-
-                billing_delivery: {
-                    required: true
-                }
             },
 
             //display error alert on form submit
-            invalidHandler: function(event, validator) {
-                swal({
-                    "title": "",
-                    "text": "There are some errors in your submission. Please correct them.",
-                    "type": "error",
-                    "confirmButtonClass": "btn btn-secondary k-btn k-btn--wide",
-                    "onClose": function(e) {
-                        console.log('on close event fired!');
-                    }
-                });
-
-                event.preventDefault();
-            },
-
-            submitHandler: function (form) {
-                //form[0].submit(); // submit the form
-                swal({
-                    "title": "",
-                    "text": "Form validation passed. All good!",
-                    "type": "success",
-                    "confirmButtonClass": "btn btn-secondary"
-                });
-
-                return false;
-            }
+            // invalidHandler: function(event, validator) {
+            //     swal({
+            //         "title": "",
+            //         "text": "There are some errors in your submission. Please correct them.",
+            //         "type": "error",
+            //         "confirmButtonClass": "btn btn-secondary k-btn k-btn--wide",
+            //         "onClose": function(e) {
+            //             console.log('on close event fired!');
+            //         }
+            //     });
+            //
+            //     event.preventDefault();
+            // },
+            //
+            // submitHandler: function (form) {
+            //     //form[0].submit(); // submit the form
+            //     swal({
+            //         "title": "",
+            //         "text": "Form validation passed. All good!",
+            //         "type": "success",
+            //         "confirmButtonClass": "btn btn-secondary"
+            //     });
+            //
+            //     return false;
+            // }
         });
     }
 

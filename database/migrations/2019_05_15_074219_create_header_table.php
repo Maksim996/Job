@@ -15,10 +15,10 @@ class CreateHeaderTable extends Migration
     {
         Schema::create('header', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('img_path', 200);
-            $table->string('link', 200);
+            $table->string('img_path', 200)->nullable();
+            $table->text('link');
             $table->string('keywords', 200);
-            $table->string('description', 200);
+            $table->text('description');
             $table->string('title_ua', 200);
             $table->string('title_ru', 200)->nullable();
             $table->string('title_us', 200)->nullable();
