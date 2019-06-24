@@ -145,9 +145,11 @@ var KFormControls = function () {
                     required: true
                 },
                 short_location_ua: {
+                    required: true,
                     maxlength: 200
                 },
                 full_location_ua: {
+                    required: true,
                     maxlength: 200
                 },
                 date: {
@@ -273,10 +275,6 @@ var KFormControls = function () {
                     required: true,
                     maxlength: 200
                 },
-                img_path1: {
-                    required: true,
-                    maxlength: 200
-                },
                 card_link1: {
                     required: true,
                     maxlength: 200
@@ -290,10 +288,6 @@ var KFormControls = function () {
                     required: true,
                     maxlength: 200
                 },
-                img_path2: {
-                    required: true,
-                    maxlength: 200
-                },
                 card_link2: {
                     required: true,
                     maxlength: 200
@@ -304,10 +298,6 @@ var KFormControls = function () {
                     maxlength: 200
                 },
                 card_description3_ua: {
-                    required: true,
-                    maxlength: 200
-                },
-                img_path3: {
                     required: true,
                     maxlength: 200
                 },
