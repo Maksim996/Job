@@ -30,7 +30,7 @@
             {{--</div>--}}
         {{--@endif--}}
 
-        <form method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form" enctype="multipart/form-data">
+        <form id="practic-cards" method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form" enctype="multipart/form-data">
             {{ @csrf_field() }}
             <div class="k-portlet__body">
                 <div class="row mt-5">
