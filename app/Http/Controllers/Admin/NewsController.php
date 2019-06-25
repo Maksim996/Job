@@ -246,5 +246,7 @@ class NewsController extends Controller
             unlink($slider_path);
         }
         DB::table('inner_news')->where('inner_news_id', $id)->delete();
+
+        return response(204,204);
     }
 }

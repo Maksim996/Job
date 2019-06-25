@@ -39,7 +39,7 @@ class NewsController extends Controller
         ->paginate(2);
 
         for($i = 0; $i < count($news); $i++) {
-            $news[$i]->trans_title = $this->transliterate($news[$i]->{'title_' . $locale});
+            $news[$i]->trans_title = $this->transliterate($news[$i]->{'title_ua'});
         }
 
         $category = DB::table("category")->get()->toArray();

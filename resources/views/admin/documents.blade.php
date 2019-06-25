@@ -104,20 +104,16 @@
            else $('.delete_document').show();
 
             $('.delete_document').on('click', (e) => {
-
                 e.preventDefault();
-
                 let id = $(e.target).closest('td').find('.id').val();
                 $(e.target).closest('tr').remove();
 
                 count = $('tr').length;
-                console.log(count);
 
                 if(count == 2){
                     $('.delete_document').hide();
                 }
                 else $('.delete_document').show();
-
                $.ajax({
                      headers: {
                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -126,10 +122,11 @@
                    method: 'post',
                    data : {'id':id},
                     dataType: 'json',
-                   success: function(res){
-
-                   }
+                   success (res){
+                       window.location.href = '/admin/documents';
+                   },
                });
+
             });
     });
 

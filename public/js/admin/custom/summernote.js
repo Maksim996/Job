@@ -18,7 +18,7 @@ var KSummernoteDemo = function () {
 
       ],
              height: 100,
- minHeight: 100,             
+ minHeight: 100,
   maxHeight: null,
         });
     }

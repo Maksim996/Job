@@ -159,6 +159,7 @@ var DatatablesSearchOptionsAdvancedSearch = function() {
 			],
 		});
 
+
 		var filter = function() {
 			var val = $.fn.dataTable.util.escapeRegex($(this).val());
 			table.column($(this).data('col-index')).search(val ? val : '', false, false).draw();

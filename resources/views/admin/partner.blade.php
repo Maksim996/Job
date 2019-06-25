@@ -52,11 +52,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-brand">Зберегти</button>
-                             @if($data['count'] != 1)
-                              <a value="{{$data['partners']->id}}" class="btn btn-danger" id="brand_minus">
-                                  <span> <i class="la la-minus"></i> <span>Видалити бренд</span> </span>
-                              </a>
-                            @endif
+                            <a href="{{ route('ad_partners.partners.index')}}" class="btn btn-outline-secondary">Назад</a>
                         </div>
                     </div>
                 </div>
@@ -106,6 +102,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-brand">Зберегти</button>
+                            <a href="{{ route('ad_partners.partners.index')}}" class="btn btn-outline-secondary">Назад</a>
                         </div>
                     </div>
                 </div>

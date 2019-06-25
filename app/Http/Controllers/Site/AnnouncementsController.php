@@ -42,7 +42,7 @@ class AnnouncementsController extends Controller
         
 
         for($i = 0; $i < count($announcements); $i++) {
-            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->{'title_'.$locale});
+            $announcements[$i]->trans_title = $this->transliterate($announcements[$i]->{'title_ua'});
         }
 
         $category = DB::table("category")->get()->toArray();

@@ -9,6 +9,8 @@ body {
 }
 .card-img {
     border-radius: 0;
+    max-height: 180px;
+    min-height: 100px;
 }
 /*прижать футер к низу вне зависимости от контента */
     html,body{height: 100%;}
@@ -141,6 +143,7 @@ ul{
     }
     .banner img{
         width: 100%;
+        max-height: 100vh;
     }
 
     .navbar-light .navbar-toggler{

@@ -64,6 +64,8 @@ function collectFormData (e, isNews) {
         pageDescription = form.find('.page-description').val(),
         _token = form.find('input[name="_token"]').val();
 
+
+
     const mainImage = $("#single_img span img").attr('src');
     const sliderImages = $("#list span img"),
     	sliderImageBase64 = sliderImages.toArray().map((sliderImg) => $(sliderImg).attr('src'));
@@ -94,10 +96,15 @@ function collectFormData (e, isNews) {
         sliderImageBase64
     };
 
-    if (isNews) {
-        submitForm(id, dataToSend, true);
-    } else {
-        submitForm(id, dataToSend, false);
+    if( (checkLocalRu && (shortDescriptionRu == '' || (!isNews && shortLocationRu == '') || (!isNews && fullDescriptionRu == '') || fullLocationRu == '')) || (checkLocalUs && (shortDescriptionUs == '' || (!isNews && shortLocationUs == '') || (!isNews && fullDescriptionUs == '') || fullLocationUs == ''))) {
+        console.log("err");
+    }
+    else {
+        if (isNews) {
+            submitForm(id, dataToSend, true);
+        } else {
+            submitForm(id, dataToSend, false);
+        }
     }
 }
 

@@ -95,7 +95,9 @@
                     'id': id
                 },
                 dataType: 'json',
-                success: function(res) {}
+                success (res){
+                    window.location.href = '/admin/news';
+                },
             });
         });
     });

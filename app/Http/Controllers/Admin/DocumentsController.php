@@ -215,5 +215,6 @@ class DocumentsController extends Controller
             ])->value('file_link');
         File::delete($file);
         DB::table('documents')->where('doc_id',$id)->delete();
+        return response(204,204);
     }
 }

@@ -288,6 +288,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-brand">Зберегти</button>
+                            <a href="{{ route('ad_news.news.index')}}" class="btn btn-outline-secondary">Назад</a>
                         </div>
                     </div>
                 </div>

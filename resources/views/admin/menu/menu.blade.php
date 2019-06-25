@@ -65,7 +65,7 @@
             <div class="k-portlet__foot">
                 <div class="k-form__actions">
                     <button type="submit" class="btn btn-primary">Зберегти</button>
-                    <a href="{{ URL::previous() }}" class="btn btn-dark">Назад</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">Назад</a>
                 </div>
             </div>
         </form>

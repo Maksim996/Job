@@ -13,7 +13,11 @@
             </div>
         </div>
 
-        <form method="POST" @if($data['type'] == '1') action="{{ URL::route('ad_documents.documents.update', $data['document']->doc_id) }}" @else action="{{ URL::route('ad_documents.documents.update',0) }}" @endif class="k-form k-form--label-right" id='partners_blocks' enctype="multipart/form-data">
+        <form method="POST" @if($data['type'] == '1')
+                action="{{ URL::route('ad_documents.documents.update', $data['document']->doc_id) }}" @else action="{{ URL::route('ad_documents.documents.update',0) }}" @endif
+                class="k-form k-form--label-right"
+                id='document'
+                enctype="multipart/form-data">
               {{ @csrf_field() }}
                @method('PUT')
             <div class="k-portlet__body" id='documents_block'>
@@ -193,6 +197,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-brand">Зберегти</button>
+                            <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">Назад</a>
                         </div>
                     </div>
                 </div>

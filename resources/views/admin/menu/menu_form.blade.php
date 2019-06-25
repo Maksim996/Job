@@ -116,7 +116,7 @@
 <div class="k-portlet__foot">
     <div class="k-form__actions">
         <button type="submit" class="btn btn-primary">Зберегти</button>
-        <a href="{{ URL::previous() }}" class="btn btn-secondary">Відмінити</a>
+        <a href="{{ route('ad_nav.nav.index')}}" class="btn btn-outline-secondary">Відмінити</a>
     </div>
 </div>
 

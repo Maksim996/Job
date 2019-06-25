@@ -81,11 +81,10 @@
                     method: 'delete',
                     data : {_token: '{{csrf_token()}}',
                             id:id,},
-                    
-                    success: function(res){
-                        alert("Success");
-                        location.href = "http://job.test/admin/partners"
-                    }
+
+                   success (res){
+                       window.location.href = '/admin/partners';
+                   },
                 })   
             });
         });

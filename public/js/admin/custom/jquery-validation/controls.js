@@ -119,6 +119,30 @@ var KFormControls = function () {
                     required: true,
                     maxlength: 200
                 },
+                title_ru: {
+                    required: true,
+                    maxlength: 200
+                },
+                short_description_ru: {
+
+                    required: true,
+
+                    maxlength: 200
+                },
+                full_description_ru: {
+                    required: true,
+
+                },
+                short_location_ru: {
+                    required: true,
+
+                    maxlength: 200
+                },
+                full_location_ru: {
+                    required: true,
+
+                    maxlength: 200
+                },
             },
 
             //display error alert on form submit
@@ -319,6 +343,32 @@ var KFormControls = function () {
             }
         });
     };
+    var demo9 = function () {
+        $("#document").validate({
+            // define validation rules
+            rules: {
+                title_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                title_ru: {
+                    maxlength: 200
+                },
+                title_us: {
+                    maxlength: 200
+                },
+            },
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("document", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
 
     return {
         // public functions
@@ -331,6 +381,7 @@ var KFormControls = function () {
             demo6();
             demo7();
             demo8();
+            demo9();
         }
     };
 }();

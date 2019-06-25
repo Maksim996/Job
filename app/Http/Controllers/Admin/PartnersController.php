@@ -189,6 +189,7 @@ class PartnersController extends Controller
                 
             ])
         ->delete();
+        return response(204,204);
       
     }
 }

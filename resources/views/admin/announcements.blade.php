@@ -66,7 +66,8 @@
                 </table>
             </div>
        
-        </div>  
+        </div>
+
    </div>
 
     <script type="text/javascript" >
@@ -80,10 +81,13 @@
             let id = $(e.target).closest('td').find('.id').val();
             $(e.target).closest('tr').remove();
             count = $('tr').length;
-            console.log(count);
             if (count == 2) {
                 $('.delete_announcement').hide();
-            } else $('.delete_announcement').show();
+            }
+            else {
+                $('.delete_announcement').show();
+            }
+
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -94,7 +98,13 @@
                     'id': id
                 },
                 dataType: 'json',
-                success: function(res) {}
+                success (res){
+                    window.location.href = '/admin/announcements';
+                },
+                error(err) {
+                    console.log(err);
+
+                }
             });
         });
     });

@@ -286,6 +286,7 @@ class AnnouncementsController extends Controller
         ->get()
         ->toArray();
 
+
         $preview_path = public_path($preview[0]->img_path);
         unlink($preview_path);
 
@@ -300,5 +301,7 @@ class AnnouncementsController extends Controller
         }
 
         DB::table('inner_news')->where('inner_news_id', $id)->delete();
+
+        return response(204,204);
     }
 }
