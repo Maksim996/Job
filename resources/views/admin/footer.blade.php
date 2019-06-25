@@ -31,7 +31,6 @@
 
 
                     @for($i = 0; $i < count($data['footer']); $i++)
-                        <h1>dd</h1>
                         @if($data['footer'][$i]->type == 'left_column')
                             <div class="k-portlet__body left-footer-column partners" id='info_block' data-id="{{$data['footer'][$i]->footer_id}}">
                                 <div class='info-class' id='duplicater'>
@@ -39,7 +38,7 @@
                                         <input style="display: none;" type="text" class="form-control left-type" name="left-type[]" value="{{ $data['footer'][$i]->type }}">
                                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
                                         <div class="col-lg-6 col-md-9 col-sm-12">
-                                            <input type="text" class="form-control item-name" placeholder="" name="left-name[]" value="{{ $data['footer'][$i]->name_ua }}">
+                                            <input type="text" class="form-control item-name" placeholder="" name="left-name[]" value="{{ $data['footer'][$i]->name }}">
                                             <span class="form-text text-muted">Наприклад: локація</span>
                                         </div>
                                     </div>
@@ -54,9 +53,25 @@
 
 
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Текст</label>
+                                        <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
                                         <div class="col-lg-6 col-md-9 col-sm-12">
-                                            <input type="text" class="form-control item-content" placeholder="" name="left-content[]" value="{{ $data['footer'][$i]->content }}">
+                                            <input type="text" class="form-control item-content_ua" name="left-content[]" value="{{ $data['footer'][$i]->content_ua }}">
+                                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
+                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                            <input type="text" class="form-control item-content_ru" name="left-content[]" value="{{ $data['footer'][$i]->content_ru }}">
+                                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
+                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                            <input type="text" class="form-control item-content_us" name="left-content[]" value="{{ $data['footer'][$i]->content_us }}">
                                             <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
                                         </div>
                                     </div>
@@ -68,6 +83,7 @@
                                         </div>
                                         <img width="50px" id="item-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}"/>
                                     </div>
+
                                     <div class="form-group row">
                                         <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 ">
                                             <span>
