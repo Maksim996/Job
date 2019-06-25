@@ -92,6 +92,8 @@ $('button#delSocial').click(function(e) {
 });
 
 function addInfo(parent) {
+	//const Countleftblock = document.getElementsByClassName('info');
+	//console.log(Countleftblock);
 	const infoMain = document.createElement("div");
 	const allId = [];
 	$("[data-id]").each(function(elem) {
@@ -102,6 +104,12 @@ function addInfo(parent) {
 	} else {
 		var newId = 1;
 	}
+	/*let count = Countleftblock.length;
+	if(document.getElementById("info_plus").onclick = () => {
+	}){
+		count++;
+		return count;
+	}*/
 	infoMain.className = 'k-portlet__body left-footer-column new-info';
 	infoMain.id = 'info_block';
 	infoMain.setAttribute('data-id', newId);
@@ -125,12 +133,28 @@ function addInfo(parent) {
 		
 		
 		<div class="form-group row">
-		    <label class="col-form-label col-lg-2 col-sm-12">Текст</label>
+		    <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-content" placeholder="">
+		        <input type="text" class="form-control item-content_ua" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
 		</div>
+		
+		<div class="form-group row">
+		    <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
+		    <div class="col-lg-6 col-md-9 col-sm-12">
+		        <input type="text" class="form-control item-content_ru" placeholder="">
+		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
+		    </div>
+		</div>
+		
+		<div class="form-group row">
+		    <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
+		    <div class="col-lg-6 col-md-9 col-sm-12">
+		        <input type="text" class="form-control item-content_us" placeholder="">
+		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
+		    </div>
+		</div>  
 		
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
@@ -141,7 +165,8 @@ function addInfo(parent) {
 			</div>
 			<img src="" id="item-image">
 			
-		</div>
+		</div>  
+		 
 		<div class="form-group row">
 		    <button class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 " id="info_minus">
 		        <span> <i class="la la-minus"></i> <span>Видалити</span> </span>
@@ -155,13 +180,11 @@ function addInfo(parent) {
 		parent.removeChild(infoMain)
 	}
 
-
 	parent.appendChild(infoMain)
 }
 
 document.getElementById("info_plus").onclick = () => {
 	addInfo(document.getElementsByClassName("left-column-container")[0])
-
 };
 
 const formFooter = $('#form-footer');
@@ -200,7 +223,9 @@ const collectFooterData = (e) => {
 					type: container.find('.left-type').val(),
 					name: container.find('.item-name').val(),
 					link: container.find('.item-link').val(),
-					content: container.find('.item-content').val(),
+					content_ua: container.find('.item-content_ua').val(),
+					content_ru: container.find('.item-content_ru').val(),
+					content_us: container.find('.item-content_us').val(),
 					img: container.find('#item-image').attr('src')
 				};
 			}

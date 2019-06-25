@@ -129,9 +129,9 @@ class FooterController extends Controller
                     ->update([
                         'img_path' => $img_path,
                         'link' => $left_item->link,
-                        'content_ua' => $left_item->content,
-                        'content_ru' => $left_item->content,
-                        'content_us' => $left_item->content,
+                        'content_ua' => $left_item->content_ua,
+                        'content_ru' => $left_item->content_ru,
+                        'content_us' => $left_item->content_us,
                         'name' => $left_item->name,
                     ]);
             }
@@ -141,9 +141,9 @@ class FooterController extends Controller
                         'footer_id' => $id,
                         'img_path' => $img_path,
                         'link' => $left_item->link,
-                        'content_ua' => $left_item->content,
-                        'content_ru' => $left_item->content,
-                        'content_us' => $left_item->content,
+                        'content_ua' => $left_item->content_ua,
+                        'content_ru' => $left_item->content_ru,
+                        'content_us' => $left_item->content_us,
                         'type' => 'left_column',
                         'name' => $left_item->name,
                     ]);
