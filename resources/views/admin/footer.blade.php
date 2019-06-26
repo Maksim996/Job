@@ -37,7 +37,7 @@
                                     <div class="form-group row">
                                         <input style="display: none;" type="text" class="form-control left-type" name="left-type[]" value="{{ $data['footer'][$i]->type }}">
                                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-name" placeholder="" name="left-name{{$count}}" value="{{ $data['footer'][$i]->name }}">
                                             <span class="form-text text-muted">Наприклад: локація</span>
                                         </div>
@@ -45,7 +45,7 @@
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-link" placeholder="" name="left-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
                                             <span class="form-text text-muted">По кліку переходить на посиланням ...</span>
                                         </div>
@@ -54,7 +54,7 @@
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_ua" name="left-content{{$count}}" value="{{ $data['footer'][$i]->content_ua }}">
                                             <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
                                         </div>
@@ -62,7 +62,7 @@
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_ru" name="left-content_ru{{$count}}" value="{{ $data['footer'][$i]->content_ru }}">
                                             <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
                                         </div>
@@ -70,16 +70,16 @@
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_us" name="left-content_us{{$count}}" value="{{ $data['footer'][$i]->content_us }}">
                                             <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row align-items-center">
                                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
-                                            <input type="file" class="form-control item-image" name="img_path" value="{{ $data['footer'][$i]->img_path }}">
+                                        <div class="col-lg-3 col-md-9 col-sm-12">
+                                            <input type="file" class=" item-image" name="img_path" value="{{ $data['footer'][$i]->img_path }}">
                                         </div>
                                         <img width="50px" id="item-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}"/>
                                     </div>
@@ -113,7 +113,7 @@
                         <div class="form-group row">
                             <input style="display: none;" type="text" class="form-control about-us-type" name="about-us-type[]" value="{{ $data['footer'][$i]->type }}">
                             <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                            <div class="col-lg-6 col-md-9 col-sm-12">
+                            <div class="col-lg-9 col-md-9 col-sm-12">
                                 <input type="text" class="form-control about-us-link" placeholder="" name="about-us-link" data-id="{{$data['footer'][$i]->footer_id}}" value="{{ $data['footer'][$i]->link }}">
                                 <span class="form-text text-muted">По кліку переходить на посиланням ...</span>
                             </div>
@@ -134,7 +134,7 @@
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Назва соціальної мережі</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control social-name" name="social-name{{$count}}" value="{{ $data['footer'][$i]->name }}">
                                             <span class="form-text text-muted">Наприклад: Telegram</span>
                                         </div>
@@ -143,29 +143,31 @@
                                     <div class="form-group row">
                                         <input style="display: none;" class="form-control social-type" type="text" name="social-type[]" value="{{ $data['footer'][$i]->type }}">
                                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control social-link" name="social-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
                                             <span class="form-text text-muted">По кліку зображення переходить на посиланням ...</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Кольор при наведенні на логотип соціальної мережі</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control social-color" name="social-color_bg[]" value="{{ $data['footer'][$i]->color_bg }}">
                                             <span class="form-text text-muted">Наприклад: rgb(0,0,0) або black або #000</span>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row align-items-center">
                                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                                        <div class="col-lg-6 col-md-9 col-sm-12">
-                                            <input type="file" name="img_path" class="form-control social-image">
+                                        <div class="col-lg-3 col-md-9 col-sm-12">
+                                            <input type="file" name="img_path" class=" social-image">
                                         </div>
                                         <img width="50px" id="social-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}"/>
                                     </div>
-                                    <div class="form-group row">
-                                        <button id="delSocial" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 ">
-                                            <span> <i class="la la-minus"></i> <span>Видалити соціальну мережу</span> </span>
+                                    <div class="form-group row justify-content-center col-lg-12">
+                                        <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
+                                            <span>
+                                                <span>Видалити соціальну мережу</span>
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
@@ -177,7 +179,7 @@
 
                 </div>
 
-                <div class="row add-partners k-portlet__body">
+                <div class="row add-partners k-portlet__body ">
                     <div class="col-lg-12">
                         <button type="button" class="btn btn-brand k-btn k-btn--icon but-plus" id="social_plus">
                             <span> <i class="la la-plus"></i> <span>Додати соціальну мережу</span> </span>

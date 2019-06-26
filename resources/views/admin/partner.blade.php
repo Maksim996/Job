@@ -23,23 +23,23 @@
                 <div class='partners' id='duplicater'>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я партнера</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <input type="text" name="name" class="form-control" placeholder="" value="{{$data['partners']->name_brand}}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <input type="text" name="link" class="form-control" value="{{$data['partners']->link}}">
                             <span class="form-text text-muted">По кліку на заголовок переходить на посиланням ...</span> 
                         </div>
                     </div>
                     
-                    <div class="form-group row">
+                    <div class="form-group row align-items-center">
                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="file" name="img_path" class="form-control">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="file" name="img_path" >
                         </div>
                     </div>
 
@@ -73,23 +73,23 @@
                 <div class='partners' id='duplicater'>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я партнера</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <input type="text" name="name" class="form-control" placeholder="">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <input type="text" name="link" class="form-control">
                             <span class="form-text text-muted">По кліку на заголовок переходить на посиланням ...</span> 
                         </div>
                     </div>
                     
-                    <div class="form-group row">
+                    <div class="form-group row align-items-center">
                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input type="file" name="img_path" class="form-control">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="file" name="img_path" >
                         </div>
                     </div>
 

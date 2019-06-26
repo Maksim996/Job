@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path1" class="form-control">
+                                <input type="file" name="img_path1" class="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -190,7 +190,7 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path2" class="form-control">
+                                <input type="file" name="img_path2" class="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -320,7 +320,7 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path3" class="form-control">
+                                <input type="file" name="img_path3" class="">
                             </div>
                         </div>
                         <div class="form-group row">
