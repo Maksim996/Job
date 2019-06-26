@@ -470,6 +470,7 @@ $.extend( $.validator, {
 			return this.valid();
 		},
 
+
 		// https://jqueryvalidation.org/Validator.element/
 		element: function( element ) {
 			var cleanElement = this.clean( element ),

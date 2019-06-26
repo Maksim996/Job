@@ -88,6 +88,7 @@
                     <div class="k-aside-menu-wrapper k-grid__item k-grid__item--fluid" id="k_aside_menu_wrapper">
                         <div id="k_aside_menu" class="k-aside-menu " data-kmenu-vertical="1" data-kmenu-scroll="1" data-kmenu-dropdown-timeout="500" >
                             <ul class="k-menu__nav ">
+                                @php $routename = explode('.',Route::currentRouteName())[0] @endphp
 
                                 <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
                                     <a  href="{{ route('ad_nav.nav.index')}}" class="k-menu__link"><i class="k-menu__link-icon flaticon2-graphic"></i><span class="k-menu__link-text">Меню</span></a>
@@ -138,8 +139,8 @@
                                     <a href="{{ route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
 
                                 </li>
-                                <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here -->
-                                <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
+                                <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here  k-menu__item--active-->
+                                <li class="k-menu__item k-menu__item--submenu  @if ($routename == 'ad_practic-cards' || 'ad_practic-header')  ' k-menu__item--open k-menu__item--here' @else '' @endif " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
                                     <a href="javascript:;" class="k-menu__link k-menu__toggle"><i class="k-menu__link-icon flaticon2-graphic"></i><span class="k-menu__link-text">Працевлаштування та практика</span><i class="k-menu__ver-arrow la la-angle-right"></i></a>
                                     <div class="k-menu__submenu ">
                                         <span class="k-menu__arrow"></span>
@@ -147,13 +148,13 @@
                                             <li class="k-menu__item k-menu__item--parent" aria-haspopup="true" >
                                                 <span class="k-menu__link"><span class="k-menu__link-text">Працевлаштування та практика</span></span>
                                             </li>
-                                            <li class="k-menu__item" aria-haspopup="true" >
+                                            <li class="k-menu__item {{$routename == 'ad_practic-header' ? ' k-menu__item--active': ''}} " aria-haspopup="true" >
                                                 <a href="{{ route('ad_practic-header.practic-header.index')}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Головна</span>
                                                 </a>
                                             </li>
-                                            <li class="k-menu__item " aria-haspopup="true" >
+                                            <li class="k-menu__item {{$routename == 'ad_practic-cards' ? ' k-menu__item--active': ''}} " aria-haspopup="true" >
                                                 <a href="{{ route('ad_practic-cards.practic-cards.index')}}" class="k-menu__link ">
                                                     <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
                                                     <span class="k-menu__link-text">Картки</span>
@@ -163,27 +164,29 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
+                                <li class="k-menu__item {{$routename == 'ad_documents' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
                                     <a  href="{{ route('ad_documents.documents.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Документи
+                                            {{--{{Route::currentRouteName()}}--}}
+                                            {{--{{explode('.',Route::currentRouteName())[0]}}--}}
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
+                                <li class="k-menu__item {{$routename == 'ad_announcements' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
                                     <a  href="{{ route('ad_announcements.announcements.index')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Анонси
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
+                                <li class="k-menu__item {{$routename == 'ad_news' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
                                     <a  href="{{ route('ad_news.news.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Новини
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
+                                <li class="k-menu__item {{$routename == 'ad_partners' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
                                     <a  href="{{ route('ad_partners.partners.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Наши партнери
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true" >
+                                <li class="k-menu__item {{$routename == 'ad_footer' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
 
                                     <a href="{{ route('ad_footer.footer.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
                                         Футер
@@ -269,13 +272,7 @@
         <div id="k_scrolltop" class="k-scrolltop"> <i class="la la-arrow-up"></i> </div>
         <!-- end:: Scrolltop -->
         
-        <!-- begin::Global Config(global config for global JS sciprts) -->
-        <script src="{{ URL::asset('js/admin/main.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/partners.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/photo.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/footer.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/document.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/menu_edit.js') }}" type="text/javascript"></script>
+
 
         <!-- end::Global Config -->
         <!--begin:: Global Mandatory Vendors -->
@@ -316,7 +313,7 @@
 
 
         {{--validation plugin--}}
-            <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/jquery.validate.js') }}" type="text/javascript" charset="UTF-8"></script>
+        <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/jquery.validate.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/additional-methods.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/general/jquery-validation/dist/localization/messages_uk.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin//custom/jquery-validation/init.js') }}" type="text/javascript" charset="UTF-8"></script>
@@ -347,6 +344,13 @@
         <script src="{{ URL::asset('js/saveForm.js') }}"></script>
         <script src="{{ URL::asset('js/admin/chooseLangCheckboxRequire/chooseLangCheckboxRequire.js') }}"></script>
 
+        <!-- begin::Global Config(global config for global JS sciprts) -->
+        <script src="{{ URL::asset('js/admin/main.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/partners.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/photo.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/footer.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/document.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('js/admin/menu_edit.js') }}" type="text/javascript"></script>
 
         <!-- <script src="../assets/app/scripts/custom/dashboard.js" type="text/javascript"></script> -->
         <!--end::Page Scripts -->

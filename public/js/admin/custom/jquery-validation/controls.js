@@ -149,7 +149,12 @@ var KFormControls = function () {
             invalidHandler: function(event, validator) {
                 KUtil.scrollTo("announcements-form", -200);
             },
-
+            errorPlacement: function(error, element){
+                var element = $(element);
+                element.addClass('is-invalid');
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
             submitHandler: function (form) {
                 form[0].submit(); // submit the form
             }
@@ -200,7 +205,12 @@ var KFormControls = function () {
             invalidHandler: function(event, validator) {
                 KUtil.scrollTo("news-form", -200);
             },
-
+            errorPlacement: function(error, element){
+              var element = $(element);
+              element.addClass('is-invalid');
+              error.addClass('invalid-feedback');
+              error.appendTo(element.parent());
+            },
             submitHandler: function (form) {
                 form[0].submit(); // submit the form
             }
@@ -369,6 +379,7 @@ var KFormControls = function () {
             }
         });
     };
+
 
     return {
         // public functions

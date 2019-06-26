@@ -9,6 +9,7 @@ function addSocial(parent) {
 	} else {
 		var newId = 1;
 	}
+    const networks = document.getElementsByClassName('social-networks').length;
 	main.className = "k-portlet__body social-networks new-social";
 	main.id = "partners_block";
 	main.setAttribute('data-id', newId);
@@ -17,14 +18,14 @@ function addSocial(parent) {
 		<div class="form-group row">
 	        <label class="col-form-label col-lg-2 col-sm-12">Назва соціальної мережі</label>
 	        <div class="col-lg-6 col-md-9 col-sm-12">
-	            <input type="text" class="form-control social-name" placeholder="" name="social-color_bg[]">
+	            <input type="text" class="form-control social-name" placeholder="" name="social-name${networks}">
 	            <span class="form-text text-muted">Наприклад: Telegram</span>
 	        </div>
 	    </div>		
 		<div class="form-group row">
 			<label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
 			<div class="col-lg-6 col-md-9 col-sm-12">
-			    <input type="text" class="form-control social-link">
+			    <input type="text" class="form-control social-link" name="social-link${networks}"> 
 			    <span class="form-text text-muted">По кліку зображення переходить на посиланням</span> 
 			</div>
 		</div>
@@ -60,14 +61,21 @@ function addSocial(parent) {
 	parent.appendChild(main)
 }
 
-document.getElementById("social_plus").onclick = () => {
-	const block = document.getElementsByClassName('partners');
-	if (block.length < 7){
-		addSocial(document.getElementsByClassName("social-networks-container")[0])
-	}
+document.getElementById("info_plus").onclick = () => {
+	const block = document.getElementsByClassName('lef_block').length;
+	if (block < 7){
+        addInfo(document.getElementsByClassName("left-column-container")[0])
+    }
 	else alert('Максимальна кільскість соціальних мереж 7')
+};
 
-}
+document.getElementById("social_plus").onclick = () => {
+    const networks = document.getElementsByClassName('social-networks').length;
+    if (networks < 7){
+        addSocial(document.getElementsByClassName("social-networks-container")[0])
+    }
+    else alert('Максимальна кільскість соціальних мереж 7')
+};
 
 $('button#delLeftCol').click(function(e) {
 	e.preventDefault();
@@ -110,15 +118,17 @@ function addInfo(parent) {
 		count++;
 		return count;
 	}*/
+    const block = document.getElementsByClassName('lef_block').length;
+
 	infoMain.className = 'k-portlet__body left-footer-column new-info';
 	infoMain.id = 'info_block';
 	infoMain.setAttribute('data-id', newId);
 	infoMain.innerHTML = `
-	<div class="partners" class="info" id="duplicater">
+	<div class="info partners lef_block " id="duplicater">
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-name" placeholder="">
+		        <input type="text" class="form-control item-name" name="left-name${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: локація</span> 
 		    </div>
 		</div>
@@ -126,7 +136,7 @@ function addInfo(parent) {
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-link" placeholder="">
+		        <input type="text" class="form-control item-link" name="left-link${block}"   placeholder="">
 		        <span class="form-text text-muted">По кліку переходить на посиланням ...</span> 
 		    </div>
 		</div>
@@ -135,7 +145,7 @@ function addInfo(parent) {
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-content_ua" placeholder="">
+		        <input type="text" class="form-control item-content_ua" name="left-content${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
 		</div>
@@ -143,7 +153,7 @@ function addInfo(parent) {
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-content_ru" placeholder="">
+		        <input type="text" class="form-control item-content_ru" name="left-content_ru${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
 		</div>
@@ -151,7 +161,7 @@ function addInfo(parent) {
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-content_us" placeholder="">
+		        <input type="text" class="form-control item-content_us" name="left-content_us${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
 		</div>  
@@ -178,34 +188,39 @@ function addInfo(parent) {
 		let elem = parent.children[parent.children.length - 1];
 		axios.post('/admin/footer-delete', {id: $(elem).attr('data-id')});
 		parent.removeChild(infoMain)
-	}
+	};
 
 	parent.appendChild(infoMain)
 }
 
-document.getElementById("info_plus").onclick = () => {
-	addInfo(document.getElementsByClassName("left-column-container")[0])
-};
+
 
 const formFooter = $('#form-footer');
 
+
+
+
+
 const updateFooter = (data) => {
-	axios.post('/admin/footer', data)
-		.then( (response) => {
-			console.log(response);
-		})
-		.catch( (err) => {
-			console.log(err);
-		});
+    axios.post('/admin/footer', data)
+        .then( (response) => {
+            console.log(response);
+
+             window.location.href = '/admin/footer';
+        })
+        .catch( (err) => {
+            console.log(err);
+        });
 };
 
 
 
 
 const collectFooterData = (e) => {
-	e.preventDefault();
+
 
 	let formData = new FormData();
+
 
 	const leftColumnBlocks = JSON.stringify([...formFooter.find('.left-footer-column')].map((block) => {
 
@@ -215,8 +230,9 @@ const collectFooterData = (e) => {
 				image = container.find('.item-image')[0].files[0] || null;
 
 			if(image == null && container.find('#item-image').attr('src') == '') {
-				alert('Додайте зображення для Left column');
+				alert('Додайте зображення в розділ: Інформація про нас');
 			} else {
+
 				formData.append(indexImage, image);
 				return {
 					id,
@@ -228,6 +244,7 @@ const collectFooterData = (e) => {
 					content_us: container.find('.item-content_us').val(),
 					img: container.find('#item-image').attr('src')
 				};
+
 			}
 		})),
 
@@ -242,12 +259,13 @@ const collectFooterData = (e) => {
 
 
 		socialNetworks = JSON.stringify([...formFooter.find('.social-networks')].map( (socialNetwork) => {
+
 			let container = $(socialNetwork),
 				id = container.attr('data-id'),
 				indexImage = `social-column-image-${id}`,
 				image = container.find('.social-image')[0].files[0] || null;
 			if(image == null && container.find('#social-image').attr('src') == '') {
-				alert('Додайте зображення для соцмереж');
+				alert('Додайте зображення для соц-мереж');
 			} else {
 				formData.append(indexImage, image);
 				return {
@@ -261,13 +279,60 @@ const collectFooterData = (e) => {
 			}
 		}));
 
+
 	formData.append('_token', formFooter.find('input[name="_token"]').val());
 	formData.append('leftSide', leftColumnBlocks);
 	formData.append('aboutUs', aboutUsData);
 	formData.append('socialNetworks', socialNetworks);
 
-	updateFooter(formData);
+
+    updateFooter(formData);
+
 };
+let ob = {};
+for(let i=0; i<8; i++){
+    ob = Object.assign(ob,{
+        ["left-name"+i]: {
+            maxlength: 200,
+            required: true
+        },
+        ['left-link'+i]: {
+            required: true
+        },
+        ['left-content'+i]: {
+            required: true
+        },
+        ['left-content_ru'+i]: {
+            required: true
+        },
+        ['left-content_us'+i]: {
+            required: true
+        },
+        ['social-name'+i]:{
+            required: true,
+            maxlength: 200,
+        },
+        ['social-link'+i]:{
+            required: true
+        }
 
+    },{
+        'about-us-link':{
+            required:true,
+            maxlength:200
+        }
+    });
+};
+$("#form-footer").validate({
+    rules: ob,
+    invalidHandler: function(event, validator) {
 
-formFooter.on('submit', collectFooterData);
+        KUtil.scrollTo("document", -200);
+    },
+    submitHandler: function(form){
+            collectFooterData();
+    }
+
+});
+ //formFooter.on('submit', collectFooterData);
+

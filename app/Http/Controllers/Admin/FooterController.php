@@ -116,11 +116,11 @@ class FooterController extends Controller
 
 	        $id = $left_item->id;
             $img_key = 'left-column-image' . '-' . $id;
-
             if($img_path = $request->file($img_key) == null) {
                 $img_path = $left_item->img;
             } else {
-                $img_path = $request->file($img_key)->store('images/uploads_footer','public');
+                $filePath = $img_key .'.'. $request->file($img_key)->getClientOriginalExtension();
+                $img_path = $request->file($img_key)->storeAs('images/uploads_footer',$filePath,'public');
             }
 
             if (DB::table('footer')->where('footer_id', $id)->exists()) {
@@ -163,7 +163,8 @@ class FooterController extends Controller
             if($img_path = $request->file($img_key) == null) {
                 $img_path = $social_item->img;
             } else {
-                $img_path = $request->file($img_key)->store('images/uploads_footer','public');
+                $filePath = $img_key .'.'. $request->file($img_key)->getClientOriginalExtension();
+                $img_path = $request->file($img_key)->storeAs('images/uploads_footer',$filePath,'public');
             }
 
             if (DB::table('footer')->where('footer_id', $id)->exists()) {
