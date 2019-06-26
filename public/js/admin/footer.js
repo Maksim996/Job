@@ -17,41 +17,44 @@ function addSocial(parent) {
 	<div class="partners" id="duplicater">
 		<div class="form-group row">
 	        <label class="col-form-label col-lg-2 col-sm-12">Назва соціальної мережі</label>
-	        <div class="col-lg-6 col-md-9 col-sm-12">
+	        <div class="col-lg-9 col-md-9 col-sm-12">
 	            <input type="text" class="form-control social-name" placeholder="" name="social-name${networks}">
 	            <span class="form-text text-muted">Наприклад: Telegram</span>
 	        </div>
 	    </div>		
 		<div class="form-group row">
 			<label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-			<div class="col-lg-6 col-md-9 col-sm-12">
+			<div class="col-lg-9 col-md-9 col-sm-12">
 			    <input type="text" class="form-control social-link" name="social-link${networks}"> 
 			    <span class="form-text text-muted">По кліку зображення переходить на посиланням</span> 
 			</div>
 		</div>
 		<div class="form-group row">
 		  <label class="col-form-label col-lg-2 col-sm-12">Кольор при наведенні на логотип соціальної мережі</label>
-		  <div class="col-lg-6 col-md-9 col-sm-12">
+		  <div class="col-lg-9 col-md-9 col-sm-12">
 		      <input type="text" class="form-control social-color" name="social-color_bg[]" value="#4267b2">
               <span class="form-text text-muted">Наприклад: rgb(0,0,0) або black або #000</span>
 		  </div>
 		</div>
 		
-		<div class="form-group row">
+		<div class="form-group row align-items-center">
 		<label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-		<div class="col-lg-6 col-md-9 col-sm-12">
+		<div class="col-lg-3 col-md-9 col-sm-12">
 		    <form enctype="multipart/form-data" method="post">
-		        <input type="file" class="form-control social-image">
+		        <input type="file" class="social-image">
 		    </form> 
 		</div>
 		<img src="" id="social-image">
 		</div>
-		<div class="form-group row">
-			<button type="button" class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 ">
-				<span> <i class="la la-minus"></i> <span>Видалити соціальну мережу</span> </span>
+		<div class="form-group row justify-content-center col-lg-12">
+			<button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
+				<span>
+					<span>Видалити соціальну мережу</span>
+				</span>
 			</button>
 		</div>
-	</div>`
+	</div>	
+`
 
 	main.getElementsByClassName("btn")[0].onclick = () => {
 		let elem = parent.children[parent.children.length - 1];
@@ -127,7 +130,7 @@ function addInfo(parent) {
 	<div class="info partners lef_block " id="duplicater">
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
-		    <div class="col-lg-6 col-md-9 col-sm-12">
+		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-name" name="left-name${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: локація</span> 
 		    </div>
@@ -135,7 +138,7 @@ function addInfo(parent) {
 		
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-		    <div class="col-lg-6 col-md-9 col-sm-12">
+		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-link" name="left-link${block}"   placeholder="">
 		        <span class="form-text text-muted">По кліку переходить на посиланням ...</span> 
 		    </div>
@@ -144,7 +147,7 @@ function addInfo(parent) {
 		
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
-		    <div class="col-lg-6 col-md-9 col-sm-12">
+		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-content_ua" name="left-content${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
@@ -152,7 +155,7 @@ function addInfo(parent) {
 		
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
-		    <div class="col-lg-6 col-md-9 col-sm-12">
+		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-content_ru" name="left-content_ru${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
@@ -160,15 +163,15 @@ function addInfo(parent) {
 		
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
-		    <div class="col-lg-6 col-md-9 col-sm-12">
+		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-content_us" name="left-content_us${block}" placeholder="">
 		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
 		    </div>
 		</div>  
 		
-		<div class="form-group row">
+		<div class="form-group row align-items-center">
 		    <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-		    <div class="col-lg-6 col-md-9 col-sm-12">
+		    <div class="col-lg-3 col-md-9 col-sm-12">
 		        <form enctype="multipart/form-data" method="post">
 		            <input type="file" class=" item-image">
 		        </form> 
@@ -176,14 +179,13 @@ function addInfo(parent) {
 			<img src="" id="item-image">
 			
 		</div>  
-        <div class="form-group row justify-content-center col-lg-12">
-            <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
-                <span>
-                    <span>Видалити</span>
-                </span>
-            </button>
-
-        </div>
+		<div class="form-group row justify-content-center col-lg-12">
+			<button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
+				<span>
+					<span>Видалити</span>
+				</span>
+			</button>
+		</div>
 	</div>`
 
 	infoMain.getElementsByClassName("btn")[0].onclick = () => {
