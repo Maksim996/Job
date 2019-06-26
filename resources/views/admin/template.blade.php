@@ -76,7 +76,8 @@
                     <div class="k-aside__brand k-grid__item " id="k_aside_brand">
                         <div class="k-aside__brand-logo">
                             <a href="{{route('home')}}">
-                                Повернутися на сайт
+                                {{--Повернутися на сайт--}}
+                                <img  width="150" src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo">
                             </a>
                         </div>
                         <div class="k-aside__brand-tools">
@@ -89,59 +90,25 @@
                         <div id="k_aside_menu" class="k-aside-menu " data-kmenu-vertical="1" data-kmenu-scroll="1" data-kmenu-dropdown-timeout="500" >
                             <ul class="k-menu__nav ">
                                 @php $routename = explode('.',Route::currentRouteName())[0] @endphp
-
-                                <li class="k-menu__item k-menu__item--submenu  " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
-                                    <a  href="{{ route('ad_nav.nav.index')}}" class="k-menu__link"><i class="k-menu__link-icon flaticon2-graphic"></i><span class="k-menu__link-text">Меню</span></a>
-                                    <div class="k-menu__submenu ">
-                                        <span class="k-menu__arrow"></span>
-                                        <ul class="k-menu__subnav">
-                                            {{--<li class="k-menu__item" aria-haspopup="true" >
-                                                <a  href="{{ route('ad_nav.nav.index')}}" class="k-menu__link"><span class="k-menu__link-text">Меню</span></a>
-                                            </li>--}}
-                                            {{--<li class="k-menu__item" aria-haspopup="true" >
-                                                <a href="{{ route('menu',array('id' => '3'))}}" class="k-menu__link ">
-                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
-                                                    <span class="k-menu__link-text">Практика</span>
-                                                </a>
-                                            </li>
-                                            <li class="k-menu__item " aria-haspopup="true" >
-                                                <a href="{{ route('menu',array('id' => '4'))}}" class="k-menu__link ">
-                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
-                                                    <span class="k-menu__link-text">Документи</span>
-                                                </a>
-                                            </li>
-                                            <li class="k-menu__item " aria-haspopup="true" >
-                                                <a href="{{ route('menu',array('id' => '5'))}}" class="k-menu__link ">
-                                                    <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>
-                                                    <span class="k-menu__link-text">Випускники</span>
-                                                </a>
-                                            </li>--}}
-                                             {{--<li class="k-menu__item " aria-haspopup="true" >--}}
-                                                {{--<a href="{{ route('menu',array('id' => '1'))}}" class="k-menu__link ">--}}
-                                                    {{--<i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>--}}
-                                                    {{--<span class="k-menu__link-text">Головна</span>--}}
-                                                {{--</a>--}}
-                                            {{--</li>--}}
-                                             {{--<li class="k-menu__item " aria-haspopup="true" >--}}
-                                                {{--<a href="{{ route('menu',array('id' => '2'))}}" class="k-menu__link ">--}}
-                                                    {{--<i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>--}}
-                                                    {{--<span class="k-menu__link-text">Новини</span>--}}
-                                                {{--</a>--}}
-                                            {{--</li>--}}
-                                            
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                
                                 <li class="k-menu__item " aria-haspopup="true" >
 
-                                    <a href="{{ route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Головна</span></a>
+                                    <a href="{{route('home')}}" class="k-menu__link "><i class="k-menu__link-icon fa fa-eye"></i><span class="k-menu__link-text">Перейти на сайт</span></a>
 
                                 </li>
+                                <li class="k-menu__item {{$routename == 'ad_header' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
+
+                                    <a href="{{ route('ad_header.header.index') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon-browser"></i><span class="k-menu__link-text">Головна</span></a>
+
+                                </li>
+                                <li class="k-menu__item {{$routename == 'ad_nav' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
+
+                                    <a href="{{ route('ad_nav.nav.index')}}" class="k-menu__link "><i class="k-menu__link-icon fa fa-stream"></i><span class="k-menu__link-text">Меню</span></a>
+
+                                </li>
+
                                 <!-- Добавить когда вібраній елемент k-menu__item--open k-menu__item--here  k-menu__item--active-->
-                                <li class="k-menu__item k-menu__item--submenu  @if ($routename == 'ad_practic-cards' || 'ad_practic-header')  ' k-menu__item--open k-menu__item--here' @else '' @endif " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
-                                    <a href="javascript:;" class="k-menu__link k-menu__toggle"><i class="k-menu__link-icon flaticon2-graphic"></i><span class="k-menu__link-text">Працевлаштування та практика</span><i class="k-menu__ver-arrow la la-angle-right"></i></a>
+                                <li class="k-menu__item k-menu__item--submenu  {{ $routename == 'ad_practic-cards' || $routename == 'ad_practic-header' ? ' k-menu__item--open k-menu__item--here': ''}} " aria-haspopup="true" data-kmenu-submenu-toggle="hover">
+                                    <a href="javascript:;" class="k-menu__link k-menu__toggle"><i class="k-menu__link-icon flaticon-businesswoman"></i><span class="k-menu__link-text">Працевлаштування та практика</span><i class="k-menu__ver-arrow la la-angle-right"></i></a>
                                     <div class="k-menu__submenu ">
                                         <span class="k-menu__arrow"></span>
                                         <ul class="k-menu__subnav">
@@ -165,44 +132,40 @@
                                     </div>
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_documents' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
-                                    <a  href="{{ route('ad_documents.documents.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_documents.documents.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-document"></i><span class="k-menu__link-text">
                                         Документи
-                                            {{--{{Route::currentRouteName()}}--}}
-                                            {{--{{explode('.',Route::currentRouteName())[0]}}--}}
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_announcements' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
-                                    <a  href="{{ route('ad_announcements.announcements.index')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_announcements.announcements.index')}}"  class="k-menu__link "><i class="k-menu__link-icon flaticon-doc"></i><span class="k-menu__link-text">
                                         Анонси
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_news' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
-                                    <a  href="{{ route('ad_news.news.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_news.news.index')}}" class="k-menu__link "><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">
                                         Новини
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_partners' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
-                                    <a  href="{{ route('ad_partners.partners.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a  href="{{ route('ad_partners.partners.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon-users"></i><span class="k-menu__link-text">
                                         Наши партнери
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_footer' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
 
-                                    <a href="{{ route('ad_footer.footer.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">
+                                    <a href="{{ route('ad_footer.footer.index')}}" class="k-menu__link "><i class="k-menu__link-icon fa fa-ruler-horizontal"></i><span class="k-menu__link-text">
                                         Футер
                                     </span></a>
                                 </li>
-                                <li class="k-menu__item " aria-haspopup="true">
-                                    <a  href="{{ route('logout') }}" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i>
-                                        <span class="k-menu__link-text"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
+                                <li class="k-menu__item " aria-haspopup="true" >
+                                    <a href="{{ route('logout') }}" class="k-menu__link ">
+                                        <i class="k-menu__link-icon fa fa-arrow-left"></i>
+                                        <span class="k-menu__link-text">
+                                            Вийти
                                         </span>
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
                                 </li>
+
                             </ul>
                         </div>
                     </div>

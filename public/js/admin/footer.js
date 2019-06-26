@@ -170,18 +170,20 @@ function addInfo(parent) {
 		    <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
 		    <div class="col-lg-6 col-md-9 col-sm-12">
 		        <form enctype="multipart/form-data" method="post">
-		            <input type="file" class="form-control item-image">
+		            <input type="file" class=" item-image">
 		        </form> 
 			</div>
 			<img src="" id="item-image">
 			
 		</div>  
-		 
-		<div class="form-group row">
-		    <button class="btn btn-social-minus k-btn k-btn--icon but-minus col-form-label col-lg-2 col-sm-12 " id="info_minus">
-		        <span> <i class="la la-minus"></i> <span>Видалити</span> </span>
-		    </button>
-		</div>
+        <div class="form-group row justify-content-center col-lg-12">
+            <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
+                <span>
+                    <span>Видалити</span>
+                </span>
+            </button>
+
+        </div>
 	</div>`
 
 	infoMain.getElementsByClassName("btn")[0].onclick = () => {

@@ -84,7 +84,32 @@ ul{
     height: auto;
 }
 
+.menu__admin {
+    background: rgba(255, 255, 255, 1);
+    text-align: right;
+    font-size: 16px;
+    z-index: 20;
+    height: 36px;
+    position: fixed;
+    font-weight: 500;
+    width: 100%;
+}
+.menu__admin-user,
+.menu__admin-edit,
+.menu__admin-exit {
+    border-radius: 5px 5px 5px 5px;
+    padding: 3px 10px;
+    color:rgba(0,0,0,1);
+}
 
+a.menu__admin-edit:hover,
+a.menu__admin-exit:hover {
+    text-decoration: none;
+    transition: all .3s;
+}
+.menu__admin ~ #menu_header,.menu__admin ~ #menu_header >.navbar{
+    top:36px;
+}
 
 
 .container{
@@ -194,10 +219,35 @@ ul{
     }
     .language-full{
         width: 74px;
+        display: flex;
+        align-items: center;
     }
     .language-full img{
         margin-top: -3px;
     }
+    .language-full #language-choice{
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: white;
+        padding: 0 10px;
+        text-transform: capitalize;
+        height: 100%;
+    }
+.language-full #language-choice:hover{
+    background: #fff;
+    color: black;
+}
+.language-full #language-choice:focus{
+    outline: none;
+}
+.language-full #language-choice option:hover{
+    cursor: pointer;
+}
+.language-full #language-choice option{
+    color: #000;
+    cursor: pointer;
+}
 /*конец меню*/
 .filter{
     position:absolute;

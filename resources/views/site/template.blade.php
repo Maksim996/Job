@@ -30,6 +30,24 @@
     <div class="wrapper">
         <div class="wrapper-content">
             @section('menu')
+                @auth
+                    <nav class="menu__admin">
+                        <div class="row justify-content-end align-items-center mr-4">
+                            <a class="menu__admin-user d-flex align-items-center">
+                                <i class="icon-user mr-3"></i>
+                                <span>{{Auth::user()->name}}</span>
+                            </a>
+                            <a href="{{  route('ad_header.header.index')}}" class="menu__admin-edit d-flex align-items-center">
+                                <i class="icon-edit mr-3"></i>
+                                <span>Редагувати</span>
+                            </a>
+                            <a href="{{ route('logout') }}" class="menu__admin-exit d-flex align-items-center">
+                                <i class="icon-exit mr-3"></i>
+                                <span>Вийти із редагування</span>
+                            </a>
+                        </div>
+                    </nav>
+                @endauth
                 <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
                         <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
@@ -76,18 +94,11 @@
                             @endforeach
 
                                 <li class="nav-item dropdown language-full ">
-                                    <select id="language-choice" style="margin-top: 25%; border: none; background: rgba(0,0,0,.3); color: white; font-weight: 700; text-transform: capitalize;">
+                                    <select id="language-choice" >
                                         @foreach(['ua', 'ru', 'us'] as $locale)
                                             <option value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
                                         @endforeach
                                     </select>
-                                    {{--<a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                        {{--<img src="{{ URL::asset('images/ukraine.svg')}}">--}}
-                                    {{--</a>--}}
-                                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">--}}
-                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>--}}
-                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>--}}
-                                    {{--</div>--}}
                                 </li>
                                 <li class="nav-item dropdown language-media">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
