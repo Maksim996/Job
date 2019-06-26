@@ -16,7 +16,6 @@
               crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
-        <script src="{{ URL::asset('css/admin/font.js') }}"></script>
         {{--<script src="{{ URL::asset('js/app.js') }}"></script>--}}
 
         <!--end::Fonts -->
@@ -47,7 +46,7 @@
         <link href="{{ URL::asset('css/admin/skins/brand/navy.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ URL::asset('css/admin/skins/aside/navy.css') }}" rel="stylesheet" type="text/css" />
         <!--end::Layout Skins -->
-        <link rel="shortcut icon" href="../assets/media/logos/favicon.ico" />
+        <link rel="shortcut icon" href="{{ URL::asset('images/favicon.ico') }}" />
         <link href="{{ URL::asset('css/admin/style.css') }}" rel="stylesheet" type="text/css" />
     </head>
     <!-- end::Head -->
@@ -56,8 +55,9 @@
         <!-- begin:: Header Mobile -->
         <div id="k_header_mobile" class="k-header-mobile k-header-mobile--fixed " >
             <div class="k-header-mobile__logo">
-                <a href="index.html">
-                    <img alt="Logo" src="../assets/media/logos/logo-6.png"/>
+                <a href="{{route('home')}}">
+                    {{--Повернутися на сайт--}}
+                    <img  width="150" src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo">
                 </a>
             </div>
             <div class="k-header-mobile__toolbar">
@@ -257,8 +257,8 @@
         <script src="{{ URL::asset('js/admin/general/repeater.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/summernote.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/general/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/general/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/general/bootstrap-timepicker/init.js') }}" type="text/javascript"></script>
+{{--        <script src="{{ URL::asset('js/admin/general/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>--}}
+{{--        <script src="{{ URL::asset('js/admin/general/bootstrap-timepicker/init.js') }}" type="text/javascript"></script>--}}
         <script src="{{ URL::asset('js/admin/general/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
         <!-- <script src="../assets/vendors/custom/components/vendors/bootstrap-datepicker/init.js" type="text/javascript"></script> -->
 
@@ -290,10 +290,10 @@
         <script src="{{ URL::asset('js/admin/custom/summernote.js') }}" type="text/javascript"></script>
 
 
-        <script src="{{ URL::asset('js/admin/custom/bootstrap-timepicker.js') }}" type="text/javascript"></script>
+{{--        <script src="{{ URL::asset('js/admin/custom/bootstrap-timepicker.js') }}" type="text/javascript"></script>--}}
 
 
-        <script src="{{ URL::asset('js/admin/custom/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+{{--        <script src="{{ URL::asset('js/admin/custom/bootstrap-datepicker.js') }}" type="text/javascript"></script>--}}
          <script src="{{ URL::asset('js/admin/general/locales/bootstrap-datetimepicker.ua.js') }}" type="text/javascript" charset="UTF-8"></script>
         <script src="{{ URL::asset('js/admin/custom/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
 

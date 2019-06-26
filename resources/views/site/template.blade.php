@@ -5,11 +5,27 @@
     <meta charset="UTF-8">
     <title>Job</title>
 
+    {{--@php $routename = explode('.',Route::currentRouteName())[0] @endphp--}}
+    {{--@php $routenames =[--}}
+        {{--'home',--}}
+        {{--'news',--}}
+        {{--'pracevlashtuvannya-praktika',--}}
+        {{--'document',--}}
+        {{--'announcements',--}}
+    {{--]  @endphp--}}
 
-    <meta name="keywords" content="{{$data['header'][0]->keywords}}">
+    <meta name="keywords" content="
+    {{--{{$routename}}--}}
+
+        {{--@for($i=0;$i<count($routenames);$i++)--}}
+            {{--@if($routename == $routenames[$i])--}}
+                {{--{{$data['header'][0]}}--}}
+            {{--@endif--}}
+        {{--@endfor--}}
+
+        ">
     <meta name="description" content="{{$data['header'][0]->description}}">
-
-    <link rel="shortcut icon" type="image/svg" href="img/FavIcon.svg">
+    <link rel="shortcut icon" href="{{ URL::asset('images/favicon.ico') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="{{ URL::asset('js/jquery3_3_1.js')}}"></script>
@@ -23,7 +39,6 @@
     <link rel="stylesheet" href="{{ URL::asset('fonts/icon/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/media.css') }}">
-    
 </head>
 
 <body id="body">
@@ -191,9 +206,6 @@
 
 
 
-
-    {{-- что это за аякс ?!!!!! (с) Вадим. Скажи Вадиму зачем он здесь кто это видит --}}
-    <script src="js/ajax1_14_7.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('plugins/slick-slider/slick.min.js')}}"></script>
     <script src="{{ URL::asset('js/main.js')}}"></script>
