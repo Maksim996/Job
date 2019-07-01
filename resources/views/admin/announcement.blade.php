@@ -118,7 +118,6 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Дата та час проведення</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-
                         <input type="input" class="form-control date-meeting" autocomplete="off" placeholder="" name="date"
                             id="k_datetimepicker_3"
                             @if(isset($data['announcement'][0]))
@@ -126,7 +125,7 @@
                             @else
                                 value=""
                             @endif
-                        <span class="form-text text-muted">Приклад: 21 грудня о 14:00</span>
+                        >
                     </div>
                 </div>
                 <div class="form-group row align-items-center">
