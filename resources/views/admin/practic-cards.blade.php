@@ -14,21 +14,6 @@
                 </h3>
             </div>
         </div>
-        <style>
-            .admin_card{
-                height: 240px;
-            }
-        </style>
-
-        {{--@if($errors->any())--}}
-            {{--<div class="alert alert-danger">--}}
-                {{--<ul>--}}
-                    {{--@foreach($errors->all() as $error)--}}
-                        {{--<li>{{ $error }}</li>--}}
-                    {{--@endforeach--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--@endif--}}
 
         <form id="practic-cards" method="POST" action="{{ URL::route('ad_practic-cards.practic-cards.store') }}" class="k-form" enctype="multipart/form-data">
             {{ @csrf_field() }}
@@ -36,10 +21,7 @@
                 <div class="row mt-5">
                     <div id="block1" class="col-lg-4 col-md-12  mt-2">
                         <div class="col-lg-9 mx-auto admin_card d-flex flex-column align-items-center">
-                            {{--<div class="d-flex justify-content-center align-items-center">--}}
-                                <img width="140px" src="{{ URL::asset($data['practicCards'][0]->img_path) }}" alt="" class="rounded-circle practice__image">
-                            {{--</div>--}}
-
+                            <img src="{{ URL::asset($data['practicCards'][0]->img_path) }}" alt="" class="rounded-circle practice__image">
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">{{ $data['practicCards'][0]->card_title_ua }}</h5>
                                 <p class="card-text practice__text">{{ $data['practicCards'][0]->card_description_ua }}</p>
@@ -169,7 +151,7 @@
                     </div>
                     <div id="block2" class="col-lg-4 col-md-12  mt-2">
                         <div class="col-lg-9 mx-auto admin_card d-flex flex-column align-items-center">
-                            <img width="140px" src="{{ URL::asset($data['practicCards'][1]->img_path) }}" alt="" class="rounded-circle practice__image ">
+                            <img src="{{ URL::asset($data['practicCards'][1]->img_path) }}" alt="" class="rounded-circle practice__image ">
                             <div class=" card-body mt-3">
                                 <h5 class="card-title practice__topic">{{ $data['practicCards'][1]->card_title_ua }}</h5>
                                 <p class="card-text practice__text">{{ $data['practicCards'][1]->card_description_ua }}</p>
@@ -299,7 +281,7 @@
                     </div>
                     <div id="block3" class="col-lg-4 col-md-12    my-2">
                         <div class="col-lg-9 mx-auto admin_card d-flex flex-column align-items-center">
-                            <img name="image" width="140px" src="{{ URL::asset($data['practicCards'][2]->img_path) }}" alt="" class="rounded-circle practice__image ">
+                            <img name="image" src="{{ URL::asset($data['practicCards'][2]->img_path) }}" alt="" class="rounded-circle practice__image ">
                             <div class="card-body mt-3">
                                 <h5 class="card-title practice__topic">{{ $data['practicCards'][2]->card_title_ua }}и</h5>
                                 <p class="card-text practice__text">{{ $data['practicCards'][2]->card_description_ua }}</p>
@@ -441,34 +423,10 @@
             </div>
         </form>
    </div>
-   <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-   <script>
+   {{--<script--}}
+  {{--src="https://code.jquery.com/jquery-3.4.1.min.js"--}}
+  {{--integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="--}}
+  {{--crossorigin="anonymous"></script>--}}
 
-       // function repiat(id){
-       //  let id_block = id;
-       //  let desc = $(id_block).find('textarea[name="description"]').val();
-       //  let title = $(id_block).find('input[name="title"]').val();
-       //  let img = $(id_block).find('input[type="file"]')[0];
-       //  // var files = evt.target.files;
-       //  let text_title =  $(id_block).find('.card-title')[0];
-       //  let text_desc =  $(id_block).find('.card-text')[0];
-       //  let text_img =  $(id_block).find('practice__image')[0];
-       //      text_title .innerHTML=  title !==''? title : text_title.innerHTML;
-       //      text_desc.innerHTML= desc !==''? desc : text_desc.innerHTML;
-  
-       // }
-       // $('#block1').on('input','input, textarea', function(){
-       //      repiat('#block1');
-       // });
-       // $('#block2').on('input','input, textarea', function(){
-       //      repiat('#block2');
-       // });
-       // $('#block3').on('input','input, textarea', function(){
-       //      repiat('#block3');
-       // });
-   </script>
     <!--end::Dashboard 1-->
 @endsection

@@ -485,7 +485,8 @@ a.practiceitem {
 
 .practice__image {
     max-width: 60%;
-    height: auto;
+    height: 230px;
+
 }
 
 

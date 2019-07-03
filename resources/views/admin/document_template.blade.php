@@ -23,7 +23,7 @@
             <div class="k-portlet__body" id='documents_block'>
                 <div class='documents' id='duplicater'>
                     <div class="form-group row">
-                        <label class="col-form-label col-lg-2 col-sm-12">Категорія документу:</label>
+                        <label class="col-form-label col-lg-2 col-sm-12">Категорія : Розділ</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
                             <select class="form-control" required name="cat">
                                 @foreach($data['subcategories'] as $sub)
@@ -34,7 +34,7 @@
                                         @endif
                                             value="{{$sub->subcategory_id}}">
                                             @foreach($data['category'] as $cat)
-                                                 @if($cat->category_id ==$sub->category_id )Категорія {{$cat->title_ua}} :@endif
+                                                 @if($cat->category_id ==$sub->category_id ){{$cat->title_ua}} : @endif
                                             @endforeach
                                         {{$sub->title_ua}}
                                 </option>

@@ -37,7 +37,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <textarea class="form-control" name="content_ua" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicContent'][0]->content_ua }}</textarea>
+                        <textarea class="form-control" name="content_ua" id="k_maxlength_5" maxlength="300" placeholder="" rows="6">{{ $data['practicContent'][0]->content_ua }}</textarea>
                         <span class="form-text text-muted"></span> 
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                                 <textarea class="form-control"
                                           name="content_ru"
                                           id="k_maxlength_5"
-                                          maxlength="250"
+                                          maxlength="300"
                                           placeholder=""
                                           rows="6">{{ $data['practicContent'][0]->content_ru }}</textarea>
                                 <span class="form-text text-muted">Короткий опис</span>
@@ -134,7 +134,7 @@
                                 <textarea class=" form-control"
                                           name="content_us"
                                           id="k_maxlength_5"
-                                          maxlength="250"
+                                          maxlength="300"
                                           placeholder=""
                                           rows="6">{{ $data['practicContent'][0]->content_us }}</textarea>
                                 <span class="form-text text-muted">Короткий опис</span>

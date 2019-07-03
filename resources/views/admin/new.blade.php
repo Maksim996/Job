@@ -69,7 +69,7 @@
                     <div class="col-lg-9 col-md-9 col-sm-12">
                         <textarea class="form-control short-description-ua"
                                   id="k_maxlength_5"
-                                  maxlength="200"
+                                  maxlength="250"
                                   placeholder=""
                                   rows="6"
                                   name="short_description_ua">@if(isset($data['new'][0])){{ $data['new'][0]->short_description_ua }}@endif</textarea>

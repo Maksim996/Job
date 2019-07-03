@@ -1,3 +1,6 @@
+body{
+    font-family: Verdana !important;
+}
 .black-line{
     width: 100%;
     border-top: 1px solid #ebedf2;
@@ -97,4 +100,14 @@ div[id^="local"] {
 .left-footer-column:first-child{
     margin:  0 2rem;
 
+}
+ .admin_card{
+     margin-bottom: 30px;
+     height: 325px;
+ }
+.admin_card .practice__text{
+    font-size: 13px;
+}
+.admin_card .card-body{
+    text-align: center;
 }

@@ -17,34 +17,46 @@
            </a>
         </div>
         <div class="k-portlet">
-            <div class="k-portlet__head">
-                <form class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end">
-                    <div class="row  col-lg-7 col-md-12">
-                        <label>Пошук документу</label>
-                        <div class="col-lg-12 row k-margin-b-10-tablet-and-mobile">
+            <div class="k-portlet__body">
+                <form class="k-form k-form--fit k-margin-t-20 ">
+                    <div class="row k-margin-b-20 align-items-end">
+                        <div class="col-lg-8 col-md-12 k-margin-b-10-tablet-and-mobile">
+                            <label>Пошук документу</label>
                             <input type="text" class="form-control k-input" placeholder="Назва документу" data-col-index="0">
                         </div>
+                        <div class="col-lg-4 ml-auto m-0">
+                            <button class="btn btn-brand k-btn k-btn--icon" id="m_search">
+                                <span> <i class="la la-search"></i> <span>Шукати</span> </span>
+                            </button>
+                            &nbsp;&nbsp;
+                            <button class="btn btn-secondary k-btn k-btn--icon" id="m_reset">
+                                <span> <i class="la la-close"></i> <span>Очистити</span> </span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-lg-2 k-margin-b-10-tablet-and-mobile">
-                        <label>Розділ документу:</label>
-                        <select class="form-control k-input" data-col-index="1">
-                            <option value="">Вибрати</option>
-                            @foreach($data['subcategories'] as $cat)
-                                <option value="{{$cat->title_ua}}">{{$cat->title_ua}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="row col-lg-3 ml-auto m-0">
-                        <button class="btn btn-brand k-btn k-btn--icon" id="m_search">
-                            <span> <i class="la la-search"></i> <span>Шукати</span> </span>
-                        </button>
-                        &nbsp;&nbsp;
-                        <button class="btn btn-secondary k-btn k-btn--icon" id="m_reset">
-                            <span> <i class="la la-close"></i> <span>Очистити</span> </span>
-                        </button>
+                    <div class="row k-margin-b-20">
+                        <div class="col-lg-6 k-margin-b-10-tablet-and-mobile">
+                            <label>Розділ документу:</label>
+                            <select class="form-control k-input" data-col-index="1">
+                                <option value="">Вибрати</option>
+                                @foreach($data['categorySort'] as $cat)
+                                    <option value="{{$cat->title_ua}}">{{$cat->title_ua}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-6 k-margin-b-10-tablet-and-mobile">
+                            <label>Розділ документу:</label>
+                            <select class="form-control k-input" data-col-index="2">
+                                <option value="">Вибрати</option>
+                                @foreach($data['subcategories'] as $cat)
+                                    <option value="{{$cat->title_ua}}">{{$cat->title_ua}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </form>
             </div>
+            <div class="dropdown-divider"></div>
             <div class="k-portlet__body">
                 <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                     <thead>

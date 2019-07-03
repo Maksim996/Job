@@ -143,13 +143,17 @@ jQuery(document).ready(function(){
 function selectVal(j){
 let target_sel= $(j); 
 const extString = $('body').find(".extString");
+const requiredField =  $('body').find(".requiredField");
 const table = $('body').find(".tableHide");
     if (target_sel.val()=='external'){
         extString.show('slow');
         table.hide('slow');
+        requiredField.addClass("required");
     } else {
         extString.hide('slow');
         table.show('slow');
+        requiredField.removeClass("required");
+
     }
 }
 selectBut.on('change',function(){

@@ -35,11 +35,10 @@ var KBootstrapDatetimepicker = function () {
         // today button
         $('#k_datetimepicker_3').datetimepicker({
             todayHighlight: true,
-            rtl: true,
             autoclose: true,
             todayBtn: true,
             format: 'dd-mm-yyyy hh:ii',
-            // language: 'ua',
+            language: 'ua',
 
         });
         $('#k_datetimepicker_3_modal').datetimepicker({

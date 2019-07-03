@@ -40,7 +40,7 @@
                     @foreach($data['practice_intership_card'] as $card)
                         <div class="col-md-12 col-lg-4 card  mb-4 ">
                             <a href="{{$card->card_link}}" class="practice__item practice__card p-3 pb-4 ">
-                                <img src="{ URL::asset($card->img_path) }}" alt="{!! !empty($card->{'card_title_' . $data['locale']}) ? $card->{'card_title_' . $data['locale']} : $card->card_title_ua !!}" class="rounded-circle practice__image mx-auto ">
+                                <img src="{{ URL::asset($card->img_path) }}" alt="{!! !empty($card->{'card_title_' . $data['locale']}) ? $card->{'card_title_' . $data['locale']} : $card->card_title_ua !!}" class="rounded-circle practice__image mx-auto ">
                                 <div class="card-body mt-4">
                                     <h5 class="card-title practice__topic">{!! !empty($card->{'card_title_' . $data['locale']}) ? $card->{'card_title_' . $data['locale']} : $card->card_title_ua !!}</h5>
                                     <p class="card-text practice__text">{!! !empty($card->{'card_description_' . $data['locale']}) ? $card->{'card_description_' . $data['locale']} : $card->card_description_ua !!}</p>

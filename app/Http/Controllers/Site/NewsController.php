@@ -33,11 +33,10 @@ class NewsController extends Controller
         ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
         ->where([
             ['type', '=', 'new'],
-            ['date', '<', $date],
+//            ['date', '<', $date],
         ])
         ->orderBy('date', 'desc')
-        ->paginate(2);
-
+        ->paginate(5);
         for($i = 0; $i < count($news); $i++) {
             $news[$i]->trans_title = $this->transliterate($news[$i]->{'title_ua'});
         }

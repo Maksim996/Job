@@ -55,7 +55,7 @@
                             <div class="form-group row mt-3 extString" style="display:none">
                                 <div class="col-lg-12 col-md-9 col-sm-12">
                                     <label class="col-form-label col-lg-12 col-sm-12">Зовнішнє</label>
-                                    <input type="text" class="form-control" @if($data['category']->type == 'type2') value="{{$data['category']->link}}" @endif placeholder="" name="catLink">
+                                    <input type="text" class="form-control requiredField" @if($data['category']->type == 'type2') value="{{$data['category']->link}}" @endif placeholder="" name="catLink">
                                 </div>
                             </div>
                         </div>

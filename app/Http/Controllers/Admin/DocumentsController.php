@@ -24,10 +24,24 @@ class DocumentsController extends Controller
         $documents = DB::table('documents')->get()->toArray();
         $subcats = DB::table('subcategory')->get()->toArray();
         $category = DB::table('category')->get()->toArray();
+
+
+        $categorySort = collect($category)
+                ->map(function ($ar){
+                    if($ar->link == 'document'|| $ar->link =='pracevlashtuvannya-praktika'){
+                        return $ar;
+                    }
+                })
+                ->filter(function($value, $key) {
+                return  $value != null;
+            });
+
         $data = ['documents' => $documents,
                 'subcategories' => $subcats,
                 'category' => $category,
-                'locale' => $locale,];
+                'locale' => $locale,
+                'categorySort'=> $categorySort,
+            ];
         return view('admin.documents',compact('data'));
     }
 

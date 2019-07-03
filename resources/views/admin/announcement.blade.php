@@ -239,7 +239,7 @@
 
                         <textarea class="form-control short-description-ru"
                                   id="k_maxlength_5"
-                                  maxlength="200"
+                                  maxlength="250"
                                   placeholder=""
                                   rows="6"
                                   name="short_description_ru">@if(isset($data['announcement'][0])){{ $data['announcement'][0]->short_description_ru }}@endif</textarea>
