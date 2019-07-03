@@ -20,7 +20,7 @@
                                 <div>{!! !empty($data['new']->{'full_location_' . $data['locale']}) ? $data['new']->{'full_location_' . $data['locale']} : $data['new']-> full_location_ua !!}</div>
                             </div>
                             <div class="col-12 col-md-6 news__data">
-                                <div>{{$data['new']->date}}</div>
+                                <div>{{ date("Y-m-d H:i", strtotime($data['new']->date)) }}</div>
                             </div>
                         </div>
                         <div class="row">

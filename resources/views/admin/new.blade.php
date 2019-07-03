@@ -98,7 +98,6 @@
                                 value=""
                             @endif
                         >
-                        <span class="form-text text-muted">Приклад: 21 грудня о 14:00</span>
                     </div>
                 </div>
                 <div class="form-group row align-items-center">

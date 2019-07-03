@@ -148,7 +148,7 @@
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_partners' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
                                     <a  href="{{ route('ad_partners.partners.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon-users"></i><span class="k-menu__link-text">
-                                        Наши партнери
+                                        Наші партнери
                                     </span></a>
                                 </li>
                                 <li class="k-menu__item {{$routename == 'ad_footer' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
