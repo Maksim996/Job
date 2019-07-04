@@ -59,6 +59,9 @@ $('.slider-for').slick({
     slidesToScroll: 1,
     arrows: false,
     fade: true,
+    centerMode: true,
+
+    // adaptiveHeight:true,
     asNavFor: '.slider-nav'
 });
 $('.slider-nav').slick({

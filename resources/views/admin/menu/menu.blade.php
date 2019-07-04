@@ -69,7 +69,7 @@
                 </div>
             </div>
         </form>
-        <div class="k-portlet tableHide">
+        <div class="k-portlet tableHide" style="display: none">
             <div class="k-portlet__head ">
                 <div class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end ">
                     <div class="row  col-lg-7 col-md-12">

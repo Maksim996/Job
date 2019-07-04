@@ -117,7 +117,7 @@
                     <div class="row ">
                         <div class="col-lg-12 caption__display ">
                             <p class="caption__last caption__all text-uppercase">{{trans('base.latest')}}</p>
-                            <p class="caption__news caption__all text-uppercase">{{trans('base.news')}}/p>
+                            <p class="caption__news caption__all text-uppercase">{{trans('base.news')}} </p>
                         </div>
                     </div>
                 </div>

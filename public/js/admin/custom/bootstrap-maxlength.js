@@ -38,7 +38,7 @@ var KBootstrapMaxlength = function () {
         });
 
         // textarea example
-        $('#k_maxlength_5').maxlength({
+        $('.k_maxlength_5').maxlength({
             threshold: 5,
             warningClass: "k-badge k-badge--primary k-badge--rounded k-badge--inline",
             limitReachedClass: "k-badge k-badge--brand k-badge--rounded k-badge--inline"
