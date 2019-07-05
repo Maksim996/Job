@@ -885,6 +885,10 @@ footer{
     min-width: 2rem;
 }
 
+.white-content{
+    color: white;
+}
+
 .footer_left__location{
     color: white;
 }

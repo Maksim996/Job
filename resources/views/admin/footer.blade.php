@@ -44,19 +44,31 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                                        <label class="col-lg-2 col-sm-12 col-form-label">Виберіть посилання чи звичайний текст</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
-                                            <input type="text" class="form-control item-link" placeholder="" name="left-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
-                                            <span class="form-text text-muted">По кліку переходить на посиланням ...</span>
+                                            <div class="k-checkbox-inline">
+                                                <input class="checkLink" type="radio" checked="checked" id="link" name="contact{{$count}}" value="1">
+                                                <label for="link">Посилання</label>
+
+                                                <input class="checkText" type="radio" id="text" name="contact{{$count}}" value="0">
+                                                <label for="text">Звичайний текст</label>
+                                            </div>
                                         </div>
                                     </div>
 
+                                    <div class="form-group row ckeckLinkText">
+                                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
+                                            <input type="text" class="form-control item-link" required="required" placeholder="" name="left-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
+                                            <span class="form-text text-muted">По кліку переходить за посиланням ...</span>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_ua" name="left-content{{$count}}" value="{{ $data['footer'][$i]->content_ua }}">
-                                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
+                                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського-Корсакова,2, СумДУ, каб. Г-1012</span>
                                         </div>
                                     </div>
 
@@ -64,7 +76,7 @@
                                         <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_ru" name="left-content_ru{{$count}}" value="{{ $data['footer'][$i]->content_ru }}">
-                                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
+                                            <span class="form-text text-muted">Например: Украина, г.Сумы, ул. Римского-Корсакова,2, СумГУ, каб. Г-1012</span>
                                         </div>
                                     </div>
 
@@ -72,7 +84,7 @@
                                         <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_us" name="left-content_us{{$count}}" value="{{ $data['footer'][$i]->content_us }}">
-                                            <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span>
+                                            <span class="form-text text-muted">For example: Ukraine, c.Sumy, 2, Rymskogo-Korsakova st., SumDU, office. M-1012</span>
                                         </div>
                                     </div>
 

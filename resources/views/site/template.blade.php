@@ -152,7 +152,7 @@
                                         <li class="">
                                             <div class="circle"><img src="{{ URL::asset($data['left_footer'][$i]->img_path) }}"></div>
                                             @if(empty($data['left_footer'][$i]->link))
-                                                <p class="content">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</p>
+                                                <p class="white-content">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</p>
                                             @else
                                                 <a href="{{ $data['left_footer'][$i]->link }}">{!! !empty($data['left_footer'][$i]->{'content_' . $data['locale']}) ? $data['left_footer'][$i]->{'content_' . $data['locale']} : $data['left_footer'][$i]-> content_ua !!}</a>
                                             @endif
