@@ -5,10 +5,9 @@ function handleFilesSelect(evt, inputId) {
         // if (!f.type.match('image.*')) {
         //     continue;
         // }
-
-        if (f.type == 'image/jpeg' || f.type =='image/png' || f.type =='image/jpg') {
+        if ((f.type == 'image/jpeg' || f.type =='image/png' || f.type =='image/jpg') && f.size < 5241880) {
         } else {
-            document.getElementById('files').value = "";
+            // document.getElementById('files').value = "";
             continue;
         }
         var reader = new FileReader();
@@ -27,18 +26,21 @@ function handleFilesSelect(evt, inputId) {
 
 function handleFileSelect(evt, inputId) {
     var file = evt.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(theFile) {
-        return function(e) {
-            document.getElementById(inputId).innerHTML = '';
-            var span = document.createElement('span');
-            span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                '" title="', escape(theFile.name), '">'
-            ].join('');
-            document.getElementById(inputId).appendChild(span);
-        };
-    })(file);
-    reader.readAsDataURL(file);
+    if ((file.type == 'image/jpeg' || file.type =='image/png' || file.type =='image/jpg') && file.size < 5241880) {
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+            return function(e) {
+                document.getElementById(inputId).innerHTML = '';
+                var span = document.createElement('span');
+                span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                    '" title="', escape(theFile.name), '">'
+                ].join('');
+                document.getElementById(inputId).appendChild(span);
+            };
+        })(file);
+        reader.readAsDataURL(file);
+    }
+
 }
 
 document.getElementById('files').addEventListener('change', (evt) => {

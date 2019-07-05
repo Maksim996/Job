@@ -676,6 +676,12 @@ $.validator.addMethod( "dateITA", function( value, element ) {
 	return this.optional( element ) || check;
 }, $.validator.messages.date );
 
+    // a custom rule to validate file size
+    $.validator.addMethod('filesize', function (value, element, param) {
+        return this.optional(element) || (element.files[0].size <= param)
+    }, 'File size must be less than {0}');
+
+
 $.validator.addMethod( "dateNL", function( value, element ) {
 	return this.optional( element ) || /^(0?[1-9]|[12]\d|3[01])[\.\/\-](0?[1-9]|1[012])[\.\/\-]([12]\d)?(\d\d)$/.test( value );
 }, $.validator.messages.date );

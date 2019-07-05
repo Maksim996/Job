@@ -23,7 +23,6 @@ function submitForm (id, data, isNews) {
         baseUrl = '/admin/announcements',
         url = isUpdate ? `${baseUrl}/${id}` : baseUrl,
         type = isUpdate ? 'PUT' : 'POST';
-        console.log(isUpdate);
         $.ajax({
             url,
             type,
@@ -43,7 +42,6 @@ function collectFormData (e, isNews) {
     // const form = $(e.currentTarget),
     const form = $(e),
         id = form.attr('data-id');
-    console.log(form);
 
     const formTitleUa = form.find('.form-title-ua').val(),
         formTitleRu = form.find('.form-title-ru').val(),
@@ -142,12 +140,14 @@ $("#announcements-form").validate({
             // required: true,
             extension: "jpg|png|jpeg",
             accept: "image/jpg,image/jpeg,image/png",
+            filesize: 5241880
 
         },
         "slider-image": {
             // required: true,
             extension: "jpg|png|jpeg",
             accept: "image/jpg,image/jpeg,image/png",
+            filesize: 5241880
 
         },
         keywords: {
