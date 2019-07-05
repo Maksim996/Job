@@ -30,14 +30,14 @@
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <input type="text" name="title_ua" class="form-control" placeholder="" value="{{ $data['practicContent'][0]->title_ua }}">
+                        <input type="text" name="title_ua" class="form-control k_maxlength_5"  maxlength="200" placeholder="" value="{{ $data['practicContent'][0]->title_ua }}">
                         <span class="form-text text-muted">Основний заголовок на головній сторінці</span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <textarea class="form-control" name="content_ua" id="k_maxlength_5" maxlength="300" placeholder="" rows="6">{{ $data['practicContent'][0]->content_ua }}</textarea>
+                        <textarea class="form-control k_maxlength_5" name="content_ua"  maxlength="300" placeholder="" rows="6">{{ $data['practicContent'][0]->content_ua }}</textarea>
                         <span class="form-text text-muted"></span> 
                     </div>
                 </div>
@@ -85,8 +85,9 @@
                             <div class="col-lg-9 col-md-9 col-sm-12">
                                 <input type="text"
                                        name="title_ru"
-                                       class="form-control"
+                                       class="form-control k_maxlength_5"
                                        placeholder=""
+                                       maxlength="200"
                                        value="{{ $data['practicContent'][0]->title_ru }}">
                                 <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                             </div>
@@ -94,9 +95,8 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
-                                <textarea class="form-control"
+                                <textarea class="form-control k_maxlength_5"
                                           name="content_ru"
-                                          id="k_maxlength_5"
                                           maxlength="300"
                                           placeholder=""
                                           rows="6">{{ $data['practicContent'][0]->content_ru }}</textarea>
@@ -122,8 +122,9 @@
                             <div class="col-lg-9 col-md-9 col-sm-12">
                                 <input type="text"
                                        name="title_us"
-                                       class="form-control"
+                                       class="form-control k_maxlength_5"
                                        placeholder=""
+                                       maxlength="200"
                                        value="{{ $data['practicContent'][0]->title_us }}">
                                 <span class="form-text text-muted">Основний заголовок, наприклад: Відділ практики</span>
                             </div>
@@ -131,9 +132,8 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
-                                <textarea class=" form-control"
+                                <textarea class=" form-control k_maxlength_5"
                                           name="content_us"
-                                          id="k_maxlength_5"
                                           maxlength="300"
                                           placeholder=""
                                           rows="6">{{ $data['practicContent'][0]->content_us }}</textarea>
