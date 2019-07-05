@@ -193,8 +193,12 @@ var KFormControls = function () {
                 link: {
                     required: true
                 },
+
                 img_path: {
-                    required: true
+                    required: true,
+                    extension: "jpg|png|jpeg|svg",
+                    accept: "image/jpg,image/jpeg,image/png,image/svg+",
+                    filesize: 5241880
                 },
                 cat: {
                     required: true
