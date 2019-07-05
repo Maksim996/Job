@@ -133,13 +133,15 @@
                 </div>
                 <div class="form-group row align-items-center">
                     <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12">
-                        <input type="file" id="main_image" class=" main-image" name="img_path" accept="image/jpg,image/jpeg,image/png"
-                        @if(!isset($data['announcement'][0]))
-                            required
-                            @endif
-                        />
-
+                    <div class="col-lg-9 col-md-9 col-sm-12 d-flex align-items-center">
+                        <div>
+                            <input type="file" id="main_image" class=" main-image" name="img_path" accept="image/jpg,image/jpeg,image/png"
+                            @if(!isset($data['announcement'][0]))
+                                required
+                                @endif
+                            />
+                            <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
+                        </div>
                         <output id="single_img">
                             @if(isset($data['announcement'][0]))
                                 <span ><img class="thumb" src="{{ $data['announcement'][0]->img_path }}"></span>
@@ -155,7 +157,7 @@
                                required
                             @endif
                         />
-
+                        <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                         <output id="list">
                             @if(isset($data['sliders']))
                                 @foreach($data['sliders'] as $slider)

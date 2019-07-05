@@ -202,5 +202,96 @@ $("#announcements-form").validate({
 $('#announcements-form').each(function () {
     if ($(this).data('validator')) $(this).data('validator').settings.ignore = ".note-editor *";
 });
+$("#news-form").validate({
+    // define validation rules
+    rules: {
+        title_ua: {
+            required: true,
+            maxlength: 125
+        },
+        short_description_ua: {
+            required: true,
+            maxlength: 200
+        },
+        full_description_ua: {
+            required: true
+        },
+        short_location_ua: {
+            maxlength: 200
+        },
+        full_location_ua: {
+            maxlength: 200
+        },
+        date: {
+            required: true,
+            date: true
+        },
+        img_path: {
+            // required: true,
+            extension: "jpg|png|jpeg",
+            accept: "image/jpg,image/jpeg,image/png",
+            filesize: 5241880
+
+        },
+        "slider-image": {
+            // required: true,
+            extension: "jpg|png|jpeg",
+            accept: "image/jpg,image/jpeg,image/png",
+            filesize: 5241880
+
+        },
+        keywords: {
+            required: true,
+            maxlength: 200
+        },
+        description: {
+            required: true,
+            maxlength: 200
+        },
+        title_ru: {
+            maxlength: 125
+        },
+        short_description_ru: {
+            maxlength: 200
+        },
+        short_location_ru: {
+            maxlength: 200
+        },
+        full_location_ru: {
+            maxlength: 200
+        },
+        title_us: {
+            maxlength: 125
+        },
+        short_description_us: {
+            maxlength: 200
+        },
+        short_location_us: {
+            maxlength: 200
+        },
+        full_location_us: {
+            maxlength: 200
+        },
+    },
+
+    //display error alert on form submit
+    invalidHandler: function(event, validator) {
+        KUtil.scrollTo("news-form", -200);
+    },
+    errorPlacement: function(error, element){
+        var element = $(element);
+        element.addClass('is-invalid');
+        error.addClass('invalid-feedback');
+        error.appendTo(element.parent());
+    },
+    submitHandler: function (form) {
+        newsForm.submit(collectFormData(form, true));
+
+        // form[0].submit(); // submit the form
+    }
+});
+$('#news-form').each(function () {
+    if ($(this).data('validator')) $(this).data('validator').settings.ignore = ".note-editor *";
+});
 // announcementsForm.on('submit', (e) => collectFormData(e, false));
-newsForm.on('submit', (e) => collectFormData(e, true));
+// newsForm.on('submit', (e) => collectFormData(e, true));

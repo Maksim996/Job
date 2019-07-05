@@ -54,7 +54,9 @@
                     <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <input type="text" class="form-control form-title-ua" placeholder="" name="title_ua"
+                        <input type="text" class="form-control form-title-ua k_maxlength_5" placeholder=""
+                               maxlength="125"
+                               name="title_ua"
                             @if(isset($data['new'][0]))
                                 value="{{ $data['new'][0]->title_ua }}"
                             @else
@@ -67,9 +69,8 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <textarea class="form-control short-description-ua"
-                                  id="k_maxlength_5"
-                                  maxlength="250"
+                        <textarea class="form-control short-description-ua k_maxlength_5"
+                                  maxlength="200"
                                   placeholder=""
                                   rows="6"
                                   name="short_description_ua">@if(isset($data['new'][0])){{ $data['new'][0]->short_description_ua }}@endif</textarea>
@@ -102,11 +103,18 @@
                 </div>
                 <div class="form-group row align-items-center">
                     <label class="col-form-label col-lg-2 col-sm-12">Головне зображення</label>
-                    <div class="col-lg-9 col-md-9 col-sm-12">
-                        <input type="file" id="main_image" class=" main-image" name="img_path">
+                    <div class="col-lg-9 col-md-9 col-sm-12 d-flex align-items-center">
+                        <div>
+                            <input type="file" id="main_image" class=" main-image" name="img_path"  accept="image/jpg,image/jpeg,image/png"
+                                   @if(!isset($data['new'][0]))
+                                   required
+                                @endif
+                            >
+                            <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
+                        </div>
                         <output id="single_img">
-                            @if(isset($data['announcement'][0]))
-                                <span class="thumb"><img src="{{ $data['announcement'][0]->img_path }}" style="max-width: 100px; height: auto;"></span>
+                            @if(isset($data['new'][0]))
+                                <span ><img class="thumb" src="{{ $data['new'][0]->img_path }}"></span>
                             @endif
                         </output>
                     </div>
@@ -114,12 +122,17 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Зображення для слайдера</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <input type="file" id="files" name="slider-image" multiple />
+                        <input type="file" id="files" name="slider-image" multiple accept="image/jpg,image/jpeg,image/png"
+                               @if(!isset($data['new'][0]))
+                                    required
+                                @endif
+                        />
+                        <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                         <output id="list">
                             @if(isset($data['sliders']))
                                 @foreach($data['sliders'] as $slider)
                                     <span>
-                                        <img src="{{ $slider->img_path }}" data-id="{{ $slider->id }}" style="max-width: 100px; height: auto;">
+                                        <img class="thumb" src="{{ $slider->img_path }}" data-id="{{ $slider->id }}">
                                     </span>
                                 @endforeach
                             @endif
@@ -132,7 +145,7 @@
                     <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <input type="text" class="form-control additional-info" placeholder="" name="keywords"
+                        <input type="text" class="form-control additional-info k_maxlength_5" maxlength="200" placeholder="" name="keywords"
                          @if(isset($data['new'][0]))
                             value="{{ $data['new'][0]->keywords }}"
                          @else
@@ -197,7 +210,7 @@
                             <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
 
-                                <input type="text" class="form-control form-title-ru" placeholder="" name="title_ru"
+                                <input type="text" class="form-control form-title-ru k_maxlength_5" maxlength="125" placeholder="" name="title_ru"
                                        @if(isset($data['new'][0]))
                                        value="{{ $data['new'][0]->title_ru }}"
                                        @else
@@ -211,8 +224,7 @@
                             <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <textarea class="form-control short-description-ru"
-                                  id="k_maxlength_5"
+                        <textarea class="form-control short-description-ru k_maxlength_5"
                                   maxlength="200"
                                   placeholder=""
                                   rows="6"
@@ -248,7 +260,7 @@
                             <label class="col-form-label col-lg-2 col-sm-12">Заголовок</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
 
-                                <input type="text" class="form-control form-title-us" placeholder="" name="title_us"
+                                <input type="text" class="form-control form-title-us k_maxlength_5 " maxlength="125" placeholder="" name="title_us"
                                        @if(isset($data['new'][0]))
                                        value="{{ $data['new'][0]->title_us }}"
                                        @else
@@ -262,8 +274,7 @@
                             <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <textarea class="form-control short-description-us"
-                                  id="k_maxlength_5"
+                        <textarea class="form-control short-description-us k_maxlength_5"
                                   maxlength="200"
                                   placeholder=""
                                   rows="6"
