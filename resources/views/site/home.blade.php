@@ -117,7 +117,7 @@
                     <div class="row ">
                         <div class="col-lg-12 caption__display ">
                             <p class="caption__last caption__all text-uppercase">{{trans('base.latest')}}</p>
-                            <p class="caption__news caption__all text-uppercase">{{trans('base.news')}}/p>
+                            <p class="caption__news caption__all text-uppercase">{{trans('base.news')}} </p>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                                     <img src="{{ URL::asset($data['news'][0]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8 pl-md-3">
-                                    <div class="card-body">
+                                    <div class="card-body h-100">
                                         <p class="card-text news__text  ">  
                                             {!! !empty($data['news'][0]->{'short_description_' . $data['locale']}) ? $data['news'][0]->{'short_description_' . $data['locale']} : $data['news'][0]-> short_description_ua !!}
                                         </p>
@@ -176,7 +176,7 @@
                                     <img src="{{ URL::asset($data['news'][$i]->img_path) }}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="col-md-8   pl-md-3">
-                                    <div class="card-body">
+                                    <div class="card-body h-100">
                                         <p class="card-text news__text-item">
                                             {!! !empty($data['news'][$i]->{'short_description_' . $data['locale']}) ? $data['news'][$i]->{'short_description_' . $data['locale']} : $data['news'][$i]-> short_description_ua !!}
                                         </p>

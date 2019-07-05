@@ -109,9 +109,9 @@
                             @endforeach
 
                                 <li class="nav-item dropdown language-full ">
-                                    <select id="language-choice" >
+                                    <select class="text-uppercase" id="language-choice" >
                                         @foreach(['ua', 'ru', 'us'] as $locale)
-                                            <option value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
+                                            <option  value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
                                         @endforeach
                                     </select>
                                 </li>

@@ -24,7 +24,7 @@
                 <div class='documents' id='duplicater'>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Категорія : Розділ</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <select class="form-control" required name="cat">
                                 @foreach($data['subcategories'] as $sub)
                                 <option @if($data['type'] == '1')
@@ -45,13 +45,25 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу:</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <input  type="text" class="form-control" placeholder="" name="title_ua" @if($data['type'] == '1') value="{{$data['document']->title_ua}}" @endif>
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Опис документу</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                        <textarea class="form-control placeholder_ua k_maxlength_5"
+                                  id="k_maxlength_5"
+                                  maxlength="500"
+                                  placeholder=""
+                                  rows="6"
+                                  name="placeholder_ua">@if($data['type'] == '1'){{$data['document']->placeholder_ua}}@endif</textarea>
+                            <span class="form-text text-muted"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Виберіть</label>
-                        <div class=" col-lg-6 col-md-9 col-sm-12">
+                        <div class=" col-lg-9 col-md-9 col-sm-12">
                             <div class="k-radio-inline">
                                 <label class="k-radio  k-radio--brand">
                                     <input type="radio"
@@ -84,7 +96,7 @@
                     </div>
                     <div id="linkBar1" class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                        <div class="col-lg-6 col-md-9 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12">
                             <input type="text" class="form-control " name="link" placeholder="" value="@if($data['type'] == '1' and !empty($data['document'])){{$data['document']->file_link }}@endif">
                             <span class="form-text text-muted">Ведить <i>URL</i> адресу, наприклад: <i>https://www.google.com</i></span>
                         </div>
@@ -161,6 +173,18 @@
                                     <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-2 col-sm-12">Опис документу російською</label>
+                                <div class="col-lg-9 col-md-9 col-sm-12">
+                                <textarea class="form-control placeholder_ru k_maxlength_5"
+                                      id="k_maxlength_5"
+                                      maxlength="500"
+                                      placeholder=""
+                                      rows="6"
+                                      name="placeholder_ru">@if($data['type'] == '1'){{$data['document']->placeholder_ru}}@endif</textarea>
+                                        <span class="form-text text-muted"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -185,6 +209,18 @@
                                            value=""
                                         @endif
                                     <span class="form-text text-muted">Заголовок документу, наприклад: Відділ практики</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-2 col-sm-12">Опис документу англійською</label>
+                                <div class="col-lg-9 col-md-9 col-sm-12">
+                                <textarea class="form-control placeholder_us k_maxlength_5"
+                                          id="k_maxlength_5"
+                                          maxlength="500"
+                                          placeholder=""
+                                          rows="6"
+                                          name="placeholder_us">@if($data['type'] == '1'){{$data['document']->placeholder_us}}@endif</textarea>
+                                    <span class="form-text text-muted"></span>
                                 </div>
                             </div>
                         </div>

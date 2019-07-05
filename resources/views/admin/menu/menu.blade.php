@@ -25,21 +25,35 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (українською)</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input  name="title_ua" type="text" class="form-control required" placeholder="" value="{{ $data['category']->title_ua }}">
-
+                            <input  name="title_ua"
+                                    type="text"
+                                    class="form-control required k_maxlength_5"
+                                    placeholder=""
+                                    maxlength="200"
+                                    value="{{ $data['category']->title_ua }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (російською)</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input  name="title_ru" type="text" class="form-control required" placeholder="" value="{{ $data['category']->title_ru }}">
+                            <input  name="title_ru"
+                                    type="text"
+                                    class="form-control required k_maxlength_5"
+                                    placeholder=""
+                                    maxlength="200"
+                                    value="{{ $data['category']->title_ru }}">
 
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-3 col-sm-12">Назва категорії (англійською)</label>
                         <div class="col-lg-6 col-md-9 col-sm-12">
-                            <input  name="title_us" type="text" class="form-control required" placeholder="" value="{{ $data['category']->title_us }}">
+                            <input  name="title_us"
+                                    type="text"
+                                    class="form-control required k_maxlength_5"
+                                    placeholder=""
+                                    maxlength="200"
+                                    value="{{ $data['category']->title_us }}">
 
                         </div>
                     </div>
@@ -69,7 +83,7 @@
                 </div>
             </div>
         </form>
-        <div class="k-portlet tableHide">
+        <div class="k-portlet tableHide" style="display: none">
             <div class="k-portlet__head ">
                 <div class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end ">
                     <div class="row  col-lg-7 col-md-12">

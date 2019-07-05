@@ -3,26 +3,18 @@
 <div class="k-portlet__body">
     <div class="form-group row">
         <label class="col-form-label col-lg-3 col-sm-12">Назва категорії до якої відноситься розділ</label>
-        <div class="col-lg-6 col-md-9 col-sm-12">
+        <div class="col-lg-8 col-md-9 col-sm-12">
             <input name="category" type="text" class="form-control" placeholder="" value="{{$data['category']->title_ua}}" readonly>
             <input name="categoryId" type="text" class="form-control" style="display: none" placeholder="" value="{{$data['category']->category_id}}">
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-form-label col-lg-3 col-sm-12">Назва розділу (українською)</label>
-        <div class="col-lg-6 col-md-9 col-sm-12">
-            <input name="title_ua" type="text" class="form-control" placeholder=""  @if(!empty($data['subcategory'])) value="{{$data['subcategory']->title_ua}}" @endif>
-
-        </div>
-    </div>
-    <div class="form-group row">
         <label class="col-form-label col-lg-3 col-sm-12">Посилання</label>
-        <div class="form-group col-lg-6 col-md-9  col-sm-12">
+        <div class="form-group col-lg-8 col-md-9  col-sm-12">
             <select class="form-control sel_change" name="subcatSelect">
-                <option value= "external">Зовнішнє</option>
-
+                {{--<option value= "external">Зовнішнє</option>--}}
                 <option value= "{{$data['category']->link}}"   @if(!empty($data['subcategory'])) @if($data['subcategory']->link == $data['category']->link) selected @endif @endif>{{$data['category']->title_ua}}</option>
-                  </select>
+            </select>
             <div class="form-group row mt-3 extString" style="display:none">
                 <div class="col-lg-12 col-md-9 col-sm-12">
                     <label class="col-form-label col-lg-12 col-sm-12">Зовнішнє</label>
@@ -31,6 +23,18 @@
             </div>
         </div>
     </div>
+    <div class="form-group row">
+        <label class="col-form-label col-lg-3 col-sm-12">Назва розділу (українською)</label>
+        <div class="col-lg-8 col-md-9 col-sm-12">
+            <input name="title_ua"
+                   type="text"
+                   class="form-control k_maxlength_5"
+                   maxlength="200"
+                   placeholder=""  @if(!empty($data['subcategory'])) value="{{$data['subcategory']->title_ua}}" @endif>
+
+        </div>
+    </div>
+
 
     <div class="form-group row">
         <label class="col-form-label col-lg-3 col-sm-12">Виберіть додаткову мову</label>
@@ -73,9 +77,13 @@
         <div class="k-portlet__body ">
             <div class="form-group row">
                  <label class="col-form-label col-lg-3 col-sm-12">Назва розділу (російською)</label>
-                <div class="col-lg-6 col-md-9 col-sm-12">
+                <div class="col-lg-8 col-md-9 col-sm-12">
 
-                    <input type="text" class="form-control form-title-ru" placeholder="" name="title_ru"
+                    <input type="text"
+                           class="form-control form-title-ru k_maxlength_5"
+                           placeholder=""
+                           maxlength="200"
+                           name="title_ru"
                            @if(isset($data['subcategory']))
                            value="{{ $data['subcategory']->title_ru }}"
                            @else
@@ -100,8 +108,12 @@
         <div class="k-portlet__body ">
             <div class="form-group row">
                  <label class="col-form-label col-lg-3 col-sm-12">Назва розділу (англійською)</label>
-                <div class="col-lg-6 col-md-9 col-sm-12">
-                    <input type="text" class="form-control form-title-us" placeholder="" name="title_us"
+                <div class="col-lg-8 col-md-9 col-sm-12">
+                    <input type="text"
+                           class="form-control form-title-us k_maxlength_5"
+                           placeholder=""
+                           maxlength="200"
+                           name="title_us"
                            @if(isset($data['subcategory']))
                            value="{{ $data['subcategory']->title_us }}"
                            @else
