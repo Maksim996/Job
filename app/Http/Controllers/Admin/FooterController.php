@@ -117,7 +117,7 @@ class FooterController extends Controller
 	        $id = $left_item->id;
             $img_key = 'left-column-image' . '-' . $id;
             if($img_path = $request->file($img_key) == null) {
-                $img_path = $left_item->img;
+                $img_path = stristr($left_item->img, 'i');
             } else {
                 $filePath = $img_key .'.'. $request->file($img_key)->getClientOriginalExtension();
                 $img_path = $request->file($img_key)->storeAs('images/uploads_footer',$filePath,'public');
@@ -161,7 +161,7 @@ class FooterController extends Controller
             $id = $social_item->id;
             $img_key = 'social-column-image' . '-' . $id;
             if($img_path = $request->file($img_key) == null) {
-                $img_path = $social_item->img;
+                $img_path = stristr($social_item->img, 'i');
             } else {
                 $filePath = $img_key .'.'. $request->file($img_key)->getClientOriginalExtension();
                 $img_path = $request->file($img_key)->storeAs('images/uploads_footer',$filePath,'public');

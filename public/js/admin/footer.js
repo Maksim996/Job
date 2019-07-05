@@ -137,19 +137,31 @@ function addInfo(parent) {
 		</div>
 		
 		<div class="form-group row">
-		    <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-		    <div class="col-lg-9 col-md-9 col-sm-12">
-		        <input type="text" class="form-control item-link" name="left-link${block}"   placeholder="">
-		        <span class="form-text text-muted">По кліку переходить на посиланням ...</span> 
-		    </div>
-		</div>
+             <label class="col-lg-2 col-sm-12 col-form-label">Виберіть посилання чи звичайний текст</label>
+             <div class="col-lg-6 col-md-9 col-sm-12">
+				<div class="k-checkbox-inline">
+                    <input class="checkLink" type="radio" checked="checked" id="link" name="contact${block}" value="1">
+                    <label for="link">Посилання</label>
+
+                    <input class="checkText" type="radio" id="text" name="contact${block}" value="0">
+                    <label for="text">Звичайний текст</label>
+				</div>
+             </div>
+        </div>
 		
+		<div class="form-group row ckeckLinkText">
+             <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+             <div class="col-lg-9 col-md-9 col-sm-12">
+                  <input type="text" class="form-control item-link" placeholder="" required="required" name="left-link${block}">
+                  <span class="form-text text-muted">По кліку переходить за посиланням ...</span>
+             </div>
+        </div>
 		
 		<div class="form-group row">
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
 		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-content_ua" name="left-content${block}" placeholder="">
-		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
+		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського-Корсакова,2, СумДУ, каб. Г-1012</span> 
 		    </div>
 		</div>
 		
@@ -157,7 +169,7 @@ function addInfo(parent) {
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
 		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-content_ru" name="left-content_ru${block}" placeholder="">
-		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
+		        <span class="form-text text-muted">Например: Украина, г.Сумы, ул. Римского-Корсакова,2, СумГУ, каб. Г-1012</span> 
 		    </div>
 		</div>
 		
@@ -165,7 +177,7 @@ function addInfo(parent) {
 		    <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
 		    <div class="col-lg-9 col-md-9 col-sm-12">
 		        <input type="text" class="form-control item-content_us" name="left-content_us${block}" placeholder="">
-		        <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського,2, СумДУ, каб. Г-1012</span> 
+		        <span class="form-text text-muted">For example: Ukraine, c.Sumy, 2, Rymskogo-Korsakova st., SumDU, office. M-1012</span> 
 		    </div>
 		</div>  
 		
@@ -187,6 +199,17 @@ function addInfo(parent) {
 			</button>
 		</div>
 	</div>`
+
+	infoMain.getElementsByClassName("checkLink")[0].onclick = (e) => {
+		$(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute('required', 'required')
+		$(e.target).parents('div#info_block').find('.ckeckLinkText').show('slow')
+	};
+
+	infoMain.getElementsByClassName("checkText")[0].onclick = (e) => {
+		$(e.target).parents('div#info_block').find('input.item-link')[0].removeAttribute("required")
+		$(e.target).parents('div#info_block').find('.ckeckLinkText').hide('slow')
+		$(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute("value", "")
+	};
 
 	infoMain.getElementsByClassName("btn")[0].onclick = () => {
 		let elem = parent.children[parent.children.length - 1];
@@ -300,9 +323,6 @@ for(let i=0; i<8; i++){
             maxlength: 200,
             required: true
         },
-        ['left-link'+i]: {
-            required: true
-        },
         ['left-content'+i]: {
             required: true
         },
@@ -340,3 +360,15 @@ $("#form-footer").validate({
 });
  //formFooter.on('submit', collectFooterData);
 
+$('input.checkLink').click(function(e) {
+	$(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute('required', 'required')
+	$(e.target).parents('div#info_block').find('.ckeckLinkText').show('slow')
+	console.log(e.target)
+})
+
+$('input.checkText').click(function(e) {
+	$(e.target).parents('div#info_block').find('input.item-link')[0].removeAttribute("required")
+	$(e.target).parents('div#info_block').find('.ckeckLinkText').hide('slow')
+	$(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute("value", "")
+	console.log(e.target)
+})

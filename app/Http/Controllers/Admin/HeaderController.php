@@ -49,7 +49,7 @@ class HeaderController extends Controller
         
         }
         else
-            $path =   DB::table('header')->where('id', '=', $id)->value('img_path');
+            $path = DB::table('header')->where('id', '=', $id)->value('img_path');
 
         DB::table('header')
         ->where('id', '=', $id)
