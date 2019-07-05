@@ -31,19 +31,19 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Заголовок картки</label>
-                                <input name="card_title1_ua" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][0]->card_title_ua }}">
+                                <input name="card_title1_ua" maxlength="80" type="text" class="form-control k_maxlength_5" placeholder="" value="{{ $data['practicCards'][0]->card_title_ua }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea name="card_description1_ua" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][0]->card_description_ua }}</textarea>
+                                <textarea name="card_description1_ua" class="form-control k_maxlength_5"  maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][0]->card_description_ua }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path1" class="">
+                                <input type="file" name="img_path1" class="" @if(empty($data['practicCards'][0]->img_path)) required @endif>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -95,17 +95,16 @@
                                     <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title1_ru"
-                                               class="form-control"
-                                               placeholder=""
+                                               class="form-control k_maxlength_5"
+                                               maxlength="80"
                                                value="{{ $data['practicCards'][0]->card_title_ru }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg">
                                     <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea class="form-control"
+                                <textarea class="form-control k_maxlength_5"
                                           name="card_description1_ru"
-                                          id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][0]->card_description_ru }}</textarea>
@@ -130,17 +129,17 @@
                                     <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title1_us"
-                                               class="form-control"
+                                               class="form-control k_maxlength_5"
                                                placeholder=""
+                                               maxlength="80"
                                                value="{{ $data['practicCards'][0]->card_title_us }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg">
                                     <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea class=" form-control"
+                                <textarea class=" form-control k_maxlength_5"
                                           name="card_description1_us"
-                                          id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][0]->card_description_us }}</textarea>
@@ -160,25 +159,25 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Заголовок картки</label>
-                                <input name="card_title2_ua" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->card_title_ua }}">
+                                <input name="card_title2_ua" maxlength="80" type="text" class="form-control k_maxlength_5" placeholder="" value="{{ $data['practicCards'][1]->card_title_ua }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea name="card_description2_ua" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][1]->card_description_ua }}</textarea>
+                                <textarea name="card_description2_ua" class="form-control k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][1]->card_description_ua }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path2" class="">
+                                <input type="file" name="img_path2" class="" @if(empty($data['practicCards'][1]->img_path)) required @endif>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Посилання</label>
-                                <input type="text" name="card_link2" class="form-control" placeholder="" value="{{ $data['practicCards'][1]->card_link }}">
+                                <input type="text" name="card_link2" class="form-control " placeholder="" value="{{ $data['practicCards'][1]->card_link }}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -224,7 +223,8 @@
                                     <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title2_ru"
-                                               class="form-control"
+                                               maxlength="80"
+                                               class="form-control k_maxlength_5"
                                                placeholder=""
                                                value="{{ $data['practicCards'][1]->card_title_ru }}">
                                     </div>
@@ -232,9 +232,8 @@
                                 <div class="form-group row">
                                     <div class="col-lg">
                                     <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea class="form-control"
+                                <textarea class="form-control k_maxlength_5"
                                           name="card_description2_ru"
-                                          id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][1]->card_description_ru }}</textarea>
@@ -259,8 +258,9 @@
                                     <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title2_us"
-                                               class="form-control"
+                                               class="form-control k_maxlength_5"
                                                placeholder=""
+                                               maxlength="80"
                                                value="{{ $data['practicCards'][1]->card_title_us }}">
                                     </div>
                                 </div>
@@ -268,9 +268,8 @@
                                     <div class="col-lg">
                                     <label class="col-form-label col-lg-12">Короткий опис</label>
 
-                                <textarea class=" form-control"
+                                <textarea class=" form-control  k_maxlength_5"
                                           name="card_description2_us"
-                                          id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][1]->card_description_us }}</textarea>
@@ -290,19 +289,19 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Заголовок картки</label>
-                                <input name="card_title3_ua" type="text" class="form-control" placeholder="" value="{{ $data['practicCards'][2]->card_title_ua }}">
+                                <input name="card_title3_ua" type="text" class="form-control k_maxlength_5" maxlength="80" placeholder="" value="{{ $data['practicCards'][2]->card_title_ua }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea name="card_description3_ua" class="form-control" id="k_maxlength_5" maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][2]->card_description_ua }}</textarea>
+                                <textarea name="card_description3_ua" class="form-control k_maxlength_5"  maxlength="250" placeholder="" rows="6">{{ $data['practicCards'][2]->card_description_ua }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path3" class="">
+                                <input type="file" name="img_path3" class="" @if(empty($data['practicCards'][2]->img_path)) required @endif>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -354,8 +353,9 @@
                                     <label class="col-form-label col-lg-12">Заголовок картки</label>
                                         <input type="text"
                                                name="card_title3_ru"
-                                               class="form-control"
+                                               class="form-control k_maxlength_5"
                                                placeholder=""
+                                               maxlength="80"
                                                value="{{ $data['practicCards'][2]->card_title_ru }}">
                                     </div>
                                 </div>
@@ -363,9 +363,8 @@
                                     <div class="col-lg">
                                     <label class="col-form-label col-lg-12">Короткий опис</label>
 
-                                <textarea class="form-control"
+                                <textarea class="form-control  k_maxlength_5"
                                           name="card_description3_ru"
-                                          id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][2]->card_description_ru }}</textarea>
@@ -391,17 +390,17 @@
 
                                         <input type="text"
                                                name="card_title3_us"
-                                               class="form-control"
+                                               class="form-control k_maxlength_5"
                                                placeholder=""
+                                               maxlength="80"
                                                value="{{ $data['practicCards'][2]->card_title_us }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg">
                                     <label class="col-form-label col-lg-12">Короткий опис</label>
-                                <textarea class=" form-control"
+                                <textarea class=" form-control k_maxlength_5"
                                           name="card_description3_us"
-                                          id="k_maxlength_5"
                                           maxlength="250"
                                           placeholder=""
                                           rows="6">{{ $data['practicCards'][2]->card_description_us }}</textarea>

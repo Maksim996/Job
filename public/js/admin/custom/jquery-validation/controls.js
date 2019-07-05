@@ -117,7 +117,7 @@ var KFormControls = function () {
             rules: {
                 card_title1_ua: {
                     required: true,
-                    maxlength: 200
+                    maxlength: 80
                 },
                 card_description1_ua: {
                     required: true,
@@ -125,12 +125,17 @@ var KFormControls = function () {
                 },
                 card_link1: {
                     required: true,
-                    maxlength: 200
                 },
+                img_path1: {
+                    // required: true,
+                    extension: "jpg|png|jpeg",
+                    accept: "image/jpg,image/jpeg,image/png",
+                    filesize: 5241880
 
+                },
                 card_title2_ua: {
                     required: true,
-                    maxlength: 200
+                    maxlength: 80
                 },
                 card_description2_ua: {
                     required: true,
@@ -138,12 +143,17 @@ var KFormControls = function () {
                 },
                 card_link2: {
                     required: true,
-                    maxlength: 200
                 },
+                img_path2: {
+                    // required: true,
+                    extension: "jpg|png|jpeg",
+                    accept: "image/jpg,image/jpeg,image/png",
+                    filesize: 5241880
 
+                },
                 card_title3_ua: {
                     required: true,
-                    maxlength: 200
+                    maxlength: 80
                 },
                 card_description3_ua: {
                     required: true,
@@ -151,7 +161,13 @@ var KFormControls = function () {
                 },
                 card_link3: {
                     required: true,
-                    maxlength: 200
+                },
+                img_path3: {
+                    // required: true,
+                    extension: "jpg|png|jpeg",
+                    accept: "image/jpg,image/jpeg,image/png",
+                    filesize: 5241880
+
                 },
             },
 
