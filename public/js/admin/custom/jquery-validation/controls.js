@@ -53,6 +53,10 @@ var KFormControls = function () {
                     required: true,
                     maxlength: 250,
                 },
+                img_path:{
+                    extension: "jpg|png|jpeg|svg",
+                    // accept: "image/jpg,image/jpeg,image/png,image/svg+xml",
+                },
                 content_ru:{
                     maxlength: 250,
                 },
@@ -80,85 +84,92 @@ var KFormControls = function () {
     };
 
     var demo3 = function () {
-        $("#announcements-form").validate({
-            // define validation rules
-            rules: {
-                title_ua: {
-                    required: true,
-                    maxlength: 200
-                },
-                short_description_ua: {
-                    required: true,
-                    maxlength: 200
-                },
-                full_description_ua: {
-                    required: true
-                },
-                short_location_ua: {
-                    required: true,
-                    maxlength: 200
-                },
-                full_location_ua: {
-                    required: true,
-                    maxlength: 200
-                },
-                date: {
-                    required: true
-                },
-                img_path: {
-                    required: true
-                },
-                "slider-image": {
-                    required: true
-                },
-                keywords: {
-                    required: true,
-                    maxlength: 200
-                },
-                description: {
-                    required: true,
-                    maxlength: 200
-                },
-                title_ru: {
-                    required: true,
-                    maxlength: 200
-                },
-                short_description_ru: {
-
-                    required: true,
-
-                    maxlength: 200
-                },
-                full_description_ru: {
-                    required: true,
-
-                },
-                short_location_ru: {
-                    required: true,
-
-                    maxlength: 200
-                },
-                full_location_ru: {
-                    required: true,
-
-                    maxlength: 200
-                },
-            },
-
-            //display error alert on form submit
-            invalidHandler: function(event, validator) {
-                KUtil.scrollTo("announcements-form", -200);
-            },
-            errorPlacement: function(error, element){
-                var element = $(element);
-                element.addClass('is-invalid');
-                error.addClass('invalid-feedback');
-                error.appendTo(element.parent());
-            },
-            submitHandler: function (form) {
-                form[0].submit(); // submit the form
-            }
-        });
+        // $("#announcements-form").validate({
+        //     // define validation rules
+        //     rules: {
+        //         title_ua: {
+        //             required: true,
+        //             maxlength: 75
+        //         },
+        //         short_description_ua: {
+        //             required: true,
+        //             maxlength: 200
+        //         },
+        //         full_description_ua: {
+        //             required: true
+        //         },
+        //         short_location_ua: {
+        //             required: true,
+        //             maxlength: 200
+        //         },
+        //         full_location_ua: {
+        //             required: true,
+        //             maxlength: 200
+        //         },
+        //         date: {
+        //             required: true
+        //         },
+        //         img_path: {
+        //             // required: true,
+        //             extension: "jpg|png|jpeg|svg",
+        //             accept: "image/jpg,image/jpeg,image/png,image/svg+xml",
+        //
+        //         },
+        //         "slider-image": {
+        //             // required: true,
+        //             extension: "jpg|png|jpeg|svg",
+        //             accept: "image/jpg,image/jpeg,image/png,image/svg+xml",
+        //
+        //         },
+        //         keywords: {
+        //             required: true,
+        //             maxlength: 200
+        //         },
+        //         description: {
+        //             required: true,
+        //             maxlength: 200
+        //         },
+        //         title_ru: {
+        //             maxlength: 75
+        //         },
+        //         short_description_ru: {
+        //             maxlength: 200
+        //         },
+        //         short_location_ru: {
+        //             maxlength: 200
+        //         },
+        //         full_location_ru: {
+        //             maxlength: 200
+        //         },
+        //         title_us: {
+        //             maxlength: 75
+        //         },
+        //         short_description_us: {
+        //             maxlength: 200
+        //         },
+        //         short_location_us: {
+        //             maxlength: 200
+        //         },
+        //         full_location_us: {
+        //             maxlength: 200
+        //         },
+        //     },
+        //
+        //     //display error alert on form submit
+        //     invalidHandler: function(event, validator) {
+        //         KUtil.scrollTo("announcements-form", -200);
+        //     },
+        //     errorPlacement: function(error, element){
+        //         var element = $(element);
+        //         element.addClass('is-invalid');
+        //         error.addClass('invalid-feedback');
+        //         error.appendTo(element.parent());
+        //     },
+        //     submitHandler: function (form) {
+        //         collectFormData(form, false);
+        //         // form[0].submit(); // submit the form
+        //     }
+        // });
     };
 
     var demo4 = function () {

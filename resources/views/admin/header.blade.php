@@ -31,7 +31,12 @@
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Заголовок головної сторінки</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <input type="text" name="title_ua" class="form-control" placeholder="" value="{{ $data['header'][0]->title_ua }}">
+                        <input type="text"
+                               name="title_ua"
+                               class="form-control k_maxlength_5"
+                               maxlength="200"
+                               placeholder=""
+                               value="{{ $data['header'][0]->title_ua }}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -44,7 +49,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <textarea class="form-control" name="content_ua" id="k_maxlength_5" maxlength="200" placeholder="" rows="6">{{ $data['header'][0]->content_ua }}</textarea>
+                        <textarea class="form-control k_maxlength_5" name="content_ua" maxlength="200" placeholder="" rows="6">{{ $data['header'][0]->content_ua }}</textarea>
                         <span class="form-text text-muted">Короткий опис</span> 
                     </div>
                 </div>
@@ -56,8 +61,9 @@
                             <figcaption class="figure-caption">Поточне зображення</figcaption>
                         </figure>
                     </div>
-                    <div class="d-flex align-items-center pb-5 col-lg-3 col-md-6 col-sm-6">
-                        <input type="file" name="img_path" class="form-control-file">
+                    <div class="d-flex  flex-column pb-5 col-lg-6 col-md-6 col-sm-6">
+                        <input class="form-control" type="file" name="img_path" class="form-control-file" accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                        <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
                     </div>
 
                 </div>
@@ -66,7 +72,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2 col-sm-12">Ключові слова</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <input name="keywords" type="text" class="form-control" placeholder="" value="{{ $data['header'][0]->keywords }}">
+                        <input name="keywords" type="text" maxlength="200" class="form-control k_maxlength_5" placeholder="" value="{{ $data['header'][0]->keywords }}">
                         <span class="form-text text-muted">Ключові слова для пошукової системи(виводити через кому), наприклад: СумДУ, Сумський державний університет, СумГУ, SSU</span> 
                     </div>
                 </div>
@@ -124,18 +130,18 @@
                             <div class="col-lg-9 col-md-9 col-sm-12">
                                 <input type="text"
                                        name="title_ru"
-                                       class="form-control"
+                                       class="form-control k_maxlength_5"
                                        placeholder=""
+                                       maxlength="200"
                                        value="{{ $data['header'][0]->title_ru }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
-                                <textarea class="form-control"
+                                <textarea class="form-control k_maxlength_5"
                                           name="content_ru"
-                                          id="k_maxlength_5"
-                                          maxlength="250"
+                                          maxlength="200"
                                           placeholder=""
                                           rows="6">{{ $data['header'][0]->content_ru }}</textarea>
                                 <span class="form-text text-muted">Короткий опис</span>
@@ -160,19 +166,19 @@
                             <div class="col-lg-9 col-md-9 col-sm-12">
                                 <input type="text"
                                        name="title_us"
-                                       class="form-control"
+                                       class="form-control k_maxlength_5"
                                        placeholder=""
+                                       maxlength="200"
                                        value="{{ $data['header'][0]->title_us }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2 col-sm-12">Короткий опис</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
-                                <textarea class=" form-control"
+                                <textarea class=" form-control k_maxlength_5"
                                           name="content_us"
-                                          id="k_maxlength_5"
-                                          maxlength="250"
                                           placeholder=""
+                                          maxlength="200"
                                           rows="6">{{ $data['header'][0]->content_us }}</textarea>
                                 <span class="form-text text-muted">Короткий опис</span>
                             </div>

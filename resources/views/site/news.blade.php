@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="card-body pl-lg-3 col-lg-8">
                                     <p class="card-text news__text-page mb-4 py-0">
-                                        {!! !empty($data['news'][$i]->{'full_description_' . $data['locale']}) ? $data['news'][$i]->{'full_description_' . $data['locale']} : $data['news'][$i]-> full_description_ua !!}
+                                        {!! !empty($data['news'][$i]->{'short_description_' . $data['locale']}) ? $data['news'][$i]->{'short_description_' . $data['locale']} : $data['news'][$i]-> short_description_ua !!}
                                     </p>
                                     <div class="news__about">
                                         <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-page">

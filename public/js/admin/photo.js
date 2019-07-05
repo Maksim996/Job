@@ -1,7 +1,14 @@
 function handleFilesSelect(evt, inputId) {
     var files = evt.target.files;
     for (var i = 0, f; f = files[i]; i++) {
-        if (!f.type.match('image.*')) {
+    // work
+        // if (!f.type.match('image.*')) {
+        //     continue;
+        // }
+
+        if (f.type == 'image/jpeg' || f.type =='image/png' || f.type =='image/jpg') {
+        } else {
+            document.getElementById('files').value = "";
             continue;
         }
         var reader = new FileReader();

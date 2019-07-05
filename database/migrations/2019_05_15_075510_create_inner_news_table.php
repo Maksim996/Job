@@ -27,7 +27,7 @@ class CreateInnerNewsTable extends Migration
             $table->text('full_description_ru')->nullable();
             $table->text('full_description_us')->nullable();
             $table->string('keywords', 200);
-            $table->string('description', 200);
+            $table->text('description');
         });
     }
 
