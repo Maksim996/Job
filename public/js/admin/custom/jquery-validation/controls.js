@@ -55,7 +55,8 @@ var KFormControls = function () {
                 },
                 img_path:{
                     extension: "jpg|png|jpeg|svg",
-                    // accept: "image/jpg,image/jpeg,image/png,image/svg+xml",
+                    filesize: 5241880,
+                    accept: "image/jpg,image/jpeg,image/png,image/svg+xml",
                 },
                 content_ru:{
                     maxlength: 250,
@@ -188,27 +189,16 @@ var KFormControls = function () {
             rules: {
                 name: {
                     required: true,
-                    maxlength: 200
+                    maxlength: 30
                 },
                 link: {
                     required: true
                 },
-
                 img_path: {
-                    required: true,
                     extension: "jpg|png|jpeg|svg",
-                    accept: "image/jpg,image/jpeg,image/png,image/svg+",
+                    accept: "image/jpg,image/jpeg,image/png,image/svg+xml",
                     filesize: 5241880
                 },
-                cat: {
-                    required: true
-                },
-                title_ua: {
-                    required: true
-                },
-                file: {
-                    required: true
-                }
             },
 
             //display error alert on form submit
@@ -258,6 +248,19 @@ var KFormControls = function () {
                 title_us: {
                     maxlength: 200
                 },
+                placeholder_ua:{
+                    maxlength: 500
+                },
+                placeholder_ru:{
+                    maxlength: 500
+                },
+                placeholder_us:{
+                    maxlength: 500
+                },
+                file: {
+                    filesize: 5241880
+                }
+
             },
 
             //display error alert on form submit

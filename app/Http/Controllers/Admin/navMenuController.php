@@ -101,7 +101,6 @@ class navMenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         DB::table('category')
             ->where('category_id', $id)
             ->update([
@@ -127,7 +126,7 @@ class navMenuController extends Controller
         $data = [
             'categories' => $categories,
         ];
-        return view('admin.menu.menus',compact('data'));
+        return redirect('admin/nav/'.$id);
     }
 
     /**

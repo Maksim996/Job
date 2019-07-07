@@ -309,7 +309,6 @@
 
         <!-- begin::Global Config(global config for global JS sciprts) -->
         <script src="{{ URL::asset('js/admin/main.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('js/admin/partners.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/photo.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/footer.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('js/admin/document.js') }}" type="text/javascript"></script>

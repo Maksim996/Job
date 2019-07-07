@@ -129,16 +129,6 @@ function reqiureFieldsLocal(tag, arr){
 }
 
 
-$('input[name="img_path"]').on('change', function () {
-    let reader = new FileReader();
-    reader.onload = function (e) {
-        $('#blah')
-            .attr('src', e.target.result);
-
-    };
-    reader.readAsDataURL(this.files[0]);
-})
-
 
 updateCheckLocal();
 parseUrl();

@@ -15,6 +15,11 @@ body{
     right: 0;
     
 }
+.preview_img{
+    width: 300px;
+    height: 130px;
+    border:1px solid #e0e0e0;
+}
 .thumb {
     height: 60px;
     border: 1px solid #000;

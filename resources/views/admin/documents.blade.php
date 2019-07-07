@@ -64,6 +64,7 @@
                             <th>Заголовок</th>
                             <th>Категорія</th>
                             <th>Розділ</th>
+                            <th>Дата</th>
                             <th>Дії</th>
                         </tr>
                     </thead>
@@ -85,8 +86,8 @@
                                     <td>{{$sub->title_ua}}</td>
                                 @endif
                             @endforeach
-                            {{--<td>{{$doc->doc_date}}</td>--}}
-                            <td>
+                            <td>{{$doc->doc_date}}</td>
+                            <td width="75px">
                                 <input class="id" value="{{$doc->doc_id}}" style="display:none">
                                 <a href="{{ URL::route('ad_documents.documents.show', $doc->doc_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
                                     <i class="la la-pencil"></i>

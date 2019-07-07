@@ -57,7 +57,7 @@
                     <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <figure class="figure">
-                            <img id="blah" src="{{asset($data['header'][0]->img_path) }}" class="figure-img img-fluid rounded" alt="{{ $data['header'][0]->{'content_' . $data['locale']} }}">
+                            <img id="blah" src="{{asset($data['header'][0]->img_path) }}" class=" preview_img figure-img img-fluid rounded" alt="{{ $data['header'][0]->{'content_' . $data['locale']} }}">
                             <figcaption class="figure-caption">Поточне зображення</figcaption>
                         </figure>
                     </div>

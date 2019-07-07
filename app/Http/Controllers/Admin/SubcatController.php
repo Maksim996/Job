@@ -38,8 +38,8 @@ class SubcatController extends Controller
     public function store(Request $request)
     {
         //
-        $catSelect = $request->subcatSelect;
 
+        $catSelect = $request->subcatSelect;
         if($catSelect == 'external') {
                 $type ='type1';
                 $link = $request->subcatLink;
@@ -64,7 +64,7 @@ class SubcatController extends Controller
             'category' => $category[0],
             'subcategories' => $subcategories,
         ];
-        return view('admin.menu.menu',compact('data'));
+        return redirect('admin/nav/'.$request->categoryId);
     }
 
     /**
@@ -109,6 +109,7 @@ class SubcatController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd('yes');
         DB::table('subcategory')->where('subcategory_id',$id)->update([
             'title_ua'=>$request->title_ua,
             'title_ru' => $request->local_ru ? $request->title_ru : null,
@@ -144,18 +145,17 @@ class SubcatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-
         $categoryId = DB::table('subcategory')->where('subcategory_id',$id)->value('category_id');
         $category = DB::table('category')->where('category_id',$categoryId)->get();
-
-        DB::table('subcategory')->where('subcategory_id',$id)->delete();
         $documents = DB::table('documents')->where('subcategory_id',$id)->get();
+
         foreach ($documents as $document){
             $file = $document->file_link;
             File::delete($file);
         }
+        DB::table('subcategory')->where('subcategory_id',$id)->delete();
         DB::table('documents')->where('subcategory_id',$id)->delete();
 
         $subcategories = DB::table('subcategory')->where('category_id',$categoryId)->get()->toArray();
@@ -164,7 +164,6 @@ class SubcatController extends Controller
             'subcategories' => $subcategories,
         ];
 
-        return view('admin.menu.menu',compact('data'));
-//        redirect('ad_nav.nav.index');
+        return redirect('admin/nav/'.$categoryId);
     }
 }

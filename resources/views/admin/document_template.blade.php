@@ -46,14 +46,13 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу:</label>
                         <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input  type="text" class="form-control" placeholder="" name="title_ua" @if($data['type'] == '1') value="{{$data['document']->title_ua}}" @endif>
+                            <input  type="text" class="form-control k_maxlength_5" maxlength="200" placeholder="" name="title_ua" @if($data['type'] == '1') value="{{$data['document']->title_ua}}" @endif>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Опис документу</label>
                         <div class="col-lg-9 col-md-9 col-sm-12">
                         <textarea class="form-control placeholder_ua k_maxlength_5"
-                                  id="k_maxlength_5"
                                   maxlength="500"
                                   placeholder=""
                                   rows="6"
@@ -105,12 +104,12 @@
                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка документу</label>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="form-group">
-                                <input type="file" name="file" class="form-control-file" >
+                                <input type="file" name="file" class="form-control-file">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             @if( $data['type'] == '1' and $data['document']->type ==='file')
-                                <a class="d-flex align-items-center" href="">
+                                <a id="preview_doc" class="d-flex align-items-center" href="{{$data['document']->file_link}}" download>
                                     <i class="la la-4x la-file-text"></i>
                                     <b class="mr-4">
                                         @if($data['type'] == '1')
@@ -164,7 +163,7 @@
                             <div class="form-group row" >
                                 <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу російською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <input type="text" class="form-control form-title-ru" placeholder="" name="title_ru"
+                                    <input type="text" class="form-control form-title-ru k_maxlength_5" maxlength="200" placeholder="" name="title_ru"
                                            @if(isset($data['document']))
                                            value="{{ $data['document']->title_ru }}"
                                            @else
@@ -177,7 +176,6 @@
                                 <label class="col-form-label col-lg-2 col-sm-12">Опис документу російською</label>
                                 <div class="col-lg-9 col-md-9 col-sm-12">
                                 <textarea class="form-control placeholder_ru k_maxlength_5"
-                                      id="k_maxlength_5"
                                       maxlength="500"
                                       placeholder=""
                                       rows="6"
@@ -202,7 +200,7 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-lg-2 col-sm-12">Заголовок документу англійською</label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <input type="text" class="form-control form-title-us" placeholder="" name="title_us"
+                                    <input type="text" class="form-control form-title-us k_maxlength_5" maxlength="200" placeholder="" name="title_us"
                                            @if(isset($data['document']))
                                            value="{{ $data['document']->title_us }}"
                                            @else
@@ -215,7 +213,6 @@
                                 <label class="col-form-label col-lg-2 col-sm-12">Опис документу англійською</label>
                                 <div class="col-lg-9 col-md-9 col-sm-12">
                                 <textarea class="form-control placeholder_us k_maxlength_5"
-                                          id="k_maxlength_5"
                                           maxlength="500"
                                           placeholder=""
                                           rows="6"

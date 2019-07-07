@@ -17,13 +17,10 @@
         </div>
         <div class="k-portlet">
             <div class="k-portlet__head">
-                <form class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-center">
+                <form class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end">
                     <div class="row  col-lg-8 col-md-12">
                         <label>Назва партнера</label>
-                        <div class="col-lg-8 k-margin-b-10-tablet-and-mobile">
-                            <input type="text" class="form-control k-input" placeholder="Заголовок" data-col-index="0">
-                        </div>
-                    
+                        <input type="text" class="form-control k-input" placeholder="Заголовок" data-col-index="0">
                     </div>
                     <div class="row col-lg-4 m-0">
                         <button class="btn btn-brand k-btn k-btn--icon" id="m_search">

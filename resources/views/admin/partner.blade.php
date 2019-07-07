@@ -24,7 +24,7 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я партнера</label>
                         <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="text" name="name" class="form-control" placeholder="" value="{{$data['partners']->name_brand}}">
+                            <input type="text" name="name" maxlength="30" class="form-control k_maxlength_5" placeholder="" value="{{$data['partners']->name_brand}}">
                         </div>
                     </div>
                     
@@ -38,8 +38,15 @@
                     
                     <div class="form-group row align-items-center">
                         <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                        <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="file" name="img_path" >
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <figure class="figure">
+                                <img id="blah" src="{{asset($data['partners']->img_path) }}" class="preview_img figure-img img-fluid rounded" alt="{{ $data['partners']->name_brand }}">
+                                <figcaption class="figure-caption">Поточне зображення</figcaption>
+                            </figure>
+                        </div>
+                        <div class="d-flex  flex-column pb-5 col-lg-6 col-md-6 col-sm-6">
+                            <input type="file" name="img_path" @if(empty($data['partners']->img_path)) required @endif accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                            <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
                         </div>
                     </div>
 
@@ -69,32 +76,37 @@
                @method('PUT') 
                  <input type="hidden" name="_method" value="PUT">
             <div class="k-portlet__body" id='partners_block'>
-                
+
                 <div class='partners' id='duplicater'>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 col-sm-12">Ім'я партнера</label>
                         <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="text" name="name" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
-                        <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="text" name="link" class="form-control">
-                            <span class="form-text text-muted">По кліку на заголовок переходить на посиланням ...</span> 
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row align-items-center">
-                        <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                        <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="file" name="img_path" >
+                            <input type="text" name="name" maxlength="30" class="form-control k_maxlength_5" placeholder="" value="">
                         </div>
                     </div>
 
-                   
-                </div>      
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" name="link" class="form-control" value="">
+                            <span class="form-text text-muted">По кліку на заголовок переходить на посиланням ...</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row align-items-center">
+                        <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <figure class="figure">
+                                <img id="blah" src="" class="preview_img figure-img img-fluid rounded" alt="">
+                                <figcaption class="figure-caption">Поточне зображення</figcaption>
+                            </figure>
+                        </div>
+                        <div class="d-flex  flex-column pb-5 col-lg-6 col-md-6 col-sm-6">
+                            <input type="file" name="img_path" @if(empty($data['partners']->img_path)) required @endif accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                            <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
              
             <div class="k-portlet__foot">
@@ -113,23 +125,5 @@
                    
    </div>
 
-   <script type="text/javascript">
-   document.addEventListener("DOMContentLoaded", function(event) { 
-           $('#brand_minus').on('click',function(){
-               let id = $(this).val();
-              $.ajax({
-                   url: "{{ URL::route('ad_partners.partners.destroy', $data['id']) }}",
-                   method: 'delete',
-                   data : {_token: '{{csrf_token()}}'},
-                   
-                   success: function(res){
-                       alert("Success");
-                       location.href = "http://job.test/admin/partners"
-                   }
-               })   
-           });
-      });
-  
-  </script>
-       
+
 @endsection

@@ -17,16 +17,24 @@ function changeVal(e) {
     const target_ch= $(e);
     const linked = $("#linkBar1").find('input[name="link"]');
     const fil =$("#linkBar2").find('input[name="file"]');
+    const preview_doc = $("a").is("#preview_doc");
     if (target_ch.val() == 'link'){
        contactChoice1.style.display='flex';
         linked.addClass('required');
+        if(preview_doc){
+            fil.removeClass('required');
+        }
         fil.removeClass('required');
-       contactChoice2.style.display='none';
+        contactChoice2.style.display='none';
     } else if (target_ch.val() == 'file'){
        contactChoice2.style.display='flex';
        contactChoice1.style.display='none';
         linked.removeClass('required');
-        fil.addClass('required');
+        if(preview_doc){
+            fil.removeClass('required');
+        } else{
+            fil.addClass('required');
+        }
     }
 }
 
