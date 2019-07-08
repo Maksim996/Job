@@ -108,22 +108,22 @@
                                 </li>
                             @endforeach
 
-                                <li class="nav-item dropdown language-full ">
+                                <li class="nav-item dropdown language-full d-none" >
                                     <select class="text-uppercase" id="language-choice" >
                                         @foreach(['ua', 'ru', 'us'] as $locale)
-                                            <option  value="{{$locale}}" @if($locale == $data['locale']) selected @endif>{{ $locale }}</option>
+                                            <option  value="{{$locale}}" @if($locale == $data['locale']) selected @endif>@if($locale === 'us') en @else {{$locale}} @endif</option>
                                         @endforeach
                                     </select>
                                 </li>
-                                <li class="nav-item dropdown language-media">
-                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Мови <img class="language-media__select" src="{{ URL::asset('images/ukraine.svg')}}">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>
-                                        <a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>
-                                    </div>
-                                </li>
+                                {{--<li class="nav-item dropdown language-media">--}}
+                                    {{--<a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                        {{--Мови <img class="language-media__select" src="{{ URL::asset('images/ukraine.svg')}}">--}}
+                                    {{--</a>--}}
+                                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">--}}
+                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/united-kingdom.svg')}}"></a>--}}
+                                        {{--<a class="dropdown-item" href="#"><img src="{{ URL::asset('images/russia.svg')}}"></a>--}}
+                                    {{--</div>--}}
+                                {{--</li>--}}
                             </ul>
                         </div>
                     </nav>

@@ -61,13 +61,29 @@ var KAppOptions = {
 //     reader.readAsDataURL(this.files[0]);
 // });
 
-$('input[name="img_path"]').on('change', function (e) {
+
+function handleChangeImage(e) {
+    let target = $(this).parents('.form-group').find('.preview_img');
+    let file = e.target.files[0];
+    if ((file.type == 'image/jpeg' || file.type =='image/png' || file.type =='image/jpg' || file.type =='image/svg+xml' ) && file.size < 5241880) {
+        imgSelectPriview(this, target )
+    }
+}
+
+$('body').find('.inp_footer_img').on('change', handleChangeImage);
+
+$('.inp_partner_img').on('change', function (e) {
     let file = e.target.files[0];
     if ((file.type == 'image/jpeg' || file.type =='image/png' || file.type =='image/jpg' || file.type =='image/svg+xml' ) && file.size < 5241880) {
         imgSelectPriview(this,'#blah' )
     }
 });
-
+$('.inp_header_img').on('change', function (e) {
+    let file = e.target.files[0];
+    if ((file.type == 'image/jpeg' || file.type =='image/png' || file.type =='image/jpg' || file.type =='image/svg+xml' ) && file.size < 5241880) {
+        imgSelectPriview(this,'#blah' )
+    }
+});
 function imgSelectPriview(evt, block_img) {
     let reader = new FileReader();
     reader.onload = function (evt) {

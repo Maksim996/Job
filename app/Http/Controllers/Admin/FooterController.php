@@ -113,7 +113,6 @@ class FooterController extends Controller
 		$socialSideData = json_decode($request->socialNetworks);
 
 		foreach($leftSideData as $left_item) {
-
 	        $id = $left_item->id;
             $img_key = 'left-column-image' . '-' . $id;
             if($img_path = $request->file($img_key) == null) {

@@ -45,7 +45,7 @@
                             </figure>
                         </div>
                         <div class="d-flex  flex-column pb-5 col-lg-6 col-md-6 col-sm-6">
-                            <input type="file" name="img_path" @if(empty($data['partners']->img_path)) required @endif accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                            <input class="inp_partner_img" type="file" name="img_path" @if(empty($data['partners']->img_path)) required @endif accept="image/jpg,image/jpeg,image/png,image/svg+xml">
                             <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                             </figure>
                         </div>
                         <div class="d-flex  flex-column pb-5 col-lg-6 col-md-6 col-sm-6">
-                            <input type="file" name="img_path" @if(empty($data['partners']->img_path)) required @endif accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                            <input class="inp_partner_img" type="file" name="img_path" @if(empty($data['partners']->img_path)) required @endif accept="image/jpg,image/jpeg,image/png,image/svg+xml">
                             <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
                         </div>
                     </div>

@@ -62,7 +62,7 @@
                         </figure>
                     </div>
                     <div class="d-flex  flex-column pb-5 col-lg-6 col-md-6 col-sm-6">
-                        <input class="form-control" type="file" name="img_path" class="form-control-file" accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                        <input class="inp_header_img form-control" type="file" name="img_path" class="form-control-file" accept="image/jpg,image/jpeg,image/png,image/svg+xml">
                         <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
                     </div>
 

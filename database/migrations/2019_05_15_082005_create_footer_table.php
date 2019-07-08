@@ -15,8 +15,8 @@ class CreateFooterTable extends Migration
     {
         Schema::create('footer', function (Blueprint $table) {
             $table->increments('footer_id');
-            $table->string('img_path', 200)->nullable();
-            $table->string('link', 200)->nullable();
+            $table->text('img_path')->nullable();
+            $table->text('link')->nullable();
             $table->text('content_ua')->nullable();
             $table->text('content_ru')->nullable();
             $table->text('content_us')->nullable();

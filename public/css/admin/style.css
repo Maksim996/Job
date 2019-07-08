@@ -109,10 +109,6 @@ div[id^="local"] {
     margin-right: auto 
 }
 
-.left-footer-column:first-child{
-    margin:  0 2rem;
-
-}
  .admin_card{
      margin-bottom: 30px;
      height: 325px;

@@ -36,36 +36,46 @@
                                 <div class='info-class' id='duplicater'>
                                     <div class="form-group row">
                                         <input style="display: none;" type="text" class="form-control left-type" name="left-type[]" value="{{ $data['footer'][$i]->type }}">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Ім'я</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Ім'я</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-name" placeholder="" name="left-name{{$count}}" value="{{ $data['footer'][$i]->name }}">
                                             <span class="form-text text-muted">Наприклад: локація</span>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-sm-12 col-form-label">Виберіть посилання чи звичайний текст</label>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-lg-3 col-sm-12 col-form-label">Виберіть посилання чи звичайний текст</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
-                                            <div class="k-checkbox-inline">
-                                                <input class="checkLink" type="radio" checked="checked" id="link" name="contact{{$count}}" value="1">
-                                                <label for="link">Посилання</label>
-
-                                                <input class="checkText" type="radio" id="text" name="contact{{$count}}" value="0">
-                                                <label for="text">Звичайний текст</label>
+                                            <div class="k-radio-inline">
+                                                <label class="k-radio k-radio--bold k-radio--brand">
+                                                    <input class="checkLink checkTypeLinTex" type="radio"
+                                                           @if(!empty($data['footer'][$i]->link) ) checked="checked" @endif
+                                                           id="link" name="contact{{$count}}" value="1">
+                                                    Посилання
+                                                    <span></span>
+                                                </label>
+                                                <label class="k-radio k-radio--bold k-radio--brand">
+                                                    <input class="checkText checkTypeLinTex"
+                                                           @if(empty($data['footer'][$i]->link)) checked="checked" @endif
+                                                           type="radio"
+                                                           id="text" name="contact{{$count}}" value="0">
+                                                    Звичайний текст
+                                                    <span></span>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row ckeckLinkText">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                                    <div class="form-group row ckeckLinkText" style="display: none">
+                                        <label class="col-form-label col-lg-3 col-sm-12">Посилання</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
-                                            <input type="text" class="form-control item-link" required="required" placeholder="" name="left-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
+                                            <input type="text" class="form-control item-link"  placeholder="" name="left-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
                                             <span class="form-text text-muted">По кліку переходить за посиланням ...</span>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Інформація українською</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Інформація українською</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_ua" name="left-content{{$count}}" value="{{ $data['footer'][$i]->content_ua }}">
                                             <span class="form-text text-muted">Наприклад: Україна, м.Суми, вул. Римського-Корсакова,2, СумДУ, каб. Г-1012</span>
@@ -73,7 +83,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Інформація російською</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Інформація російською</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_ru" name="left-content_ru{{$count}}" value="{{ $data['footer'][$i]->content_ru }}">
                                             <span class="form-text text-muted">Например: Украина, г.Сумы, ул. Римского-Корсакова,2, СумГУ, каб. Г-1012</span>
@@ -81,7 +91,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Інформація англійською</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Інформація англійською</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control item-content_us" name="left-content_us{{$count}}" value="{{ $data['footer'][$i]->content_us }}">
                                             <span class="form-text text-muted">For example: Ukraine, c.Sumy, 2, Rymskogo-Korsakova st., SumDU, office. M-1012</span>
@@ -89,15 +99,25 @@
                                     </div>
 
                                     <div class="form-group row align-items-center">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                                        <div class="col-lg-3 col-md-9 col-sm-12">
-                                            <input type="file" class=" item-image" name="img_path" value="{{ $data['footer'][$i]->img_path }}">
+                                        <label class="col-form-label col-lg-3 col-sm-12">Загрузка фото</label>
+                                        <div class="col-lg-3 col-md-3 col-sm-6">
+                                            <figure class="figure">
+                                                <img id="item-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}" class="preview_img  figure-img img-fluid rounded">
+                                                <figcaption class="figure-caption">Поточне зображення</figcaption>
+                                            </figure>
                                         </div>
-                                        <img width="50px" id="item-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}"/>
+                                        <div class="col-lg-3 col-md-9 col-sm-12">
+                                            <input type="file"
+                                                   class="inp_footer_img item-image @if(empty($data['footer'][$i]->img_path)) required @endif"
+                                                   name="img_path_left{{$count}}"
+                                                   value="{{ $data['footer'][$i]->img_path }}"
+                                                   accept="image/jpg,image/jpeg,image/png,image/svg+xml">
+                                            <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group row justify-content-center col-lg-12">
-                                        <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
+                                        <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger">
                                             <span>
                                                 <span>Видалити</span>
                                             </span>
@@ -124,7 +144,7 @@
                     @if($data['footer'][$i]->type == 'about_as')
                         <div class="form-group row">
                             <input style="display: none;" type="text" class="form-control about-us-type" name="about-us-type[]" value="{{ $data['footer'][$i]->type }}">
-                            <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                            <label class="col-form-label col-lg-3 col-sm-12">Посилання</label>
                             <div class="col-lg-9 col-md-9 col-sm-12">
                                 <input type="text" class="form-control about-us-link" placeholder="" name="about-us-link" data-id="{{$data['footer'][$i]->footer_id}}" value="{{ $data['footer'][$i]->link }}">
                                 <span class="form-text text-muted">По кліку переходить на посиланням ...</span>
@@ -141,11 +161,10 @@
 
                     @for($i = 0; $i < count($data['footer']); $i++)
                         @if($data['footer'][$i]->type == 'social')
-                            <div class="k-portlet__body social-networks" id='partners_block' data-id="{{$data['footer'][$i]->footer_id}}">
-                                <div class='partners' id='duplicater'>
-
+                            <div class="k-portlet__body social-networks partners" id='partners_block' data-id="{{$data['footer'][$i]->footer_id}}">
+                                <div   id='duplicater'>
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Назва соціальної мережі</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Назва соціальної мережі</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control social-name" name="social-name{{$count}}" value="{{ $data['footer'][$i]->name }}">
                                             <span class="form-text text-muted">Наприклад: Telegram</span>
@@ -154,29 +173,36 @@
 
                                     <div class="form-group row">
                                         <input style="display: none;" class="form-control social-type" type="text" name="social-type[]" value="{{ $data['footer'][$i]->type }}">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Посилання</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control social-link" name="social-link{{$count}}" value="{{ $data['footer'][$i]->link }}">
                                             <span class="form-text text-muted">По кліку зображення переходить на посиланням ...</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Кольор при наведенні на логотип соціальної мережі</label>
+                                        <label class="col-form-label col-lg-3 col-sm-12">Кольор при наведенні на логотип соціальної мережі</label>
                                         <div class="col-lg-9 col-md-9 col-sm-12">
                                             <input type="text" class="form-control social-color" name="social-color_bg[]" value="{{ $data['footer'][$i]->color_bg }}">
                                             <span class="form-text text-muted">Наприклад: rgb(0,0,0) або black або #000</span>
                                         </div>
                                     </div>
-
                                     <div class="form-group row align-items-center">
-                                        <label class="col-form-label col-lg-2 col-sm-12">Загрузка фото</label>
-                                        <div class="col-lg-3 col-md-9 col-sm-12">
-                                            <input type="file" name="img_path" class=" social-image">
+                                        <label class="col-form-label col-lg-3 col-sm-12">Загрузка фото</label>
+                                        <div class="col-lg-3 col-md-3 col-sm-6">
+                                            <figure class="figure">
+                                                <img  id="social-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}" class="preview_img  figure-img img-fluid rounded">
+                                                <figcaption class="figure-caption">Поточне зображення</figcaption>
+                                            </figure>
                                         </div>
-                                        <img width="50px" id="social-image" src="{{ URL::asset($data['footer'][$i]->img_path) }}"/>
+                                        <div class="col-lg-3 col-md-9 col-sm-12">
+                                            <input type="file"
+                                                   name="img_path_social{{$count}}"
+                                                   class="inp_footer_img  social-image @if(empty($data['footer'][$i]->img_path)) required @endif">
+                                            <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png, svg.</span>
+                                        </div>
                                     </div>
                                     <div class="form-group row justify-content-center col-lg-12">
-                                        <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger col-2">
+                                        <button id="delLeftCol" del-id="{{$data['footer'][$i]->footer_id}}" type="button" class="btn btn-danger">
                                             <span>
                                                 <span>Видалити соціальну мережу</span>
                                             </span>
