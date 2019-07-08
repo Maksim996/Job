@@ -32,7 +32,7 @@
        <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-10 docum">
-                <img class="img_document" src="{{ URL::asset('images/main/img1.jpg')}}" alt="">
+                <img class="img_document" src="{{ URL::asset('images/people-coffee-tea-meeting.png')}}" alt="">
                 <div class="row justify-content-center">
 
                     @foreach($data['subcategories'] as $category)
@@ -45,7 +45,7 @@
                             @endif
                         @endforeach
                     @endforeach
-                    <div class="col-md-12 col-lg-6 px-0 justify-content-center docum__btn">'
+                    <div class="col-md-12 col-lg-6 px-0 justify-content-center docum__btn">
 
                         <div class="nav flex-column nav-pills py-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
