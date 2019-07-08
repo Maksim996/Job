@@ -43,7 +43,9 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path1" class="" @if(empty($data['practicCards'][0]->img_path)) required @endif>
+                                <input type="file" name="img_path1"
+                                       accept="image/jpg,image/jpeg,image/png"
+                                       class="" @if(empty($data['practicCards'][0]->img_path)) required @endif>
                                 <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                             </div>
                         </div>
@@ -172,7 +174,9 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path2" class="" @if(empty($data['practicCards'][1]->img_path)) required @endif>
+                                <input type="file"
+                                       accept="image/jpg,image/jpeg,image/png"
+                                       name="img_path2" class="" @if(empty($data['practicCards'][1]->img_path)) required @endif>
                                 <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                             </div>
                         </div>
@@ -303,7 +307,9 @@
                         <div class="form-group row">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
-                                <input type="file" name="img_path3" class="" @if(empty($data['practicCards'][2]->img_path)) required @endif>
+                                <input type="file"
+                                       accept="image/jpg,image/jpeg,image/png"
+                                       name="img_path3" class="" @if(empty($data['practicCards'][2]->img_path)) required @endif>
                                 <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                             </div>
                         </div>
