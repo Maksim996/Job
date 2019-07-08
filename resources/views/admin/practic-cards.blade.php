@@ -44,6 +44,7 @@
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
                                 <input type="file" name="img_path1" class="" @if(empty($data['practicCards'][0]->img_path)) required @endif>
+                                <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -172,6 +173,7 @@
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
                                 <input type="file" name="img_path2" class="" @if(empty($data['practicCards'][1]->img_path)) required @endif>
+                                <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -302,6 +304,7 @@
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-12">Зображення</label>
                                 <input type="file" name="img_path3" class="" @if(empty($data['practicCards'][2]->img_path)) required @endif>
+                                <span class="form-text text-muted">Розширення зображення: jpg, jpeg, png.</span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -422,10 +425,7 @@
             </div>
         </form>
    </div>
-   {{--<script--}}
-  {{--src="https://code.jquery.com/jquery-3.4.1.min.js"--}}
-  {{--integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="--}}
-  {{--crossorigin="anonymous"></script>--}}
+
 
     <!--end::Dashboard 1-->
 @endsection
