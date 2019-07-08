@@ -70,7 +70,6 @@ class PracticCardController extends Controller
         $data = [
             'practicCards' => $practicCards
         ];
-
-        return view('admin.practic-cards', compact('data'));
+        return redirect()->route('ad_practic-cards.practic-cards.index');
     }
 }
