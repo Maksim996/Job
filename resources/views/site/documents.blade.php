@@ -74,7 +74,7 @@
                                         <ul class="docum__ul">
                                             @foreach($data['documents'] as $key=> $document)
                                                 @if($document->subcategory_id == $category->subcategory_id)
-                                                    <li class="docum__li" target_doc="index-{{$document->doc_id}}"><a href="{{$document->file_link}}" @if ($document->type === 'file')
+                                                    <li class="docum__li" target_doc="index-{{$document->doc_id}}"><a target="_blank" href="{{$document->file_link}}" @if ($document->type === 'file')
                                                     download="{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}" @endif
                                                     class="docum__link">{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}</a></li>
                                                 @endif

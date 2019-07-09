@@ -64,7 +64,7 @@
                                 <option value= "external">Зовнішнє</option>
                                 <option value= "document"   @if($data['category']->link == 'document') selected @endif >Документи</option>
                                 <option value= "announcements"   @if($data['category']->link == 'announcements') selected @endif >Анонси</option>
-                                <option value= "pracevlashtuvannya-praktika"   @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif >Працевлаштування та практика</option>
+                                <option value= "pracevlashtuvannya-praktika"   @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif >Практика та працевлаштування</option>
                             </select>
                             <div class="form-group row mt-3 extString" style="display:none">
                                 <div class="col-lg-12 col-md-9 col-sm-12">
@@ -86,13 +86,13 @@
         <div class="k-portlet tableHide" style="display: none">
             <div class="k-portlet__head ">
                 <div class="k-form k-form--fit k-margin-t-20 k-margin-b-20 col-lg-12 row align-items-end ">
-                    <div class="row  col-lg-7 col-md-12">
+                    <div class="row  col-lg-6 col-md-12">
                         <label>Назва розділу</label>
                         <div class="col-lg-12 row k-margin-b-10-tablet-and-mobile">
                             <input type="text" class="form-control k-input" placeholder="Заголовок" data-col-index="0" >
                         </div>
                     </div>
-                    <div class="row col-lg-5 m-0 ml-auto">
+                    <div class="row col-lg-6 m-0 ml-auto">
                         <button class="btn btn-brand k-btn k-btn--icon" id="m_search">
                             <span> <i class="la la-search"></i> <span>Шукати</span> </span>
                         </button>
