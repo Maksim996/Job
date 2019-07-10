@@ -686,6 +686,18 @@ $.validator.addMethod( "dateNL", function( value, element ) {
 	return this.optional( element ) || /^(0?[1-9]|[12]\d|3[01])[\.\/\-](0?[1-9]|1[012])[\.\/\-]([12]\d)?(\d\d)$/.test( value );
 }, $.validator.messages.date );
 
+
+$.validator.addMethod( "dateSec", function( value, element ) {
+	return this.optional( element ) || "/^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4} (2[0-3]|[01]?[0-9]):([0-5]?[0-9]):([0-5]?[0-9])$/".test( value );
+}, $.validator.messages.date );
+
+
+
+    // var pattern = new RegExp("^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4} (2[0-3]|[01]?[0-9]):([0-5]?[0-9]):([0-5]?[0-9])$");
+    // if (date.search(pattern)===0) return true;
+
+
+
 // Older "accept" file extension method. Old docs: http://docs.jquery.com/Plugins/Validation/Methods/accept
 $.validator.addMethod( "extension", function( value, element, param ) {
 	param = typeof param === "string" ? param.replace( /,/g, "|" ) : "png|jpe?g|gif";

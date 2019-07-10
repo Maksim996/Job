@@ -109,7 +109,6 @@ class SubcatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('yes');
         DB::table('subcategory')->where('subcategory_id',$id)->update([
             'title_ua'=>$request->title_ua,
             'title_ru' => $request->local_ru ? $request->title_ru : null,
@@ -136,7 +135,7 @@ class SubcatController extends Controller
             'category' => $category[0],
             'subcategories' => $subcategories,
         ];
-        return view('admin.menu.menu',compact('data'));
+        return redirect('admin/nav/'.$request->categoryId);
     }
 
     /**

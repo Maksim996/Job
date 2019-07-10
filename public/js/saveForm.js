@@ -134,7 +134,6 @@ $("#announcements-form").validate({
         },
         date: {
             required: true,
-            date: true
         },
         img_path: {
             // required: true,
@@ -224,7 +223,6 @@ $("#news-form").validate({
         },
         date: {
             required: true,
-            date: true
         },
         img_path: {
             // required: true,

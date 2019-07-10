@@ -91,7 +91,7 @@
                     <label class="col-form-label col-lg-2 col-sm-12">Дата та час проведення</label>
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <input type="input" class="form-control date-meeting"  autocomplete="off" placeholder="" name="date"
+                        <input type="input" class="form-control date-meeting"  autocomplete="off" placeholder="" readonly name="date"
                             id="k_datetimepicker_3"
                             @if(isset($data['new'][0]))
                                 value="{{ date('d-m-Y H:i', strtotime($data['new'][0]->date)) }}"

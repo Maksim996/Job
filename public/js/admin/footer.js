@@ -216,14 +216,19 @@ function addInfo(parent) {
 	</div>`
 
 	infoMain.getElementsByClassName("checkLink")[0].onclick = (e) => {
-		$(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute('required', 'required')
+
+		// $(e.target).parents('div#info_block').find('input.item-link')[0].addClass('required');
+		let tt = $(e.target).parents('div#info_block').find('input.item-link')[0];
+		$(tt).addClass('required');
 		$(e.target).parents('div#info_block').find('.ckeckLinkText').show('slow')
 	};
 
 	infoMain.getElementsByClassName("checkText")[0].onclick = (e) => {
-		$(e.target).parents('div#info_block').find('input.item-link')[0].removeAttribute("required")
+		// $(e.target).parents('div#info_block').find('input.item-link')[0].removeClass("required")
+        let tt = $(e.target).parents('div#info_block').find('input.item-link')[0];
+        $(tt).removeClass('required');
 		$(e.target).parents('div#info_block').find('.ckeckLinkText').hide('slow')
-		$(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute("value", "")
+		// $(e.target).parents('div#info_block').find('input.item-link')[0].setAttribute("value", "")
 	};
 
 	infoMain.getElementsByClassName("btn")[0].onclick = () => {

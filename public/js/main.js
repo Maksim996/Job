@@ -7,6 +7,7 @@ pauseOnFocus: false,
 pauseOnHover: false,
 arrows: true,
 dots: false,
+
 // centerMode: true,
 prevArrow: '<img class="slick-prev slick-arrow img-fluid image__slick-prev" src="images/main/slider/arrow-left.svg">',
 nextArrow: '<img class="slick-next slick-arrow img-fluid image__slick-next" src="images/main/slider/arrow-right.svg">',
@@ -58,20 +59,21 @@ $('.slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    fade: true,
-    centerMode: true,
+    centerPadding: '60px',
 
+    // fade: true,
     // adaptiveHeight:true,
     asNavFor: '.slider-nav'
 });
 $('.slider-nav').slick({
     slidesToShow: 5,
     arrows: true,
+    prevArrow: '<img class="slick-prev slick-arrow img-fluid image__slick-prev" src="..//images/main/slider/arrow-left.svg">',
+    nextArrow: '<img class="slick-next slick-arrow img-fluid image__slick-next" src="..//images/main/slider/arrow-right.svg">',
     // slidesToScroll: 1,
     centerPadding: '10px',
     asNavFor: '.slider-for',
     dots: false,
-    centerMode: true,
     focusOnSelect: true,
     responsive: [
      {
@@ -111,8 +113,7 @@ $('.slider-nav').slick({
       }
     }
   ],
-    prevArrow: '<img class="slick-prev slick-arrow img-fluid image__slick-prev" src="..//images/main/slider/arrow-left.svg">',
-    nextArrow: '<img class="slick-next slick-arrow img-fluid image__slick-next" src="..//images/main/slider/arrow-right.svg">',
+
 });
 // конец cлайдер на внутреней страници новостей и анонсов
 

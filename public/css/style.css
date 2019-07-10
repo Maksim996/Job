@@ -806,10 +806,10 @@ a.practiceitem {
     /*max-height: 60vh;*/
 }
 .slider__main .slider img{
-    width: 90%;
+    width: auto !important;
     margin: 0 auto;
     height: 60vh;
-    display: block;
+    display: block !important;
 
 }
 .brand-slider_item{
@@ -848,9 +848,10 @@ a.practiceitem {
 .slick-slide img{
     margin: 0 auto;
 }
-.slider{
-    overflow: hidden;
+.slider-nav .slick-arrow{
+    width: 20px;
 }
+
 .slider__image {
     max-width: 11em;
     height: auto;
