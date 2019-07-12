@@ -406,7 +406,7 @@ a.menu__admin-exit:hover {
     width: 0.8rem;
 }
 .down-arrow:hover{
-    border-color:#2b5d91;
+    border-color:#8b94c7;
 }
 .down-arrow:hover img{
     filter: invert(14%) sepia(16%) saturate(6977%) hue-rotate(190deg) brightness(91%) contrast(89%);
@@ -486,6 +486,7 @@ a.practiceitem {
 .practice__image {
     max-width: 60%;
     height: 230px;
+    min-width: 230px;
 
 }
 
@@ -517,6 +518,7 @@ a.practiceitem {
     -moz-box-shadow: 0px 3px 5.82px 0.18px rgba(133, 133, 133, 0.3);
     box-shadow: 0px 3px 5.82px 0.18px rgba(133, 133, 133, 0.3);
     background-color: rgb(255, 255, 255);
+    border-radius: calc(.25rem - 1px);
 }
 .card-title {
     font-size: 18px;
@@ -584,6 +586,7 @@ a.practiceitem {
 
 .empty-fild{
     box-shadow: none;
+    background: transparent;
 }
 .preview__title{
     margin-bottom: 20px;
@@ -761,7 +764,6 @@ a.practiceitem {
 
 .news__date {
     font-size: 15px;
-    font-family: Arial;
     display: block;
     margin-bottom: 0;
 }
@@ -783,7 +785,6 @@ a.practiceitem {
 
 .news__date-item {
     font-size: 13px;
-    font-family: Arial;
     margin-bottom: 0;
 }
 
@@ -1118,6 +1119,10 @@ close rgba(68,143,210,.36)*/
 
 
 /*стили для документов*/
+.document_container{
+    padding-top:3rem ;
+    padding-bottom:3rem ;
+}
     .docum{
         background:#4267b2;
         position: relative;
@@ -1133,11 +1138,11 @@ close rgba(68,143,210,.36)*/
         height: 100%;
     }
 .docum .btn-dark{
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.6);
     margin:0.25rem 0;
     font-size: 1rem;
     transition: all 0.5s;
-
+    border-radius: 0;
 
 }
     .docum .btn-dark:not(:disabled):not(.disabled).active:focus,
@@ -1156,14 +1161,14 @@ close rgba(68,143,210,.36)*/
     opacity: 0.75;
         /*transform: scale(1.05, 1.25);*/
         font-size: 1.5rem;
-       
-        
+
+
 
 }
 .docum  .nav-link.btn-dark.active{
     position: relative;
     border-radius: 0;
-    background: rgba(0,0,0,.75);
+    background: rgba(0,0,0,1);
 }
 .docum__doc{
     background: rgba(0,0,0,0.75);
@@ -1199,7 +1204,7 @@ margin: auto 0;
     padding-left: 0;
 }
 
-    .docum__doc::-webkit-scrollbar,.docum__btn::-webkit-scrollbar {
+.docum__doc::-webkit-scrollbar,.docum__btn::-webkit-scrollbar {
   width: 5px;
 }
 
@@ -1326,7 +1331,13 @@ margin: auto 0;
         margin-bottom: 3rem;
     }
 
-
+    .news .card-link{
+        line-height: 1.3;
+        border-bottom:0.5px solid transparent;
+    }
+    .news .card-link:hover{
+        border-bottom-color:#0056b3;
+    }
     .anon{
         justify-content:space-around;
     }
@@ -1432,8 +1443,7 @@ margin: auto 0;
     }
     .news__date-page {
         text-align: right;
-        font-size: 1rem;
-        font-family: Arial;
+        font-size: 15px;
     }
     .news__text-page {
         font-size: 15px;
@@ -1509,7 +1519,7 @@ margin: auto 0;
 
 /*28.05.19*/
  .docum .btn-dark:hover{
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.8);
 }
 
 /**/

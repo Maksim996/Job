@@ -113,6 +113,7 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                     <thead>
                     <tr>
+                        <th>id</th>
                         <th>Назва розділів</th>
                         <th>Дії</th>
                     </tr>
@@ -120,6 +121,7 @@
                     <tbody>
                     @foreach($data['subcategories'] as $subcategory)
                         <tr>
+                            <td width="50">{{ $subcategory->subcategory_id }}</td>
                             <td>{{ $subcategory->title_ua }}</td>
                             <!-- <td nowrap></td> -->
                             <td class="d-flex align-items-center">

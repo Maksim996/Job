@@ -36,7 +36,7 @@
                     </div>
                     <div class="row k-margin-b-20">
                         <div class="col-lg-6 k-margin-b-10-tablet-and-mobile">
-                            <label>Катерогія документу:</label>
+                            <label>Категорія документу:</label>
                             <select class="form-control k-input" data-col-index="1">
                                 <option value="">Вибрати</option>
                                 @foreach($data['categorySort'] as $cat)

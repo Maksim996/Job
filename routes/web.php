@@ -27,6 +27,7 @@ Route::group(['middleware' => 'setLocale'], function() {
     Route::get('news', 'Site\NewsController@index')->name('news');
     Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
     Route::get('document', 'Site\DocumentsController@index')->name('document');
+    Route::get('telegram', 'Site\telegramController@index')->name('telegram');
 
     Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
 

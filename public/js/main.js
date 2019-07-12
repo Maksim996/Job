@@ -60,10 +60,19 @@ $('.slider-for').slick({
     slidesToScroll: 1,
     arrows: false,
     centerPadding: '60px',
-
+    dots: false,
     // fade: true,
     // adaptiveHeight:true,
-    asNavFor: '.slider-nav'
+    asNavFor: '.slider-nav',
+    responsive: [
+        {
+            breakpoint: 768,
+            settings:{
+                dots: true,
+                fade: true,
+                adaptiveHeight:true,
+            }
+        }],
 });
 $('.slider-nav').slick({
     slidesToShow: 5,
@@ -94,24 +103,28 @@ $('.slider-nav').slick({
         slidesToShow: 3
       }
     },
-    {
+    // {
+    //   breakpoint: 768,
+    //   settings: {
+    //     arrows: false,
+    //     centerMode: false,
+    //     centerPadding: '10px',
+    //     slidesToShow: 3
+    //   }
+    // },
+        {
       breakpoint: 768,
-      settings: {
-        arrows: false,
-        centerMode: false,
-        centerPadding: '10px',
-        slidesToShow: 3
-      }
+      settings: "unslick"
     },
-    {
-      breakpoint: 620,
-      settings: {
-        arrows: false,
-        centerMode: false,
-        centerPadding: '10px',
-        slidesToShow: 2
-      }
-    }
+    // {
+    //   breakpoint: 620,
+    //   settings: {
+    //     arrows: false,
+    //     centerMode: false,
+    //     centerPadding: '10px',
+    //     slidesToShow: 2
+    //   }
+    // }
   ],
 
 });
@@ -159,27 +172,34 @@ function getCoords(elem ) {
 
 
 
+const url= window.location.pathname;
+if (url =='/' || url =='' ){
+    $(window).scroll(function(){
+        function caption__display(){
+            $('.caption__display').addClass('hover');
+        }
+        function hiddenDiv(){
+            $('#tutu').animate({height:0 },1500);
+        }
+        if ($(tutu)!==null){
+            function deleteDiv(){
+                tutu.style.display='none';
+            }
+        }
+        // function deleteDiv(){
+        //     tutu.style.display='none';
+        // }
+        if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)-800  ) {
+            $('.caption__last').addClass('hover');
+            $('.caption__news').addClass('hover');
+            setTimeout( caption__display,2500);
+            setTimeout( hiddenDiv,2500);
+            setTimeout( deleteDiv,4000);    }
+    });
+}
 
 
-$(window).scroll(function(){
-    function caption__display(){
-        $('.caption__display').addClass('hover');  
-    }
 
-    function hiddenDiv(){                   
-        $('#tutu').animate({height:0 },1500);
-    }
-
-    function deleteDiv(){               
-        tutu.style.display='none';
-    }
-    if ( $(this).scrollTop() >= (getCoords(tutu||$('body')[0]).top)-800  ) {
-        $('.caption__last').addClass('hover');
-        $('.caption__news').addClass('hover');  
-        setTimeout( caption__display,2500);
-        setTimeout( hiddenDiv,2500);
-        setTimeout( deleteDiv,4000);    }
-});
 
 // плавний скролл с помощью якоря
  $(document).ready(function(){

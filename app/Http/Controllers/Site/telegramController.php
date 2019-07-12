@@ -1,23 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\Site;
-use DB;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App;
-
-class DocumentsController extends Controller
+use DB;
+class telegramController extends Controller
 {
-    public function index(Request $request){
-
+    //
+    function index(Request $request){
         $locale = $request['locale'];
 
-//        $documents = DB::table('documents')->get()->toArray();
-        $documents = DB::table('documents')->orderBy('title_ua','asc')->get()->toArray();
+
         $subcategory = DB::table("subcategory")->where('link','document')->get()->toArray();
 
         $category = DB::table("category")->get()->toArray();
-       
+
         $subCategories = DB::table('subcategory')
             ->where('link','document')
             ->where('type','!=','type1')
@@ -53,7 +51,6 @@ class DocumentsController extends Controller
             ->toArray();
 
         $data= [
-            'documents' => $documents,
             'subcategories' => $subCategories,
             'category' => $category,
             'subcategory' => $subcategory,
@@ -64,6 +61,7 @@ class DocumentsController extends Controller
             'right_footer' => $right_footer,
 
         ];
-    	return view('site.documents',compact('data'));
+        return view('site/telegram', compact('data'));
     }
+
 }

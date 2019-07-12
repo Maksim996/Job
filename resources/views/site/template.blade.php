@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua">
 
 <head>
     <meta charset="UTF-8">
-    <title>Job</title>
+    <title>Job.SumDU</title>
 
     {{--@php $routename = explode('.',Route::currentRouteName())[0] @endphp--}}
     {{--@php $routenames =[--}}
@@ -65,7 +65,7 @@
                 @endauth
                 <div id="menu_header" class="fixed-top background-fixed  menu__navigation">
                     <nav class="navbar navbar-expand-lg  navbar-light align-items-xl-stretch container  fixed-top  ">
-                        <a class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
+                        <a target="_blank" href="https://www.sumdu.edu.ua" class="navbar-brand"><img  src="{{ URL::asset('images/logo-sumdu.svg')}}" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="icon-menu-options"></i>
                         

@@ -29,17 +29,18 @@
 
 @endforeach
        
-       <div class="container py-5">
+       <div class="container document_container">
         <div class="row justify-content-center">
             <div class="col-10 docum">
-                <img class="img_document" src="{{ URL::asset('images/people-coffee-tea-meeting.png')}}" alt="">
+                <img class="img_document" src="{{ URL::asset('images/main/img_doc.jpg')}}" alt="">
                 <div class="row justify-content-center">
 
                     @foreach($data['subcategories'] as $category)
                         @foreach($data['documents'] as $key=> $document)
                             @if($document->subcategory_id == $category->subcategory_id && !empty($document-> placeholder_ua) )
                                 <div class="placeholder-doc col-md-12 col-lg-6 " target_placeholder="index-{{$document->doc_id}}">
-                                    <h5>{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}</h5>
+                                    @php($title_ua =  preg_replace('/^[0-9]+\./iU', '', $document->title_ua))
+                                    <h5>{!! !empty($document->{'title_' . $data['locale']}) ? preg_replace('/^[0-9]+\./iU', '', $document->{'title_' . $data['locale']}): $title_ua !!}</h5>
                                     <p>{!! !empty($document->{'placeholder_' . $data['locale']}) ? $document->{'placeholder_' . $data['locale']}: $document-> placeholder_ua !!}</p>
                                 </div>
                             @endif
@@ -50,15 +51,18 @@
                         <div class="nav flex-column nav-pills py-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                             @foreach($data['subcategories'] as $category)
-                                    <a class="nav-link btn-dark @if($loop->index == '0') active @endif"
+                                    {{--<a class="doc_cat nav-link btn-dark @if($loop->index == '0') active @endif"--}}
+                                    <a class="nav-link doc_cat btn-dark "
                                        id="v-pills-{{$category->subcategory_id}}-tab"
                                        data-toggle="pill"
                                        href="#v-pills-{{$category->subcategory_id}}"
                                        role="tab"
-                                       aria-controls="v-pills-{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}"
+{{--                                       aria-controls="v-pills-{!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}"--}}
+                                       aria-controls="v-pills-{{$category->subcategory_id}}"
                                        aria-selected="true">
                                         {!! !empty($category->{'title_'. $data['locale']}) ? $category->{'title_'. $data['locale']} : $category-> title_ua !!}
                                     </a>
+
                             @endforeach
 
                         </div>
@@ -66,7 +70,8 @@
                     <div class="col-md-12 col-lg-6 docum__doc px-0 py-3">
                         <div class="tab-content" id="v-pills-tabContent">
                             @foreach($data['subcategories'] as $category)
-                                    <div  class="tab-pane fade show @if($loop->index == '0') active @endif"
+                                    {{--<div  class="doc_list tab-pane fade show @if($loop->index == '0') active @endif"--}}
+                                    <div  class="tab-pane doc_list fade show "
                                           id="v-pills-{{$category->subcategory_id}}"
                                           role="tabpanel"
                                           aria-labelledby="v-pills-{{$category->subcategory_id}}-tab">
@@ -76,7 +81,9 @@
                                                 @if($document->subcategory_id == $category->subcategory_id)
                                                     <li class="docum__li" target_doc="index-{{$document->doc_id}}"><a target="_blank" href="{{$document->file_link}}" @if ($document->type === 'file')
                                                     download="{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}" @endif
-                                                    class="docum__link">{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}</a></li>
+                                                    class="docum__link">
+                                                            {!! !empty($document->{'title_' . $data['locale']}) ? preg_replace('/^[0-9]+\./iU', '', $document->{'title_' . $data['locale']}): $title_ua !!}
+                                                        </a></li>
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -92,15 +99,29 @@
         </div>
     </div>
 
-    {{--<script type="text/javascript">--}}
-        {{--$(document).ready(function(){--}}
-           {{--var qs = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);--}}
-           {{--var v1 = qs.substring(qs.indexOf('=')+1,parent.document.URL.length);--}}
-    {{----}}
-            {{--$("#v-pills-"+v1+"-tab").addClass("active");--}}
-            {{--$("#v-pills-"+v1).addClass("active");--}}
-        {{--});--}}
-    {{--</script>--}}
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+           var qs = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
+           if (qs[0] =='?'){
+               let v1 = qs.substring(qs.indexOf('=')+1,parent.document.URL.length);
+               if ($(v1) !=''){
+                   console.log('yes')
+                   $(".doc_list").removeClass('active');
+                   $(".doc_cat").removeClass('active');
+                   $("#v-pills-"+v1+"-tab").addClass("active");
+                   $("#v-pills-"+v1).addClass("active");
+               }
+           }
+            else {
+               $(".doc_cat").filter(':first').addClass('active');
+               $(".doc_list").filter(':first').addClass('active');
+            }
+
+
+
+        });
+    </script>
 <script>
     $('.docum__li').mouseenter(function(){
         placehoder_doc(this);

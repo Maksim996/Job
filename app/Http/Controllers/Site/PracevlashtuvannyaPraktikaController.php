@@ -11,8 +11,8 @@ class PracevlashtuvannyaPraktikaController extends Controller
         $locale = $request['locale'];
         $subcategory = DB::table("subcategory")->where('link','pracevlashtuvannya-praktika')->get()->toArray();
 
-       
-        $documents = DB::table('documents')->get()->toArray();
+        $documents = DB::table('documents')->orderBy('title_ua','asc')->get()->toArray();
+//        $documents = DB::table('documents')->get()->toArray();
 
         $category = DB::table("category")->get()->toArray();
 
