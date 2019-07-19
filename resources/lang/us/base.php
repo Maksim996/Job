@@ -11,5 +11,7 @@ return [
     'latest' => 'Last',
     'news' => 'News',
     'recently' => 'Soon',
-    'announcements' => 'Announcements'
+    'announcements' => 'Announcements',
+    'download' => 'Download',
+    'gosite' => 'Go to the website'
 ];

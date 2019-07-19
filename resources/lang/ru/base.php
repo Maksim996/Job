@@ -11,5 +11,7 @@ return [
     'latest' => 'Последние',
     'news' => 'Новости',
     'recently' => 'В ближайшее время',
-    'announcements' => 'Анонсы'
+    'announcements' => 'Анонсы',
+    'download' => 'Скачать',
+    'gosite' => 'Перейти на сайт'
 ];

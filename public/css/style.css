@@ -1179,27 +1179,46 @@ close rgba(68,143,210,.36)*/
 }
 .docum__btn{
     text-align: center;
-margin: auto 0;
+    margin: auto 0;
 
 }
-.docum__li{
-    padding: 0;
+.docum__item .card{
+    background: transparent;
 }
-.docum__li a{
-    padding: 0.5rem 1rem;
-    display: block;
+.docum__item  .docum__title{
+    color:#fff;
+    padding: .75rem 1.25rem;
+    cursor: pointer;
 }
-.docum__li:hover{
-    background: rgba(255,255,255,1);
+.docum__item .docum__title[aria-expanded="true"]{
+    background: #fff;
+    color: #000;
 }
-.docum__link{
-    color:rgba(255,255,255,1);
+.docum__item  .card-header{
+    padding:0;
+    border-bottom: 1px solid rgba(255,255,255,.125);
+
 }
-.docum__li:hover>.docum__link,
-.docum__link:hover{
-    color:rgba(0,0,0,1);
-    text-decoration: none;
+.docum__item  .card-header,
+.docum__item  .card-header:first-child,
+.docum__item  .card-footer{
+    border-radius: 0;
 }
+.docum__item  .card-footer{
+    margin-top: 0;
+}
+.docum__item  .card-footer,
+.docum__item  .card-body{
+    background: rgba(0,0,0,.45);
+}
+.docum__item .card-body{
+    padding: 10px 20px 0 ;
+    font-size: 14px;
+}
+.docum__item  .card-footer a{
+    width: 200px;
+}
+
 .docum__ul{
     padding-left: 0;
 }

@@ -35,17 +35,7 @@
                 <img class="img_document" src="{{ URL::asset('images/main/img_doc.jpg')}}" alt="">
                 <div class="row justify-content-center">
 
-                    @foreach($data['subcategories'] as $category)
-                        @foreach($data['documents'] as $key=> $document)
-                            @if($document->subcategory_id == $category->subcategory_id && !empty($document-> placeholder_ua) )
-                                <div class="placeholder-doc col-md-12 col-lg-6 " target_placeholder="index-{{$document->doc_id}}">
-                                    @php($title_ua =  preg_replace('/^[0-9]+\./iU', '', $document->title_ua))
-                                    <h5>{!! !empty($document->{'title_' . $data['locale']}) ? preg_replace('/^[0-9]+\./iU', '', $document->{'title_' . $data['locale']}): $title_ua !!}</h5>
-                                    <p>{!! !empty($document->{'placeholder_' . $data['locale']}) ? $document->{'placeholder_' . $data['locale']}: $document-> placeholder_ua !!}</p>
-                                </div>
-                            @endif
-                        @endforeach
-                    @endforeach
+
                     <div class="col-md-12 col-lg-6 px-0 justify-content-center docum__btn">
 
                         <div class="nav flex-column nav-pills py-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -69,24 +59,51 @@
                     </div>
                     <div class="col-md-12 col-lg-6 docum__doc px-0 py-3">
                         <div class="tab-content" id="v-pills-tabContent">
+
                             @foreach($data['subcategories'] as $category)
                                     {{--<div  class="doc_list tab-pane fade show @if($loop->index == '0') active @endif"--}}
                                     <div  class="tab-pane doc_list fade show "
                                           id="v-pills-{{$category->subcategory_id}}"
                                           role="tabpanel"
                                           aria-labelledby="v-pills-{{$category->subcategory_id}}-tab">
-                               
-                                        <ul class="docum__ul">
-                                            @foreach($data['documents'] as $key=> $document)
-                                                @if($document->subcategory_id == $category->subcategory_id)
-                                                    <li class="docum__li" target_doc="index-{{$document->doc_id}}"><a target="_blank" href="{{$document->file_link}}" @if ($document->type === 'file')
-                                                    download="{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}" @endif
-                                                    class="docum__link">
-                                                            {!! !empty($document->{'title_' . $data['locale']}) ? preg_replace('/^[0-9]+\./iU', '', $document->{'title_' . $data['locale']}): $title_ua !!}
-                                                        </a></li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
+
+
+                                            <ul class="docum__ul accordion"  id="accordionExample">
+                                                @foreach($data['documents'] as $key=> $document)
+                                                    @if($document->subcategory_id == $category->subcategory_id)
+                                                        @php($title_ua =  preg_replace('/^[0-9]+\./iU', '', $document->title_ua))
+                                                    <li class="docum__item">
+                                                        <div class="card">
+                                                            <div class="card-header" id="headingOne">
+                                                                <div class="docum__title"  data-toggle="collapse" data-target="#index-{{$document->doc_id}}" aria-expanded="false" aria-controls="collapseOne">
+                                                                    {!! !empty($document->{'title_' . $data['locale']}) ? preg_replace('/^[0-9]+\./iU', '', $document->{'title_' . $data['locale']}): $title_ua !!}
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="index-{{$document->doc_id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                @if($document->subcategory_id == $category->subcategory_id && !empty($document-> placeholder_ua) )
+                                                                    <div class="card-body">
+                                                                        {!! !empty($document->{'placeholder_' . $data['locale']}) ? $document->{'placeholder_' . $data['locale']}: $document-> placeholder_ua !!}
+                                                                    </div>
+                                                                @endif
+
+                                                                <div class="card-footer text-muted">
+                                                                    @if ($document->type === 'file')
+                                                                        <a target="_blank" href="{{$document->file_link}}"
+                                                                        download="{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}"
+                                                                           class=" btn btn-outline-success">Завантажити</a>
+                                                                    @else
+                                                                    <a target="_blank" href="{{$document->file_link}}"
+                                                                       class=" btn btn-outline-info">Перейти на сайт</a>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+
                                      </div>
 
 
@@ -122,23 +139,7 @@
 
         });
     </script>
-<script>
-    $('.docum__li').mouseenter(function(){
-        placehoder_doc(this);
-    })
-    $('.docum__li').mouseleave(function(){
-        placehoder_doc(this);
-    })
-    function placehoder_doc(tag){
-        let v = $(tag).attr('target_doc');
-        if ($('div[target_placeholder='+v+']').hasClass('d-md-flex')){
-            $('div[target_placeholder='+v+']').removeClass('d-md-flex').animate({opacity:0},1);
-        } else{
-            $('div[target_placeholder='+v+']').addClass('d-md-flex').animate({opacity:1},1);
-        }
 
-    }
-</script>
 @endsection
 
 
