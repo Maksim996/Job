@@ -35,9 +35,9 @@ main.containet {
     padding-top: 0;
     padding-bottom: 0;
 }
-:hover{
-    transition:all .5s;
-}
+/*:hover{*/
+    /*transition:all .5s;*/
+/*}*/
 .background-fixed{
     background-color: rgba(0,0,0,.75);
     height: 58px;

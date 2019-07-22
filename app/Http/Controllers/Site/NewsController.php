@@ -27,16 +27,46 @@ class NewsController extends Controller
     }
 
     public function index(Request $request){
+
         $locale = $request['locale'];
+        $nowDate = Carbon::now();
+        $sortDate="";
+        $activeSort=false;
+        switch ($request['sort']) {
+            case 'last-week':
+                $sortDate = Carbon::now()->subDay(7);
+                $activeSort= "7days";
+                break;
+            case 'last-month':
+                $sortDate = Carbon::now()->subDay(30);
+                $activeSort= "30days";
+
+                break;
+        }
+
+
+
         $date = Carbon::now()->toDateTimeString();
-        $news = DB::table('inner_news')
-        ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-        ->where([
-            ['type', '=', 'new'],
+
+        if($request->has('sort')){
+            $news = DB::table('inner_news')
+                ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+                ->where([
+                    ['type', '=', 'new'],
 //            ['date', '<', $date],
-        ])
-        ->orderBy('date', 'desc')
-        ->paginate(5);
+                ])
+                ->orderBy('date', 'desc')->whereBetween('date',[$sortDate,$nowDate])
+                ->paginate(5)->appends('sort',$request['sort']);
+        } else {
+            $news = DB::table('inner_news')
+                ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
+                ->where([
+                    ['type', '=', 'new'],
+//            ['date', '<', $date],
+                ])
+                ->orderBy('date', 'desc')
+                ->paginate(5);
+        }
         for($i = 0; $i < count($news); $i++) {
             $news[$i]->trans_title = $this->transliterate($news[$i]->{'title_ua'});
         }
@@ -78,9 +108,10 @@ class NewsController extends Controller
             'left_footer' => $left_footer,
             'about_footer' => $about_footer,
             'right_footer' => $right_footer,
-
+            'activeSort'=>$activeSort
         ];
 
         return view('site/news', compact('data'));
     }
+
 }

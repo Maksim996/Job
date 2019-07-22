@@ -31,6 +31,8 @@ Route::group(['middleware' => 'setLocale'], function() {
 
     Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
 
+    //	search and filtered form date
+//    Route::post('news', 'Site\NewsController@sortDate')->name('news');
 });
 
 
@@ -91,4 +93,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 	Route::get('document/create', function () {
 	    return view('/admin/document_template');
 	});
+
+
 });

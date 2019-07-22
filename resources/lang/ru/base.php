@@ -13,5 +13,11 @@ return [
     'recently' => 'В ближайшее время',
     'announcements' => 'Анонсы',
     'download' => 'Скачать',
-    'gosite' => 'Перейти на сайт'
+    'gosite' => 'Перейти на сайт',
+    'last_week' => 'за 7 дней',
+    'last_month' => 'за 1 месяц',
+    'reset' => 'Очистить',
+    'search' => 'Поиск'
+
+
 ];

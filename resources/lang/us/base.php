@@ -13,5 +13,9 @@ return [
     'recently' => 'Soon',
     'announcements' => 'Announcements',
     'download' => 'Download',
-    'gosite' => 'Go to the website'
+    'gosite' => 'Go to the website',
+    'last_week' => 'for 7 days',
+    'last_month' => 'for 1 month',
+    'reset' => 'Reset',
+    'search' => 'Search',
 ];

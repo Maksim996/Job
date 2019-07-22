@@ -25,8 +25,43 @@
 
 
     @endforeach
-
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 d-flex justify-content-between">
+                <div class="col-lg-6 col-md-12">
+                    <form action="" method="post">
+                        {{csrf_field()}}
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="{{trans('base.search')}}" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="icon-search"></i>{{trans('base.search')}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-12 ">
+                    <div class="row justify-content-end">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-outline-primary {{$data['activeSort']==='7days'?'active':''}}"
+                               href="news/?sort=last-week"
+
+                            >{{trans('base.last_week')}}</a>
+                            <a class="btn btn-outline-primary {{$data['activeSort']==='30days'?'active':''}}"
+                               name="last-month"
+                               href="news/?sort=last-month"
+                            >{{trans('base.last_month')}}</a>
+                            <a class="btn btn-outline-primary"
+                               name="reset"
+                               href="/news"
+                            >{{trans('base.reset')}}</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
         <div class="news">
     	@for($i = 0; $i < count($data['news']); $i++)
             <div class="row justify-content-center">
