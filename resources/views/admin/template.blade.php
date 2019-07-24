@@ -146,6 +146,11 @@
                                         Новини
                                     </span></a>
                                 </li>
+                                <li class="k-menu__item {{$routename == 'ad_telegram' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
+                                    <a  href="{{ route('ad_telegram.telegram.index')}}" class="k-menu__link "><i class="k-menu__link-icon la la-commenting"></i><span class="k-menu__link-text">
+                                        Телеграм канал
+                                    </span></a>
+                                </li>
                                 <li class="k-menu__item {{$routename == 'ad_partners' ? ' k-menu__item--active': ''}}" aria-haspopup="true" >
                                     <a  href="{{ route('ad_partners.partners.index')}}" class="k-menu__link "><i class="k-menu__link-icon flaticon-users"></i><span class="k-menu__link-text">
                                         Наші партнери

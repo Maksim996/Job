@@ -30,6 +30,12 @@ arr_announcement_ru =[
 arr_announcement_us =[
     'title_us','short_description_us','full_description_us','short_location_us','full_location_us',
 ];
+arr_telegram_ru =[
+    'title_ru','short_description_ru','full_description_ru','short_location_ru','full_location_ru',
+];
+arr_telegram_us =[
+    'title_us','short_description_us','full_description_us','short_location_us','full_location_us',
+];
 arr_news_ru =[
     'title_ru','short_description_ru','full_description_ru',
 ];
@@ -84,6 +90,10 @@ function parseUrl(){
         case 'nav':{
             updateReqiureFieldsLocal(arr_nav_ru);
             updateReqiureFieldsLocal(arr_nav_us);
+        }
+        case 'telegram':{
+            updateReqiureFieldsLocal(arr_telegram_ru);
+            updateReqiureFieldsLocal(arr_telegram_us);
         }
         break;
     }

@@ -86,7 +86,7 @@
                                     <td>{{$sub->title_ua}}</td>
                                 @endif
                             @endforeach
-                            <td>{{$doc->doc_date}}</td>
+                            <td>{{date("d.m.Y", strtotime($doc->doc_date))}}</td>
                             <td width="75px">
                                 <input class="id" value="{{$doc->doc_id}}" style="display:none">
                                 <a href="{{ URL::route('ad_documents.documents.show', $doc->doc_id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">

@@ -84,6 +84,85 @@ var KFormControls = function () {
         });
     };
 
+    var demo3 = function () {
+        $( "#telegram_form" ).validate({
+            // define validation rules
+            rules: {
+                ignore: ':hidden:not(.summernote),.note-editable.card-block',
+                title_ua: {
+                    required: true,
+                    maxlength: 75
+                },
+                short_description_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                full_description_ua: {
+                    required: true
+                },
+                short_location_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                full_location_ua: {
+                    required: true,
+                    maxlength: 200
+                },
+                date: {
+                    required: true,
+                },
+                img_path: {
+                    // required: true,
+                    extension: "jpg|png|jpeg",
+                    accept: "image/jpg,image/jpeg,image/png",
+                    filesize: 5241880
+
+                },
+
+                keywords: {
+                    required: true,
+                    maxlength: 200
+                },
+                description: {
+                    required: true,
+                    maxlength: 200
+                },
+                title_ru: {
+                    maxlength: 75
+                },
+                short_description_ru: {
+                    maxlength: 200
+                },
+                short_location_ru: {
+                    maxlength: 200
+                },
+                full_location_ru: {
+                    maxlength: 200
+                },
+                title_us: {
+                    maxlength: 75
+                },
+                short_description_us: {
+                    maxlength: 200
+                },
+                short_location_us: {
+                    maxlength: 200
+                },
+                full_location_us: {
+                    maxlength: 200
+                },
+
+            },
+
+            invalidHandler: function(event, validator) {
+                KUtil.scrollTo("telegram_form", -200);
+            },
+
+            submitHandler: function (form) {
+                form[0].submit(); // submit the form
+            }
+        });
+    };
 
 
 
@@ -274,12 +353,12 @@ var KFormControls = function () {
         });
     };
 
-
     return {
         // public functions
         init: function() {
             demo1();
             demo2();
+            demo3();
             demo5();
             demo6();
             demo7();

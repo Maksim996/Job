@@ -22,12 +22,15 @@ Route::group(['middleware' => 'setLocale'], function() {
 
     Route::get('new/{id}-{title}', 'Site\NewController@index')->name('new');
     Route::get('announcement/{id}-{title}', 'Site\AnnouncementController@index')->name('announcement');
+    Route::get('telegram/{id}-{title}', 'Site\telegramController@show')->name('telegram');
+
 // Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
 
     Route::get('news', 'Site\NewsController@index')->name('news');
     Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
     Route::get('document', 'Site\DocumentsController@index')->name('document');
-    Route::get('telegram', 'Site\telegramController@index')->name('telegram');
+
+    Route::get('telegrams', 'Site\telegramController@index')->name('telegrams');
 
     Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
 
@@ -53,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
 	Route::resource('header', 'Admin\HeaderController', ['as' => 'ad_header']);
 
+    Route::resource('telegram', 'Admin\telegram\telegramResController',['as' => 'ad_telegram']);
 
 	Route::resource('practic-header', 'Admin\PracticHeaderController', ['as' => 'ad_practic-header']);
 

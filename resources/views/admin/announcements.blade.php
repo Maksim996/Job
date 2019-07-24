@@ -48,7 +48,7 @@
                         @foreach($data['announcements'] as $announcement)
                         <tr>
                             <td>{{ $announcement->title_ua }}</td>
-                            <td>{{ $announcement->date }}</td>
+                            <td>{{ date("d-m-Y", strtotime($announcement->date))}}</td>
                             <!-- <td nowrap></td> -->
                             <td>
                                 <input class="id" value="{{$announcement->inner_news_id}}" style="display:none">

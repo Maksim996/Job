@@ -31,7 +31,7 @@
        
        <div class="container document_container">
         <div class="row justify-content-center">
-            <div class="col-10 docum">
+            <div class="col-lg-10 col-md-12 docum">
                 <img class="img_document" src="{{ URL::asset('images/main/img_doc.jpg')}}" alt="">
                 <div class="row justify-content-center">
 
