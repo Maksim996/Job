@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use File;
+use App;
 class telegramResController extends Controller
 {
     /**
@@ -60,24 +61,44 @@ class telegramResController extends Controller
      */
     public function store(Request $request)
     {
+
+        $inner_news = new App\InnerNews;
+
+        $inner_news->type = 'telegram';
+        $inner_news->title_ua = $request->title_ua;
+        $inner_news->title_ru= $request->local_ru ? $request->title_ru : null;
+        $inner_news->title_us= $request->local_us ? $request->title_us : null;
+        $inner_news->date = date('Y-m-d H:i:s', strtotime($request->date));
+        $inner_news->full_location_ua =  $request->full_location_ua;
+        $inner_news->full_location_ru= $request->local_ru ? $request->full_location_ru: null;
+        $inner_news->full_location_us= $request->local_us ? $request->full_location_us: null;
+        $inner_news->full_description_ua = $request->full_description_ua;
+        $inner_news->full_description_ru =  $request->local_ru ? $request->full_description_ru: null;
+        $inner_news->full_description_us = $request->local_us ? $request->full_description_us: null;
+        $inner_news->keywords = $request->keywords;
+        $inner_news->description = $request->description;
+        $inner_news->link= $request->link;
+        $inner_news->save();
+//        dd($inner_news->inner_news_id);
+
 //        dd($request);
-        $last_id = DB::table('inner_news')
-            ->insertGetId([
-                'type' => 'telegram',
-                'title_ua' => $request->title_ua,
-                'title_ru' => $request->local_ru ? $request->title_ru : null,
-                'title_us' =>$request->local_us ? $request->title_us : null,
-                'date' => date('Y-m-d H:i:s', strtotime($request->date)),
-                'full_location_ua' => $request->full_location_ua,
-                'full_location_ru' => $request->local_ru ? $request->full_location_ru: null,
-                'full_location_us' => $request->local_us ? $request->full_location_us: null,
-                'full_description_ua' => $request->full_description_ua,
-                'full_description_ru' => $request->local_ru ? $request->full_description_ru: null,
-                'full_description_us' =>$request->local_us ? $request->full_description_us: null,
-                'keywords' => $request->keywords,
-                'description' => $request->description,
-                'link' => $request->link,
-            ]);
+//        $last_id = DB::table('inner_news')
+//            ->insertGetId([
+//                'type' => 'telegram',
+//                'title_ua' => $request->title_ua,
+//                'title_ru' => $request->local_ru ? $request->title_ru : null,
+//                'title_us' =>$request->local_us ? $request->title_us : null,
+//                'date' => date('Y-m-d H:i:s', strtotime($request->date)),
+//                'full_location_ua' => $request->full_location_ua,
+//                'full_location_ru' => $request->local_ru ? $request->full_location_ru: null,
+//                'full_location_us' => $request->local_us ? $request->full_location_us: null,
+//                'full_description_ua' => $request->full_description_ua,
+//                'full_description_ru' => $request->local_ru ? $request->full_description_ru: null,
+//                'full_description_us' =>$request->local_us ? $request->full_description_us: null,
+//                'keywords' => $request->keywords,
+//                'description' => $request->description,
+//                'link' => $request->link,
+//            ]);
 
 //        $previewPhotoInfo = explode(";base64,", $request->mainImage);
 //        $previewPhotoExt =preg_replace('/\+[A-Za-z]*/i', '', str_replace('data:image/', '', $previewPhotoInfo[0]));
@@ -88,7 +109,12 @@ class telegramResController extends Controller
 //        $previewPhotoPath = str_replace('/storage/', '', $previewPhotoPath);
 
 //        if($request->file('img_path')){
-            $filePath = 'telegram-'.$last_id.'.'.$request->file('img_path')->getClientOriginalExtension();
+
+//        $filePath = 'telegram-'.$last_id.'.'.$request->file('img_path')->getClientOriginalExtension();
+//        $path = $request->file('img_path')->storeAs('images/uploads_telegram',$filePath,'public');
+//        $request->img_path = $path;
+
+            $filePath = 'telegram-'.$inner_news->inner_news_id.'.'.$request->file('img_path')->getClientOriginalExtension();
             $path = $request->file('img_path')->storeAs('images/uploads_telegram',$filePath,'public');
             $request->img_path = $path;
 
@@ -97,7 +123,7 @@ class telegramResController extends Controller
 //            $path = DB::table('header')->where('id', '=', $id)->value('img_path');
         DB::table('preview')
             ->insert([
-                'inner_news_id' => $last_id,
+                'inner_news_id' => $inner_news->inner_news_id,
                 'img_path' => $path,
                 'short_location_ua' => $request->short_location_ua,
                 'short_location_ru' => $request->local_ru ? $request->short_location_ru : null,
@@ -107,7 +133,11 @@ class telegramResController extends Controller
                 'short_description_us' =>$request->local_us ? $request->short_description_us : null,
             ]);
 
-//
+
+//            $post = new App\InnerNews;
+//        $post -> setAttribute('full_description_ua',$request->full_description_ua);
+//        $post -> setAttribute('title_ua',$request->title_ua);
+////        $post->save();
 //        }
         return redirect()->route('ad_telegram.telegram.index');
     }
@@ -167,22 +197,43 @@ class telegramResController extends Controller
         }
         else $path = DB::table('preview')->where('inner_news_id', '=', $id)->value('img_path');
 
-        DB::table('inner_news')->where('inner_news_id',$id)->update([
-            'type' => 'telegram',
-            'title_ua' => $request->title_ua,
-            'title_ru' => $request->local_ru ? $request->title_ru : null,
-            'title_us' =>$request->local_us ? $request->title_us : null,
-            'date' => date('Y-m-d H:i:s', strtotime($request->date)),
-            'full_location_ua' => $request->full_location_ua,
-            'full_location_ru' => $request->local_ru ? $request->full_location_ru: null,
-            'full_location_us' => $request->local_us ? $request->full_location_us: null,
-            'full_description_ua' => $request->full_description_ua,
-            'full_description_ru' => $request->local_ru ? $request->full_description_ru: null,
-            'full_description_us' =>$request->local_us ? $request->full_description_us: null,
-            'keywords' => $request->keywords,
-            'description' => $request->description,
-            'link' => $request->link,
-        ]);
+        $inner_news = App\InnerNews::find($id);
+
+        $inner_news->type = 'telegram';
+        $inner_news->title_ua = $request->title_ua;
+        $inner_news->title_ru= $request->local_ru ? $request->title_ru : null;
+        $inner_news->title_us= $request->local_us ? $request->title_us : null;
+        $inner_news->date = date('Y-m-d H:i:s', strtotime($request->date));
+        $inner_news->full_location_ua =  $request->full_location_ua;
+        $inner_news->full_location_ru= $request->local_ru ? $request->full_location_ru: null;
+        $inner_news->full_location_us= $request->local_us ? $request->full_location_us: null;
+        $inner_news->full_description_ua = $request->full_description_ua;
+        $inner_news->full_description_ru =  $request->local_ru ? $request->full_description_ru: null;
+        $inner_news->full_description_us = $request->local_us ? $request->full_description_us: null;
+        $inner_news->keywords = $request->keywords;
+        $inner_news->description = $request->description;
+        $inner_news->link= $request->link;
+        $inner_news->save();
+
+//        DB::table('inner_news')->where('inner_news_id',$id)->update([
+//            'type' => 'telegram',
+//            'title_ua' => $request->title_ua,
+//            'title_ru' => $request->local_ru ? $request->title_ru : null,
+//            'title_us' =>$request->local_us ? $request->title_us : null,
+//            'date' => date('Y-m-d H:i:s', strtotime($request->date)),
+//            'full_location_ua' => $request->full_location_ua,
+//            'full_location_ru' => $request->local_ru ? $request->full_location_ru: null,
+//            'full_location_us' => $request->local_us ? $request->full_location_us: null,
+//            'full_description_ua' => $request->full_description_ua,
+//            'full_description_ru' => $request->local_ru ? $request->full_description_ru: null,
+//            'full_description_us' =>$request->local_us ? $request->full_description_us: null,
+//            'keywords' => $request->keywords,
+//            'description' => $request->description,
+//            'link' => $request->link,
+//        ]);
+
+
+
         DB::table('preview')->where('inner_news_id',$id)->update([
             'img_path' => $path,
             'short_location_ua' => $request->short_location_ua,
@@ -211,7 +262,12 @@ class telegramResController extends Controller
 
                 ])->value('img_path');
         File::delete($file);
-        DB::table('inner_news')->where('inner_news_id', $id)->delete();
+
+
+        $order = App\InnerNews::find($id);
+
+        $order->delete();
+//        DB::table('inner_news')->where('inner_news_id', $id)->delete();
 
         return redirect()->route('ad_telegram.telegram.index');
     }

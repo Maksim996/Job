@@ -30,8 +30,10 @@
 
     <script src="{{ URL::asset('js/jquery3_3_1.js')}}"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap4.3.1/css/bootstrap.min.css')}}">
+    
+        
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNextCyr/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('plugins/slick-slider/slick.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('fonts/AvenirNext/style.css') }}">
@@ -72,19 +74,20 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                            @foreach($data['category'] as $category) 
-                                @if($category->type != 'type3')
+                            @foreach($data['category'] as $category)
+
+                                @if($category->type != 'type3' && $category->link != 'discussion-educational-programs' )
                                  <li class="nav-item {{ Route::currentRouteName() == $category->link ? 'active' : ''}}">
 
                                     @if($category->link == 'home')
                                     <a class="nav-link" href="/">
                                     @elseif($category->type == 'type2')
                                     <a class="nav-link" href="{{$category->link}}">
-                                    @else
+                                    @elseif($category->type == 'type1')
                                     <a class="nav-link" href="/{{$category->link}}">
                                     @endif
                                     {!! !empty($category->{'title_' . $data['locale']}) ? $category->{'title_' . $data['locale']} : $category-> title_ua !!} {!! Route::currentRouteName() == $category->link ? '<span class="sr-only">(current)</span>' : ''!!}</a>
-                                @else
+                                @elseif($category->type == 'type3')
                                 <li class="nav-item dropdown {{ Route::currentRouteName() == $category->link ? 'active' : ''}} ">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                        {!! !empty($category->{'title_' . $data['locale']}) ? $category->{'title_' . $data['locale']} : $category-> title_ua !!}
@@ -104,7 +107,7 @@
                                     </div>
                                 </li>
                                 @endif
-                                     
+
                                 </li>
                             @endforeach
 
@@ -204,9 +207,7 @@
         @endforeach
     </style>
 
-
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ URL::asset('plugins/bootstrap4.3.1/js/bootstrap.min.js')}}"></script>
     <script src="{{ URL::asset('plugins/slick-slider/slick.min.js')}}"></script>
     <script src="{{ URL::asset('js/main.js')}}"></script>
     <script src="{{ URL::asset('js/changeLocale.js')}}"></script>

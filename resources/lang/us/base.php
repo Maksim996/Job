@@ -18,5 +18,9 @@ return [
     'last_month' => 'for 1 month',
     'reset' => 'Reset',
     'search' => 'Search',
-    'go'=>'move on'
+    'go'=>'move on',
+    'notfound' => 'Not found',
+    'about_as' => 'About as',
+    'vacancies' =>'Vacancies'
+
 ];

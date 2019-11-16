@@ -28,7 +28,7 @@ class DocumentsController extends Controller
 
         $categorySort = collect($category)
                 ->map(function ($ar){
-                    if($ar->link == 'document'|| $ar->link =='pracevlashtuvannya-praktika'){
+                    if($ar->link == 'document'|| $ar->link =='pracevlashtuvannya-praktika' || $ar->link =='discussion-educational-programs'){
                         return $ar;
                     }
                 })
@@ -54,7 +54,7 @@ class DocumentsController extends Controller
     {
         //
         $category = DB::table('category')->get()->toArray();
-        $subcats = DB::table('subcategory')->whereIn('link',['document', 'pracevlashtuvannya-praktika'])->get()->toArray();
+        $subcats = DB::table('subcategory')->whereIn('link',['document', 'pracevlashtuvannya-praktika','discussion-educational-programs'])->get()->toArray();
         $data = [
             'subcategories' => $subcats,
             'category' => $category,
@@ -87,7 +87,7 @@ class DocumentsController extends Controller
 
         $document = DB::table('documents')->where('doc_id',$id)->get();
 //        $subcategory = DB::table('subcategory')->where('subcategory_id',$document[0]->subcategory_id)->get();
-        $subcats = DB::table('subcategory')->whereIn('link',['document','pracevlashtuvannya-praktika'])->get()->toArray();
+        $subcats = DB::table('subcategory')->whereIn('link',['document','pracevlashtuvannya-praktika','discussion-educational-programs'])->get()->toArray();
         $category = DB::table('category')->get()->toArray();
 //        dd($category);
         $locale = $request['locale'];

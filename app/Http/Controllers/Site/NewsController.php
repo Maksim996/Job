@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Site;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-use Carbon\Carbon;
-
+use App\InnerNews;
+use App;
 class NewsController extends Controller
 {
     /**
@@ -13,63 +14,11 @@ class NewsController extends Controller
      * @param string $s строка для транслитерации
      * @return string транслитерированная строка
      */
-    function transliterate($s) {
-        $s = (string) $s;
-        $s = strip_tags($s);
-        $s = str_replace(array("\n", "\r"), " ", $s);
-        $s = preg_replace("/\s+/", ' ', $s);
-        $s = trim($s);
-        $s = function_exists('mb_strtolower') ? mb_strtolower($s) : strtolower($s);
-        $s = strtr($s, array('а'=>'a','б'=>'b','в'=>'v','г'=>'g','д'=>'d','е'=>'e','ё'=>'e','ж'=>'j','и'=>'i','з'=>'z','й'=>'y','к'=>'k','л'=>'l','м'=>'m','н'=>'n','о'=>'o','п'=>'p','р'=>'r','с'=>'s','т'=>'t','у'=>'u','ф'=>'f','х'=>'h','ц'=>'c','ч'=>'ch','ш'=>'sh','і'=>'i','щ'=>'shch','ы'=>'y','э'=>'e','ю'=>'yu','я'=>'ya','ъ'=>'','ій'=>'ij','їй'=>'jij','ії'=>'iji','ь'=>''));
-        $s = preg_replace("/[^0-9a-z-_ ]/i", "", $s);
-        $s = str_replace(" ", "-", $s);
-        return $s;
-    }
+
 
     public function index(Request $request){
-
         $locale = $request['locale'];
-        $nowDate = Carbon::now();
-        $sortDate="";
-        $activeSort=false;
-        switch ($request['sort']) {
-            case 'last-week':
-                $sortDate = Carbon::now()->subDay(7);
-                $activeSort= "7days";
-                break;
-            case 'last-month':
-                $sortDate = Carbon::now()->subDay(30);
-                $activeSort= "30days";
-
-                break;
-        }
-
-
-
-        $date = Carbon::now()->toDateTimeString();
-
-        if($request->has('sort')){
-            $news = DB::table('inner_news')
-                ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-                ->where([
-                    ['type', '=', 'new'],
-//            ['date', '<', $date],
-                ])
-                ->orderBy('date', 'desc')->whereBetween('date',[$sortDate,$nowDate])
-                ->paginate(5)->appends('sort',$request['sort']);
-        } else {
-            $news = DB::table('inner_news')
-                ->leftJoin('preview', 'inner_news.inner_news_id', '=', 'preview.inner_news_id')
-                ->where([
-                    ['type', '=', 'new'],
-//            ['date', '<', $date],
-                ])
-                ->orderBy('date', 'desc')
-                ->paginate(5);
-        }
-        for($i = 0; $i < count($news); $i++) {
-            $news[$i]->trans_title = $this->transliterate($news[$i]->{'title_ua'});
-        }
+        $news = $this->filter($request);
 
         $category = DB::table("category")->get()->toArray();
         $subcategory = DB::table("subcategory")->get()->toArray();
@@ -108,10 +57,54 @@ class NewsController extends Controller
             'left_footer' => $left_footer,
             'about_footer' => $about_footer,
             'right_footer' => $right_footer,
-            'activeSort'=>$activeSort
         ];
 
         return view('site/news', compact('data'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    protected function filter(Request $request)
+    {
+        $query = InnerNews::with('Preview')
+
+            ->where('type', 'new')
+
+            ->whereHas('Preview',function ($query) use ($request) {
+                $query->where('title_ua', 'like', '%' . $request->search . '%')
+                    ->orWhere('title_ru', 'like', '%' . $request->search . '%')
+                    ->orWhere('title_us', 'like', '%' . $request->search . '%')
+                    ->orWhere('full_description_ua', 'like', '%' . $request->search . '%')
+                    ->orWhere('full_description_ru', 'like', '%' . $request->search . '%')
+                    ->orWhere('full_description_us', 'like', '%' . $request->search . '%')
+                    ->orWhere('short_description_ua', 'like', '%' . $request->search . '%')
+                    ->orWhere('short_description_ru', 'like', '%' . $request->search . '%')
+                    ->orWhere('short_description_us', 'like', '%' . $request->search . '%');
+            })
+
+        ;
+
+        switch ($request['sort']) {
+            case 'last-week':
+                $sortDate = now()->subDay(7);
+                break;
+            case 'last-month':
+                $sortDate = now()->subDay(30);
+                break;
+            default:
+                $sortDate = null;
+        }
+
+        if ($sortDate) {
+            $query->whereBetween('date', [$sortDate, now()]);
+        }
+
+
+        return $query->latest('date')
+            ->paginate(10)
+            ->appends($request->all());
     }
 
 }

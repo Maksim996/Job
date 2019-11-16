@@ -11,15 +11,15 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-10 a_n__text-center">
-                        <div class="a_n__text-first">Телеграм</div>
+                        <div class="a_n__text-first">{{trans('base.vacancies')}}</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="a_n__text-second">Телеграм</div>
-        <div class="a_n__text-third">Телеграм</div>
-        <div class="a_n__text-fourth">Телеграм</div>
+        <div class="a_n__text-second">{{trans('base.vacancies')}}</div>
+        <div class="a_n__text-third">{{trans('base.vacancies')}}</div>
+        <div class="a_n__text-fourth">{{trans('base.vacancies')}}</div>
 
 
 

@@ -10,12 +10,16 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" style="display:none">
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
         <!--begin::Fonts -->
-        <script
-              src="https://code.jquery.com/jquery-3.4.1.min.js"
-              integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-              crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+     
+        <script src="{{ URL::asset('js/jquery3_3_1.js')}}"></script>
+
+     {{--  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script> --}}
+        
+       <script src="{{ URL::asset('/plugins/libs/webfont.js') }}"></script>
+       <script src="{{ URL::asset('/plugins/libs/axios.min.js') }}"></script>
+
+
         {{--<script src="{{ URL::asset('js/app.js') }}"></script>--}}
 
         <!--end::Fonts -->

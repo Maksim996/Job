@@ -26,13 +26,16 @@
 
     @endforeach
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 d-flex justify-content-between">
+        <div class="row justify-content-center mb-md-3">
+            <div class="col-lg-10 d-flex justify-content-between flex-wrap">
                 <div class="col-lg-6 col-md-12">
-                    <form action="" method="post">
-                        {{csrf_field()}}
+                    {{--<form action="news/search" method="get" role="search">--}}
+                        <form action="/news/" method="get" role="search">
+
+                        {{--{{csrf_field()}}--}}
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="{{trans('base.search')}}" aria-label="Recipient's username" aria-describedby="button-addon2">
+
+                            <input name="search" type="search" class="form-control" value="{{request()->search}}" placeholder="{{trans('base.search')}}" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="icon-search"></i>{{trans('base.search')}}</button>
                             </div>
@@ -40,20 +43,21 @@
                     </form>
                 </div>
                 <div class="col-lg-6 col-md-12 ">
-                    <div class="row justify-content-end">
+                    <div class="d-flex justify-content-end">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-outline-primary {{$data['activeSort']==='7days'?'active':''}}"
-                               href="news/?sort=last-week"
+                                <a class="btn btn-outline-primary {{request()->sort==='last-week'?'active':''}}"
+                                href="{{ URL::route('news', array_merge(request()->except('page'), ['sort' => 'last-week'])) }}"
 
-                            >{{trans('base.last_week')}}</a>
-                            <a class="btn btn-outline-primary {{$data['activeSort']==='30days'?'active':''}}"
-                               name="last-month"
-                               href="news/?sort=last-month"
-                            >{{trans('base.last_month')}}</a>
-                            <a class="btn btn-outline-primary"
-                               name="reset"
-                               href="/news"
-                            >{{trans('base.reset')}}</a>
+                                >{{trans('base.last_week')}}</a>
+                                <a class="btn btn-outline-primary {{request()->sort==='last-month'?'active':''}}"
+                                   name="last-month"
+                                   href="{{ URL::route('news', array_merge(request()->except('page'), ['sort' => 'last-month'])) }}"
+                                >{{trans('base.last_month')}}</a>
+                                <a class="btn btn-outline-primary"
+                                   name="reset"
+                                   href="/news"
+                                >{{trans('base.reset')}}</a>
+
                         </div>
                     </div>
 
@@ -63,7 +67,8 @@
 
 
         <div class="news">
-    	@for($i = 0; $i < count($data['news']); $i++)
+            @foreach($data['news'] as $new)
+                {{--@if($new->type ==='new')--}}
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-8 my-2 news__card">
                     <div class="news__card-item">
@@ -71,24 +76,24 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h5 class="card-title news__title-page">
-                                        {!! !empty($data['news'][$i]->{'title_' . $data['locale'] }) ? $data['news'][$i]->{'title_' . $data['locale'] } : $data['news'][$i]-> title_ua !!}
+                                        {!! !empty($new->{'title_' . $data['locale'] }) ? $new->{'title_' . $data['locale'] } : $new-> title_ua !!}
                                     </h5>
                                 </div>
                             </div>
                             <div class="row no-gutters d-flex align-items-stretch">
                                 <div class="col-lg-4">
-                                    <img src="{{ URL::asset($data['news'][$i]->img_path)}}" class="card-img mt-1" alt="">
+                                    <img src="{{ URL::asset($new->preview->img_path)}}" class="card-img mt-1" alt="">
                                 </div>
                                 <div class="card-body pl-lg-3 col-lg-8">
                                     <p class="card-text news__text-page mb-4 py-0">
-                                        {!! !empty($data['news'][$i]->{'short_description_' . $data['locale']}) ? $data['news'][$i]->{'short_description_' . $data['locale']} : $data['news'][$i]-> short_description_ua !!}
+                                        {!! !empty($new->preview->{'short_description_' . $data['locale']}) ? $new->preview->{'short_description_' . $data['locale']} : $news->preview->short_description_ua !!}
                                     </p>
                                     <div class="news__about">
-                                        <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-page">
+                                        <a href="{{ route('new', array('id' => $new->inner_news_id, 'title' => $new->trans_title)) }}" class="card-link news__link-page">
                                             {{trans('base.link_more')}}
                                         </a>
                                         <div class="news__date-page">
-                                            {{trans('base.date_post')}}: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
+                                            {{trans('base.date_post')}}: {{ date("d-m-Y", strtotime($new->date)) }}
                                         </div>
                                     </div>
                                 </div>
@@ -97,13 +102,22 @@
                     </div>
                 </div>
             </div>
-                 @endfor
+                {{--@endif--}}
+            @endforeach
+                @if(count($data['news'])!==0)
+                    <div class="pagin">
 
-                <div class="pagin">
+                        {{$data['news']->links()}}
 
-                    {{$data['news']->links()}}
-           
-                </div>
+                    </div>
+                    @else
+                    <div class="not_found_block">
+                        <div class="not_found_sim">
+                            !
+                        </div>
+                        {{trans('base.notfound')}}
+                    </div>
+                @endif
             </div>
         </div>
 

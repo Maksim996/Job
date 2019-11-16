@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-   
+
         <div class="container">
             <div class="preview mt-3">
                 <div class="row">
@@ -151,7 +151,7 @@
                                         </p>
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][0]->inner_news_id, 'title' => $data['news'][0]->trans_title)) }}" class="card-link news__link">{{trans('base.link_more')}}</a>
-                                            <p class="news__date">{{trans('base.date_post')}}: {{ date("d-m-Y H:i", strtotime($data['news'][0]->date)) }}</p>
+                                            <p class="news__date">{{trans('base.date_post')}}: {{ date("d-m-Y", strtotime($data['news'][0]->date)) }}</p>
                                         </div>
                                         
                                     </div>
@@ -183,7 +183,7 @@
                                         <div>
                                             <a href="{{ route('new', array('id' => $data['news'][$i]->inner_news_id, 'title' => $data['news'][$i]->trans_title)) }}" class="card-link news__link-item">{{trans('base.link_more')}}</a>
                                             <p class="news__date-item">
-                                                {{trans('base.date_post')}}: {{ date("d-m-Y H:i", strtotime($data['news'][$i]->date)) }}
+                                                {{trans('base.date_post')}}: {{ date("d-m-Y", strtotime($data['news'][$i]->date)) }}
                                             </p>
                                         </div>
                                     </div>

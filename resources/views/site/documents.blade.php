@@ -91,7 +91,7 @@
                                                                     @if ($document->type === 'file')
                                                                         <a target="_blank" href="{{$document->file_link}}"
                                                                         download="{!! !empty($document->{'title_' . $data['locale']}) ? $document->{'title_' . $data['locale']}: $document-> title_ua !!}"
-                                                                           class=" btn btn-outline-success">{{trans('base.download')}}</a>
+                                                                           class=" btn btn-outline-info">{{trans('base.download')}}</a>
                                                                     @else
                                                                     <a target="_blank" href="{{$document->file_link}}"
                                                                        class=" btn btn-outline-info">{{trans('base.gosite')}}</a>

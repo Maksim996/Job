@@ -101,6 +101,7 @@ class navMenuController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         DB::table('category')
             ->where('category_id', $id)
             ->update([
@@ -109,7 +110,7 @@ class navMenuController extends Controller
                 'title_us' => $request->title_us,
             ]);
         $catSelect = $request->catSelect;
-
+        dd($catSelect);
         if($catSelect == 'external') {
             DB::table('category')->where('category_id',$id)->update([
                 'type' => 'type2',

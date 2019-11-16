@@ -23,9 +23,9 @@
                                 @if($data['new']->type ==='telegram')
                                     <div>{{ date("d-m-Y", strtotime($data['new']->date)) }}</div>
 
-                                @else
-                                    <div>{{ date("d-m-Y H:i", strtotime($data['new']->date)) }}</div>
-
+                                @elseif($data['new']->type ==='new')
+                                    <div>{{ date("d-m-Y", strtotime($data['new']->date)) }}</div>
+                                @else  <div>{{ date("d-m-Y H:i", strtotime($data['new']->date)) }}</div>
                                 @endif
                             </div>
                         </div>

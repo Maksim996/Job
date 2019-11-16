@@ -65,6 +65,7 @@
                                 <option value= "document"   @if($data['category']->link == 'document') selected @endif >Документи</option>
                                 <option value= "announcements"   @if($data['category']->link == 'announcements') selected @endif >Анонси</option>
                                 <option value= "pracevlashtuvannya-praktika"   @if($data['category']->link == 'pracevlashtuvannya-praktika') selected @endif >Практика та працевлаштування</option>
+                                <option value= "discussion-educational-programs"   @if($data['category']->link == 'discussion-educational-programs') selected @endif >Обговорення освітніх програм</option>
                             </select>
                             <div class="form-group row mt-3 extString" style="display:none">
                                 <div class="col-lg-12 col-md-9 col-sm-12">

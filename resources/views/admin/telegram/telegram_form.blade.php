@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-form-label col-lg-2 col-sm-12">Коротке адреса </label>
+        <label class="col-form-label col-lg-2 col-sm-12">Коротка адреса</label>
         <div class="col-lg-9 col-md-9 col-sm-12">
 
             <input type="text" maxlength="30" class="form-control short-location-ua k_maxlength_5" placeholder="" name="short_location_ua"
@@ -87,7 +87,7 @@
         <label class="col-form-label col-lg-2 col-sm-12">Посилання</label>
         <div class="col-lg-9 col-md-9 col-sm-12">
 
-            <input type="text" maxlength="30" class="form-control short-location-ua " placeholder="" name="link"
+            <input type="text"  class="form-control short-location-ua " placeholder="" name="link"
                    @if(isset($data['telegram'][0]))
                    value="{{ $data['telegram'][0]->link }}"
                    @else

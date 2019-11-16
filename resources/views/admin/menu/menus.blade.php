@@ -76,7 +76,7 @@
             let id = $(e.target).closest('td').find('.id').val();
             $(e.target).closest('tr').remove();
             count = $('tr').length;
-            console.log(count);
+            // console.log(count);
             if (count == 2) {
                 $('.delete_new').hide();
             } else $('.delete_new').show();

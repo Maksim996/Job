@@ -27,6 +27,7 @@ Route::group(['middleware' => 'setLocale'], function() {
 // Route::get('document/{id}-{title}', 'Site\DocumentsController@index')->name('document');
 
     Route::get('news', 'Site\NewsController@index')->name('news');
+    Route::get('news/{search?}', 'Site\NewsController@query')->name('search');
     Route::get('announcements', 'Site\AnnouncementsController@index')->name('announcements');
     Route::get('document', 'Site\DocumentsController@index')->name('document');
 
@@ -34,6 +35,9 @@ Route::group(['middleware' => 'setLocale'], function() {
 
     Route::get('pracevlashtuvannya-praktika', 'Site\PracevlashtuvannyaPraktikaController@index')->name('pracevlashtuvannya-praktika');
 
+    Route::get('discussion-educational-programs', 'Site\DiscussionEducationalProgramsController@index')->name('discussion-educational-programs');
+
+    Route::get('about','Site\AboutController@index')->name('about');
     //	search and filtered form date
 //    Route::post('news', 'Site\NewsController@sortDate')->name('news');
 });
