@@ -26,11 +26,9 @@
                         <h1 class="title">
                             Навчальний відділ практики та інтеграційних зв’язків із замовниками кадрів
                         </h1>
-                        <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus numquam rem sequi! Accusamus cumque debitis dolor dolores ducimus facilis illo illum natus
-                            nostrum odit, officia, praesentium veritatis voluptatum. At doloremque dolorum eum eveniet fugiat ipsam laboriosam magni odit praesentium quasi, quis
-                            recusandae sed sint tenetur voluptatem? Debitis doloribus dolorum ea hic, illum inventore ipsam laborum magnam minima modi molestiae neque nihil
-                            non nostrum odit optio pariatur perferendis quam quo quod rerum soluta ullam voluptas. Doloribus nostrum omnis qui veritatis voluptates!</p>
-                        <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore et, eveniet excepturi nihil nulla praesentium provident sapiente similique voluptatem voluptates!</p>
+                        <p class="text">
+                            Навчальний відділ практики та інтеграційних зв’язків із замовниками є структурним підрозділом СумДУ, що забезпечує реалізацію єдиних підходів до організації усіх видів практики здобувачів вищої освіти різних спеціальностей, організовує зустрічі з роботодавцями, а також сприяє працевлаштуванню здобувачів вищої освіти та випускників СумДУ.
+                        </p>
                     </div>
                     <div class="about_img">
                         <div class="img">
@@ -39,7 +37,7 @@
                         <div class="img_description">
                             <p>
                                 <b>Євдокимова Альона Вікторівна</b> – начальник навчального відділу практики та інтеграційних зв’язків із замовниками кадрів
-                                e-mail: a.yevdokymova@job.sumdu.edu.ua</p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -97,9 +95,9 @@
                     <li>Проведення консультаційної роботи серед здобувачів вищої освіти з питань їхнього подальшого працевлаштування (майстер-клас по написанню резюме та мотиваційних листів); </li>
                     <li>Організація зустрічей роботодавців та представників ринку праці зі здобувачами вищої освіти та випускниками з питань можливості їхнього подальшого працевлаштування (дні кар’єри, круглі столи, ярмарки вакансій, семінари-практикуми і т.д.);</li>
                     <li>Моніторинг проблем, з якими стикаються здобувачі вищої освіти при працевлаштуванні на перше робоче місце;</li>
-                    <li>Участь у роботі комісій з розподілу випускників медичних спеціальностей;</li>
                     <li>Координація моніторингу працевлаштування випускників, в тому числі через бази даних випускників;</li>
                     <li>Координація діяльності факультетів/інститутів та випускових кафедр щодо організації зайнятості здобувачів вищої освіти, які бажають працевлаштуватися протягом навчання.</li>
+                    <li>Участь у роботі комісій з розподілу випускників медичних спеціальностей;</li>
                 </ul>
             </div>
 
